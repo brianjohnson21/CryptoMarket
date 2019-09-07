@@ -31,7 +31,6 @@ class MarketController: UIViewController {
         let input = MarketViewModel.Input(onAdd: self.addButton.rx.tap.asDriver())
         
         let outputViewModel = self.viewModel.transform(input: input)
-        
     }
 
 

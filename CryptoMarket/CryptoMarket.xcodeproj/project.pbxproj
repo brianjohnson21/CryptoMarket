@@ -118,6 +118,7 @@
 		1E51B01423219CC10087E38C /* CryptoMarket */ = {
 			isa = PBXGroup;
 			children = (
+				1E6AB7862323BF900006AA78 /* Network */,
 				1E6AB78323230D3B0006AA78 /* Extensions */,
 				1EE73D8E2321A51900D83B82 /* Protocols */,
 				1EE73D8B23219FB800D83B82 /* ViewModels */,
@@ -154,6 +155,13 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1E6AB7862323BF900006AA78 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		1EE73D8823219F8000D83B82 /* Delegates */ = {

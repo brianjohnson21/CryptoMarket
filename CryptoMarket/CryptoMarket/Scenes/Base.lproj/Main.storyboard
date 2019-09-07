@@ -32,7 +32,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avI-sD-4Rp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BMarketCrypto" id="UVH-1T-60k">
+                    <navigationItem key="navigationItem" title="BMarketCrypto" largeTitleDisplayMode="always" id="UVH-1T-60k">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="yL8-gs-oLQ"/>
                     </navigationItem>
                     <connections>
