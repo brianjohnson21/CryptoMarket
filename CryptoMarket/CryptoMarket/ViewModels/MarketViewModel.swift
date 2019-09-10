@@ -15,7 +15,6 @@ public final class MarketViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let onAdd: Driver<Void>
     }
     
     struct Output {
@@ -23,14 +22,7 @@ public final class MarketViewModel: ViewModelType {
 
     func transform(input: Input) -> Output {
         
-        input.onAdd.asObservable()
-        .subscribeOn(MainScheduler.asyncInstance)
-        .observeOn(MainScheduler.asyncInstance)
-        .subscribe(onNext: { (_) in
-            print("React to Tap")
-        }).disposed(by: self.disposeBag)
-        
-        
         return Output()
+        
     }
 }

@@ -28,9 +28,22 @@ class MarketController: UIViewController {
     
     private func setUpViewModel() {
         
-        let input = MarketViewModel.Input(onAdd: self.addButton.rx.tap.asDriver())
+        let input = MarketViewModel.Input()
         
-        let outputViewModel = self.viewModel.transform(input: input)
+        self.addButton.rx.tap.subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (_) in
+            
+            let newVc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddMarketController")
+                as! AddMarketController
+            self.navigationController?.pushViewController(newVc, animated: true)
+                
+        }).disposed(by: self.disposeBag)
+        
+
+        _ = self.viewModel.transform(input: input)
+        
+        
     }
 
 

@@ -43,6 +43,36 @@
             </objects>
             <point key="canvasLocation" x="1312.8" y="387.93103448275866"/>
         </scene>
+        <!--Add Market Controller-->
+        <scene sceneID="Kes-Tc-JzP">
+            <objects>
+                <viewController storyboardIdentifier="AddMarketController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Ml-iT-1Pf" customClass="AddMarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uqW-T6-op3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-hH-20l">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uoN-hH-20l" firstAttribute="top" secondItem="RTc-5j-eFI" secondAttribute="top" id="0qM-Bt-gPj"/>
+                            <constraint firstAttribute="bottom" secondItem="uoN-hH-20l" secondAttribute="bottom" id="9h9-wt-b5o"/>
+                            <constraint firstItem="uoN-hH-20l" firstAttribute="trailing" secondItem="RTc-5j-eFI" secondAttribute="trailing" id="te9-lC-GFh"/>
+                            <constraint firstItem="uoN-hH-20l" firstAttribute="leading" secondItem="RTc-5j-eFI" secondAttribute="leading" id="wzO-C9-Fyt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RTc-5j-eFI"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="uoN-hH-20l" id="RL5-oB-Nd5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fw2-Fx-kos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2209" y="388"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="m4v-c4-Vck">
             <objects>
