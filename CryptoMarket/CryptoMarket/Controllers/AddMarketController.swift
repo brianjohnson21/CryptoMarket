@@ -14,7 +14,6 @@ class AddMarketController: UIViewController {
     // MARK: Members
     private let viewModel: AddMarketViewModel = AddMarketViewModel()
     private let disposeBag = DisposeBag()
-    private var tableViewDataSource = []
     
     // MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
@@ -28,17 +27,5 @@ class AddMarketController: UIViewController {
     private func setUpView() {
         self.title = "Add a new Cryptocurrency"
     }
-    
-}
-
-extension AddMarketController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
     
 }

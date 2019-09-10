@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		1EE73D902321A52C00D83B82 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE73D8F2321A52C00D83B82 /* ViewModelType.swift */; };
 		9CFDC814257663AF12A44583 /* Pods_CryptoMarketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4095F8F2FC907FE7AC0061EC /* Pods_CryptoMarketTests.framework */; };
 		BDE0FA57DBA20E0313FF522B /* Pods_CryptoMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90737B4C155982A9A5181F2A /* Pods_CryptoMarket.framework */; };
+		E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9154B932327C8D900A3170E /* MarketTableViewCell.swift */; };
+		E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9154B942327C8D900A3170E /* MarketTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		9572D8C0BB3B556ADB22AD74 /* Pods_CryptoMarketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B373BBD0921F6A5AA34D22AB /* Pods-CryptoMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarket.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket.release.xcconfig"; sourceTree = "<group>"; };
 		BCC7A83B4BDE3F41A8F76D89 /* Pods-CryptoMarketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9154B932327C8D900A3170E /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
+		E9154B942327C8D900A3170E /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
 		FF4D4DFE9881AC210D32E4A4 /* Pods-CryptoMarketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +186,7 @@
 		1EE73D8923219FA400D83B82 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E9154B922327C8B100A3170E /* cell */,
 				1E51B01923219CC10087E38C /* Main.storyboard */,
 			);
 			path = Scenes;
@@ -236,6 +241,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E9154B922327C8B100A3170E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E9154B932327C8D900A3170E /* MarketTableViewCell.swift */,
+				E9154B942327C8D900A3170E /* MarketTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,7 +262,6 @@
 				1E51B00F23219CC10087E38C /* Frameworks */,
 				1E51B01023219CC10087E38C /* Resources */,
 				4916807CDCCE614F178EBF9F /* [CP] Embed Pods Frameworks */,
-				484CC354776EC04F4D3962D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,8 +280,6 @@
 				1E51B02223219CC20087E38C /* Sources */,
 				1E51B02323219CC20087E38C /* Frameworks */,
 				1E51B02423219CC20087E38C /* Resources */,
-				8F1FB8CBCF6F40EDD6816BF0 /* [CP] Embed Pods Frameworks */,
-				698C17B777D7503C9E192365 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,8 +299,6 @@
 				1E51B02D23219CC20087E38C /* Sources */,
 				1E51B02E23219CC20087E38C /* Frameworks */,
 				1E51B02F23219CC20087E38C /* Resources */,
-				273A3C717E6B0519CD7BE52D /* [CP] Embed Pods Frameworks */,
-				7B485F211959A7D5957EFF28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,6 +361,7 @@
 				1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
+				E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,86 +400,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		273A3C717E6B0519CD7BE52D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		484CC354776EC04F4D3962D0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4916807CDCCE614F178EBF9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		698C17B777D7503C9E192365 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B485F211959A7D5957EFF28 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		862B5409A89D7DFDD192951E /* [CP] Check Pods Manifest.lock */ = {
@@ -488,21 +433,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F1FB8CBCF6F40EDD6816BF0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE491F3BAB9D33B8226209C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -533,6 +463,7 @@
 				1EE73D902321A52C00D83B82 /* ViewModelType.swift in Sources */,
 				1E51B01823219CC10087E38C /* MarketController.swift in Sources */,
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
+				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				1E4A56A823259A3100B4BF0A /* AddMarketController.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E4A56AA23259C1900B4BF0A /* AddMarketViewModel.swift in Sources */,

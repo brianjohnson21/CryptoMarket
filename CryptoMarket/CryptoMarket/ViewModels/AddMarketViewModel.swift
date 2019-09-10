@@ -10,12 +10,6 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-internal protocol AddMarketViewCell {
-    var type: CellViewModelType { get }
-    var title: String { get }
-    var rowCount: Int { get }
-}
-
 public final class AddMarketViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
