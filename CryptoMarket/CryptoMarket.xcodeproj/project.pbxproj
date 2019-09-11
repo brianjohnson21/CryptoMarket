@@ -11,6 +11,7 @@
 		1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */; };
 		1E4A56A823259A3100B4BF0A /* AddMarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56A723259A3100B4BF0A /* AddMarketController.swift */; };
 		1E4A56AA23259C1900B4BF0A /* AddMarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56A923259C1900B4BF0A /* AddMarketViewModel.swift */; };
+		1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56AB2329890A00B4BF0A /* Network.swift */; };
 		1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01523219CC10087E38C /* AppDelegate.swift */; };
 		1E51B01823219CC10087E38C /* MarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01723219CC10087E38C /* MarketController.swift */; };
 		1E51B01B23219CC10087E38C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E51B01923219CC10087E38C /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Ext.swift"; sourceTree = "<group>"; };
 		1E4A56A723259A3100B4BF0A /* AddMarketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarketController.swift; sourceTree = "<group>"; };
 		1E4A56A923259C1900B4BF0A /* AddMarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarketViewModel.swift; sourceTree = "<group>"; };
+		1E4A56AB2329890A00B4BF0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1E51B01223219CC10087E38C /* CryptoMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B01523219CC10087E38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E51B01723219CC10087E38C /* MarketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		1E6AB7862323BF900006AA78 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1E4A56AB2329890A00B4BF0A /* Network.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -442,12 +445,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -550,6 +557,7 @@
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				1E4A56A823259A3100B4BF0A /* AddMarketController.swift in Sources */,
+				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E4A56AA23259C1900B4BF0A /* AddMarketViewModel.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,

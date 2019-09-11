@@ -1,4 +1,10 @@
 PODS:
+  - Alamofire (4.9.0)
+  - RxAlamofire (4.4.1):
+    - RxAlamofire/Core (= 4.4.1)
+  - RxAlamofire/Core (4.4.1):
+    - Alamofire (~> 4.8)
+    - RxSwift (~> 4.5)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxGesture (2.2.0):
@@ -7,15 +13,19 @@ PODS:
   - RxSwift (4.5.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - RxAlamofire (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxGesture
   - RxSwift (~> 4.0)
 
 SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 686d6e22ca659db7136b201656eafddaff6e6da5
+PODFILE CHECKSUM: 973b06ba7298482fc7cda6b4fc00d04e79a9f591
 
 COCOAPODS: 1.4.0
