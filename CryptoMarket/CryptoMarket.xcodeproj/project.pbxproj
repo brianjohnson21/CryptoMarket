@@ -262,7 +262,6 @@
 				1E51B00F23219CC10087E38C /* Frameworks */,
 				1E51B01023219CC10087E38C /* Resources */,
 				4916807CDCCE614F178EBF9F /* [CP] Embed Pods Frameworks */,
-				A2A05077ADAA81F81C68C5E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,8 +280,6 @@
 				1E51B02223219CC20087E38C /* Sources */,
 				1E51B02323219CC20087E38C /* Frameworks */,
 				1E51B02423219CC20087E38C /* Resources */,
-				19A1E6D467D84085EBAE8186 /* [CP] Embed Pods Frameworks */,
-				CA40C115C13734657D51B810 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,8 +299,6 @@
 				1E51B02D23219CC20087E38C /* Sources */,
 				1E51B02E23219CC20087E38C /* Frameworks */,
 				1E51B02F23219CC20087E38C /* Resources */,
-				2ACCC6D111663893A0199AEC /* [CP] Embed Pods Frameworks */,
-				C00FBAC5E3438EC449F49581 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,56 +400,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		19A1E6D467D84085EBAE8186 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2ACCC6D111663893A0199AEC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4916807CDCCE614F178EBF9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		862B5409A89D7DFDD192951E /* [CP] Check Pods Manifest.lock */ = {
@@ -473,51 +433,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A2A05077ADAA81F81C68C5E1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarket/Pods-CryptoMarket-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C00FBAC5E3438EC449F49581 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA40C115C13734657D51B810 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE491F3BAB9D33B8226209C4 /* [CP] Check Pods Manifest.lock */ = {

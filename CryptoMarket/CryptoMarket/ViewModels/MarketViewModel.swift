@@ -18,11 +18,22 @@ public final class MarketViewModel: ViewModelType {
     }
     
     struct Output {
+        let tableViewDataSource: Observable<[String]>
     }
 
+    private func createTableViewDataSource() -> [String] {
+        var tableViewData: [String] = []
+        for index in 0...10 {
+            tableViewData.append("Yolo \(index)")
+        }
+        return tableViewData
+    }
+    
     func transform(input: Input) -> Output {
         
-        return Output()
+        let tableViewDataSource: Observable<[String]> = Observable.just(self.createTableViewDataSource())
+        
+        return Output(tableViewDataSource: tableViewDataSource)
         
     }
 }
