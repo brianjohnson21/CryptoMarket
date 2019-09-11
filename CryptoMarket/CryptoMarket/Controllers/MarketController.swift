@@ -19,7 +19,7 @@ class MarketController: UIViewController {
     private let disposeBag = DisposeBag()
     
     // MARK: Outlets
-    @IBOutlet private weak var addButton: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +30,7 @@ class MarketController: UIViewController {
         
         let input = MarketViewModel.Input()
         
-        self.addButton.rx.tap.subscribeOn(MainScheduler.asyncInstance)
-            .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { (_) in
-            
-            let newVc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddMarketController")
-                as! AddMarketController
-            self.navigationController?.pushViewController(newVc, animated: true)
-                
-        }).disposed(by: self.disposeBag)
-        
+
 
         _ = self.viewModel.transform(input: input)
         
