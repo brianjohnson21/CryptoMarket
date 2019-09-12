@@ -9,4 +9,24 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Alamofire
+import RxAlamofire
 
+final class Network {
+    
+    public static let sharedInstance = Network()
+    private let alamofireManager = SessionManager.default
+    
+    private func getHeadersNetwork() -> [String: String] {
+        let headers = ["Authorization": ""]
+        
+        return headers
+    }
+    
+    public func performPostRequest(stringUrl url: String) {}
+    
+    public func performGetRequest(stringUrl url: String) -> Observable<DataRequest> {
+        return RxAlamofire.request(.get, url)
+        .asObservable()
+    }
+}

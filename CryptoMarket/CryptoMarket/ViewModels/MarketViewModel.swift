@@ -29,6 +29,17 @@ public final class MarketViewModel: ViewModelType {
         return tableViewData
     }
     
+    private func getMarketData() -> Observable<[String]> {
+        
+        return Observable.create { (observer) -> Disposable in
+            let data: [String] = [""]
+        
+            observer.onNext(data)
+            
+            return Disposables.create()
+        }
+    }
+    
     func transform(input: Input) -> Output {
         
         let tableViewDataSource: Observable<[String]> = Observable.just(self.createTableViewDataSource())

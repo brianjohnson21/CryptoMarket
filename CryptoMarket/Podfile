@@ -9,10 +9,9 @@ target 'CryptoMarket' do
    pod 'RxSwift',    '~> 4.0'
    pod 'RxCocoa',    '~> 4.0'
    pod 'RxGesture'
-   pod 'Alamofire', '~> 4.0'
-   pod 'RxAlamofire', '~> 4.0'
-
-
+   pod 'Alamofire'
+   pod 'RxAlamofire'
+   pod 'ObjectMapper'
 
   target 'CryptoMarketTests' do
     inherit! :search_paths
