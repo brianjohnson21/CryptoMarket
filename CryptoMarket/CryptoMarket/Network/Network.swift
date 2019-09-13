@@ -24,16 +24,24 @@ final class Network {
         return headers
     }
     
-    public func perfromGetRequest(stringUrl url: String) -> Observable<[[String: Any]]> {
+    public func perfromGetRequest(stringUrl url: String) -> Observable<[Market]> {
         
         return RxAlamofire
             .json(.get, url, headers: [:])
             .retry(2)
             .debug()
             .observeOn(MainScheduler.asyncInstance)
-            .map { (json) -> [[String: Any]] in
-                print("json result request \(json) <- here")
-                return json as? [[String: Any]] ?? []
+            .map { (json) -> [Market] in
+                
+                if let data = (json["data"] as? [[String: Any]]) {
+                  print("inside data -> \(data)")
+                }
+//                let data = Data(json as? [[String: Any]])
+//                let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
+//
+//                return try Mapper<Market>().mapArray(JSONArray: data as Any) as! [[String: Any]]
+                //return try Mapper<Market>().mapArray(JSONArray: json["data"] as! [String : Any])
+                
             }
         }
 }

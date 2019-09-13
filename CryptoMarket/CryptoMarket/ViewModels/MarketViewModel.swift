@@ -29,7 +29,7 @@ public final class MarketViewModel: ViewModelType {
         return tableViewData
     }
     
-    private func fetchMarketData() -> Observable<[[String: Any]]> {
+    private func fetchMarketData() -> Observable<[Market]> {
         return Network.sharedInstance.perfromGetRequest(stringUrl: "https://api.coincap.io/v2/assets")
     }
     
