@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Alamofire
 import RxAlamofire
+import ObjectMapper
 
 final class Network {
     
@@ -23,10 +24,16 @@ final class Network {
         return headers
     }
     
-    public func performPostRequest(stringUrl url: String) {}
-    
-    public func performGetRequest(stringUrl url: String) -> Observable<DataRequest> {
-        return RxAlamofire.request(.get, url)
-        .asObservable()
-    }
+    public func perfromGetRequest(stringUrl url: String) -> Observable<[[String: Any]]> {
+        
+        return RxAlamofire
+            .json(.get, url, headers: [:])
+            .retry(2)
+            .debug()
+            .observeOn(MainScheduler.asyncInstance)
+            .map { (json) -> [[String: Any]] in
+                print("json result request \(json) <- here")
+                return json as? [[String: Any]] ?? []
+            }
+        }
 }

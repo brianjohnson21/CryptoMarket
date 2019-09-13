@@ -29,20 +29,17 @@ public final class MarketViewModel: ViewModelType {
         return tableViewData
     }
     
-    private func getMarketData() -> Observable<[String]> {
-        
-        return Observable.create { (observer) -> Disposable in
-            let data: [String] = [""]
-        
-            observer.onNext(data)
-            
-            return Disposables.create()
-        }
+    private func fetchMarketData() -> Observable<[[String: Any]]> {
+        return Network.sharedInstance.perfromGetRequest(stringUrl: "https://api.coincap.io/v2/assets")
     }
     
     func transform(input: Input) -> Output {
         
         let tableViewDataSource: Observable<[String]> = Observable.just(self.createTableViewDataSource())
+        
+        self.fetchMarketData().asObservable().subscribe(onNext: { (_) in
+            print("inside result here")
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
         return Output(tableViewDataSource: tableViewDataSource)
         
