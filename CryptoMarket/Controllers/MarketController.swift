@@ -42,8 +42,14 @@ class MarketController: UIViewController {
         self.spinner.center = self.view.center
         self.view.addSubview(self.spinner)
         self.spinner.isHidden = false
+        self.tableViewMarket.isHidden = true
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
+        self.spinner.startAnimating()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     private func setUpViewModel() {
@@ -56,6 +62,8 @@ class MarketController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (isLoading) in
                 self.spinner.isHidden = !isLoading
+                print("Inside table view -> \(isLoading)")
+                self.spinner.stopAnimating()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
       
         
@@ -66,6 +74,7 @@ class MarketController: UIViewController {
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewMarket.reloadData()
                 self.refreshControl.endRefreshing()
+                self.tableViewMarket.isHidden = false
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
     }

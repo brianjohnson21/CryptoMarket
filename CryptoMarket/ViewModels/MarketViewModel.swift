@@ -35,7 +35,7 @@ public final class MarketViewModel: ViewModelType {
         let refresh = input.loaderTrigger.asObservable()
         .subscribeOn(MainScheduler.asyncInstance)
         .observeOn(MainScheduler.instance)
-        .throttle(5, scheduler: MainScheduler.asyncInstance)
+        .throttle(2, scheduler: MainScheduler.asyncInstance)
         .flatMapLatest({ (_) -> Observable<[Market]> in
             return self.fetchMarketData()
         })
