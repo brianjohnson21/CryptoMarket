@@ -26,7 +26,6 @@
 		E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9154B932327C8D900A3170E /* MarketTableViewCell.swift */; };
 		E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9154B942327C8D900A3170E /* MarketTableViewCell.xib */; };
 		E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57024232A52AC009A5031 /* ApiRoute.swift */; };
-		E9D57028232A60F2009A5031 /* ObjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57027232A60F2009A5031 /* ObjectEntity.swift */; };
 		E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57029232A6502009A5031 /* String+Ext.swift */; };
 		E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +78,6 @@
 		E9154B932327C8D900A3170E /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		E9154B942327C8D900A3170E /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
 		E9D57024232A52AC009A5031 /* ApiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRoute.swift; sourceTree = "<group>"; };
-		E9D57027232A60F2009A5031 /* ObjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectEntity.swift; sourceTree = "<group>"; };
 		E9D57029232A6502009A5031 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEntity.swift; sourceTree = "<group>"; };
 		FF4D4DFE9881AC210D32E4A4 /* Pods-CryptoMarketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,10 +136,10 @@
 		1E51B01423219CC10087E38C /* CryptoMarket */ = {
 			isa = PBXGroup;
 			children = (
+				1EE73D8E2321A51900D83B82 /* Protocols */,
 				E9D57026232A60E3009A5031 /* Models */,
 				1E6AB7862323BF900006AA78 /* Network */,
 				1E6AB78323230D3B0006AA78 /* Extensions */,
-				1EE73D8E2321A51900D83B82 /* Protocols */,
 				1EE73D8B23219FB800D83B82 /* ViewModels */,
 				1EE73D8A23219FB400D83B82 /* Controllers */,
 				1EE73D8923219FA400D83B82 /* Scenes */,
@@ -267,7 +265,6 @@
 		E9D57026232A60E3009A5031 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E9D57027232A60F2009A5031 /* ObjectEntity.swift */,
 				E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */,
 			);
 			path = Models;
@@ -488,7 +485,6 @@
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
-				E9D57028232A60F2009A5031 /* ObjectEntity.swift in Sources */,
 				E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */,
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E4A56A823259A3100B4BF0A /* AddMarketController.swift in Sources */,

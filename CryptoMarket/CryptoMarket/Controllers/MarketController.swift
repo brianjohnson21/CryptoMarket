@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 import RxCocoa
 import RxSwift
 import RxGesture
@@ -19,7 +20,7 @@ class MarketController: UIViewController {
     // private MARK: Members
     private let viewModel: MarketViewModel = MarketViewModel()
     private let disposeBag = DisposeBag()
-    private var tableViewDataSource: [String] = [""]
+    private var tableViewDataSource: [Market] = []
     
     // MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
@@ -68,7 +69,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.identifier, for: indexPath) as? MarketTableViewCell {
-            cell.title = tableViewDataSource[indexPath.row]
+            cell.title = tableViewDataSource[indexPath.row].name
             return cell
         }
         return UITableViewCell()

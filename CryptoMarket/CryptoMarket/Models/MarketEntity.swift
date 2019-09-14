@@ -8,33 +8,37 @@
 
 import ObjectMapper
 
-struct Market: Mappable {
-    var id: String?
-    var rank: Int?
-    var symbol: String?
-    var name: String?
-    var supply: String?
-    var maxSupply: String?
-    var marketCapUsd: String?
-    var volumeUsd24Hr: String?
-    var priceUsd: String?
-    var changePercent24Hr: String?
-    var vwap24Hr: String?
+public struct Market: ImmutableMappable {
     
-    init?(map: Map) { }
+    public let id: String?
+    public let rank: Int?
+    public let symbol: String?
+    public let name: String?
+    public let supply: String?
+    public let maxSupply: String?
+    public let marketCapUsd: String?
+    public let volumeUsd24Hr: String?
+    public let priceUsd: String?
+    public let changePercent24Hr: String?
+    public let vwap24Hr: String?
     
-    mutating func mapping(map: Map) {
-        id <- map["id"]
-        rank <- map["rank"]
-        symbol <- map["symbol"]
-        name <- map["name"]
-        supply <- map["supply"]
-        maxSupply <- map["maxSupply"]
-        marketCapUsd <- map["marketCapUsd"]
-        volumeUsd24Hr <- map["volumeUsd24Hr"]
-        priceUsd <- map["priceUsd"]
-        changePercent24Hr <- map["changePercent24Hr"]
-        vwap24Hr <- map["vwap24Hr"]
+    public init(map: Map) throws {
+        self.id = (try? map.value("id")) ?? ""
+        self.rank = (try? map.value("rank")) ?? -1
+        self.symbol = (try? map.value("symbol")) ?? ""
+        self.name = (try? map.value("name")) ?? ""
+        self.supply = (try? map.value("supply")) ?? ""
+        self.maxSupply = (try? map.value("maxSupply")) ?? ""
+        self.marketCapUsd = (try? map.value("marketCapUsd")) ?? ""
+        self.volumeUsd24Hr = (try? map.value("volumeUsd24Hr")) ?? ""
+        self.priceUsd = (try? map.value("priceUsd")) ?? ""
+        self.changePercent24Hr = (try? map.value("changePercent24Hr")) ?? ""
+        self.vwap24Hr = (try? map.value("vwap24Hr")) ?? ""
     }
-    
+}
+
+extension Market: Equatable {
+    public static func == (lhs: Market, rhs: Market) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

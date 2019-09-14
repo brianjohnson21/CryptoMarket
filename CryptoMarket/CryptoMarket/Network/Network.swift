@@ -16,32 +16,15 @@ import ObjectMapper
 final class Network {
     
     public static let sharedInstance = Network()
-    private let alamofireManager = SessionManager.default
-    
-    private func getHeadersNetwork() -> [String: String] {
-        let headers = ["Authorization": ""]
         
-        return headers
-    }
-    
     public func perfromGetRequest(stringUrl url: String) -> Observable<[Market]> {
         
         return RxAlamofire
-            .json(.get, url, headers: [:])
+            .json(.get, url)
             .retry(2)
-            .debug()
             .observeOn(MainScheduler.asyncInstance)
-            .map { (json) -> [Market] in
-                
-                if let data = (json["data"] as? [[String: Any]]) {
-                  print("inside data -> \(data)")
-                }
-//                let data = Data(json as? [[String: Any]])
-//                let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
-//
-//                return try Mapper<Market>().mapArray(JSONArray: data as Any) as! [[String: Any]]
-                //return try Mapper<Market>().mapArray(JSONArray: json["data"] as! [String : Any])
-                
-            }
-        }
+            .map({ json -> [Market] in
+                return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
+            })
+    }
 }

@@ -18,30 +18,17 @@ public final class MarketViewModel: ViewModelType {
     }
     
     struct Output {
-        let tableViewDataSource: Observable<[String]>
-    }
-
-    private func createTableViewDataSource() -> [String] {
-        var tableViewData: [String] = []
-        for index in 0...10 {
-            tableViewData.append("Yolo \(index)")
-        }
-        return tableViewData
+        let tableViewDataSource: Observable<[Market]>
     }
     
     private func fetchMarketData() -> Observable<[Market]> {
-        return Network.sharedInstance.perfromGetRequest(stringUrl: "https://api.coincap.io/v2/assets")
+        return Network.sharedInstance.perfromGetRequest(stringUrl: ApiRoute.ROUTE_SERVER.concat(string: ApiRoute.ROUTE_MARKET))
     }
     
     func transform(input: Input) -> Output {
         
-        let tableViewDataSource: Observable<[String]> = Observable.just(self.createTableViewDataSource())
-        
-        self.fetchMarketData().asObservable().subscribe(onNext: { (_) in
-            print("inside result here")
-        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
-        
+        let tableViewDataSource: Observable<[Market]> = self.fetchMarketData().asObservable()
+
         return Output(tableViewDataSource: tableViewDataSource)
-        
     }
 }
