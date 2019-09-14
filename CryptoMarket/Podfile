@@ -12,6 +12,8 @@ target 'CryptoMarket' do
    pod 'Alamofire'
    pod 'RxAlamofire'
    pod 'ObjectMapper'
+   pod 'FontAwesome.swift'
+
 
   target 'CryptoMarketTests' do
     inherit! :search_paths

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Home-->
         <scene sceneID="WYZ-Tw-uQW">
             <objects>
                 <viewController id="aJa-kG-fVA" sceneMemberID="viewController">
@@ -18,13 +20,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ZWo-KM-Z8W"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="O6s-EA-nMu"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="O6s-EA-nMu" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-home"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kN-ZR-AKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1372" y="785"/>
         </scene>
-        <!--Item 1-->
+        <!--Markets-->
         <scene sceneID="bmt-uL-3c0">
             <objects>
                 <viewController id="YFE-ra-kTO" customClass="MarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +62,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R0m-yg-ZNH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="XFg-b3-dqH"/>
+                    <tabBarItem key="tabBarItem" title="Markets" id="XFg-b3-dqH" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-line"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableViewMarket" destination="hlI-gM-SOK" id="mDE-CJ-8mL"/>
                     </connections>
@@ -73,10 +83,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="YFE-ra-kTO" kind="relationship" relationship="viewControllers" id="tXt-dM-Asd"/>
                         <segue destination="aJa-kG-fVA" kind="relationship" relationship="viewControllers" id="Gya-oD-zxC"/>
+                        <segue destination="YFE-ra-kTO" kind="relationship" relationship="viewControllers" id="tXt-dM-Asd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68c-qi-UkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
