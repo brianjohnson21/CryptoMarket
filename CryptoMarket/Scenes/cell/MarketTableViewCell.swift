@@ -11,7 +11,6 @@ import UIKit
 class MarketTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

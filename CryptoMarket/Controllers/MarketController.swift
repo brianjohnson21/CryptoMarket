@@ -21,12 +21,15 @@ class MarketController: UIViewController {
     private let viewModel: MarketViewModel = MarketViewModel()
     private let disposeBag = DisposeBag()
     private var tableViewDataSource: [Market] = []
+    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    private let refreshControl = UIRefreshControl()
     
     // MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black
         self.setupView()
         self.setUpViewModel()
     }
@@ -35,13 +38,26 @@ class MarketController: UIViewController {
         self.tableViewMarket.register(MarketTableViewCell.nib, forCellReuseIdentifier: MarketTableViewCell.identifier)
         self.tableViewMarket.delegate = self
         self.tableViewMarket.dataSource = self
+        
+        self.spinner.center = self.view.center
+        self.view.addSubview(self.spinner)
+        self.spinner.isHidden = false
+        self.tableViewMarket.backgroundColor = UIColor.black
+        self.tableViewMarket.addSubview(refreshControl)
     }
     
     private func setUpViewModel() {
-        
-        let input = MarketViewModel.Input()
+        let input = MarketViewModel.Input(loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged).asObservable().map { _ in !self.refreshControl.isRefreshing }.filter{ $0 == false }.asObservable())
         
         let output = self.viewModel.transform(input: input)
+    
+        output.isLoading.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (isLoading) in
+                self.spinner.isHidden = !isLoading
+            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+      
         
         output.tableViewDataSource.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
@@ -49,6 +65,7 @@ class MarketController: UIViewController {
             .subscribe(onNext: { (tableViewDataSource) in
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewMarket.reloadData()
+                self.refreshControl.endRefreshing()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
     }
