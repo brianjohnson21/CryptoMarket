@@ -62,7 +62,6 @@ class MarketController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (isLoading) in
                 self.spinner.isHidden = !isLoading
-                print("Inside table view -> \(isLoading)")
                 self.spinner.stopAnimating()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
       
@@ -100,6 +99,10 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.identifier, for: indexPath) as? MarketTableViewCell {
             cell.title = tableViewDataSource[indexPath.row].name
+            cell.symbol = tableViewDataSource[indexPath.row].symbol
+            cell.index = tableViewDataSource[indexPath.row].rank
+            cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
+            
             return cell
         }
         return UITableViewCell()

@@ -23,6 +23,7 @@ final class Network {
             .json(.get, url)
             .retry(2)
             .observeOn(MainScheduler.asyncInstance)
+            .debug()
             .map({ json -> [Market] in
                 return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
             })

@@ -11,7 +11,7 @@ import ObjectMapper
 public struct Market: ImmutableMappable {
     
     public let id: String?
-    public let rank: Int?
+    public let rank: String?
     public let symbol: String?
     public let name: String?
     public let supply: String?
@@ -24,7 +24,7 @@ public struct Market: ImmutableMappable {
     
     public init(map: Map) throws {
         self.id = (try? map.value("id")) ?? ""
-        self.rank = (try? map.value("rank")) ?? -1
+        self.rank = (try? map.value("rank")) ?? ""
         self.symbol = (try? map.value("symbol")) ?? ""
         self.name = (try? map.value("name")) ?? ""
         self.supply = (try? map.value("supply")) ?? ""
