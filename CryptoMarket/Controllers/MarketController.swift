@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxGesture
-
+import Hero
 
 class MarketController: UIViewController {
     
@@ -46,10 +46,24 @@ class MarketController: UIViewController {
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
         self.spinner.startAnimating()
+        
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.tableViewMarket.hero.modifiers = [.cascade(delta: 2.0, direction: .bottomToTop, delayMatchedViews: true)]
+        
+        var i  = 1.0
+        for cell in (self.tableViewMarket.visibleCells) {
+            
+            cell.hero.modifiers = [.duration(0.2 * i),.translate(CGPoint.init(x: 0, y: 120))]
+            i += 1
+        }
+        
+        print("INSIDE HERE -> \(self.tableViewMarket.visibleCells.count)")
     }
     
     private func setUpViewModel() {
