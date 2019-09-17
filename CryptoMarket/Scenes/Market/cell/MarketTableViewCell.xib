@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,73 +18,91 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lw-J1-72T">
-                        <rect key="frame" x="89" y="4" width="85" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j48-US-Kce">
-                        <rect key="frame" x="89" y="29" width="85" height="16.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhH-IC-xRQ">
-                        <rect key="frame" x="47" y="15" width="30" height="28.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="H6t-4G-ZGR"/>
-                        </constraints>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8w-mg-Lci">
-                        <rect key="frame" x="18" y="19" width="25" height="21.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="25" id="0fE-4J-0g6"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10 322,08" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-1N-r8V">
-                        <rect key="frame" x="182" y="19" width="120" height="21.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="120" id="j8u-dr-w33"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UPH-ex-Kcj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIx-vB-9Dh">
+                                <rect key="frame" x="0.0" y="20" width="30" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="CAj-40-WXw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin" translatesAutoresizingMaskIntoConstraints="NO" id="SzK-sf-BCs">
+                                <rect key="frame" x="35" y="12.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="SQP-zl-hXL"/>
+                                    <constraint firstAttribute="width" constant="35" id="Ubc-ct-PBQ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VlU-Cz-ei5">
+                                <rect key="frame" x="75" y="9.5" width="245" height="41"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="t6x-qy-eCh">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-ev-tAn">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pd-JJm">
+                                                <rect key="frame" x="0.0" y="20.5" width="195" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-Pi-LyY">
+                                        <rect key="frame" x="203" y="0.0" width="42" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,900$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utS-TO-n9j">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0V-Ci-L8q">
+                                                <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gI6-Pi-LyY" firstAttribute="leading" secondItem="VlU-Cz-ei5" secondAttribute="leading" constant="203" id="Wmb-HS-HyG"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="x8w-mg-Lci" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="5Qr-OX-Xq8"/>
-                    <constraint firstItem="x8w-mg-Lci" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="8Uc-hV-df5"/>
-                    <constraint firstAttribute="trailing" secondItem="Ddz-1N-r8V" secondAttribute="trailing" constant="18" id="Dhh-j0-wZv"/>
-                    <constraint firstItem="yhH-IC-xRQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="JF4-yj-2ep"/>
-                    <constraint firstAttribute="bottom" secondItem="j48-US-Kce" secondAttribute="bottom" constant="14.5" id="Qxq-hm-bIF"/>
-                    <constraint firstAttribute="bottom" secondItem="yhH-IC-xRQ" secondAttribute="bottom" constant="16.5" id="RQC-1c-ylf"/>
-                    <constraint firstItem="yhH-IC-xRQ" firstAttribute="leading" secondItem="x8w-mg-Lci" secondAttribute="trailing" constant="4" id="Rgs-C5-ZaL"/>
-                    <constraint firstAttribute="bottom" secondItem="x8w-mg-Lci" secondAttribute="bottom" constant="19.5" id="Wg8-3r-64t"/>
-                    <constraint firstItem="6Lw-J1-72T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="cbb-qj-iQX"/>
-                    <constraint firstItem="Ddz-1N-r8V" firstAttribute="leading" secondItem="j48-US-Kce" secondAttribute="trailing" constant="8" id="cl8-m2-ebL"/>
-                    <constraint firstItem="Ddz-1N-r8V" firstAttribute="leading" secondItem="6Lw-J1-72T" secondAttribute="trailing" constant="8" id="igU-FH-nsL"/>
-                    <constraint firstItem="6Lw-J1-72T" firstAttribute="leading" secondItem="yhH-IC-xRQ" secondAttribute="trailing" constant="12" id="ijO-Zz-4A8"/>
-                    <constraint firstItem="j48-US-Kce" firstAttribute="leading" secondItem="yhH-IC-xRQ" secondAttribute="trailing" constant="12" id="n8E-kN-c3j"/>
-                    <constraint firstItem="Ddz-1N-r8V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="oRf-pi-LlB"/>
-                    <constraint firstItem="j48-US-Kce" firstAttribute="top" secondItem="6Lw-J1-72T" secondAttribute="bottom" constant="4" id="ooM-1K-aIl"/>
-                    <constraint firstAttribute="bottom" secondItem="Ddz-1N-r8V" secondAttribute="bottom" constant="19.5" id="sPz-Il-aH1"/>
+                    <constraint firstAttribute="bottom" secondItem="UPH-ex-Kcj" secondAttribute="bottom" id="KcY-1y-zol"/>
+                    <constraint firstItem="UPH-ex-Kcj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OGv-73-tkK"/>
+                    <constraint firstItem="UPH-ex-Kcj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aP3-Al-xPc"/>
+                    <constraint firstAttribute="trailing" secondItem="UPH-ex-Kcj" secondAttribute="trailing" id="khI-xY-w6e"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="indexLabel" destination="x8w-mg-Lci" id="d9Q-fx-lfW"/>
-                <outlet property="logoImageView" destination="yhH-IC-xRQ" id="n3S-LH-uqb"/>
-                <outlet property="priceLabel" destination="Ddz-1N-r8V" id="NJR-VO-UyI"/>
-                <outlet property="symbolLabel" destination="6Lw-J1-72T" id="Q2H-UW-WKj"/>
-                <outlet property="titleLabel" destination="j48-US-Kce" id="fp7-EY-tHV"/>
+                <outlet property="imageLogo" destination="SzK-sf-BCs" id="hPt-7V-NDT"/>
+                <outlet property="indexLabel" destination="IIx-vB-9Dh" id="45t-Lp-Qay"/>
+                <outlet property="labelName" destination="qaT-ev-tAn" id="eQT-Wo-IHg"/>
+                <outlet property="priceLabel" destination="utS-TO-n9j" id="Tky-jG-dwf"/>
+                <outlet property="symbolLabel" destination="qaT-ev-tAn" id="HHD-sr-rRN"/>
+                <outlet property="titleLabel" destination="Rnw-pd-JJm" id="dE7-1M-MQj"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bitcoin" width="16" height="16"/>
+    </resources>
 </document>
