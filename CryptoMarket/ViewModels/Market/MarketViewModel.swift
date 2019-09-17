@@ -27,24 +27,24 @@ public final class MarketViewModel: ViewModelType {
     private func fetchMarketData() -> Observable<[Market]> {
         return Network.sharedInstance.perfromGetRequest(stringUrl: ApiRoute.ROUTE_SERVER.concat(string: ApiRoute.ROUTE_MARKET)).do(onNext: { (market) in
             self.isLoading.onNext(false)
-        }, onError: nil, onCompleted: nil, onSubscribe: nil, onSubscribed: nil, onDispose: nil  )
+        }, onError: nil, onCompleted: nil, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
     }
     
     func transform(input: Input) -> Output {
         
-        let refresh = input.loaderTrigger.asObservable()
+        let refreshDataSource = input.loaderTrigger.asObservable()
         .subscribeOn(MainScheduler.asyncInstance)
         .observeOn(MainScheduler.instance)
-        .throttle(2, scheduler: MainScheduler.asyncInstance)
+        .throttle(2.5, scheduler: MainScheduler.asyncInstance)
         .flatMapLatest({ (_) -> Observable<[Market]> in
             return self.fetchMarketData()
         })
         
-        let tableViewDataSource: Observable<[Market]> = self.fetchMarketData().asObservable()
+        let tableDataSource: Observable<[Market]> = self.fetchMarketData().asObservable()
         
-        let resultTable = Observable.merge(tableViewDataSource.asObservable(), refresh)
+        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource)
 
-        return Output(tableViewDataSource: resultTable,
+        return Output(tableViewDataSource: tableViewDataSource,
                       isLoading: self.isLoading.asObservable())
     }
 }

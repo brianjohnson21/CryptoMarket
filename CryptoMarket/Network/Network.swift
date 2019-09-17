@@ -16,7 +16,7 @@ import ObjectMapper
 final class Network {
     
     public static let sharedInstance = Network()
-        
+    //MARK: todo switch to single ->
     public func perfromGetRequest(stringUrl url: String) -> Observable<[Market]> {
         
         return RxAlamofire
@@ -26,6 +26,14 @@ final class Network {
             .debug()
             .map({ json -> [Market] in
                 return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
+            })
+    }
+    
+    public func performDownloadImage(imageUrl url: String) -> Observable<UIImage?> {
+            return RxAlamofire
+            .requestData(.get, url)
+            .map({ (response,data) -> UIImage? in
+                return UIImage(data: data)
             })
     }
 }

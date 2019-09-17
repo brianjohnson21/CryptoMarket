@@ -12,5 +12,6 @@ public enum ApiRoute {
     
     public static let ROUTE_SERVER = "https://api.coincap.io/v2/"
     public static let ROUTE_MARKET = "assets"
+    public static let ROUTE_IMAGE = "https://cryptologos.cc/logos/thumbs/"
     
 }

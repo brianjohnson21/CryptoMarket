@@ -1,8 +1,8 @@
 //
-//  AddMarketViewModel.swift
+//  MarketNewsViewModel.swift
 //  CryptoMarket
 //
-//  Created by Thomas Martins on 08/09/2019.
+//  Created by Thomas on 16/09/2019.
 //  Copyright © 2019 Thomas Martins. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-public final class AddMarketViewModel: ViewModelType {
+public final class MarketNewsViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
     
@@ -21,4 +21,3 @@ public final class AddMarketViewModel: ViewModelType {
         return Output()
     }
 }
-

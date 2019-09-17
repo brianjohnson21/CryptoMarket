@@ -14,9 +14,7 @@ import RxGesture
 import Hero
 
 class MarketController: UIViewController {
-    
-    // private MARK: Members
-    
+        
     // private MARK: Members
     private let viewModel: MarketViewModel = MarketViewModel()
     private let disposeBag = DisposeBag()
@@ -40,34 +38,39 @@ class MarketController: UIViewController {
         self.tableViewMarket.dataSource = self
         
         self.spinner.center = self.view.center
-        self.view.addSubview(self.spinner)
         self.spinner.isHidden = false
+        self.view.addSubview(self.spinner)
+        self.spinner.startAnimating()
+        
         self.tableViewMarket.isHidden = true
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
-        self.spinner.startAnimating()
-        
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.displayTableViewAnimation()
         super.viewWillAppear(animated)
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tableViewMarket.hero.isEnabled = false
+    }
+    
+    private func displayTableViewAnimation() {
+        self.tableViewMarket.hero.isEnabled = true
         self.tableViewMarket.hero.modifiers = [.cascade(delta: 2.0, direction: .bottomToTop, delayMatchedViews: true)]
-        
-        var i  = 1.0
-        for cell in (self.tableViewMarket.visibleCells) {
-            
-            cell.hero.modifiers = [.duration(0.2 * i),.translate(CGPoint.init(x: 0, y: 120))]
-            i += 1
+        for (index, cell) in self.tableViewMarket.visibleCells.enumerated() {
+            cell.hero.modifiers = [.duration(0.12 * Double(index)),.translate(CGPoint.init(x: 0, y: 120))]
         }
-        
-        print("INSIDE HERE -> \(self.tableViewMarket.visibleCells.count)")
     }
     
     private func setUpViewModel() {
-        let input = MarketViewModel.Input(loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged).asObservable().map { _ in !self.refreshControl.isRefreshing }.filter{ $0 == false }.asObservable())
+        let input = MarketViewModel.Input(loaderTrigger:
+            self.refreshControl.rx.controlEvent(.valueChanged)
+            .asObservable()
+            .map { _ in !self.refreshControl.isRefreshing }
+            .filter{ $0 == false }.asObservable())
         
         let output = self.viewModel.transform(input: input)
     
@@ -86,17 +89,9 @@ class MarketController: UIViewController {
             .subscribe(onNext: { (tableViewDataSource) in
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewMarket.reloadData()
-                self.refreshControl.endRefreshing()
                 self.tableViewMarket.isHidden = false
+                self.refreshControl.endRefreshing()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
-        
-    }
-}
-
-
-extension MarketController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
     }
 }
 
@@ -116,10 +111,15 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.symbol = tableViewDataSource[indexPath.row].symbol
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
-            
+            cell.testLoadingImage(name: tableViewDataSource[indexPath.row].id ?? "")
             return cell
         }
         return UITableViewCell()
     }
-    
+}
+
+extension MarketController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
 }

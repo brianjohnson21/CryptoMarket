@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MarketTableViewCell: UITableViewCell {
 
+    // MARK: Outlets
     @IBOutlet private weak var symbolLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var indexLabel: UILabel!
     @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var priceLabel: UILabel!
     
+    //MARK: Private Members
+    private let viewModel: MarketCellViewModel = MarketCellViewModel()
+    private let disposeBag = DisposeBag()
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -63,6 +70,24 @@ class MarketTableViewCell: UITableViewCell {
         get {
             return self.priceLabel.text
         }
+    }
+    
+    public func testLoadingImage(name: String) {
+        
+        let imageUrl = ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")
+        print("*** Download image here -> \(imageUrl) ***")
+        let input = MarketCellViewModel.Input(imageName: Driver.just(imageUrl))
+                
+        let output = self.viewModel.transform(input: input)
+        
+        output.imageDownloaded.asObservable()
+        .subscribeOn(MainScheduler.asyncInstance)
+        .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (image) in
+                guard let image = image else  { return }
+                self.logoImage = image
+            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

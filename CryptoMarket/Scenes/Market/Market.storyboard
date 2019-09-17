@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Markets-->
+        <scene sceneID="ciQ-fH-VBi">
+            <objects>
+                <viewController storyboardIdentifier="MarketStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I0d-iY-wbj" customClass="MarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wAl-HG-24H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search over 8,000 coins" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8b-bb-7nr">
+                                <rect key="frame" x="5" y="44" width="404" height="56"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-fz-Wvt">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Cascade"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="trailing" secondItem="vl0-6p-Y5a" secondAttribute="trailing" id="59j-t9-ZTa"/>
+                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" id="FbJ-oG-Nun"/>
+                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="e8b-bb-7nr" secondAttribute="trailing" constant="5" id="Hcg-V7-Awh"/>
+                            <constraint firstItem="e8b-bb-7nr" firstAttribute="top" secondItem="vl0-6p-Y5a" secondAttribute="top" id="T5N-xc-Jln"/>
+                            <constraint firstItem="e8b-bb-7nr" firstAttribute="centerX" secondItem="wAl-HG-24H" secondAttribute="centerX" id="ZEg-4n-Edu"/>
+                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="bottom" secondItem="vl0-6p-Y5a" secondAttribute="bottom" id="bU9-RN-4Nj"/>
+                            <constraint firstItem="e8b-bb-7nr" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" constant="5" id="cMv-jg-wbt"/>
+                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="firstBaseline" secondItem="e8b-bb-7nr" secondAttribute="baseline" symbolType="layoutAnchor" id="hsl-uk-eG6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vl0-6p-Y5a"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Markets" id="iD0-KJ-trz" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-line"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="tableViewMarket" destination="5m8-fz-Wvt" id="xSF-6B-qCA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cv-Ht-FkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1372" y="-25.123152709359609"/>
+        </scene>
+    </scenes>
+</document>

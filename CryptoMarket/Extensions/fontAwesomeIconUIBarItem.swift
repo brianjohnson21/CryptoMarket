@@ -14,7 +14,6 @@ import FontAwesome_swift
     @IBInspectable public var fontAwesomeItem: String?
     
     override func awakeFromNib() {
-
         self.image = UIImage.fontAwesomeIcon(name: FontAwesome(rawValue: "\(fontAwesomeItem ?? "")") ?? .random, style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
         self.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Font Awesome 5 Pro", size: 12)!], for: .normal)
     }
