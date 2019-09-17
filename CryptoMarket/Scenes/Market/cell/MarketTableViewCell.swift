@@ -13,11 +13,9 @@ import RxSwift
 class MarketTableViewCell: UITableViewCell {
 
     // MARK: Outlets
-
     @IBOutlet private weak var indexLabel: UILabel!
-    @IBOutlet weak var imageLogo: UIImageView!
-    
-    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet private weak var imageLogo: UIImageView!
+    @IBOutlet private weak var symbolLabel: UILabel!
     @IBOutlet private weak var labelName: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
@@ -50,19 +48,19 @@ class MarketTableViewCell: UITableViewCell {
     
     public var index: String? {
         set {
-            self.IdLabel.text = newValue
+            self.indexLabel.text = newValue
         }
         get {
-            return self.IdLabel.text
+            return self.indexLabel.text
         }
     }
     
     public var logoImage: UIImage? {
         set {
-            self.imageLogoView?.image = newValue
+            self.imageLogo?.image = newValue
         }
         get {
-            return self.imageLogoView?.image
+            return self.imageLogo?.image
         }
     }
     
@@ -75,7 +73,6 @@ class MarketTableViewCell: UITableViewCell {
         }
     }
 
-    
     public func testLoadingImage(name: String) {
         
         let imageUrl = ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")
@@ -90,7 +87,7 @@ class MarketTableViewCell: UITableViewCell {
             .subscribe(onNext: { (image) in
                 guard let image = image else  { return }
                 self.logoImage = image
-                self.imageLogoView.setRounded()
+                self.imageLogo.setRounded()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
     }
@@ -106,5 +103,4 @@ class MarketTableViewCell: UITableViewCell {
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
-    
 }
