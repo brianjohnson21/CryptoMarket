@@ -32,8 +32,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhH-IC-xRQ">
                         <rect key="frame" x="47" y="15" width="30" height="28.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="g9g-4w-A7Y"/>
+                            <constraint firstAttribute="width" constant="30" id="H6t-4G-ZGR"/>
                         </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8w-mg-Lci">
                         <rect key="frame" x="18" y="19" width="25" height="21.5"/>

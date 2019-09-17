@@ -111,7 +111,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.symbol = tableViewDataSource[indexPath.row].symbol
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
-            cell.testLoadingImage(name: tableViewDataSource[indexPath.row].id ?? "")
+            cell.testLoadingImage(name: tableViewDataSource[indexPath.row].id ?? "", index: indexPath.row)
             return cell
         }
         return UITableViewCell()
