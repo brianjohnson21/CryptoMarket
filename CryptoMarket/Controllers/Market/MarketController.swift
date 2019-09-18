@@ -24,6 +24,8 @@ class MarketController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
+    @IBOutlet private weak var quickSearchBar: UISearchBar!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +94,11 @@ class MarketController: UIViewController {
                 self.tableViewMarket.isHidden = false
                 self.refreshControl.endRefreshing()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+        
+        self.view.rx.tapGesture().asObservable().subscribe(onNext: { (_) in
+            self.view.endEditing(true)
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+        
     }
 }
 
@@ -111,7 +118,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.symbol = tableViewDataSource[indexPath.row].symbol
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
-            cell.testLoadingImage(name: tableViewDataSource[indexPath.row].id ?? "")
+            cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
             return cell
         }
         return UITableViewCell()

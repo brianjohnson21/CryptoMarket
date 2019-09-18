@@ -23,6 +23,7 @@ class MarketTableViewCell: UITableViewCell {
     //MARK: Private Members
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
     private let disposeBag = DisposeBag()
+    private let spinner = UIActivityIndicatorView(style: .white)
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -73,11 +74,10 @@ class MarketTableViewCell: UITableViewCell {
         }
     }
 
-    public func testLoadingImage(name: String) {
-        
-        let imageUrl = ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")
-        
-        let input = MarketCellViewModel.Input(imageName: Driver.just(imageUrl))
+    public func loadImageOnCell(name: String) {
+                
+        let input = MarketCellViewModel.Input(imageName:
+            Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")))
         
         let output = self.viewModel.transform(input: input)
         

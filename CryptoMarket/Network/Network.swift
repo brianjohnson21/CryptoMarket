@@ -29,7 +29,7 @@ final class Network {
             })
     }
     
-    public func performDownloadImage(imageUrl url: String) -> Observable<UIImage?> {
+    public func performGetRequestImage(imageUrl url: String) -> Observable<UIImage?> {
             return RxAlamofire
             .requestData(.get, url)
             .map({ (response,data) -> UIImage? in

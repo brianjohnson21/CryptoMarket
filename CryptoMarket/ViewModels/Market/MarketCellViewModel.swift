@@ -22,7 +22,7 @@ public final class MarketCellViewModel: ViewModelType {
     }
     
     private func fetchImageFromString(pathImage name: String) -> Observable<UIImage?> {
-        return Network.sharedInstance.performDownloadImage(imageUrl: name)
+        return Network.sharedInstance.performGetRequestImage(imageUrl: name)
     }
     
     func transform(input: Input) -> Output {
