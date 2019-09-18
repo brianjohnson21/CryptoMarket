@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,10 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search over 8,000 coins" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8b-bb-7nr">
-                                <rect key="frame" x="5" y="44" width="404" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="Search over 8,000 coins" translatesAutoresizingMaskIntoConstraints="NO" id="e8b-bb-7nr">
+                                <rect key="frame" x="25" y="44" width="364" height="56"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-fz-Wvt">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
@@ -36,11 +42,11 @@
                         <constraints>
                             <constraint firstItem="5m8-fz-Wvt" firstAttribute="trailing" secondItem="vl0-6p-Y5a" secondAttribute="trailing" id="59j-t9-ZTa"/>
                             <constraint firstItem="5m8-fz-Wvt" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" id="FbJ-oG-Nun"/>
-                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="e8b-bb-7nr" secondAttribute="trailing" constant="5" id="Hcg-V7-Awh"/>
+                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="e8b-bb-7nr" secondAttribute="trailing" constant="25" id="Hcg-V7-Awh"/>
                             <constraint firstItem="e8b-bb-7nr" firstAttribute="top" secondItem="vl0-6p-Y5a" secondAttribute="top" id="T5N-xc-Jln"/>
                             <constraint firstItem="e8b-bb-7nr" firstAttribute="centerX" secondItem="wAl-HG-24H" secondAttribute="centerX" id="ZEg-4n-Edu"/>
                             <constraint firstItem="5m8-fz-Wvt" firstAttribute="bottom" secondItem="vl0-6p-Y5a" secondAttribute="bottom" id="bU9-RN-4Nj"/>
-                            <constraint firstItem="e8b-bb-7nr" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" constant="5" id="cMv-jg-wbt"/>
+                            <constraint firstItem="e8b-bb-7nr" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" constant="25" id="cMv-jg-wbt"/>
                             <constraint firstItem="5m8-fz-Wvt" firstAttribute="firstBaseline" secondItem="e8b-bb-7nr" secondAttribute="baseline" symbolType="layoutAnchor" id="hsl-uk-eG6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vl0-6p-Y5a"/>
