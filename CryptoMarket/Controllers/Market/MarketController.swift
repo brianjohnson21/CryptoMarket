@@ -21,6 +21,7 @@ class MarketController: UIViewController {
     private var tableViewDataSource: [Market] = []
     private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     private let refreshControl = UIRefreshControl()
+    private let quickSearchTextChanged: PublishSubject<String> = PublishSubject<String>()
     
     // MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
@@ -72,7 +73,8 @@ class MarketController: UIViewController {
             self.refreshControl.rx.controlEvent(.valueChanged)
             .asObservable()
             .map { _ in !self.refreshControl.isRefreshing }
-            .filter{ $0 == false }.asObservable())
+            .filter{ $0 == false }.asObservable(),
+            quickSearchText: self.quickSearchBar.rx.text.asDriver())
         
         let output = self.viewModel.transform(input: input)
     
@@ -99,6 +101,13 @@ class MarketController: UIViewController {
             self.view.endEditing(true)
         }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
+        output.quickSearchFound.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (searchFound) in
+                self.tableViewDataSource = searchFound
+                self.tableViewMarket.reloadData()
+            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
     }
 }
 
