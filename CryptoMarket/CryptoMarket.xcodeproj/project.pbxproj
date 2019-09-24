@@ -28,6 +28,8 @@
 		E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9154B942327C8D900A3170E /* MarketTableViewCell.xib */; };
 		E925B062232FA34900AD8D10 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E925B061232FA34900AD8D10 /* Market.storyboard */; };
 		E92CCD6C232FA2B200EE8B49 /* NewsMarket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92CCD6B232FA2B200EE8B49 /* NewsMarket.storyboard */; };
+		E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939CF5D233A2E0400A9C7B3 /* MarketNewCell.swift */; };
+		E939CF60233A2E0400A9C7B3 /* MarketNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E939CF5E233A2E0400A9C7B3 /* MarketNewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
 		E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
@@ -87,6 +89,8 @@
 		E9154B942327C8D900A3170E /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
 		E925B061232FA34900AD8D10 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		E92CCD6B232FA2B200EE8B49 /* NewsMarket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsMarket.storyboard; sourceTree = "<group>"; };
+		E939CF5D233A2E0400A9C7B3 /* MarketNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewCell.swift; sourceTree = "<group>"; };
+		E939CF5E233A2E0400A9C7B3 /* MarketNewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketNewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
 		E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewModel.swift; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
@@ -280,13 +284,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E9154B922327C8B100A3170E /* cell */ = {
+		E9154B922327C8B100A3170E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				E9154B932327C8D900A3170E /* MarketTableViewCell.swift */,
 				E9154B942327C8D900A3170E /* MarketTableViewCell.xib */,
 			);
-			path = cell;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E939CF5C233A2DD700A9C7B3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E939CF5D233A2E0400A9C7B3 /* MarketNewCell.swift */,
+				E939CF5E233A2E0400A9C7B3 /* MarketNewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E95FACEC232F6464004FD442 /* Market */ = {
@@ -309,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				E925B061232FA34900AD8D10 /* Market.storyboard */,
-				E9154B922327C8B100A3170E /* cell */,
+				E9154B922327C8B100A3170E /* Cell */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -317,6 +330,7 @@
 		E95FACF3232F6832004FD442 /* MarketNews */ = {
 			isa = PBXGroup;
 			children = (
+				E939CF5C233A2DD700A9C7B3 /* Cell */,
 				E92CCD6B232FA2B200EE8B49 /* NewsMarket.storyboard */,
 			);
 			path = MarketNews;
@@ -464,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */,
+				E939CF60233A2E0400A9C7B3 /* MarketNewCell.xib in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
 				1E940337232D3C3C004680D2 /* fa-regular-400.ttf in Resources */,
@@ -581,6 +596,7 @@
 				E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,
+				E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */,
 				1E940331232D3217004680D2 /* fontAwesomeIconUIBarItem.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,

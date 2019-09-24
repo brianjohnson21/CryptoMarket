@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +16,35 @@
                     <view key="view" contentMode="scaleToFill" id="FNm-Od-NSH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HwQ-v4-5GO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mly-rX-0cg">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UiR-5q-dDu">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6RD-pM-lmW">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HwQ-v4-5GO" firstAttribute="leading" secondItem="BIQ-3c-NW5" secondAttribute="leading" id="1tj-VH-8eb"/>
+                            <constraint firstItem="HwQ-v4-5GO" firstAttribute="trailing" secondItem="BIQ-3c-NW5" secondAttribute="trailing" id="9af-XA-VU2"/>
+                            <constraint firstItem="HwQ-v4-5GO" firstAttribute="top" secondItem="BIQ-3c-NW5" secondAttribute="top" id="VJy-UT-x4S"/>
+                            <constraint firstItem="HwQ-v4-5GO" firstAttribute="bottom" secondItem="BIQ-3c-NW5" secondAttribute="bottom" id="la6-jO-lzs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BIQ-3c-NW5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="6pw-Ob-bLz" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
@@ -24,10 +53,13 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionViewNews" destination="HwQ-v4-5GO" id="NMl-tK-hr4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncF-6j-nOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="-39"/>
+            <point key="canvasLocation" x="-63.768115942028992" y="-39.508928571428569"/>
         </scene>
     </scenes>
 </document>

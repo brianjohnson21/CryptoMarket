@@ -79,8 +79,8 @@ class MarketController: UIViewController {
         let output = self.viewModel.transform(input: input)
     
         output.isLoading.asObservable()
-            .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (isLoading) in
                 self.spinner.isHidden = !isLoading
                 self.spinner.stopAnimating()
@@ -88,8 +88,8 @@ class MarketController: UIViewController {
       
         
         output.tableViewDataSource.asObservable()
-            .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (tableViewDataSource) in
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewMarket.reloadData()
@@ -102,8 +102,8 @@ class MarketController: UIViewController {
         }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
         output.quickSearchFound.asObservable()
-            .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (searchFound) in
                 self.tableViewDataSource = searchFound
                 self.tableViewMarket.reloadData()
