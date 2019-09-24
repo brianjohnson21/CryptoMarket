@@ -30,9 +30,24 @@ class MarketController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.black
         self.setupView()
         self.setUpViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
+        self.displayTableViewAnimation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tableViewMarket.hero.isEnabled = false
+        self.view.endEditing(true)
     }
     
     private func setupView() {
@@ -48,16 +63,7 @@ class MarketController: UIViewController {
         self.tableViewMarket.isHidden = true
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.displayTableViewAnimation()
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tableViewMarket.hero.isEnabled = false
+        self.tableViewMarket.keyboardDismissMode = .onDrag
     }
     
     private func displayTableViewAnimation() {
@@ -97,10 +103,6 @@ class MarketController: UIViewController {
                 self.refreshControl.endRefreshing()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
-        self.view.rx.tapGesture().asObservable().subscribe(onNext: { (_) in
-            self.view.endEditing(true)
-        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
-        
         output.quickSearchFound.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
@@ -131,6 +133,12 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Item selected -> \(tableViewDataSource[indexPath.row])")
+        let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

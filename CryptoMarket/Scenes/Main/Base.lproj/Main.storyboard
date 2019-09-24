@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +13,11 @@
         <scene sceneID="wWT-vP-9Uw">
             <objects>
                 <viewControllerPlaceholder storyboardName="Market" referencedIdentifier="MarketStoryboard" id="i2q-qx-Zv8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="dpy-Ya-Hbx" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-home"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="zyr-yI-LZa"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVv-gf-7O5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="110"/>
+            <point key="canvasLocation" x="1199" y="-56"/>
         </scene>
         <!--NewsMarketStoryboard-->
         <scene sceneID="ACy-p2-W5q">
@@ -29,7 +27,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-fj-oKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="185" y="359"/>
+            <point key="canvasLocation" x="344" y="364"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fy4-GC-Ryi">
@@ -49,12 +47,46 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="txt-Cv-62Y" kind="relationship" relationship="viewControllers" id="6hC-og-wKa"/>
-                        <segue destination="i2q-qx-Zv8" kind="relationship" relationship="viewControllers" id="fPr-1M-Pmx"/>
+                        <segue destination="dfd-wz-cgD" kind="relationship" relationship="viewControllers" id="fPr-1M-Pmx"/>
+                        <segue destination="LYB-Hi-9x8" kind="relationship" relationship="viewControllers" id="NWO-so-yHN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68c-qi-UkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-566" y="275"/>
+        </scene>
+        <!--Market-->
+        <scene sceneID="vMS-SH-4oQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dfd-wz-cgD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Market" id="dpy-Ya-Hbx" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-bar"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aih-zf-8Xr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i2q-qx-Zv8" kind="relationship" relationship="rootViewController" id="NqR-3A-JW9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m0G-aJ-ajR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="345" y="-56"/>
+        </scene>
+        <!--MarketFavoritesStoryboard-->
+        <scene sceneID="TWi-Sc-8iG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MarketFavorites" referencedIdentifier="MarketFavoritesStoryboard" id="LYB-Hi-9x8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="ArC-WB-PCF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4B-g4-JB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="522"/>
         </scene>
     </scenes>
 </document>

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Markets-->
+        <!--Market Controller-->
         <scene sceneID="ciQ-fH-VBi">
             <objects>
                 <viewController storyboardIdentifier="MarketStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I0d-iY-wbj" customClass="MarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,11 +60,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vl0-6p-Y5a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Markets" id="iD0-KJ-trz" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-line"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="uN8-3o-6yR"/>
                     <connections>
                         <outlet property="quickSearchBar" destination="e8b-bb-7nr" id="UWe-8E-xGf"/>
                         <outlet property="tableViewMarket" destination="5m8-fz-Wvt" id="xSF-6B-qCA"/>
@@ -70,7 +68,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cv-Ht-FkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1372" y="-25.123152709359609"/>
+            <point key="canvasLocation" x="3191.304347826087" y="-25.446428571428569"/>
+        </scene>
+        <!--Market Information View Controller-->
+        <scene sceneID="ZdB-Fa-fQz">
+            <objects>
+                <viewController storyboardIdentifier="MarketInformationStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O7o-ho-KUv" customClass="MarketInformationViewController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4nB-Vn-Opf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wa4-nv-nRn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsS-bD-TdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4248" y="-25"/>
         </scene>
     </scenes>
 </document>
