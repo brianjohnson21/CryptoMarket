@@ -17,17 +17,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVv-gf-7O5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1199" y="-56"/>
+            <point key="canvasLocation" x="1942" y="-78"/>
         </scene>
-        <!--NewsMarketStoryboard-->
+        <!--MarketNews-->
         <scene sceneID="ACy-p2-W5q">
             <objects>
-                <viewControllerPlaceholder storyboardName="NewsMarket" referencedIdentifier="NewsMarketStoryboard" id="txt-Cv-62Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tbQ-3W-qyK"/>
+                <viewControllerPlaceholder storyboardName="MarketNews" referencedIdentifier="MarketNews" id="txt-Cv-62Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="tbQ-3W-qyK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-fj-oKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344" y="364"/>
+            <point key="canvasLocation" x="1200" y="275"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fy4-GC-Ryi">
@@ -65,9 +65,13 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aih-zf-8Xr">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aih-zf-8Xr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -76,7 +80,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0G-aJ-ajR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="-56"/>
+            <point key="canvasLocation" x="1202" y="-78"/>
         </scene>
         <!--MarketFavoritesStoryboard-->
         <scene sceneID="TWi-Sc-8iG">
@@ -86,7 +90,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4B-g4-JB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="522"/>
+            <point key="canvasLocation" x="1200" y="565"/>
         </scene>
     </scenes>
 </document>

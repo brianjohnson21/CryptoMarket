@@ -13,6 +13,10 @@ class MarketFavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
 
-
+extension MarketFavoritesViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
