@@ -30,6 +30,8 @@ class MarketNewsViewController: UIViewController {
         self.collectionViewNews.register(MarketNewCell.nib, forCellWithReuseIdentifier: MarketNewCell.identifier)
         self.collectionViewNews.delegate = self
         self.collectionViewNews.dataSource = self
+        
+        self.title = "Market news"
     }
     
     private func setupViewModel() {

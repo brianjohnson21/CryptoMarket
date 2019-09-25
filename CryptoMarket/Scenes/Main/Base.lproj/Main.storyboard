@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,11 +21,11 @@
         <scene sceneID="ACy-p2-W5q">
             <objects>
                 <viewControllerPlaceholder storyboardName="MarketNews" referencedIdentifier="MarketNews" id="txt-Cv-62Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="tbQ-3W-qyK"/>
+                    <navigationItem key="navigationItem" id="8iE-zu-DFX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-fj-oKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="275"/>
+            <point key="canvasLocation" x="2142.4000000000001" y="274.8768472906404"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fy4-GC-Ryi">
@@ -46,7 +44,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="heroModalAnimationTypeString" value="Cascade"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="txt-Cv-62Y" kind="relationship" relationship="viewControllers" id="6hC-og-wKa"/>
+                        <segue destination="A7h-Ya-Mhg" kind="relationship" relationship="viewControllers" id="6hC-og-wKa"/>
                         <segue destination="dfd-wz-cgD" kind="relationship" relationship="viewControllers" id="fPr-1M-Pmx"/>
                         <segue destination="LYB-Hi-9x8" kind="relationship" relationship="viewControllers" id="NWO-so-yHN"/>
                     </connections>
@@ -58,17 +56,16 @@
         <!--Market-->
         <scene sceneID="vMS-SH-4oQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dfd-wz-cgD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dfd-wz-cgD" customClass="MarketNavigationController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Market" id="dpy-Ya-Hbx" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-bar"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aih-zf-8Xr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="aih-zf-8Xr">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -79,6 +76,25 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0G-aJ-ajR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jdw-Yh-spZ">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="REk-k0-qFn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <textAttributes key="largeTitleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                </navigationBar>
             </objects>
             <point key="canvasLocation" x="1202" y="-78"/>
         </scene>
@@ -91,6 +107,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4B-g4-JB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1200" y="565"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="siQ-4r-aV7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7h-Ya-Mhg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="tbQ-3W-qyK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Av-OR-wuO">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="txt-Cv-62Y" kind="relationship" relationship="rootViewController" id="VdA-vn-Zi5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MBS-h9-uK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199.2" y="274.8768472906404"/>
         </scene>
     </scenes>
 </document>

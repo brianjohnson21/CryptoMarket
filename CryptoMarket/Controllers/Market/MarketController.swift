@@ -31,7 +31,6 @@ class MarketController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black
         self.setupView()
         self.setUpViewModel()
     }
@@ -39,7 +38,7 @@ class MarketController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         self.displayTableViewAnimation()
     }
     
@@ -64,7 +63,7 @@ class MarketController: UIViewController {
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
         self.tableViewMarket.keyboardDismissMode = .onDrag
-        
+        self.title = "Market view"
     }
     
     private func displayTableViewAnimation() {
