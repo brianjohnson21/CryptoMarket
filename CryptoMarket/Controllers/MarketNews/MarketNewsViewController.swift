@@ -15,6 +15,8 @@ class MarketNewsViewController: UIViewController {
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
     private let disposeBag = DisposeBag()
     private var collectionViewDataSource: [MarketNews] = []
+    private let estimateWidth = 130.0
+    private let cellMarginSize = 3.0
     
     // MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -51,7 +53,21 @@ class MarketNewsViewController: UIViewController {
 
 }
 
-extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (self.view.frame.width - 3) / 1
+        
+        return CGSize(width: width, height: width)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.collectionViewDataSource.count
@@ -60,6 +76,8 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarketNewCell.identifier, for: indexPath) as? MarketNewCell {
             cell.title = self.collectionViewDataSource[indexPath.row].title
+            cell.content = self.collectionViewDataSource[indexPath.row].content
+            cell.loadImageOnCell(urlImage: self.collectionViewDataSource[indexPath.row].urlToImage ?? "")
             return cell
         }
         return UICollectionViewCell()
