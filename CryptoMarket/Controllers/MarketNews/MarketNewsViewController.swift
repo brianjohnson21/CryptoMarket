@@ -14,7 +14,7 @@ class MarketNewsViewController: UIViewController {
     // private MARK: Members
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
     private let disposeBag = DisposeBag()
-    private var collectionViewDataSource: [String] = []
+    private var collectionViewDataSource: [MarketNews] = []
     
     // MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -59,7 +59,7 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarketNewCell.identifier, for: indexPath) as? MarketNewCell {
-            cell.title = self.collectionViewDataSource[indexPath.row]
+            cell.title = self.collectionViewDataSource[indexPath.row].title
             return cell
         }
         return UICollectionViewCell()

@@ -15,6 +15,14 @@ target 'CryptoMarket' do
    pod 'FontAwesome.swift'
    pod 'Hero'
 
+   plugin 'cocoapods-keys', {
+   	  :project => "CryptoMarket",
+  	  :target => "CryptoMarket",
+  	  :keys => [
+		    "MarketNewsAPIClient"    		    
+  		    ]
+		 }
+
 
 
   target 'CryptoMarketTests' do

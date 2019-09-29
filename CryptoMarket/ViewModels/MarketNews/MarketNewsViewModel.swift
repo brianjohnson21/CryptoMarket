@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Keys
 
 public final class MarketNewsViewModel: ViewModelType {
     
@@ -16,23 +17,16 @@ public final class MarketNewsViewModel: ViewModelType {
     
     struct Input {}
     struct Output {
-        let collectionViewDataSource: Observable<[String]>
+        let collectionViewDataSource: Observable<[MarketNews]>
     }
     
-    private func fetchNewsData() -> Observable<[String]> {
-        return Observable.create { (observer) -> Disposable in
-            var tableFakeData: [String] = []
-            for index in 1...20 {
-                tableFakeData.append("fake collection view \(index)")
-            }
-            observer.onNext(tableFakeData)
-            return Disposables.create()
-        }
+    private func fetchMarketNewsData() -> Observable<[MarketNews]> {
+        return Network.sharedInstance.performGetOnNews(stringUrl: ApiRoute.ROUTE_SERVER_NEWS.concat(string: ApiRoute.ROUTE_NEWS_CRYPTOCURRENCY))
     }
     
     func transform(input: Input) -> Output {
         
-        let collectionViewDataSource = self.fetchNewsData()
+        let collectionViewDataSource = self.fetchMarketNewsData()
         
         return Output(collectionViewDataSource: collectionViewDataSource)
     }
