@@ -63,7 +63,7 @@ class MarketController: UIViewController {
         self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
         self.tableViewMarket.keyboardDismissMode = .onDrag
-        self.title = "Market view"
+        self.navigationItem.title = "Market view"
     }
     
     private func displayTableViewAnimation() {

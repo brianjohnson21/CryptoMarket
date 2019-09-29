@@ -12,6 +12,7 @@ class MarketFavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Market Favorites"
     }
 }
 

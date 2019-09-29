@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Market-->
+        <!--Market Favorites View Controller-->
         <scene sceneID="8Q2-0G-sv6">
             <objects>
                 <viewController storyboardIdentifier="MarketFavoritesStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K42-UC-6q1" customClass="MarketFavoritesViewController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,11 +29,6 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Oh0-5b-mNV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Market" id="XFW-P9-DCP" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-star"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXv-Fm-ZAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
