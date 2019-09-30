@@ -20,6 +20,7 @@ class MarketNewCell: UICollectionViewCell {
     //MARK: Members
     private let viewModel: MarketNewsCellViewModel = MarketNewsCellViewModel()
     private let disposeBag = DisposeBag()
+    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     public var title: String? {
         set {
@@ -52,20 +53,17 @@ class MarketNewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.titleLabel.numberOfLines = 2
+        self.newImage.addSubview(spinner)
+        self.addSubview(spinner)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        if self.newImage != nil && self.newImage.image != nil {
-            self.newImage.image = nil
-            
-        }
-        
+        self.newImage.isHidden = true
     }
     
     public func loadImageOnCell(urlImage name: String) {
-        self.image = nil
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(name))
         
         let output = self.viewModel.transform(input: input)
@@ -76,6 +74,7 @@ class MarketNewCell: UICollectionViewCell {
             .subscribe(onNext: { (image) in
                 guard let image = image else { return }
                 self.image = image
+                self.newImage.isHidden = true
             }).disposed(by: self.disposeBag)
     }
     

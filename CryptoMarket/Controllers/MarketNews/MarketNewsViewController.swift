@@ -15,8 +15,6 @@ class MarketNewsViewController: UIViewController {
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
     private let disposeBag = DisposeBag()
     private var collectionViewDataSource: [MarketNews] = []
-    private let estimateWidth = 130.0
-    private let cellMarginSize = 3.0
     
     // MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -78,7 +76,6 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarketNewCell.identifier, for: indexPath) as? MarketNewCell {
-            cell.image = nil
             cell.title = self.collectionViewDataSource[indexPath.row].title
             cell.content = self.collectionViewDataSource[indexPath.row].content
             cell.loadImageOnCell(urlImage: self.collectionViewDataSource[indexPath.row].urlToImage ?? "")
