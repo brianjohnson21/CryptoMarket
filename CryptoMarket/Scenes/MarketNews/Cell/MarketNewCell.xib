@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,33 +23,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="325" height="395"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ruV-zc-Nke">
-                                <rect key="frame" x="0.0" y="0.0" width="325" height="395"/>
+                                <rect key="frame" x="10" y="10" width="305" height="385"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="title" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXH-UD-s9X">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="70"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UK Police auction talk talk hacker’s cryptocurrency" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHQ-jl-Aog">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="pQU-RM-AZw"/>
+                                            <constraint firstAttribute="height" constant="60" id="ese-QA-kTa"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dpa-4I-MPA">
-                                        <rect key="frame" x="0.0" y="80" width="325" height="190"/>
+                                        <rect key="frame" x="0.0" y="70" width="305" height="190"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="190" id="QH5-7W-Rzo"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-wN-SaX">
-                                        <rect key="frame" x="0.0" y="280" width="325" height="115"/>
+                                        <rect key="frame" x="0.0" y="270" width="305" height="115"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmj-2j-uEs">
-                                                <rect key="frame" x="0.0" y="0.0" width="325" height="115"/>
-                                                <string key="text">zeiaiezaizepoaipoeiapoeipoaiepiazpeiapeipaizeoiapeipaizpeiapieazipeipaziepiapzeiazeiaiezaizepoaipoeiapoeipoaiepiazpeiapeipaizeoiapeipaizpeiapieazipeipaziepiapzeiazeiaiezaizepoaipoeiapoeipoaiepiazpeiapeipaizeoiapeipaizpeiapieazipeipaziepiapzeia</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egb-Xz-Syh">
+                                                <rect key="frame" x="0.0" y="0.0" width="305" height="115"/>
+                                                <string key="text">UK Police auction talk talk hacker’s cryptocurrency UK Police auction talk talk hacker’s cryptocurrency UK Police auction talk talk hacker’s cryptocurrency</string>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -55,10 +57,10 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="ruV-zc-Nke" firstAttribute="leading" secondItem="nmO-L7-m7E" secondAttribute="leading" id="HOm-av-6Zg"/>
+                            <constraint firstItem="ruV-zc-Nke" firstAttribute="leading" secondItem="nmO-L7-m7E" secondAttribute="leading" constant="10" id="HOm-av-6Zg"/>
                             <constraint firstAttribute="bottom" secondItem="ruV-zc-Nke" secondAttribute="bottom" id="Hk8-HJ-Eqw"/>
-                            <constraint firstItem="ruV-zc-Nke" firstAttribute="top" secondItem="nmO-L7-m7E" secondAttribute="top" id="jYU-fO-ZU5"/>
-                            <constraint firstAttribute="trailing" secondItem="ruV-zc-Nke" secondAttribute="trailing" id="qy3-aY-9oW"/>
+                            <constraint firstItem="ruV-zc-Nke" firstAttribute="top" secondItem="nmO-L7-m7E" secondAttribute="top" constant="10" id="jYU-fO-ZU5"/>
+                            <constraint firstAttribute="trailing" secondItem="ruV-zc-Nke" secondAttribute="trailing" constant="10" id="qy3-aY-9oW"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,11 +74,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="325" height="395"/>
             <connections>
-                <outlet property="contentLabel" destination="Wmj-2j-uEs" id="Jcp-4v-rPU"/>
+                <outlet property="contentLabel" destination="egb-Xz-Syh" id="90O-Wx-A7Q"/>
                 <outlet property="newImage" destination="Dpa-4I-MPA" id="Ys1-cr-jXe"/>
-                <outlet property="titleLabel" destination="UXH-UD-s9X" id="FHS-AY-LeC"/>
+                <outlet property="titleLabel" destination="SHQ-jl-Aog" id="JE7-yo-Itb"/>
             </connections>
-            <point key="canvasLocation" x="251.44927536231887" y="116.18303571428571"/>
+            <point key="canvasLocation" x="331" y="68"/>
         </collectionViewCell>
     </objects>
 </document>

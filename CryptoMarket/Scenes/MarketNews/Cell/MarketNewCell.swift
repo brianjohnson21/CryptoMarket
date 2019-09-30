@@ -14,8 +14,8 @@ class MarketNewCell: UICollectionViewCell {
     
     // MARK: Outlets
     @IBOutlet private weak var newImage: UIImageView!
-    @IBOutlet private weak var contentLabel: UITextView!
-    @IBOutlet private weak var titleLabel: UITextView!
+    @IBOutlet private weak var contentLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     //MARK: Members
     private let viewModel: MarketNewsCellViewModel = MarketNewsCellViewModel()
@@ -50,6 +50,8 @@ class MarketNewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.titleLabel.numberOfLines = 2
     }
     
     public func loadImageOnCell(urlImage name: String) {
