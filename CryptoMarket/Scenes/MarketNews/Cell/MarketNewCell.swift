@@ -54,7 +54,18 @@ class MarketNewCell: UICollectionViewCell {
         self.titleLabel.numberOfLines = 2
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        if self.newImage != nil && self.newImage.image != nil {
+            self.newImage.image = nil
+            
+        }
+        
+    }
+    
     public func loadImageOnCell(urlImage name: String) {
+        self.image = nil
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(name))
         
         let output = self.viewModel.transform(input: input)
@@ -67,6 +78,7 @@ class MarketNewCell: UICollectionViewCell {
                 self.image = image
             }).disposed(by: self.disposeBag)
     }
+    
 
     static var identifier: String {
         return String(describing: self)

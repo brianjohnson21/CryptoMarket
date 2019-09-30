@@ -51,6 +51,7 @@ class MarketNewsViewController: UIViewController {
         
     }
 
+
 }
 
 extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -72,8 +73,12 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
         return self.collectionViewDataSource.count
     }
     
+
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarketNewCell.identifier, for: indexPath) as? MarketNewCell {
+            cell.image = nil
             cell.title = self.collectionViewDataSource[indexPath.row].title
             cell.content = self.collectionViewDataSource[indexPath.row].content
             cell.loadImageOnCell(urlImage: self.collectionViewDataSource[indexPath.row].urlToImage ?? "")
