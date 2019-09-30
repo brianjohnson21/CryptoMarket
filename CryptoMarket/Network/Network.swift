@@ -23,6 +23,7 @@ final class Network {
     }
     
     public static let sharedInstance = Network()
+    
     //MARK: todo switch to single ->
     public func performGetOnMarket(stringUrl url: String) -> Observable<[Market]> {
         
