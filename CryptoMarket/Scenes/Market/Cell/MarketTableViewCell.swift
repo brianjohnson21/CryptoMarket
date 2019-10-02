@@ -19,6 +19,7 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet private weak var labelName: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var logoLoader: UIActivityIndicatorView!
     
     //MARK: Private Members
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
@@ -74,6 +75,12 @@ class MarketTableViewCell: UITableViewCell {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.imageLogo.image = nil
+    }
+    
     public func loadImageOnCell(name: String) {
                 
         let input = MarketCellViewModel.Input(imageName:
@@ -89,6 +96,15 @@ class MarketTableViewCell: UITableViewCell {
                 self.logoImage = image
                 self.imageLogo.setRounded()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+        
+        output.isImageLoading.asObservable()
+        .subscribeOn(MainScheduler.asyncInstance)
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { (isLoading) in
+            self.imageLogo.isHidden = isLoading
+            isLoading ? self.logoLoader.startAnimating() : self.logoLoader.stopAnimating()
+            self.logoLoader.isHidden = !isLoading
+        }).disposed(by: self.disposeBag)
         
     }
     

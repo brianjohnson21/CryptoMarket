@@ -53,26 +53,12 @@ class MarketNewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.titleLabel.numberOfLines = 2
-        self.startSpinner()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         self.newImage.image = nil
-        self.startSpinner()
-    }
-    
-    private func startSpinner() {
-        self.newImage.isHidden = true
-        self.imageViewLoader.isHidden = false
-        self.imageViewLoader.startAnimating()
-    }
-    
-    private func stopSpinner() {
-        self.newImage.isHidden = false
-        self.imageViewLoader.isHidden = true
-        self.imageViewLoader.stopAnimating()
     }
     
     public func loadImageOnCell(urlImage name: String) {
@@ -84,13 +70,19 @@ class MarketNewCell: UICollectionViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (image) in
-                guard let image = image else {
-                    self.startSpinner()
-                    return
-                }
+                guard let image = image else { return}
                 self.image = image
-                self.stopSpinner()
             }).disposed(by: self.disposeBag)
+        
+        output.isImageLoading.asObservable()
+        .subscribeOn(MainScheduler.asyncInstance)
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { (isLoading) in
+            self.newImage.isHidden = isLoading
+            self.imageViewLoader.isHidden = !isLoading
+            isLoading ? self.imageViewLoader.startAnimating() : self.imageViewLoader.stopAnimating()
+        }).disposed(by: self.disposeBag)
+        
     }
     
 

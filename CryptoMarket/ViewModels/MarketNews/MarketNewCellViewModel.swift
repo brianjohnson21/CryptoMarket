@@ -13,12 +13,14 @@ import RxSwift
 public final class MarketNewsCellViewModel: ViewModelType {
     
     private let disposebag = DisposeBag()
+    private let isLoading = PublishSubject<Bool>()
     
     struct Input {
         let imageName: Driver<String>
     }
     struct Output {
         let imageDownloaded: Observable<UIImage?>
+        let isImageLoading: Observable<Bool>
     }
     
     private func fetchImageFromString(pathImage name: String) -> Observable<UIImage?> {
@@ -30,10 +32,15 @@ public final class MarketNewsCellViewModel: ViewModelType {
         let result = input.imageName.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
+            .do(onNext: { (image) in
+                self.isLoading.onNext(true)
+            })
             .flatMap { (imageName) -> Observable<UIImage?> in
                 return self.fetchImageFromString(pathImage: imageName)
-            }
+            }.do(onNext: { (image) in
+                self.isLoading.onNext(false)
+            })
         
-        return Output(imageDownloaded: result)
+        return Output(imageDownloaded: result, isImageLoading: self.isLoading)
     }
 }
