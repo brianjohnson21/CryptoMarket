@@ -32,7 +32,7 @@ public final class MarketNewsCellViewModel: ViewModelType {
             .observeOn(MainScheduler.instance)
             .flatMap { (imageName) -> Observable<UIImage?> in
                 return self.fetchImageFromString(pathImage: imageName)
-        }
+            }
         
         return Output(imageDownloaded: result)
     }

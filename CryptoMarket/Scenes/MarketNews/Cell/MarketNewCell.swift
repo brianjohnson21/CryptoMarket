@@ -16,11 +16,11 @@ class MarketNewCell: UICollectionViewCell {
     @IBOutlet private weak var newImage: UIImageView!
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var imageViewLoader: UIActivityIndicatorView!
     
     //MARK: Members
     private let viewModel: MarketNewsCellViewModel = MarketNewsCellViewModel()
     private let disposeBag = DisposeBag()
-    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     public var title: String? {
         set {
@@ -53,14 +53,26 @@ class MarketNewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.titleLabel.numberOfLines = 2
-        self.newImage.addSubview(spinner)
-        self.addSubview(spinner)
+        self.startSpinner()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        self.newImage.image = nil
+        self.startSpinner()
+    }
+    
+    private func startSpinner() {
         self.newImage.isHidden = true
+        self.imageViewLoader.isHidden = false
+        self.imageViewLoader.startAnimating()
+    }
+    
+    private func stopSpinner() {
+        self.newImage.isHidden = false
+        self.imageViewLoader.isHidden = true
+        self.imageViewLoader.stopAnimating()
     }
     
     public func loadImageOnCell(urlImage name: String) {
@@ -72,9 +84,12 @@ class MarketNewCell: UICollectionViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (image) in
-                guard let image = image else { return }
+                guard let image = image else {
+                    self.startSpinner()
+                    return
+                }
                 self.image = image
-                self.newImage.isHidden = true
+                self.stopSpinner()
             }).disposed(by: self.disposeBag)
     }
     
