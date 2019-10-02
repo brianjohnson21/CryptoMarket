@@ -15,6 +15,7 @@ class MarketNewsViewController: UIViewController {
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
     private let disposeBag = DisposeBag()
     private var collectionViewDataSource: [MarketNews] = []
+    private let collectionSpinner = UIActivityIndicatorView(style: .whiteLarge)
     
     // MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -31,6 +32,12 @@ class MarketNewsViewController: UIViewController {
         self.collectionViewNews.delegate = self
         self.collectionViewNews.dataSource = self
     
+        self.view.addSubview(self.collectionSpinner)
+        self.collectionSpinner.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.collectionSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        self.collectionSpinner.isHidden = false
+        self.collectionSpinner.startAnimating()
         self.navigationItem.title = "Market news"
     }
     
@@ -47,6 +54,16 @@ class MarketNewsViewController: UIViewController {
                 self.collectionViewNews.reloadData()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
+        output.isLoading.asObservable()
+        .subscribeOn(MainScheduler.asyncInstance)
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { (isLoading) in
+            self.collectionViewNews.isHidden = isLoading
+            self.collectionSpinner.isHidden = !isLoading
+            isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
+        }).disposed(by: self.disposeBag)
+        
+
     }
 
 
@@ -71,9 +88,6 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
         return self.collectionViewDataSource.count
     }
     
-
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarketNewCell.identifier, for: indexPath) as? MarketNewCell {
             cell.title = self.collectionViewDataSource[indexPath.row].title
@@ -83,7 +97,6 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         return UICollectionViewCell()
     }
-    
     
 }
 

@@ -14,20 +14,25 @@ import Keys
 public final class MarketNewsViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
+    private let isLoading = PublishSubject<Bool>()
     
     struct Input {}
     struct Output {
         let collectionViewDataSource: Observable<[MarketNews]>
+        let isLoading: Observable<Bool>
     }
     
     private func fetchMarketNewsData() -> Observable<[MarketNews]> {
+        self.isLoading.onNext(true)
         return Network.sharedInstance.performGetOnNews(stringUrl: ApiRoute.ROUTE_SERVER_NEWS.concat(string: ApiRoute.ROUTE_NEWS_CRYPTOCURRENCY))
     }
     
     func transform(input: Input) -> Output {
         
-        let collectionViewDataSource = self.fetchMarketNewsData()
+        let collectionViewDataSource = self.fetchMarketNewsData().do(onNext: { (market) in
+            self.isLoading.onNext(false)
+        })
         
-        return Output(collectionViewDataSource: collectionViewDataSource)
+        return Output(collectionViewDataSource: collectionViewDataSource, isLoading: self.isLoading)
     }
 }
