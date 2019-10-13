@@ -9,10 +9,11 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Kingfisher
 
 class MarketNewCell: UICollectionViewCell {
     
-    // MARK: Outlets
+    //MARK: Outlets
     @IBOutlet private weak var newImage: UIImageView!
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -53,6 +54,7 @@ class MarketNewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.titleLabel.numberOfLines = 2
+        self.imageViewLoader.isHidden = true
     }
     
     override func prepareForReuse() {
@@ -66,27 +68,32 @@ class MarketNewCell: UICollectionViewCell {
         
         let output = self.viewModel.transform(input: input)
         
-        output.imageDownloaded.asObservable()
-            .subscribeOn(MainScheduler.asyncInstance)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (image) in
-                guard let image = image else { return }
-                UIView.animate(withDuration: 10, delay: 10,
-                options: [.repeat, .autoreverse],
-                animations: {
-                    self.image = image
-                }, completion: nil)
-                
-            }).disposed(by: self.disposeBag)
+        let url = URL(string: name)
         
-        output.isImageLoading.asObservable()
-        .subscribeOn(MainScheduler.asyncInstance)
-        .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { (isLoading) in
-            self.newImage.isHidden = isLoading
-            self.imageViewLoader.isHidden = !isLoading
-            isLoading ? self.imageViewLoader.startAnimating() : self.imageViewLoader.stopAnimating()
-        }).disposed(by: self.disposeBag)
+        
+        self.newImage.kf.setImage(with: url)
+        
+        self.newImage.kf.indicatorType = .activity
+        
+        
+        
+        
+//        output.imageDownloaded.asObservable()
+//            .subscribeOn(MainScheduler.asyncInstance)
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { (image) in
+//                guard let image = image else { return }
+//                self.image = image
+//            }).disposed(by: self.disposeBag)
+        
+//        output.isImageLoading.asObservable()
+//        .subscribeOn(MainScheduler.asyncInstance)
+//        .observeOn(MainScheduler.instance)
+//        .subscribe(onNext: { (isLoading) in
+//            self.newImage.isHidden = isLoading
+//            self.imageViewLoader.isHidden = !isLoading
+//            isLoading ? self.imageViewLoader.startAnimating() : self.imageViewLoader.stopAnimating()
+//        }).disposed(by: self.disposeBag)
         
     }
 

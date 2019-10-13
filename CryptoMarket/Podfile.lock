@@ -3,6 +3,7 @@ PODS:
   - FontAwesome.swift (1.8.2)
   - Hero (1.4.0)
   - Keys (1.0.1)
+  - Kingfisher (4.10.1)
   - ObjectMapper (3.5.1)
   - RxAlamofire (4.4.1):
     - RxAlamofire/Core (= 4.4.1)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - FontAwesome.swift
   - Hero
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Kingfisher (~> 4.0)
   - ObjectMapper
   - RxAlamofire
   - RxCocoa (~> 4.0)
@@ -32,6 +34,7 @@ SPEC REPOS:
     - Alamofire
     - FontAwesome.swift
     - Hero
+    - Kingfisher
     - ObjectMapper
     - RxAlamofire
     - RxCocoa
@@ -47,12 +50,13 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 7938d6a03113ff3f39001bde7f50be8a0903d605
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 3cc2611f4625d40cfab8d2688715cc79c83b850b
+PODFILE CHECKSUM: 2c1a3fc24f64535a52cb2cc00ddff0648b8a40c3
 
 COCOAPODS: 1.7.5
