@@ -11,13 +11,13 @@ import RxSwift
 
 class MarketNewsViewController: UIViewController {
     
-    // private MARK: Members
+    //MARK: Members
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
     private let disposeBag = DisposeBag()
     private var collectionViewDataSource: [MarketNews] = []
     private let collectionSpinner = UIActivityIndicatorView(style: .whiteLarge)
     
-    // MARK: Outlets
+    //MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
     
     override func viewDidLoad() {
@@ -62,11 +62,8 @@ class MarketNewsViewController: UIViewController {
             self.collectionSpinner.isHidden = !isLoading
             isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
         }).disposed(by: self.disposeBag)
-        
 
     }
-
-
 }
 
 extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

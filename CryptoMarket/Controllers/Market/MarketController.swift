@@ -92,7 +92,6 @@ class MarketController: UIViewController {
                 self.spinner.stopAnimating()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
       
-        
         output.tableViewDataSource.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)

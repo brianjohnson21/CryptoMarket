@@ -70,8 +70,13 @@ class MarketNewCell: UICollectionViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (image) in
-                guard let image = image else { return}
-                self.image = image
+                guard let image = image else { return }
+                UIView.animate(withDuration: 10, delay: 10,
+                options: [.repeat, .autoreverse],
+                animations: {
+                    self.image = image
+                }, completion: nil)
+                
             }).disposed(by: self.disposeBag)
         
         output.isImageLoading.asObservable()
@@ -84,7 +89,6 @@ class MarketNewCell: UICollectionViewCell {
         }).disposed(by: self.disposeBag)
         
     }
-    
 
     static var identifier: String {
         return String(describing: self)

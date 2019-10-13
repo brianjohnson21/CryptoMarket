@@ -34,10 +34,10 @@ public final class MarketNewsCellViewModel: ViewModelType {
             .observeOn(MainScheduler.instance)
             .do(onNext: { (image) in
                 self.isLoading.onNext(true)
-            })
-            .flatMap { (imageName) -> Observable<UIImage?> in
+            }).flatMap { (imageName) -> Observable<UIImage?> in
                 return self.fetchImageFromString(pathImage: imageName)
-            }.do(onNext: { (image) in
+            }.delay(5, scheduler: MainScheduler.instance)
+            .do(onNext: { (image) in
                 self.isLoading.onNext(false)
             })
         

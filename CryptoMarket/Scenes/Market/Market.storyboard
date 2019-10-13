@@ -16,20 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-fz-Wvt">
-                                <rect key="frame" x="0.0" y="110" width="414" height="752"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Cascade"/>
-                                </userDefinedRuntimeAttributes>
-                            </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNO-ux-0nF">
-                                <rect key="frame" x="10" y="44" width="394" height="56"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6rZ-6j-t6k">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Search over 8,000 coins" translatesAutoresizingMaskIntoConstraints="NO" id="e8b-bb-7nr">
-                                        <rect key="frame" x="0.0" y="0.0" width="348" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         <scopeButtonTitles>
@@ -37,24 +28,25 @@
                                             <string>Title</string>
                                         </scopeButtonTitles>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-nm-1lE">
-                                        <rect key="frame" x="348" y="0.0" width="46" height="56"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-fz-Wvt">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="762"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Cascade"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="5m8-fz-Wvt" secondAttribute="trailing" id="5Jg-yl-VXv"/>
-                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" id="B2A-MP-bzh"/>
-                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="LNO-ux-0nF" secondAttribute="trailing" constant="10" id="XX5-h5-LGn"/>
-                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="top" secondItem="LNO-ux-0nF" secondAttribute="bottom" constant="10" id="aK8-5I-vih"/>
-                            <constraint firstItem="LNO-ux-0nF" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" constant="10" id="eeY-Sf-Wfd"/>
-                            <constraint firstItem="LNO-ux-0nF" firstAttribute="top" secondItem="vl0-6p-Y5a" secondAttribute="top" id="m8H-YD-DI9"/>
-                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="bottom" secondItem="5m8-fz-Wvt" secondAttribute="bottom" id="ttd-5X-Phc"/>
-                            <constraint firstItem="5m8-fz-Wvt" firstAttribute="centerX" secondItem="wAl-HG-24H" secondAttribute="centerX" id="yTP-If-HOP"/>
+                            <constraint firstItem="6rZ-6j-t6k" firstAttribute="top" secondItem="vl0-6p-Y5a" secondAttribute="top" id="59E-Vh-3f0"/>
+                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="bottom" secondItem="6rZ-6j-t6k" secondAttribute="bottom" id="UF3-ez-9zS"/>
+                            <constraint firstItem="6rZ-6j-t6k" firstAttribute="leading" secondItem="vl0-6p-Y5a" secondAttribute="leading" id="k3q-GG-sZ6"/>
+                            <constraint firstItem="vl0-6p-Y5a" firstAttribute="trailing" secondItem="6rZ-6j-t6k" secondAttribute="trailing" id="kHW-w6-2uF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vl0-6p-Y5a"/>
                     </view>

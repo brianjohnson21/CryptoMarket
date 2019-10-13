@@ -33,10 +33,9 @@ public final class MarketViewModel: ViewModelType {
     }
     
     private func quickMarketSearch(query: String) -> Observable<[Market]> {
-        print("** FETCHING DATA WITH QUERY \(query) **")
-        return self.fetchMarketData().filter({ (market) -> Bool in
-            return market.count > 200
-        })
+        return self.fetchMarketData().map { (market) -> [Market] in
+            return market.filter { $0.name?.contains(query) ?? false}
+        }
     }
     
     private func quickSearchText(quickText: Driver<String?>) -> Observable<[Market]> {
@@ -45,6 +44,7 @@ public final class MarketViewModel: ViewModelType {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.asyncInstance)
             .filter { $0?.isEmpty == false }
+            .debounce(1, scheduler: MainScheduler.asyncInstance)
             .flatMapLatest({ (queryText) -> Observable<[Market]> in
                 guard let textSearch = queryText else { return Observable.just([])}
                 
@@ -63,13 +63,10 @@ public final class MarketViewModel: ViewModelType {
         })
         
         let tableDataSource = self.fetchMarketData().asObservable()
+        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
         
-        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource)
+        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource, quickSearchFound)
         
-        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText).filter { (market) -> Bool in
-            return false
-        }
-
         return Output(tableViewDataSource: tableViewDataSource,
                       isLoading: self.isLoading.asObservable(),
                       quickSearchFound: quickSearchFound)
