@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+//import Kingfisher need to be removed
 
 public final class MarketNewsCellViewModel: ViewModelType {
     
@@ -36,8 +37,7 @@ public final class MarketNewsCellViewModel: ViewModelType {
                 self.isLoading.onNext(true)
             }).flatMap { (imageName) -> Observable<UIImage?> in
                 return self.fetchImageFromString(pathImage: imageName)
-            }.delay(5, scheduler: MainScheduler.instance)
-            .do(onNext: { (image) in
+            }.do(onNext: { (image) in
                 self.isLoading.onNext(false)
             })
         

@@ -59,41 +59,48 @@ class MarketNewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        self.newImage.image = nil
     }
+    
+    private let imageCache = NSCache<AnyObject, AnyObject>()
+    private var imageUrlString: String?
     
     public func loadImageOnCell(urlImage name: String) {
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(name))
         
+        self.imageUrlString = name
+        
         let output = self.viewModel.transform(input: input)
+        self.newImage.image = nil
         
-        let url = URL(string: name)
-        
-        
-        self.newImage.kf.setImage(with: url)
-        
-        self.newImage.kf.indicatorType = .activity
-        
-        
-        
-        
-//        output.imageDownloaded.asObservable()
-//            .subscribeOn(MainScheduler.asyncInstance)
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { (image) in
-//                guard let image = image else { return }
-//                self.image = image
-//            }).disposed(by: self.disposeBag)
-        
-//        output.isImageLoading.asObservable()
-//        .subscribeOn(MainScheduler.asyncInstance)
-//        .observeOn(MainScheduler.instance)
-//        .subscribe(onNext: { (isLoading) in
-//            self.newImage.isHidden = isLoading
-//            self.imageViewLoader.isHidden = !isLoading
-//            isLoading ? self.imageViewLoader.startAnimating() : self.imageViewLoader.stopAnimating()
-//        }).disposed(by: self.disposeBag)
+        if let imageFromCache = self.imageCache.object(forKey: name as AnyObject) as? UIImage {
+            
+            self.image = imageFromCache
+        } else {
+            
+            
+            
+            output.imageDownloaded.asObservable()
+                .subscribeOn(MainScheduler.asyncInstance)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { (imageView) in
+                    guard let image = imageView else { return }
+                    let imageToCache = image
+                    if self.imageUrlString == name {
+                        self.image = imageToCache
+                    }
+                    self.imageCache.setObject(imageToCache, forKey: name as AnyObject)
+                }).disposed(by: self.disposeBag)
+            
+            
+            output.isImageLoading.asObservable()
+                .subscribeOn(MainScheduler.asyncInstance)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { (isLoading) in
+                    self.newImage.isHidden = isLoading
+                    self.imageViewLoader.isHidden = !isLoading
+                    isLoading ? self.imageViewLoader.startAnimating() : self.imageViewLoader.stopAnimating()
+                }).disposed(by: self.disposeBag)
+        }
         
     }
 
