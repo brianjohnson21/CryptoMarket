@@ -16,6 +16,7 @@ class MarketNewsViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var collectionViewDataSource: [MarketNews] = []
     private let collectionSpinner = UIActivityIndicatorView(style: .whiteLarge)
+    private let refreshControl = UIRefreshControl()
     
     //MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -38,12 +39,17 @@ class MarketNewsViewController: UIViewController {
         self.collectionSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         self.collectionSpinner.isHidden = false
         self.collectionSpinner.startAnimating()
+        //self.collectionViewNews.addSubview(self.refreshControl)
+        self.collectionViewNews.refreshControl = refreshControl
+        
         self.navigationItem.title = "Market news"
     }
     
     private func setupViewModel() {
         
-        let input = MarketNewsViewModel.Input()
+        let input = MarketNewsViewModel.Input(loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged).asObservable().map { _ in !self.refreshControl.isRefreshing }
+            .filter { $0 == false }.asObservable())
+        
         let output = self.viewModel.transform(input: input)
         
         output.collectionViewDataSource.asObservable()
@@ -61,6 +67,7 @@ class MarketNewsViewController: UIViewController {
             self.collectionViewNews.isHidden = isLoading
             self.collectionSpinner.isHidden = !isLoading
             isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
+            isLoading ? self.collectionViewNews.refreshControl?.beginRefreshing() : self.collectionViewNews.refreshControl?.endRefreshing()
         }).disposed(by: self.disposeBag)
 
     }

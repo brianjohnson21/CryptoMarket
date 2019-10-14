@@ -16,7 +16,10 @@ public final class MarketNewsViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isLoading = PublishSubject<Bool>()
     
-    struct Input {}
+    struct Input {
+        let loaderTrigger: Observable<Bool>
+    }
+    
     struct Output {
         let collectionViewDataSource: Observable<[MarketNews]>
         let isLoading: Observable<Bool>
@@ -29,7 +32,17 @@ public final class MarketNewsViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let collectionViewDataSource = self.fetchMarketNewsData().do(onNext: { (market) in
+        let refreshOnLoader = input.loaderTrigger.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .throttle(2.5, scheduler: MainScheduler.asyncInstance)
+            .flatMap { (_) -> Observable<[MarketNews]> in
+                return self.fetchMarketNewsData()
+            }
+        
+        let loadingOnNavigation = self.fetchMarketNewsData()
+        
+        let collectionViewDataSource = Observable.merge(refreshOnLoader, loadingOnNavigation).do(onNext: { (market) in
             self.isLoading.onNext(false)
         })
         
