@@ -14,7 +14,6 @@ target 'CryptoMarket' do
    pod 'ObjectMapper'
    pod 'FontAwesome.swift'
    pod 'Hero'
-   pod 'Kingfisher', '~> 4.0'
 
    plugin 'cocoapods-keys', {
    	  :project => "CryptoMarket",
