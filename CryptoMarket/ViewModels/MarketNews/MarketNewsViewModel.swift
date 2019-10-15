@@ -9,7 +9,6 @@
 import Foundation
 import RxCocoa
 import RxSwift
-import Keys
 
 public final class MarketNewsViewModel: ViewModelType {
     
@@ -26,7 +25,6 @@ public final class MarketNewsViewModel: ViewModelType {
     }
     
     private func fetchMarketNewsData() -> Observable<[MarketNews]> {
-        self.isLoading.onNext(true)
         return Network.sharedInstance.performGetOnNews(stringUrl: ApiRoute.ROUTE_SERVER_NEWS.concat(string: ApiRoute.ROUTE_NEWS_CRYPTOCURRENCY))
     }
     
@@ -38,9 +36,11 @@ public final class MarketNewsViewModel: ViewModelType {
             .throttle(2.5, scheduler: MainScheduler.asyncInstance)
             .flatMap { (_) -> Observable<[MarketNews]> in
                 return self.fetchMarketNewsData()
-            }
+        }
         
-        let loadingOnNavigation = self.fetchMarketNewsData()
+        let loadingOnNavigation = self.fetchMarketNewsData().do(onNext: { (market) in
+            self.isLoading.onNext(true)
+        })
         
         let collectionViewDataSource = Observable.merge(refreshOnLoader, loadingOnNavigation).do(onNext: { (market) in
             self.isLoading.onNext(false)

@@ -39,15 +39,18 @@ class MarketNewsViewController: UIViewController {
         self.collectionSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         self.collectionSpinner.isHidden = false
         self.collectionSpinner.startAnimating()
-        //self.collectionViewNews.addSubview(self.refreshControl)
-        self.collectionViewNews.refreshControl = refreshControl
         
+        self.collectionViewNews.refreshControl = refreshControl
+        self.extendedLayoutIncludesOpaqueBars = true
         self.navigationItem.title = "Market news"
     }
     
     private func setupViewModel() {
         
-        let input = MarketNewsViewModel.Input(loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged).asObservable().map { _ in !self.refreshControl.isRefreshing }
+        let input = MarketNewsViewModel.Input(
+            loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged)
+            .asObservable()
+            .map { _ in !self.refreshControl.isRefreshing }
             .filter { $0 == false }.asObservable())
         
         let output = self.viewModel.transform(input: input)
@@ -58,6 +61,7 @@ class MarketNewsViewController: UIViewController {
             .subscribe(onNext: { (collectionViewDataSource) in
                 self.collectionViewDataSource = collectionViewDataSource
                 self.collectionViewNews.reloadData()
+                self.collectionViewNews.refreshControl?.endRefreshing()
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
         
         output.isLoading.asObservable()
@@ -67,7 +71,6 @@ class MarketNewsViewController: UIViewController {
             self.collectionViewNews.isHidden = isLoading
             self.collectionSpinner.isHidden = !isLoading
             isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
-            isLoading ? self.collectionViewNews.refreshControl?.beginRefreshing() : self.collectionViewNews.refreshControl?.endRefreshing()
         }).disposed(by: self.disposeBag)
 
     }
