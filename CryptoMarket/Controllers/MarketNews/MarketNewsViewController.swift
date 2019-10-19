@@ -43,6 +43,7 @@ class MarketNewsViewController: UIViewController {
         self.collectionViewNews.refreshControl = refreshControl
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationItem.title = "Market news"
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
     }
     
     private func setupViewModel() {

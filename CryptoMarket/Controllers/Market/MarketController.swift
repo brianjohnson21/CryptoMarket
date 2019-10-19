@@ -60,10 +60,16 @@ class MarketController: UIViewController {
         self.spinner.startAnimating()
         
         self.tableViewMarket.isHidden = true
-        self.tableViewMarket.backgroundColor = UIColor.black
         self.tableViewMarket.addSubview(refreshControl)
         self.tableViewMarket.keyboardDismissMode = .onDrag
         self.navigationItem.title = "Market view"
+        //self.tableViewMarket.refreshControl =
+        //self.navigationItem.searchController =
+        
+        let quicksearch = UISearchController()
+        quicksearch.searchBar.placeholder = "Find over 100 coins"
+        self.navigationItem.searchController = quicksearch
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func displayTableViewAnimation() {
@@ -80,8 +86,10 @@ class MarketController: UIViewController {
             .asObservable()
             .map { _ in !self.refreshControl.isRefreshing }
             .filter{ $0 == false }.asObservable(),
-            quickSearchText: self.quickSearchBar.rx.text.asDriver())
+                                          quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
         
+        
+        //quickSearchText: self.quickSearchBar.rx.text.asDriver())
         let output = self.viewModel.transform(input: input)
     
         output.isLoading.asObservable()
