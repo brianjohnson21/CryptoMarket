@@ -110,6 +110,7 @@
             <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="changePercent" destination="N0V-Ci-L8q" id="KYa-nj-DIb"/>
                 <outlet property="imageLogo" destination="SzK-sf-BCs" id="hPt-7V-NDT"/>
                 <outlet property="indexLabel" destination="IIx-vB-9Dh" id="45t-Lp-Qay"/>
                 <outlet property="labelName" destination="qaT-ev-tAn" id="eQT-Wo-IHg"/>
@@ -123,7 +124,7 @@
     </objects>
     <resources>
         <namedColor name="MainColor">
-            <color red="0.050980392156862744" green="0.10980392156862745" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10196078431372549" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

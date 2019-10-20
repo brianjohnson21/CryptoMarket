@@ -20,6 +20,7 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var logoLoader: UIActivityIndicatorView!
+    @IBOutlet weak var changePercent: UILabel!
     
     //MARK: Private Members
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
