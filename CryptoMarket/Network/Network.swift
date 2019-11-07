@@ -26,24 +26,13 @@ final class Network {
     
     //MARK: todo switch to single ->
     public func performGetOnMarket(stringUrl url: String) -> Observable<[Market]> {
-        
-        let path = Bundle.main.path(forResource: "Market", ofType: "json")!
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return Observable.just( try Mapper<Market>().mapArray(JSONObject: ((data))))
-        }
-        catch {
-            return RxAlamofire
+        return RxAlamofire
             .json(.get, url)
             .retry(2)
             .observeOn(MainScheduler.asyncInstance)
-            
             .map({ json -> [Market] in
-                print(json)
                 return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
-            })
-        }
-
+        })
     }
     
     public func performGetOnNews(stringUrl url: String) -> Observable<[MarketNews]>{
