@@ -63,13 +63,12 @@ class MarketController: UIViewController {
         self.tableViewMarket.addSubview(refreshControl)
         self.tableViewMarket.keyboardDismissMode = .onDrag
         self.navigationItem.title = "Market view"
-        //self.tableViewMarket.refreshControl =
-        //self.navigationItem.searchController =
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         
         let quicksearch = UISearchController()
         quicksearch.searchBar.placeholder = "Find over 100 coins"
         self.navigationItem.searchController = quicksearch
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     private func displayTableViewAnimation() {
@@ -137,6 +136,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
+            cell.percentage = tableViewDataSource[indexPath.row].changePercent24Hr
             return cell
         }
         return UITableViewCell()

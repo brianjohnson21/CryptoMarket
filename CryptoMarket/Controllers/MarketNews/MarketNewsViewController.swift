@@ -17,6 +17,7 @@ class MarketNewsViewController: UIViewController {
     private var collectionViewDataSource: [MarketNews] = []
     private let collectionSpinner = UIActivityIndicatorView(style: .whiteLarge)
     private let refreshControl = UIRefreshControl()
+    private let handleRetryConnection = PublishSubject<Void>()
     
     //MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -46,16 +47,20 @@ class MarketNewsViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
     }
     
+    @objc private func retryConnection() {
+        self.handleRetryConnection.onNext(())
+    }
+    
     private func setupViewModel() {
         
         let input = MarketNewsViewModel.Input(
             loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged)
             .asObservable()
             .map { _ in !self.refreshControl.isRefreshing }
-            .filter { $0 == false }.asObservable())
+                .filter { $0 == false }.asObservable(), retryTrigger: self.handleRetryConnection)
         
         let output = self.viewModel.transform(input: input)
-        
+
         output.collectionViewDataSource.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
@@ -63,7 +68,9 @@ class MarketNewsViewController: UIViewController {
                 self.collectionViewDataSource = collectionViewDataSource
                 self.collectionViewNews.reloadData()
                 self.collectionViewNews.refreshControl?.endRefreshing()
-            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+            }, onError: { (error) in
+                self.createAlertOnError(error: error, actionTitles: ["Retry"], actions: [{_ in self.retryConnection()}])
+            }).disposed(by: self.disposeBag)
         
         output.isLoading.asObservable()
         .subscribeOn(MainScheduler.asyncInstance)

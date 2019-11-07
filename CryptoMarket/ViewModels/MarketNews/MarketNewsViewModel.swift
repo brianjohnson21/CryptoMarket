@@ -15,8 +15,10 @@ public final class MarketNewsViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isLoading = PublishSubject<Bool>()
     
+    //todo : Observable -> Driver
     struct Input {
         let loaderTrigger: Observable<Bool>
+        let retryTrigger: Observable<Void>
     }
     
     struct Output {
@@ -29,20 +31,29 @@ public final class MarketNewsViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
-        let refreshOnLoader = input.loaderTrigger.asObservable()
+         
+        let onRefreshData = Observable.combineLatest(input.loaderTrigger.asObservable(), input.retryTrigger.asObservable())
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .throttle(2.5, scheduler: MainScheduler.asyncInstance)
-            .flatMap { (_) -> Observable<[MarketNews]> in
+            .flatMap { (_, _) -> Observable<[MarketNews]> in
                 return self.fetchMarketNewsData()
         }
+            
+        
+//        let refreshOnLoader = input.loaderTrigger.asObservable()
+//            .subscribeOn(MainScheduler.asyncInstance)
+//            .observeOn(MainScheduler.instance)
+//            .throttle(2.5, scheduler: MainScheduler.asyncInstance)
+//            .flatMap { (_) -> Observable<[MarketNews]> in
+//                return self.fetchMarketNewsData()
+//        }
         
         let loadingOnNavigation = self.fetchMarketNewsData().do(onNext: { (market) in
             self.isLoading.onNext(true)
         })
         
-        let collectionViewDataSource = Observable.merge(refreshOnLoader, loadingOnNavigation).do(onNext: { (market) in
+        let collectionViewDataSource = Observable.merge(onRefreshData, loadingOnNavigation).do(onNext: { (market) in
             self.isLoading.onNext(false)
         })
         

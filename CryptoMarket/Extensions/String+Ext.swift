@@ -24,4 +24,16 @@ extension String {
         }
         return ""
     }
+    
+    func percentageFormatting() -> String {
+        if let value = Double(self) {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+            if let str = formatter.string(for: value) {
+                return str.concat(string: " %")
+            }
+        }
+        return ""
+    }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import FontAwesome_swift
 
 class MarketTableViewCell: UITableViewCell {
 
@@ -20,7 +21,7 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var logoLoader: UIActivityIndicatorView!
-    @IBOutlet weak var changePercent: UILabel!
+    @IBOutlet private weak var changePercent: UILabel!
     
     //MARK: Private Members
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
@@ -60,7 +61,7 @@ class MarketTableViewCell: UITableViewCell {
     
     public var logoImage: UIImage? {
         set {
-            self.imageLogo?.image = newValue
+            //self.imageLogo?.image = newValue
         }
         get {
             return self.imageLogo?.image
@@ -73,6 +74,20 @@ class MarketTableViewCell: UITableViewCell {
         }
         get {
             return self.priceLabel.text
+        }
+    }
+    
+    public var percentage: String? {
+        set {
+            self.changePercent.text = "\(abs(Double(newValue ?? "") ?? 0))".percentageFormatting()
+            self.changePercent.textColor = Double(newValue ?? "") ?? 0 > 0 ? UIColor.green : UIColor.red
+            //self.imageLogo.image = UIImage.fontAwesomeIcon(code: "fa-sort-up", style: .brands, textColor: .green, size: CGSize(width: 20, height: 20))
+            //self.imageLogo.image = UIImage.fontAwesomeIcon(name: .sortUp, style: .solid, textColor: .green, size: CGSize(width: 20, height: 20))
+            self.imageLogo.image = UIImage.fontAwesomeIcon(name: .sortDown, style: .solid, textColor: .red, size: CGSize(width: 20, height: 20))
+            self.imageLogo.backgroundColor = UIColor.clear
+        }
+        get {
+            return self.changePercent.text
         }
     }
 
