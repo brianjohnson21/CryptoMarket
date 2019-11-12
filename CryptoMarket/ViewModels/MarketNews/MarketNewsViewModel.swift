@@ -31,29 +31,24 @@ public final class MarketNewsViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-         
-        let onRefreshData = Observable.combineLatest(input.loaderTrigger.asObservable(), input.retryTrigger.asObservable())
+        
+        let refreshOnLoader = input.loaderTrigger.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .throttle(2.5, scheduler: MainScheduler.asyncInstance)
-            .flatMap { (_, _) -> Observable<[MarketNews]> in
+            .flatMap { (_) -> Observable<[MarketNews]> in
                 return self.fetchMarketNewsData()
         }
-            
         
-//        let refreshOnLoader = input.loaderTrigger.asObservable()
-//            .subscribeOn(MainScheduler.asyncInstance)
-//            .observeOn(MainScheduler.instance)
-//            .throttle(2.5, scheduler: MainScheduler.asyncInstance)
-//            .flatMap { (_) -> Observable<[MarketNews]> in
-//                return self.fetchMarketNewsData()
-//        }
+        input.retryTrigger.asObservable().subscribe(onNext: { (_) in
+            print("INSIDE RETRY CONNECTION")
+        }).disposed(by: self.disposeBag)
         
         let loadingOnNavigation = self.fetchMarketNewsData().do(onNext: { (market) in
             self.isLoading.onNext(true)
         })
         
-        let collectionViewDataSource = Observable.merge(onRefreshData, loadingOnNavigation).do(onNext: { (market) in
+        let collectionViewDataSource = Observable.merge(refreshOnLoader, loadingOnNavigation).do(onNext: { (market) in
             self.isLoading.onNext(false)
         })
         

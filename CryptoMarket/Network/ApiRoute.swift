@@ -15,6 +15,6 @@ public enum ApiRoute {
     public static let ROUTE_IMAGE = "https://cryptologos.cc/logos/thumbs/"
     
     public static let ROUTE_SERVER_NEWS = "https://newsapi.org/v2/everything?q="
-    public static let ROUTE_NEWS_CRYPTOCURRENCY = "Cryptocurrency&from=2019-09-29&sortBy=popularity&apiKey="
+    public static let ROUTE_NEWS_CRYPTOCURRENCY = "Cryptocurrency&from=".formatDateForRequest().concat(string: "&sortBy=popularity&apiKey=")
     
 }

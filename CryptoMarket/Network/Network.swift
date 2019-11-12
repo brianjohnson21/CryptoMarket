@@ -20,6 +20,7 @@ final class Network {
     init() {
         let keys = CryptoMarketKeys()
         self.ApiMarketNewsKey = keys.marketNewsAPIClient
+        print("Showing api key -> \(self.ApiMarketNewsKey)")
     }
     
     public static let sharedInstance = Network()
