@@ -77,3 +77,7 @@ I’m *Thomas Martins* iOS developer , ping me there [ThomasMartins](https://
 ### 📝 License
 
 *CryptoMarket* is released under the MIT License. See [LICENSE](https://github.com/pixel16/CountItApp/blob/master/LICENSE) for details. 
+
+
+### 🚀 Release
+*The date of release should be around 15th December on the App Store, so be ready* 😎
