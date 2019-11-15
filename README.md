@@ -16,7 +16,10 @@ First install it by doing `gem install cocoapods-keys` and then add your keys an
 
 ### 🔨  Architecture
 
-[MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) is use throughout the app, as well as [Reactive Programming](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) with [RxSwift](https://github.com/ReactiveX/RxSwift)
+The [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern is use throughout the application, with a heavy use of [RxSwift](https://github.com/ReactiveX/RxSwift) which makes the binding very easy 😎
+
+![](ReadMeAssets/MVVMPattern.png)
+
 
 All `ViewModels` expose [RxSwift](https://github.com/ReactiveX/RxSwift) observables in the form of [Drivers](https://github.com/ReactiveX/RxSwift/blob/master/Documentation/Units.md) that are perfect to use in `ViewModels` because they:
 * Can't error out.
@@ -48,7 +51,6 @@ All `ViewModels` expose [RxSwift](https://github.com/ReactiveX/RxSwift) observab
         }).disposed(by: self.disposeBag)
 ```
 
-### ⚠ Disclaimer 
 
 ### ⚙️ Contributing
 
@@ -56,7 +58,7 @@ You’re more than welcome to improve and add new features to the app! I will cr
 
 ### 👽 Author
 
-I’m Thomas Martins, [ThomasMartins](https://www.linkedin.com/in/thomas-martins-0343b1b7/)
+I’m Thomas Martins iOS developer , ping me there [ThomasMartins](https://www.linkedin.com/in/thomas-martins-0343b1b7/) for any question.
 
 ### Release
 
