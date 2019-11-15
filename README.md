@@ -1,8 +1,7 @@
 ## 🚀 Welcome to CryptoMarket! 🚀
 
-CryptoMarket is an app to see the current Market of cryptocurrencies 📊. 
+CryptoMarket is an app to see the current Market of cryptocurrencies 📊.
 The idea of the app was to play around with [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) and [RxSwift](https://github.com/ReactiveX/RxSwift) on iOS 
-
 For now, it is still a **BETA!**, not all bugs have been found yet (please report any you encounter).
 
 ### 👀 Usage
@@ -51,7 +50,7 @@ All `ViewModels` expose [RxSwift](https://github.com/ReactiveX/RxSwift) observab
         }).disposed(by: self.disposeBag)
 ```
 
-The communication between the `ViewControllers` and the `ViewModel` is handlded by `ViewModelType` protocol, as bellow :
+The communication between the `ViewControllers` and the `ViewModel` is done by the `ViewModelType` protocol, as bellow :
 
 ```swift
 
@@ -62,7 +61,7 @@ protocol ViewModelType {
     func transform(input: Input) -> Output
 }
 ```
-The ViewModel perform transformation of the user `Input` to the `Output`
+The ViewModel perform transformation of the user `Input` to the `Output`, this feature is from the [Clean Architecture](https://github.com/sergdort/CleanArchitectureRxSwift)
 
 ### ⚙️ Contributing
 
