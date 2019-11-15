@@ -34,7 +34,7 @@ All `ViewModels` expose [RxSwift](https://github.com/ReactiveX/RxSwift) observab
         .bind(to: self.titleLabel.rx.text)
         .disposed(by: self.disposeBag)
 ```    
-`ViewControllers` can later connect to observables as well, for example:
+`ViewControllers` can also connect to observables as well, for example:
 
 ```swift
     let output = self.viewModel.transform(input: ViewModel.Input())  
