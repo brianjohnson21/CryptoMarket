@@ -1,10 +1,10 @@
-# 🚀 Welcome to CryptoMarket! 🚀
+## 🚀 Welcome to CryptoMarket! 🚀
 
 CryptoMarket is an app to see the current Market of cryptocurrencies 📊. The idea of the app was to play around with [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) and [RxSwift](https://github.com/ReactiveX/RxSwift) on iOS .
 
 For now, it is still a **BETA!**, not all bugs have been found yet (please report any you encounter).
 
-## 👀 Usage
+### 👀 Usage
 
 This project uses Cocoapods to manage the decencies. If you want to run the project, your first need to install the pods by doing pod install.
  An API key is required and you can add your own **newsapi** key by using [cocoapods keys](https://github.com/orta/cocoapods-keys)
@@ -12,7 +12,7 @@ This project uses Cocoapods to manage the decencies. If you want to run the proj
 
 <pre>$ pod keys set MarketNewsAPIClient YOUR_API_KEY </pre>
 
-## 🔨  Architecture
+### 🔨  Architecture
 
 [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) is use throughout the app, as well as [Reactive Programming](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) with [RxSwift](https://github.com/ReactiveX/RxSwift)
 
@@ -47,19 +47,19 @@ output.Label
     }).disposed(by: self.disposeBag)
 ```
 
-## ⚠ Disclaimer 
+### ⚠ Disclaimer 
 
-## ⚙️ Contributing
+### ⚙️ Contributing
 
 You’re more than welcome to improve and add new features to the app! I will create a backlog soon.
 
-## 👽 Author
+### 👽 Author
 
 I’m Thomas Martins, [ThomasMartins](https://www.linkedin.com/in/thomas-martins-0343b1b7/)
 
-## Release
+### Release
 
 
-## 📝 License
+### 📝 License
 
 `CryptoMarket` is released under the MIT License. See [LICENSE](https://github.com/pixel16/CountItApp/blob/master/LICENSE) for details. 
