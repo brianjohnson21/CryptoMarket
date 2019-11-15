@@ -51,18 +51,30 @@ All `ViewModels` expose [RxSwift](https://github.com/ReactiveX/RxSwift) observab
         }).disposed(by: self.disposeBag)
 ```
 
+The communication between the `ViewControllers` and the `ViewModel` is handlded by `ViewModelType` protocol, as bellow :
+
+```swift
+
+protocol ViewModelType {
+    associatedtype Input
+    associatedtype Output
+    
+    func transform(input: Input) -> Output
+}
+```
+The ViewModel perform transformation of the user `Input` to the `Output`
 
 ### ⚙️ Contributing
 
-You’re more than welcome to improve and add new features to the app! I will create a backlog soon.
+You’re **more than welcome** to improve and add new features to the app! I will create a backlog soon. 
 
 ### 👽 Author
 
-I’m Thomas Martins iOS developer , ping me there [ThomasMartins](https://www.linkedin.com/in/thomas-martins-0343b1b7/) for any question.
+I’m *Thomas Martins* iOS developer , ping me there [ThomasMartins](https://www.linkedin.com/in/thomas-martins-0343b1b7/) for any question.
 
 ### Release
 
 
 ### 📝 License
 
-`CryptoMarket` is released under the MIT License. See [LICENSE](https://github.com/pixel16/CountItApp/blob/master/LICENSE) for details. 
+*CryptoMarket* is released under the MIT License. See [LICENSE](https://github.com/pixel16/CountItApp/blob/master/LICENSE) for details. 
