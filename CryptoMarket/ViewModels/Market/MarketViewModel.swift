@@ -16,7 +16,7 @@ public final class MarketViewModel: ViewModelType {
     private let isLoading = PublishSubject<Bool>()
     
     struct Input {
-        let loaderTrigger: Observable<Bool>
+        let loaderTrigger: Driver<Bool>
         let quickSearchText: Driver<String?>
     }
     

@@ -82,24 +82,22 @@ class MarketController: UIViewController {
     private func setUpViewModel() {
         let input = MarketViewModel.Input(loaderTrigger:
             self.refreshControl.rx.controlEvent(.valueChanged)
-            .asObservable()
+            .asDriver()
             .map { _ in !self.refreshControl.isRefreshing }
-            .filter{ $0 == false }.asObservable(),
-                                          quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
+            .filter{ $0 == false },
+            quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
         
-        
-        //quickSearchText: self.quickSearchBar.rx.text.asDriver())
         let output = self.viewModel.transform(input: input)
-    
-        output.isLoading.asObservable()
+        
+        output.isLoading
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (isLoading) in
                 self.spinner.isHidden = !isLoading
                 self.spinner.stopAnimating()
-            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+            }).disposed(by: self.disposeBag)
       
-        output.tableViewDataSource.asObservable()
+        output.tableViewDataSource
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (tableViewDataSource) in
@@ -107,15 +105,23 @@ class MarketController: UIViewController {
                 self.tableViewMarket.reloadData()
                 self.tableViewMarket.isHidden = false
                 self.refreshControl.endRefreshing()
-            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+            }, onError: { (error) in
+                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
+                    self.setUpViewModel()
+                }
+            }).disposed(by: self.disposeBag)
         
-        output.quickSearchFound.asObservable()
+        output.quickSearchFound
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (searchFound) in
                 self.tableViewDataSource = searchFound
                 self.tableViewMarket.reloadData()
-            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: self.disposeBag)
+            }, onError: { (error) in
+                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
+                    self.setUpViewModel()
+                }
+            }).disposed(by: self.disposeBag)
     }
 }
 
