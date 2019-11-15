@@ -80,4 +80,4 @@ I’m *Thomas Martins* iOS developer , ping me there [ThomasMartins](https://
 
 
 ### 🚀 Release
-*The date of release should be around 15th December on the App Store, so be ready* 😎
+*The date of the release should be around the 15th December on the App Store, so be ready* 😎
