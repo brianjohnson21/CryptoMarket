@@ -20,7 +20,6 @@ final class Network {
     init() {
         let keys = CryptoMarketKeys()
         self.ApiMarketNewsKey = keys.marketNewsAPIClient
-        print("Showing api key -> \(self.ApiMarketNewsKey)")
     }
     
     public static let sharedInstance = Network()
@@ -37,7 +36,6 @@ final class Network {
     }
     
     public func performGetOnNews(stringUrl url: String) -> Observable<[MarketNews]>{
-        
         return RxAlamofire
             .json(.get, url.concat(string: self.ApiMarketNewsKey))
             .retry(2)

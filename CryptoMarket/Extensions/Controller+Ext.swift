@@ -20,4 +20,28 @@ extension UIViewController{
         }
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func handleError(error: Error, message: String) {
+        let title = "An error occured"
+        let message = message
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+     func handleErrorOnRetry(error: Error, message: String, retry: @escaping() -> ()) {
+        let title = "An error occured"
+        let message = message
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: { (_) in
+            retry()
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
+

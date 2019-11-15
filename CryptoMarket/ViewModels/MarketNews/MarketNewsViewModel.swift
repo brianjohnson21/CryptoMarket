@@ -15,15 +15,13 @@ public final class MarketNewsViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isLoading = PublishSubject<Bool>()
     
-    //todo : Observable -> Driver
     struct Input {
-        let loaderTrigger: Observable<Bool>
-        let retryTrigger: Observable<Void>
+        let loaderTrigger: Driver<Bool>
     }
     
     struct Output {
         let collectionViewDataSource: Observable<[MarketNews]>
-        let isLoading: Observable<Bool>
+        let isLoading: PublishSubject<Bool>
     }
     
     private func fetchMarketNewsData() -> Observable<[MarketNews]> {
@@ -38,11 +36,7 @@ public final class MarketNewsViewModel: ViewModelType {
             .throttle(2.5, scheduler: MainScheduler.asyncInstance)
             .flatMap { (_) -> Observable<[MarketNews]> in
                 return self.fetchMarketNewsData()
-        }
-        
-        input.retryTrigger.asObservable().subscribe(onNext: { (_) in
-            print("INSIDE RETRY CONNECTION")
-        }).disposed(by: self.disposeBag)
+            }
         
         let loadingOnNavigation = self.fetchMarketNewsData().do(onNext: { (market) in
             self.isLoading.onNext(true)

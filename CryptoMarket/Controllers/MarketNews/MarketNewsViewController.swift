@@ -17,7 +17,6 @@ class MarketNewsViewController: UIViewController {
     private var collectionViewDataSource: [MarketNews] = []
     private let collectionSpinner = UIActivityIndicatorView(style: .whiteLarge)
     private let refreshControl = UIRefreshControl()
-    private let handleRetryConnection = PublishSubject<Void>()
     
     //MARK: Outlets
     @IBOutlet private weak var collectionViewNews: UICollectionView!
@@ -46,22 +45,18 @@ class MarketNewsViewController: UIViewController {
         self.navigationItem.title = "Market news"
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
     }
-    
-    @objc private func retryConnection() {
-        self.handleRetryConnection.onNext(())
-    }
-    
+
     private func setupViewModel() {
-        
+            
         let input = MarketNewsViewModel.Input(
             loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged)
-            .asObservable()
+            .asDriver()
             .map { _ in !self.refreshControl.isRefreshing }
-                .filter { $0 == false }.asObservable(), retryTrigger: self.handleRetryConnection)
+                .filter { $0 == false })
         
         let output = self.viewModel.transform(input: input)
 
-        output.collectionViewDataSource.asObservable()
+        output.collectionViewDataSource
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (collectionViewDataSource) in
@@ -69,18 +64,20 @@ class MarketNewsViewController: UIViewController {
                 self.collectionViewNews.reloadData()
                 self.collectionViewNews.refreshControl?.endRefreshing()
             }, onError: { (error) in
-                self.createAlertOnError(error: error, actionTitles: ["Retry"], actions: [{_ in self.retryConnection()}])
-            }).disposed(by: self.disposeBag)
-        
-        output.isLoading.asObservable()
-        .subscribeOn(MainScheduler.asyncInstance)
-        .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { (isLoading) in
-            self.collectionViewNews.isHidden = isLoading
-            self.collectionSpinner.isHidden = !isLoading
-            isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
+                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageNews) {
+                    self.setupViewModel()
+            }
         }).disposed(by: self.disposeBag)
-
+  
+        output.isLoading
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (isLoading) in
+                self.collectionViewNews.isHidden = isLoading
+                self.collectionSpinner.isHidden = !isLoading
+                isLoading ? self.collectionSpinner.startAnimating() : self.collectionSpinner.stopAnimating()
+            }).disposed(by: self.disposeBag)
     }
 }
 
