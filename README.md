@@ -8,7 +8,8 @@ For now, it is still a **BETA!**, not all bugs have been found yet (please repor
 ### 👀 Usage
 
 This project uses Cocoapods to manage the decencies. If you want to run the project, your first need to install the pods by doing pod install.
- An API key is required and you can add your own **newsapi** key by using [cocoapods keys](https://github.com/orta/cocoapods-keys). 
+An API key is required and you can add your own **newsapi** key by using [cocoapods keys](https://github.com/orta/cocoapods-keys). 
+
 First install it by doing `gem install cocoapods-keys` and then add your keys and like this:
 
 <pre>$ pod keys set MarketNewsAPIClient YOUR_API_KEY </pre>
