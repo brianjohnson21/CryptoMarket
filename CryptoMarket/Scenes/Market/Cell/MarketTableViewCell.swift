@@ -9,7 +9,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import FontAwesome_swift
 
 class MarketTableViewCell: UITableViewCell {
 

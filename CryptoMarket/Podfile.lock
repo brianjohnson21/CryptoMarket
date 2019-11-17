@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.9.0)
-  - FontAwesome.swift (1.8.2)
   - Hero (1.4.0)
   - Keys (1.0.1)
   - ObjectMapper (3.5.1)
@@ -18,7 +17,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - FontAwesome.swift
   - Hero
   - Keys (from `Pods/CocoaPodsKeys`)
   - ObjectMapper
@@ -30,7 +28,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - FontAwesome.swift
     - Hero
     - ObjectMapper
     - RxAlamofire
@@ -44,7 +41,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
-  FontAwesome.swift: 7938d6a03113ff3f39001bde7f50be8a0903d605
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
@@ -53,6 +49,6 @@ SPEC CHECKSUMS:
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 3cc2611f4625d40cfab8d2688715cc79c83b850b
+PODFILE CHECKSUM: 5955851d2c5a4be9cbb2b749d29ad53262aa6190
 
 COCOAPODS: 1.8.4

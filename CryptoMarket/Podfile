@@ -12,7 +12,6 @@ target 'CryptoMarket' do
    pod 'Alamofire'
    pod 'RxAlamofire'
    pod 'ObjectMapper'
-   pod 'FontAwesome.swift'
    pod 'Hero'
 
    plugin 'cocoapods-keys', {

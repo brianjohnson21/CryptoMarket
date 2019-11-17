@@ -20,7 +20,6 @@
 		1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E719D71236220060087F7B3 /* UIAlert+Ext.swift */; };
 		1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */; };
 		1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E839657233AB58000597E34 /* MarketNews.storyboard */; };
-		1E940331232D3217004680D2 /* fontAwesomeIconUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E940330232D3217004680D2 /* fontAwesomeIconUIBarItem.swift */; };
 		1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E940334232D3C3C004680D2 /* fa-brands-400.ttf */; };
 		1E940337232D3C3C004680D2 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E940335232D3C3C004680D2 /* fa-regular-400.ttf */; };
 		1EBAF3182340FE390066F04A /* MarketNewsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBAF3172340FE390066F04A /* MarketNewsEntity.swift */; };
@@ -83,7 +82,6 @@
 		1E719D71236220060087F7B3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
 		1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewCellViewModel.swift; sourceTree = "<group>"; };
 		1E839657233AB58000597E34 /* MarketNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketNews.storyboard; sourceTree = "<group>"; };
-		1E940330232D3217004680D2 /* fontAwesomeIconUIBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fontAwesomeIconUIBarItem.swift; sourceTree = "<group>"; };
 		1E940334232D3C3C004680D2 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		1E940335232D3C3C004680D2 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
 		1EBAF3172340FE390066F04A /* MarketNewsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsEntity.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 		1E6AB78323230D3B0006AA78 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1E940330232D3217004680D2 /* fontAwesomeIconUIBarItem.swift */,
 				1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */,
 				E9D57029232A6502009A5031 /* String+Ext.swift */,
 				E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */,
@@ -648,7 +645,6 @@
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
 				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,
 				E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */,
-				1E940331232D3217004680D2 /* fontAwesomeIconUIBarItem.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,

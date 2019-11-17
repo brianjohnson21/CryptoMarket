@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCj-ta-gLD">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +58,7 @@
         <scene sceneID="vMS-SH-4oQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dfd-wz-cgD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Market" id="dpy-Ya-Hbx" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Market" image="bar-basic" selectedImage="bar-selected" id="dpy-Ya-Hbx">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-bar"/>
                         </userDefinedRuntimeAttributes>
@@ -119,7 +117,7 @@
         <scene sceneID="siQ-4r-aV7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7h-Ya-Mhg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" id="tbQ-3W-qyK" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="News" image="Iist-basic" selectedImage="list-selected" id="tbQ-3W-qyK">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-list-ul"/>
                         </userDefinedRuntimeAttributes>
@@ -142,7 +140,7 @@
         <scene sceneID="gIf-cz-Dt5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rqb-lN-nf5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="ArC-WB-PCF" customClass="fontAwesomeIconUIBarItem" customModule="CryptoMarket" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star-basic" selectedImage="star-selected" id="ArC-WB-PCF">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-star"/>
                         </userDefinedRuntimeAttributes>
@@ -163,8 +161,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Iist-basic" width="25" height="18"/>
+        <image name="bar-basic" width="25" height="18"/>
+        <image name="bar-selected" width="25" height="18"/>
+        <image name="list-selected" width="25" height="18"/>
+        <image name="star-basic" width="25" height="18"/>
+        <image name="star-selected" width="25" height="18"/>
         <namedColor name="MainColor">
-            <color red="0.10196078431372549" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
