@@ -16,10 +16,9 @@ extension String {
     func currencyFormatting() -> String {
         if let value = Double(self) {
             let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
             formatter.maximumFractionDigits = 2
             if let str = formatter.string(for: value) {
-                return str
+                return "$".concat(string: str)
             }
         }
         return ""
@@ -30,8 +29,9 @@ extension String {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
             if let str = formatter.string(for: value) {
-                return str.concat(string: " %")
+                return str.concat(string: "%")
             }
         }
         return ""

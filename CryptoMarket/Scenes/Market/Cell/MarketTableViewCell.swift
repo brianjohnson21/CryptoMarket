@@ -22,6 +22,8 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var logoLoader: UIActivityIndicatorView!
     @IBOutlet private weak var changePercent: UILabel!
+    @IBOutlet private weak var arrayImage: UIImageView!
+    @IBOutlet private weak var testImage: UIImageView!
     
     //MARK: Private Members
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
@@ -30,6 +32,13 @@ class MarketTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.imageLogo.image = nil
+        self.arrayImage.image = nil
     }
     
     public var title: String? {
@@ -61,7 +70,7 @@ class MarketTableViewCell: UITableViewCell {
     
     public var logoImage: UIImage? {
         set {
-            //self.imageLogo?.image = newValue
+            self.imageLogo?.image = newValue
         }
         get {
             return self.imageLogo?.image
@@ -77,24 +86,12 @@ class MarketTableViewCell: UITableViewCell {
         }
     }
     
-    public var percentage: String? {
-        set {
-            self.changePercent.text = "\(abs(Double(newValue ?? "") ?? 0))".percentageFormatting()
-            self.changePercent.textColor = Double(newValue ?? "") ?? 0 > 0 ? UIColor.green : UIColor.red
-            //self.imageLogo.image = UIImage.fontAwesomeIcon(code: "fa-sort-up", style: .brands, textColor: .green, size: CGSize(width: 20, height: 20))
-            //self.imageLogo.image = UIImage.fontAwesomeIcon(name: .sortUp, style: .solid, textColor: .green, size: CGSize(width: 20, height: 20))
-            self.imageLogo.image = UIImage.fontAwesomeIcon(name: .sortDown, style: .solid, textColor: .red, size: CGSize(width: 20, height: 20))
-            self.imageLogo.backgroundColor = UIColor.clear
-        }
-        get {
-            return self.changePercent.text
-        }
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    public func setPercentageOnMarket(percentage: String) {
+        self.changePercent.text = "\(abs(Double(percentage) ?? 0))".percentageFormatting()
+        let currentValue = Double(percentage) ?? 0
         
-        self.imageLogo.image = nil
+        self.changePercent.textColor = currentValue > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")
+        self.arrayImage.image = currentValue > 0 ? UIImage(named: "sort-up-solid") : UIImage(named: "sort-down-solid")
     }
     
     public func loadImageOnCell(name: String) {

@@ -142,7 +142,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
-            cell.percentage = tableViewDataSource[indexPath.row].changePercent24Hr
+            cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
             return cell
         }
         return UITableViewCell()
