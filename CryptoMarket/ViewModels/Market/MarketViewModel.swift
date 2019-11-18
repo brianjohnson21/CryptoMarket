@@ -17,13 +17,13 @@ public final class MarketViewModel: ViewModelType {
     
     struct Input {
         let loaderTrigger: Driver<Bool>
-        //let quickSearchText: Driver<String?>
+        let quickSearchText: Driver<String?>
     }
     
     struct Output {
         let tableViewDataSource: Observable<[Market]>
         let isLoading: Observable<Bool>
-        //let quickSearchFound: Observable<[Market]>
+        let quickSearchFound: Observable<[Market]>
     }
     
     private func fetchMarketData() -> Observable<[Market]> {
@@ -45,9 +45,10 @@ public final class MarketViewModel: ViewModelType {
             .observeOn(MainScheduler.asyncInstance)
             .filter { $0?.isEmpty == false }
             .debounce(1, scheduler: MainScheduler.asyncInstance)
-            .flatMapLatest({ (queryText) -> Observable<[Market]> in
+            .do(onNext: { (_) in
+                self.isLoading.onNext(true)
+            }).flatMapLatest({ (queryText) -> Observable<[Market]> in
                 guard let textSearch = queryText else { return Observable.just([])}
-                
                 return self.quickMarketSearch(query: textSearch)
             })
     }
@@ -63,13 +64,16 @@ public final class MarketViewModel: ViewModelType {
         })
         
         let tableDataSource = self.fetchMarketData().asObservable()
-//        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
-//
         
-        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource)//, quickSearchFound)
+        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
+
+        
+        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource, quickSearchFound).do(onNext: { (_) in
+            self.isLoading.onNext(false)
+        })
         
         return Output(tableViewDataSource: tableViewDataSource,
-                      isLoading: self.isLoading.asObservable())
-                      //quickSearchFound: quickSearchFound)
+                      isLoading: self.isLoading.asObservable(),
+                      quickSearchFound: quickSearchFound)
     }
 }

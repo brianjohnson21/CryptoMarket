@@ -17,6 +17,7 @@ extension String {
         if let value = Double(self) {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
             if let str = formatter.string(for: value) {
                 return "$".concat(string: str)
             }

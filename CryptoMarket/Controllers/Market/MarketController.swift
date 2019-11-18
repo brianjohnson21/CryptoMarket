@@ -88,14 +88,12 @@ class MarketController: UIViewController {
         let searchController = UISearchController()
         searchController.searchBar.tintColor = .white
         searchController.searchBar.barTintColor = .white
+        searchController.searchBar.keyboardAppearance = .dark
         
+        searchController.searchBar.showsBookmarkButton = false
         let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
-        
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
-
-
-        
         self.navigationItem.searchController = searchController
     }
     
@@ -112,8 +110,8 @@ class MarketController: UIViewController {
             self.refreshControl.rx.controlEvent(.valueChanged)
             .asDriver()
             .map { _ in !self.refreshControl.isRefreshing }
-            .filter{ $0 == false })
-//            quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
+            .filter{ $0 == false },
+            quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
         
         let output = self.viewModel.transform(input: input)
         
