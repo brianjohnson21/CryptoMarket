@@ -34,8 +34,7 @@ public final class MarketCellViewModel: ViewModelType {
         .observeOn(MainScheduler.instance)
         .do(onNext: { (image) in
             self.isLogoLoading.onNext(true)
-        })
-        .flatMapLatest({ (imageName) -> Observable<UIImage?> in
+        }).flatMapLatest({ (imageName) -> Observable<UIImage?> in
             return self.fetchImageFromString(pathImage: imageName)
         }).do(onNext: { (image) in
             self.isLogoLoading.onNext(false)

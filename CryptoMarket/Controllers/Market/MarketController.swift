@@ -38,7 +38,6 @@ class MarketController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.navigationController?.navigationBar.isHidden = true
         self.displayTableViewAnimation()
     }
     
@@ -50,25 +49,56 @@ class MarketController: UIViewController {
     }
     
     private func setupView() {
-        self.tableViewMarket.register(MarketTableViewCell.nib, forCellReuseIdentifier: MarketTableViewCell.identifier)
-        self.tableViewMarket.delegate = self
-        self.tableViewMarket.dataSource = self
+        self.navigationItem.title = "Market view"
         
+        self.registerTableView()
+  
         self.spinner.center = self.view.center
         self.spinner.isHidden = false
         self.view.addSubview(self.spinner)
         self.spinner.startAnimating()
+
+//        self.tableViewMarket.isHidden = true
+//        //self.tableViewMarket.addSubview(refreshControl)
+//        self.tableViewMarket.refreshControl = refreshControl
+//        self.tableViewMarket.keyboardDismissMode = .onDrag
         
-        self.tableViewMarket.isHidden = true
-        self.tableViewMarket.addSubview(refreshControl)
-        self.tableViewMarket.keyboardDismissMode = .onDrag
-        self.navigationItem.title = "Market view"
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         
-        let quicksearch = UISearchController()
-        quicksearch.searchBar.placeholder = "Find over 100 coins"
-        self.navigationItem.searchController = quicksearch
-        self.navigationItem.hidesSearchBarWhenScrolling = true
+        //let quicksearch = UISearchController()
+//        quicksearch.searchBar.placeholder = "Find over 100 coins"
+//        self.navigationItem.searchController = quicksearch
+//        self.navigationItem.hidesSearchBarWhenScrolling = true
+//
+        
+        self.setupNavbar()
+    }
+    
+    private func registerTableView() {
+        self.tableViewMarket.register(MarketTableViewCell.nib, forCellReuseIdentifier: MarketTableViewCell.identifier)
+        self.tableViewMarket.delegate = self
+        self.tableViewMarket.dataSource = self
+    }
+    
+    private func setupNavbar() {
+        navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = UIColor.init(named: "MainColor")
+        
+        self.refreshControl.tintColor = .white
+        
+        self.extendedLayoutIncludesOpaqueBars = true
+
+        self.tableViewMarket.refreshControl = self.refreshControl
+        self.tableViewMarket.backgroundColor = UIColor.init(named: "MainColor")
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        let searchController = UISearchController()
+        self.navigationItem.searchController = searchController
+
     }
     
     private func displayTableViewAnimation() {
@@ -84,8 +114,8 @@ class MarketController: UIViewController {
             self.refreshControl.rx.controlEvent(.valueChanged)
             .asDriver()
             .map { _ in !self.refreshControl.isRefreshing }
-            .filter{ $0 == false },
-            quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
+            .filter{ $0 == false })
+//            quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
         
         let output = self.viewModel.transform(input: input)
         
@@ -102,26 +132,25 @@ class MarketController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (tableViewDataSource) in
                 self.tableViewDataSource = tableViewDataSource
-                self.tableViewMarket.reloadData()
-                self.tableViewMarket.isHidden = false
                 self.refreshControl.endRefreshing()
+                self.tableViewMarket.reloadData()
             }, onError: { (error) in
                 self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
                     self.setUpViewModel()
                 }
             }).disposed(by: self.disposeBag)
         
-        output.quickSearchFound
-            .observeOn(MainScheduler.instance)
-            .subscribeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { (searchFound) in
-                self.tableViewDataSource = searchFound
-                self.tableViewMarket.reloadData()
-            }, onError: { (error) in
-                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
-                    self.setUpViewModel()
-                }
-            }).disposed(by: self.disposeBag)
+//        output.quickSearchFound
+//            .observeOn(MainScheduler.instance)
+//            .subscribeOn(MainScheduler.asyncInstance)
+//            .subscribe(onNext: { (searchFound) in
+//                self.tableViewDataSource = searchFound
+//                self.tableViewMarket.reloadData()
+//            }, onError: { (error) in
+//                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
+//                    self.setUpViewModel()
+//                }
+//            }).disposed(by: self.disposeBag)
     }
 }
 

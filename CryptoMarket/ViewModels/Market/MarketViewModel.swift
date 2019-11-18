@@ -17,13 +17,13 @@ public final class MarketViewModel: ViewModelType {
     
     struct Input {
         let loaderTrigger: Driver<Bool>
-        let quickSearchText: Driver<String?>
+        //let quickSearchText: Driver<String?>
     }
     
     struct Output {
         let tableViewDataSource: Observable<[Market]>
         let isLoading: Observable<Bool>
-        let quickSearchFound: Observable<[Market]>
+        //let quickSearchFound: Observable<[Market]>
     }
     
     private func fetchMarketData() -> Observable<[Market]> {
@@ -63,12 +63,13 @@ public final class MarketViewModel: ViewModelType {
         })
         
         let tableDataSource = self.fetchMarketData().asObservable()
-        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
+//        let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
+//
         
-        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource, quickSearchFound)
+        let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource)//, quickSearchFound)
         
         return Output(tableViewDataSource: tableViewDataSource,
-                      isLoading: self.isLoading.asObservable(),
-                      quickSearchFound: quickSearchFound)
+                      isLoading: self.isLoading.asObservable())
+                      //quickSearchFound: quickSearchFound)
     }
 }

@@ -88,10 +88,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sort-down-solid" translatesAutoresizingMaskIntoConstraints="NO" id="jK2-Z3-kfc">
-                                        <rect key="frame" x="48.5" y="5" width="8" height="8"/>
+                                        <rect key="frame" x="47.5" y="6.5" width="5" height="5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="8" id="dft-Jw-kZl"/>
-                                            <constraint firstAttribute="width" constant="8" id="tzE-U8-Mn4"/>
+                                            <constraint firstAttribute="height" constant="5" id="dft-Jw-kZl"/>
+                                            <constraint firstAttribute="width" constant="5" id="tzE-U8-Mn4"/>
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                     </imageView>
@@ -101,7 +101,7 @@
                                     <constraint firstItem="jK2-Z3-kfc" firstAttribute="centerY" secondItem="N0V-Ci-L8q" secondAttribute="centerY" id="If0-5h-bje"/>
                                     <constraint firstItem="N0V-Ci-L8q" firstAttribute="centerY" secondItem="qjW-Ac-9w0" secondAttribute="centerY" id="Vli-mh-d1y"/>
                                     <constraint firstAttribute="trailing" secondItem="N0V-Ci-L8q" secondAttribute="trailing" id="WxX-Sa-bEP"/>
-                                    <constraint firstItem="N0V-Ci-L8q" firstAttribute="leading" secondItem="jK2-Z3-kfc" secondAttribute="trailing" constant="2" id="i5d-OC-TYb"/>
+                                    <constraint firstItem="N0V-Ci-L8q" firstAttribute="leading" secondItem="jK2-Z3-kfc" secondAttribute="trailing" constant="6" id="i5d-OC-TYb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -141,7 +141,7 @@
     <resources>
         <image name="sort-down-solid" width="288" height="167"/>
         <namedColor name="MainColor">
-            <color red="0.10196078431372549" green="0.18431372549019609" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10199999809265137" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
