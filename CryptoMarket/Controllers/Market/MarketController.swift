@@ -136,18 +136,6 @@ class MarketController: UIViewController {
                     self.setUpViewModel()
                 }
             }).disposed(by: self.disposeBag)
-        
-//        output.quickSearchFound
-//            .observeOn(MainScheduler.instance)
-//            .subscribeOn(MainScheduler.asyncInstance)
-//            .subscribe(onNext: { (searchFound) in
-//                self.tableViewDataSource = searchFound
-//                self.tableViewMarket.reloadData()
-//            }, onError: { (error) in
-//                self.handleErrorOnRetry(error: error, message: ErrorMessage.errorMessageMarket) {
-//                    self.setUpViewModel()
-//                }
-//            }).disposed(by: self.disposeBag)
     }
 }
 

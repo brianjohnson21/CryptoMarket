@@ -67,7 +67,6 @@ public final class MarketViewModel: ViewModelType {
         
         let quickSearchFound = self.quickSearchText(quickText: input.quickSearchText)
 
-        
         let tableViewDataSource = Observable.merge(tableDataSource, refreshDataSource, quickSearchFound).do(onNext: { (_) in
             self.isLoading.onNext(false)
         })
