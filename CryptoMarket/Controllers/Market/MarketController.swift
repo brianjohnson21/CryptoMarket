@@ -50,55 +50,53 @@ class MarketController: UIViewController {
     
     private func setupView() {
         self.navigationItem.title = "Market view"
-        
-        self.registerTableView()
-  
+        self.setupTableView()
+        self.setupSpinner()
+        self.setupNavbar()
+        self.setupSearchController()
+    }
+    
+    private func setupTableView() {
+        self.tableViewMarket.isHidden = true
+        self.tableViewMarket.register(MarketTableViewCell.nib, forCellReuseIdentifier: MarketTableViewCell.identifier)
+        self.tableViewMarket.delegate = self
+        self.tableViewMarket.dataSource = self
+        self.tableViewMarket.keyboardDismissMode = .onDrag
+    }
+    
+    private func setupSpinner() {
         self.spinner.center = self.view.center
         self.spinner.isHidden = false
         self.view.addSubview(self.spinner)
         self.spinner.startAnimating()
-
-//        self.tableViewMarket.isHidden = true
-//        //self.tableViewMarket.addSubview(refreshControl)
-//        self.tableViewMarket.refreshControl = refreshControl
-//        self.tableViewMarket.keyboardDismissMode = .onDrag
-        
-        
-        //let quicksearch = UISearchController()
-//        quicksearch.searchBar.placeholder = "Find over 100 coins"
-//        self.navigationItem.searchController = quicksearch
-//        self.navigationItem.hidesSearchBarWhenScrolling = true
-//
-        
-        self.setupNavbar()
-    }
-    
-    private func registerTableView() {
-        self.tableViewMarket.register(MarketTableViewCell.nib, forCellReuseIdentifier: MarketTableViewCell.identifier)
-        self.tableViewMarket.delegate = self
-        self.tableViewMarket.dataSource = self
     }
     
     private func setupNavbar() {
-        navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.backgroundColor = UIColor.init(named: "MainColor")
-        
         self.refreshControl.tintColor = .white
-        
         self.extendedLayoutIncludesOpaqueBars = true
-
         self.tableViewMarket.refreshControl = self.refreshControl
         self.tableViewMarket.backgroundColor = UIColor.init(named: "MainColor")
-        
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    private func setupSearchController() {
         let searchController = UISearchController()
-        self.navigationItem.searchController = searchController
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.barTintColor = .white
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
+        
+        UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
 
+
+        
+        self.navigationItem.searchController = searchController
     }
     
     private func displayTableViewAnimation() {
@@ -125,6 +123,7 @@ class MarketController: UIViewController {
             .subscribe(onNext: { (isLoading) in
                 self.spinner.isHidden = !isLoading
                 self.spinner.stopAnimating()
+                self.tableViewMarket.isHidden = isLoading
             }).disposed(by: self.disposeBag)
       
         output.tableViewDataSource
