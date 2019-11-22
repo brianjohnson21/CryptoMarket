@@ -34,7 +34,7 @@ public final class MarketViewModel: ViewModelType {
     
     private func quickMarketSearch(query: String) -> Observable<[Market]> {
         return self.fetchMarketData().map { (market) -> [Market] in
-            return market.filter { $0.name?.contains(query) ?? false}
+            return market.filter { $0.name?.lowercased().contains(query.lowercased()) ?? false}
         }
     }
     
