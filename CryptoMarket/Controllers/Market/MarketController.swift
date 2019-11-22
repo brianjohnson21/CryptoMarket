@@ -13,7 +13,7 @@ import RxSwift
 import RxGesture
 import Hero
 
-class MarketController: UIViewController {
+class MarketController: UIViewController, UISearchControllerDelegate{
         
     // private MARK: Members
     private let viewModel: MarketViewModel = MarketViewModel()
@@ -89,11 +89,14 @@ class MarketController: UIViewController {
         searchController.searchBar.tintColor = .white
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.keyboardAppearance = .dark
-        
-        searchController.searchBar.showsBookmarkButton = false
+                
         let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
-        UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
+
+        let textField = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        textField.defaultTextAttributes = attributes
+        textField.clearButtonMode = .never
+        textField.tintColor = UIColor.init(named: "SecondColor")
+        
         self.navigationItem.searchController = searchController
     }
     
@@ -157,6 +160,11 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
             cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
+            
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor.init(named: "SecondColor")
+            cell.selectedBackgroundView = bgColorView
+            
             return cell
         }
         return UITableViewCell()

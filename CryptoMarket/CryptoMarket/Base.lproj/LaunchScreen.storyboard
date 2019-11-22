@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,36 +17,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_cm" translatesAutoresizingMaskIntoConstraints="NO" id="K7U-2V-qMk">
-                                <rect key="frame" x="66.5" y="239" width="242" height="189"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="sPI-dP-Fmb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo-nobackground" translatesAutoresizingMaskIntoConstraints="NO" id="VJC-F1-XSe">
+                                <rect key="frame" x="152.5" y="293.5" width="70" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="242" id="CGc-DS-wQf"/>
-                                    <constraint firstAttribute="height" constant="189" id="fg1-d9-fg3"/>
+                                    <constraint firstAttribute="height" constant="80" id="oaC-wf-Zgr"/>
+                                    <constraint firstAttribute="width" constant="70" id="qLL-P1-QCv"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple to use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbA-zV-L4Y">
-                                <rect key="frame" x="85" y="626" width="204" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0 Beta" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vh-Mt-mI3">
+                                <rect key="frame" x="120" y="638" width="135.5" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" name="White"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple to use" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc6-GB-m0e">
-                                <rect key="frame" x="16" y="0.0" width="103.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Thomas Martins " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPi-pn-Vy7">
+                                <rect key="frame" x="69" y="383.5" width="237.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="White"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
-                            <constraint firstItem="wc6-GB-m0e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2Oa-Fi-TBS"/>
-                            <constraint firstItem="K7U-2V-qMk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GRe-JT-2gp"/>
-                            <constraint firstItem="K7U-2V-qMk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LUs-Ih-qXZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wc6-GB-m0e" secondAttribute="trailing" symbolic="YES" id="R3i-1c-d68"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VbA-zV-L4Y" secondAttribute="bottom" constant="20" id="eq2-8J-7I9"/>
-                            <constraint firstItem="wc6-GB-m0e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gfE-fn-9mg"/>
-                            <constraint firstItem="VbA-zV-L4Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="oO7-fI-m6A"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VbA-zV-L4Y" secondAttribute="trailing" constant="86" id="svF-KQ-6Vp"/>
+                            <constraint firstItem="sPI-dP-Fmb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0do-0J-IqI"/>
+                            <constraint firstAttribute="bottom" secondItem="sPI-dP-Fmb" secondAttribute="bottom" id="8Lq-CM-6c5"/>
+                            <constraint firstItem="JPi-pn-Vy7" firstAttribute="top" secondItem="VJC-F1-XSe" secondAttribute="bottom" constant="10" id="Crj-Lc-9Jh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sPI-dP-Fmb" secondAttribute="trailing" id="DEP-jk-w1x"/>
+                            <constraint firstItem="sPI-dP-Fmb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="FrZ-yd-WJn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Vh-Mt-mI3" secondAttribute="bottom" constant="8" id="Qlz-MF-zoL"/>
+                            <constraint firstItem="JPi-pn-Vy7" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VJK-IL-qLv"/>
+                            <constraint firstItem="1Vh-Mt-mI3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VqD-E0-QIJ"/>
+                            <constraint firstItem="VJC-F1-XSe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sue-Mc-5Xb"/>
+                            <constraint firstItem="VJC-F1-XSe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uEK-PO-ldT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,9 +61,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo_cm" width="500" height="500"/>
-        <namedColor name="MainColor">
-            <color red="0.10196078431372549" green="0.1803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="background" width="512" height="512"/>
+        <image name="mainLogo-nobackground" width="150" height="150"/>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
