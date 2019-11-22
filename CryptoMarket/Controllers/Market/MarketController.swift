@@ -82,6 +82,7 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.tableViewMarket.backgroundColor = UIColor.init(named: "MainColor")
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.hidesSearchBarWhenScrolling = true
+        self.navigationController?.navigationBar.barStyle = .black
     }
     
     private func setupSearchController() {
