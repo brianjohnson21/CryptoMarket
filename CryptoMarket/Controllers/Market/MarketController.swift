@@ -15,7 +15,7 @@ import Hero
 
 class MarketController: UIViewController, UISearchControllerDelegate{
         
-    // private MARK: Members
+    //MARK: Members
     private let viewModel: MarketViewModel = MarketViewModel()
     private let disposeBag = DisposeBag()
     private var tableViewDataSource: [Market] = []
@@ -62,6 +62,8 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.tableViewMarket.delegate = self
         self.tableViewMarket.dataSource = self
         self.tableViewMarket.keyboardDismissMode = .onDrag
+        self.refreshControl.tintColor = .white
+        self.tableViewMarket.refreshControl = self.refreshControl
     }
     
     private func setupSpinner() {
@@ -72,14 +74,18 @@ class MarketController: UIViewController, UISearchControllerDelegate{
     }
     
     private func setupNavbar() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.init(named: "MainColor")
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.compactAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.refreshControl.tintColor = .white
-        self.extendedLayoutIncludesOpaqueBars = true
-        self.tableViewMarket.refreshControl = self.refreshControl
-        self.tableViewMarket.backgroundColor = UIColor.init(named: "MainColor")
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.hidesSearchBarWhenScrolling = true
         self.navigationController?.navigationBar.barStyle = .black
@@ -174,6 +180,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Item selected -> \(tableViewDataSource[indexPath.row])")
         let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard")
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

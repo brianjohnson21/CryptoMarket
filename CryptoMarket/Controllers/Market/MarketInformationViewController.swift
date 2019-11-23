@@ -16,20 +16,8 @@ class MarketInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupNavBar()
+        self.navigationItem.title = "Showing "
     }
     
-    private func setupNavBar() {
-        self.navigationItem.title = "Inside Market"
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.isTranslucent = false
-        
-        
-        
-        print("** -> Inside setup Nav bar \(self.navigationController)")
-        
-    }
 
 }

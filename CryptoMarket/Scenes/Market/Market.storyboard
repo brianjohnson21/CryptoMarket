@@ -12,7 +12,7 @@
         <!--Title-->
         <scene sceneID="ciQ-fH-VBi">
             <objects>
-                <viewController storyboardIdentifier="MarketStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I0d-iY-wbj" customClass="MarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarketStoryboard" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I0d-iY-wbj" customClass="MarketController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAl-HG-24H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,21 +55,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Display Market View here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-gx-gOE">
-                                <rect key="frame" x="111" y="63" width="194" height="111"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Market View here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-gx-gOE">
+                                <rect key="frame" x="110" y="108" width="194" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hpy-gx-gOE" firstAttribute="top" secondItem="wa4-nv-nRn" secondAttribute="top" constant="20" id="MMW-6S-HIk"/>
+                            <constraint firstItem="wa4-nv-nRn" firstAttribute="trailing" secondItem="hpy-gx-gOE" secondAttribute="trailing" constant="110" id="uGO-f3-ihI"/>
+                            <constraint firstItem="hpy-gx-gOE" firstAttribute="leading" secondItem="wa4-nv-nRn" secondAttribute="leading" constant="110" id="v84-ub-XQg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wa4-nv-nRn"/>
                     </view>
+                    <navigationItem key="navigationItem" id="alz-fF-32U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsS-bD-TdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3894" y="-25"/>
+            <point key="canvasLocation" x="4802.898550724638" y="-25.446428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Kn-iW-YTo">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="ev1-cU-cJB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E2p-Nu-mTH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="MainColor"/>
+                        <color key="barTintColor" name="MainColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O7o-ho-KUv" kind="relationship" relationship="rootViewController" id="6rN-Ot-Vha"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X2e-pI-0tr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3892.753623188406" y="-25.446428571428569"/>
         </scene>
     </scenes>
     <resources>
@@ -77,4 +102,5 @@
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <color key="tintColor" name="White"/>
 </document>
