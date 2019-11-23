@@ -55,18 +55,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Market View here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-gx-gOE">
-                                <rect key="frame" x="110" y="108" width="194" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-ag-xJh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="sectionIndexBackgroundColor" name="MainColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hpy-gx-gOE" firstAttribute="top" secondItem="wa4-nv-nRn" secondAttribute="top" constant="20" id="MMW-6S-HIk"/>
-                            <constraint firstItem="wa4-nv-nRn" firstAttribute="trailing" secondItem="hpy-gx-gOE" secondAttribute="trailing" constant="110" id="uGO-f3-ihI"/>
-                            <constraint firstItem="hpy-gx-gOE" firstAttribute="leading" secondItem="wa4-nv-nRn" secondAttribute="leading" constant="110" id="v84-ub-XQg"/>
+                            <constraint firstItem="3bm-ag-xJh" firstAttribute="top" secondItem="wa4-nv-nRn" secondAttribute="top" id="0ah-8Z-Qm0"/>
+                            <constraint firstItem="3bm-ag-xJh" firstAttribute="trailing" secondItem="wa4-nv-nRn" secondAttribute="trailing" id="SoS-Zd-6jY"/>
+                            <constraint firstItem="3bm-ag-xJh" firstAttribute="bottom" secondItem="wa4-nv-nRn" secondAttribute="bottom" id="xcO-8x-hEg"/>
+                            <constraint firstItem="3bm-ag-xJh" firstAttribute="leading" secondItem="wa4-nv-nRn" secondAttribute="leading" id="zCV-lK-yoO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wa4-nv-nRn"/>
                     </view>

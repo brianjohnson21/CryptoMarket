@@ -23,7 +23,7 @@ class MarketController: UIViewController, UISearchControllerDelegate{
     private let refreshControl = UIRefreshControl()
     private let quickSearchTextChanged: PublishSubject<String> = PublishSubject<String>()
     
-    // MARK: Outlets
+    //MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
     @IBOutlet private weak var quickSearchBar: UISearchBar!
     
@@ -34,12 +34,6 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.setupView()
         self.setUpViewModel()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.displayTableViewAnimation()
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -49,7 +43,7 @@ class MarketController: UIViewController, UISearchControllerDelegate{
     }
     
     private func setupView() {
-        self.navigationItem.title = "Market view"
+        self.navigationItem.title = "Market"
         self.setupTableView()
         self.setupSpinner()
         self.setupNavbar()
@@ -178,10 +172,11 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Item selected -> \(tableViewDataSource[indexPath.row])")
-        let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard")
+        if let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard") as? MarketInformationViewController {
+            vc.setup(marketSelected: tableViewDataSource[indexPath.row])
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
