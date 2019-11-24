@@ -141,7 +141,7 @@
     <resources>
         <image name="sort-down-solid" width="288" height="167"/>
         <namedColor name="MainColor">
-            <color red="0.10199999809265137" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

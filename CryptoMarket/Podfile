@@ -13,6 +13,7 @@ target 'CryptoMarket' do
    pod 'RxAlamofire'
    pod 'ObjectMapper'
    pod 'Hero'
+   pod "SwiftChart"
 
    plugin 'cocoapods-keys', {
    	  :project => "CryptoMarket",
@@ -22,9 +23,7 @@ target 'CryptoMarket' do
   		    ]
 		 }
 
-
-
-  target 'CryptoMarketTests' do
+   target 'CryptoMarketTests' do
     inherit! :search_paths
     # Pods for testing
   end

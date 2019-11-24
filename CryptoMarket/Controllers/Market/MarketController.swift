@@ -13,6 +13,7 @@ import RxSwift
 import RxGesture
 import Hero
 
+//todo -> delegate
 class MarketController: UIViewController, UISearchControllerDelegate{
         
     //MARK: Members
@@ -33,6 +34,12 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         
         self.setupView()
         self.setUpViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.displayTableViewAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

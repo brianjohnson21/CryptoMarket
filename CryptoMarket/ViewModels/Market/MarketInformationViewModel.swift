@@ -17,6 +17,7 @@ public final class MarketInformationViewModel: ViewModelType {
     struct Input {}
     struct Output {
         let navigationTitle: String
+        let tableViewDataSource: Driver<[CellViewModelProtocol]>
     }
     
     init(marketSelected: Market) {
@@ -24,8 +25,25 @@ public final class MarketInformationViewModel: ViewModelType {
         self.market = marketSelected
     }
     
+    private func createChartCell() -> [CellViewModelProtocol] {
+        var tableViewData: [CellViewModelProtocol] = []
+        
+        tableViewData.append(ChartCell(title: "GRAPHIQUE", detail: "THE GRAPHIQUE SHOULD BE DISPLAYED HERE"))
+        return tableViewData
+    }
+    
+    private func createTableInformationCell() -> [CellViewModelProtocol] {
+        var tableViewData: [CellViewModelProtocol] = []
+        
+        tableViewData.append(InformationCell(title: "INFORMATIONS", detail: "INFORMATION SHOULD BE DISPLAYED HERE"))
+        return tableViewData
+    }
+    
     func transform(input: Input) -> Output {
         
-        return Output(navigationTitle: self.market.name ?? "Market Chart")
+        
+        let tableViewDataSource = self.createChartCell() + self.createTableInformationCell()
+        
+        return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource))
     }
 }

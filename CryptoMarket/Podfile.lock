@@ -14,6 +14,7 @@ PODS:
     - RxCocoa (~> 4.5)
     - RxSwift (~> 4.5)
   - RxSwift (4.5.0)
+  - SwiftChart (1.0.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxGesture
   - RxSwift (~> 4.0)
+  - SwiftChart
 
 SPEC REPOS:
   trunk:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - RxCocoa
     - RxGesture
     - RxSwift
+    - SwiftChart
 
 EXTERNAL SOURCES:
   Keys:
@@ -48,7 +51,8 @@ SPEC CHECKSUMS:
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
 
-PODFILE CHECKSUM: 5955851d2c5a4be9cbb2b749d29ad53262aa6190
+PODFILE CHECKSUM: 001e56cbeb0e1076c8d32f4294196e089bdde883
 
 COCOAPODS: 1.8.4
