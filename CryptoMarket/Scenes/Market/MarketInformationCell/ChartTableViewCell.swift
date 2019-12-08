@@ -9,11 +9,14 @@
 import UIKit
 import SwiftChart
 
-class ChartTableViewCell: UITableViewCell {
+import Charts
+
+class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
 
     @IBOutlet private weak var chartTitle: UILabel!
     @IBOutlet private weak var detailTitle: UILabel!
-    @IBOutlet private weak var chartView: Chart!
+    
+    @IBOutlet private weak var chartView: LineChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,25 +27,69 @@ class ChartTableViewCell: UITableViewCell {
     }
     
     public func setupChart() {
-        let data = [
-          (x: 0, y: 0),
-          (x: 3, y: 2.5),
-          (x: 4, y: 2),
-          (x: 5, y: 2.3),
-          (x: 7, y: 3),
-          (x: 8, y: 2.2),
-          (x: 9, y: 2.5)
-        ]
-        let series = ChartSeries(data: data)
-        series.area = true
+        
+        chartView.chartDescription?.enabled = false
+        chartView.dragEnabled = false
+        chartView.legend.enabled = false
+        
+        chartView.leftAxis.enabled = false
+        chartView.rightAxis.enabled = false
+        
+        chartView.xAxis.enabled = false
+        //chartView.backgroundColor = .white
 
-        // Use `xLabels` to add more labels, even if empty
-        chartView.xLabels = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+        chartView.animate(xAxisDuration: 1)
 
-        // Format the labels with a unit
-        chartView.xLabelsFormatter = { String(Int(round($1))) + "h" }
-
-        chartView.add(series)
+        self.setupChartViewData()
+    }
+    
+    private func getDataEntries() -> [ChartDataEntry] {
+        var val = [ChartDataEntry]()
+        val.append(ChartDataEntry(x: 1, y: 1000))
+        val.append(ChartDataEntry(x: 2, y: 6000))
+        val.append(ChartDataEntry(x: 3, y: 2000))
+        val.append(ChartDataEntry(x: 4, y: 7000))
+        val.append(ChartDataEntry(x: 5, y: 7500))
+        val.append(ChartDataEntry(x: 6, y: 8000))
+        val.append(ChartDataEntry(x: 7, y: 3000))
+        val.append(ChartDataEntry(x: 8, y: 3500))
+        val.append(ChartDataEntry(x: 9, y: 9500))
+        val.append(ChartDataEntry(x: 10, y: 10000))
+        val.append(ChartDataEntry(x: 11, y: 10500))
+        val.append(ChartDataEntry(x: 12, y: 11000))
+        val.append(ChartDataEntry(x: 13, y: 2000))
+        val.append(ChartDataEntry(x: 14, y: 12000))
+        val.append(ChartDataEntry(x: 15, y: 12500))
+        val.append(ChartDataEntry(x: 16, y: 13000))
+        
+        return val
+    }
+    
+    private func getGradientChartViewBackground() -> CGGradient {
+        let gradientColors = [UIColor.init(named: "Color-3")?.cgColor, UIColor.init(named: "Color")?.cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        
+        return gradient
+    }
+    
+    private func setupChartViewData() {
+        let chartViewData = LineChartDataSet(entries: self.getDataEntries(), label: "")
+        chartViewData.drawIconsEnabled = false
+        
+        chartViewData.setColor(UIColor.init(named: "Color-1") ?? .red)
+        
+        chartViewData.lineWidth = 2.0
+        chartViewData.circleRadius = 0.0
+        chartViewData.drawValuesEnabled = true
+        
+        chartViewData.fillAlpha = 1
+        chartViewData.fill = Fill(linearGradient: getGradientChartViewBackground(), angle: 90)
+        chartViewData.drawFilledEnabled = true
+        
+        chartViewData.valueTextColor = .white
+        
+        let setDataOnChart = LineChartData(dataSet: chartViewData)
+        self.chartView.data = setDataOnChart
     }
     
     public var title: String? {
