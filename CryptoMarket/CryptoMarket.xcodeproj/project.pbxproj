@@ -31,6 +31,7 @@
 		1EBF8A1B2336AF5600E79306 /* MarketFavorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EBF8A1A2336AF5600E79306 /* MarketFavorites.storyboard */; };
 		1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5C644237F433200EFCA40 /* ErrorMessage.swift */; };
 		1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5C646238010B600EFCA40 /* MarketInformationViewController.swift */; };
+		1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */; };
 		1EE00AB023898DF400AACB0D /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE00AAE23898DF400AACB0D /* InformationTableViewCell.swift */; };
 		1EE00AB123898DF400AACB0D /* InformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE00AAF23898DF400AACB0D /* InformationTableViewCell.xib */; };
 		1EE00AB32389965F00AACB0D /* MarketInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE00AB22389965F00AACB0D /* MarketInformation.swift */; };
@@ -101,6 +102,7 @@
 		1EBF8A1A2336AF5600E79306 /* MarketFavorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketFavorites.storyboard; sourceTree = "<group>"; };
 		1EC5C644237F433200EFCA40 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		1EC5C646238010B600EFCA40 /* MarketInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInformationViewController.swift; sourceTree = "<group>"; };
+		1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		1EE00AAE23898DF400AACB0D /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
 		1EE00AAF23898DF400AACB0D /* InformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationTableViewCell.xib; sourceTree = "<group>"; };
 		1EE00AB22389965F00AACB0D /* MarketInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInformation.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				E9D57029232A6502009A5031 /* String+Ext.swift */,
 				E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */,
 				1E719D71236220060087F7B3 /* UIAlert+Ext.swift */,
+				1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
+				1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */,
 				1E3DA11D238AFCA700B87505 /* InformationCellProtocol.swift in Sources */,
 				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,
 				E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */,

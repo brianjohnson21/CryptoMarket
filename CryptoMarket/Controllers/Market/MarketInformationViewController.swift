@@ -67,9 +67,15 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     func createChartCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.row] as? ChartCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as? ChartTableViewCell {
-                cell.title = item.title
-                cell.detail = item.detail
+                //cell.price = item.title
+                //cell.percentage = item.detail
+                
+                cell.price = "$9000.09"
+                cell.percentage = "1.59%"
+                
                 cell.setupChart()
+                
+                cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
                 return cell
             }
         }
@@ -81,6 +87,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
                 cell.title = item.title
                 cell.detail = item.detail
+                cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
                 return cell
             }
         }
@@ -97,7 +104,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         case .Detail:
             return 50.0
         case .Chart:
-            return 300.0
+            return 320.0
         }
     }
     

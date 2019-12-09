@@ -168,10 +168,8 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
             cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
-            
-            let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor.init(named: "SecondColor")
-            cell.selectedBackgroundView = bgColorView
+    
+            cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             
             return cell
         }

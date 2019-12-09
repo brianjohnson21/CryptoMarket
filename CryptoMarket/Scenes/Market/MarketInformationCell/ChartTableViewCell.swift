@@ -12,22 +12,39 @@ import SwiftChart
 import Charts
 
 class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
-
-    @IBOutlet private weak var chartTitle: UILabel!
-    @IBOutlet private weak var detailTitle: UILabel!
     
     @IBOutlet private weak var chartView: LineChartView!
+    @IBOutlet private weak var labelPrice: UILabel!
+    @IBOutlet private weak var labelPercentage: UILabel!
+    @IBOutlet private weak var imageSort: UIImageView!
+    @IBOutlet weak var firstButton: UIButton!
+    
+    private var tagButtonSelected = 1
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        (self.viewWithTag(tagButtonSelected) as? UIButton)?.isSelected = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    public func setupChart() {
+    @IBAction private func legendOneTapped(_ sender: UIButton) {
         
+        let oldSender = (self.viewWithTag(tagButtonSelected) as? UIButton)
+        oldSender?.isSelected = false
+        
+        
+        self.tagButtonSelected = sender.tag
+        sender.isSelected = true
+        
+        
+    }
+    
+    public func setupChart() {
+
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = false
         chartView.legend.enabled = false
@@ -36,8 +53,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         chartView.rightAxis.enabled = false
         
         chartView.xAxis.enabled = false
-        //chartView.backgroundColor = .white
-
         chartView.animate(xAxisDuration: 1)
 
         self.setupChartViewData()
@@ -61,7 +76,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         val.append(ChartDataEntry(x: 14, y: 12000))
         val.append(ChartDataEntry(x: 15, y: 12500))
         val.append(ChartDataEntry(x: 16, y: 13000))
-        
         return val
     }
     
@@ -92,21 +106,21 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.chartView.data = setDataOnChart
     }
     
-    public var title: String? {
+    public var price: String? {
         get {
-            return self.chartTitle.text
+            return self.labelPrice.text
         }
         set {
-            self.chartTitle.text = newValue
+            self.labelPrice.text = newValue
         }
     }
     
-    public var detail: String? {
+    public var percentage: String? {
         get {
-            return self.detailTitle.text
+            return self.labelPercentage.text
         }
         set {
-            self.detailTitle.text = newValue
+            self.labelPercentage.text = newValue
         }
     }
     
