@@ -87,7 +87,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
                 cell.title = item.title
                 cell.detail = item.detail
-                cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
+                
                 return cell
             }
         }
@@ -102,7 +102,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         let currentCell = tableViewDataSource[indexPath.row]
         switch  currentCell.type{
         case .Detail:
-            return 50.0
+            return 30.0
         case .Chart:
             return 320.0
         }

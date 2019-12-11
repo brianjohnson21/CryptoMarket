@@ -35,7 +35,13 @@ public final class MarketInformationViewModel: ViewModelType {
     private func createTableInformationCell() -> [CellViewModelProtocol] {
         var tableViewData: [CellViewModelProtocol] = []
         
-        tableViewData.append(InformationCell(title: "INFORMATIONS", detail: "INFORMATION SHOULD BE DISPLAYED HERE"))
+        tableViewData.append(InformationCell(title: "Rank", detail: "1"))
+        tableViewData.append(InformationCell(title: "Market Cap", detail: "$131,462,930,153"))
+        tableViewData.append(InformationCell(title: "VWAP (24H)", detail: "$7,268"))
+        tableViewData.append(InformationCell(title: "Supply", detail: "18,095,525"))
+        tableViewData.append(InformationCell(title: "Volume (24Hr)", detail: "$3,317,861,099"))
+        tableViewData.append(InformationCell(title: "Change (24Hr)", detail: "1.38%"))
+        
         return tableViewData
     }
     
