@@ -24,23 +24,37 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        (self.viewWithTag(tagButtonSelected) as? UIButton)?.isSelected = true
+        (self.viewWithTag(self.tagButtonSelected) as? UIButton)?.isSelected = true
+        self.addHighlight(buttonTag: self.tagButtonSelected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    private func addHighlight(buttonTag tag: Int) {
+        guard let button = (self.viewWithTag(tag) as? UIButton) else { return }
+        
+        button.backgroundColor = UIColor.init(named: "Color-1")
+        button.layer.cornerRadius = 4.0
+    }
+    
+    private func removeHighlight(buttonTag tag: Int) {
+        guard let button = (self.viewWithTag(tag) as? UIButton) else { return }
+        
+        button.backgroundColor = UIColor.init(named: "MainColor")
+        button.layer.cornerRadius = 0.0
+    }
+    
     @IBAction private func legendOneTapped(_ sender: UIButton) {
         
         let oldSender = (self.viewWithTag(tagButtonSelected) as? UIButton)
         oldSender?.isSelected = false
-        
+        self.removeHighlight(buttonTag: self.tagButtonSelected)
         
         self.tagButtonSelected = sender.tag
+        self.addHighlight(buttonTag: sender.tag)
         sender.isSelected = true
-        
-        
     }
     
     public func setupChart() {
@@ -74,7 +88,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         val.append(ChartDataEntry(x: 12, y: 11000))
         val.append(ChartDataEntry(x: 13, y: 2000))
         val.append(ChartDataEntry(x: 14, y: 12000))
-        val.append(ChartDataEntry(x: 15, y: 12500))
+        val.append(ChartDataEntry(x: 15, y: 30000))
         val.append(ChartDataEntry(x: 16, y: 13000))
         return val
     }

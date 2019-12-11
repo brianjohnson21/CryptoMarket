@@ -16,13 +16,12 @@ import Keys
 
 final class Network {
     private let ApiMarketNewsKey: String
+    public static let sharedInstance = Network()
     
-    init() {
+    private init() {
         let keys = CryptoMarketKeys()
         self.ApiMarketNewsKey = keys.marketNewsAPIClient
     }
-    
-    public static let sharedInstance = Network()
     
     //MARK: todo switch to single ->
     public func performGetOnMarket(stringUrl url: String) -> Observable<[Market]> {

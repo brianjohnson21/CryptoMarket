@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,14 +53,13 @@
                             </stackView>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2ET-RA-U96">
-                        <rect key="frame" x="8" y="288" width="304" height="25"/>
+                    <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2ET-RA-U96">
+                        <rect key="frame" x="16" y="288" width="288" height="25"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Os-2Vt">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                <color key="backgroundColor" name="Color-1"/>
+                                <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="cLe-Q2-CiN"/>
+                                    <constraint firstAttribute="width" constant="32" id="cLe-Q2-CiN"/>
                                 </constraints>
                                 <state key="normal" title="1D">
                                     <color key="titleColor" name="Color-1"/>
@@ -72,8 +71,11 @@
                                     <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2vP-0T-CEs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zql-G2-iUR">
-                                <rect key="frame" x="65" y="0.0" width="30" height="25"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-mZ-YtC">
+                                <rect key="frame" x="64" y="0.0" width="32" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="BJY-kP-hUl"/>
+                                </constraints>
                                 <state key="normal" title="1W">
                                     <color key="titleColor" name="Color-1"/>
                                 </state>
@@ -81,11 +83,14 @@
                                     <color key="titleColor" name="White"/>
                                 </state>
                                 <connections>
-                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6RH-fY-qi3"/>
+                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uPZ-po-0bG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-7X-2Uf">
-                                <rect key="frame" x="134.5" y="0.0" width="30" height="25"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yw-BZ-rB3">
+                                <rect key="frame" x="128" y="0.0" width="32" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="LSh-xx-MDf"/>
+                                </constraints>
                                 <state key="normal" title="1M">
                                     <color key="titleColor" name="Color-1"/>
                                 </state>
@@ -93,11 +98,14 @@
                                     <color key="titleColor" name="White"/>
                                 </state>
                                 <connections>
-                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qQW-wL-QL2"/>
+                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oVm-x1-Gzr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wun-pq-sbN">
-                                <rect key="frame" x="204.5" y="0.0" width="30" height="25"/>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPb-0v-I55">
+                                <rect key="frame" x="192" y="0.0" width="32" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="cgN-D6-ONr"/>
+                                </constraints>
                                 <state key="normal" title="1Y">
                                     <color key="titleColor" name="Color-1"/>
                                 </state>
@@ -105,19 +113,22 @@
                                     <color key="titleColor" name="White"/>
                                 </state>
                                 <connections>
-                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Dtr-PE-ai4"/>
+                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ls0-wN-AL3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hR-bT-ygP">
-                                <rect key="frame" x="274" y="0.0" width="30" height="25"/>
-                                <state key="normal" title="ALL">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeE-Bm-UOY">
+                                <rect key="frame" x="256" y="0.0" width="32" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Xxf-ab-wj1"/>
+                                </constraints>
+                                <state key="normal" title="All">
                                     <color key="titleColor" name="Color-1"/>
                                 </state>
                                 <state key="selected">
                                     <color key="titleColor" name="White"/>
                                 </state>
                                 <connections>
-                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="blq-WS-rHJ"/>
+                                    <action selector="legendOneTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vO0-vD-QmW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -130,9 +141,9 @@
                     <constraint firstAttribute="trailing" secondItem="ybL-Qr-KcJ" secondAttribute="trailing" id="6E2-4H-npA"/>
                     <constraint firstItem="ybL-Qr-KcJ" firstAttribute="top" secondItem="GpX-sN-qqn" secondAttribute="bottom" id="J9F-D2-afZ"/>
                     <constraint firstAttribute="bottom" secondItem="2ET-RA-U96" secondAttribute="bottom" constant="6" id="KBC-Xo-gM7"/>
-                    <constraint firstItem="2ET-RA-U96" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="NPa-sO-aV4"/>
+                    <constraint firstItem="2ET-RA-U96" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NPa-sO-aV4"/>
                     <constraint firstItem="2ET-RA-U96" firstAttribute="top" secondItem="ybL-Qr-KcJ" secondAttribute="bottom" id="V3V-0i-Z5x"/>
-                    <constraint firstAttribute="trailing" secondItem="2ET-RA-U96" secondAttribute="trailing" constant="8" id="XjY-1D-Wmh"/>
+                    <constraint firstAttribute="trailing" secondItem="2ET-RA-U96" secondAttribute="trailing" constant="16" id="XjY-1D-Wmh"/>
                     <constraint firstItem="ybL-Qr-KcJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aQD-dc-FAz"/>
                     <constraint firstItem="GpX-sN-qqn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sIM-79-iun"/>
                     <constraint firstItem="GpX-sN-qqn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="z2j-GW-HyN"/>
@@ -147,7 +158,7 @@
                 <outlet property="labelPercentage" destination="EJ8-2Z-IY3" id="Zci-gU-IFw"/>
                 <outlet property="labelPrice" destination="IGL-wS-xkP" id="Uz3-fV-Iou"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="88.727678571428569"/>
+            <point key="canvasLocation" x="-393" y="94"/>
         </tableViewCell>
     </objects>
     <resources>
