@@ -74,9 +74,10 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         
         if tableViewDataSource[section].type == .Detail {
             if let cellHeader = tableView.dequeueReusableCell(withIdentifier: HeaderInformationTableViewCell.identifier) as? HeaderInformationTableViewCell {
-                let titleSection = tableViewDataSource[section]
                 
+                let titleSection = tableViewDataSource[section]
                 cellHeader.title = titleSection.title
+                
                 return cellHeader
             }
         }
@@ -84,7 +85,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return tableViewDataSource[section].type == .Detail ? 50.0 : 0.0
+        return tableViewDataSource[section].type == .Detail ? 30.0 : 0.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,7 +98,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
                 
                 //cell.price = item.title
                 //cell.percentage = item.detail
-                
+                print(item)
                 cell.price = "$9000.09"
                 cell.percentage = "1.59%"
                 
@@ -112,18 +113,16 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     
     func createMarketInformationsCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.section] as? InformationCell {
-            if indexPath.row > 0 {
-                
-                if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
-                    cell.title = item.title
-                    cell.detail = item.detail
-                    cell.title = item.items[indexPath.row - 1]
-                    return cell
-                }
+            if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
+                cell.detail = item.items[indexPath.row]
+                cell.title = item.items[indexPath.row]
+                return cell
             }
         }
         return UITableViewCell()
     }
+    
+    
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentCell = tableViewDataSource[indexPath.section]
