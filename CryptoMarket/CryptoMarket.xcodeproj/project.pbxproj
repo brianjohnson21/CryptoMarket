@@ -21,6 +21,8 @@
 		1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E51B01E23219CC20087E38C /* LaunchScreen.storyboard */; };
 		1E51B02B23219CC20087E38C /* CryptoMarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B02A23219CC20087E38C /* CryptoMarketTests.swift */; };
 		1E51B03623219CC20087E38C /* CryptoMarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B03523219CC20087E38C /* CryptoMarketUITests.swift */; };
+		1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */; };
+		1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */; };
 		1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E719D71236220060087F7B3 /* UIAlert+Ext.swift */; };
 		1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */; };
 		1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E839657233AB58000597E34 /* MarketNews.storyboard */; };
@@ -92,6 +94,8 @@
 		1E51B03123219CC20087E38C /* CryptoMarketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoMarketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B03523219CC20087E38C /* CryptoMarketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketUITests.swift; sourceTree = "<group>"; };
 		1E51B03723219CC20087E38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInformationTableViewCell.swift; sourceTree = "<group>"; };
+		1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderInformationTableViewCell.xib; sourceTree = "<group>"; };
 		1E719D71236220060087F7B3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
 		1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewCellViewModel.swift; sourceTree = "<group>"; };
 		1E839657233AB58000597E34 /* MarketNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketNews.storyboard; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				1EE00AAF23898DF400AACB0D /* InformationTableViewCell.xib */,
 				1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */,
 				1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */,
+				1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */,
+				1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */,
 			);
 			path = MarketInformationCell;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				1EE00AB123898DF400AACB0D /* InformationTableViewCell.xib in Resources */,
 				E925B062232FA34900AD8D10 /* Market.storyboard in Resources */,
 				1E3DA11B238AD43A00B87505 /* ChartTableViewCell.xib in Resources */,
+				1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */,
 				E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */,
 				1EBF8A1B2336AF5600E79306 /* MarketFavorites.storyboard in Resources */,
 				1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */,
@@ -685,6 +692,7 @@
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
+				1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */,
 				1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */,
 				1E3DA11D238AFCA700B87505 /* InformationCellProtocol.swift in Sources */,
 				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,

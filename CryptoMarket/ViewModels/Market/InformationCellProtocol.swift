@@ -36,12 +36,18 @@ internal final class ChartCell: CellViewModelProtocol {
 internal final class InformationCell: CellViewModelProtocol {
     var title: String
     var detail: String
+    var isOpen: Bool
+    var items: [String]
+    
     var type: CellViewModelType {
         return .Detail
     }
-    var rowCount: Int { return 1}
-    init(title: String, detail: String) {
+    var rowCount: Int { return items.count }
+    
+    init(title: String, detail: String, items: [String], isOpen: Bool) {
         self.title = title
+        self.isOpen = isOpen
+        self.items = items
         self.detail = detail
     }
 }

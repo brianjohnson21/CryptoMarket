@@ -35,6 +35,7 @@ class MarketInformationViewController: UIViewController {
         //todo change title tableview
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
         self.tableViewInformation.register(ChartTableViewCell.nib, forCellReuseIdentifier: ChartTableViewCell.identifier)
+        self.tableViewInformation.register(HeaderInformationTableViewCell.nib, forCellReuseIdentifier: HeaderInformationTableViewCell.identifier)
         
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
@@ -63,10 +64,37 @@ class MarketInformationViewController: UIViewController {
 }
 
 extension MarketInformationViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let item = tableViewDataSource[section] as? InformationCell, item.isOpen == true else { return 1 }
+        
+        return item.items.count
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if tableViewDataSource[section].type == .Detail {
+            if let cellHeader = tableView.dequeueReusableCell(withIdentifier: HeaderInformationTableViewCell.identifier) as? HeaderInformationTableViewCell {
+                let titleSection = tableViewDataSource[section]
+                
+                cellHeader.title = titleSection.title
+                return cellHeader
+            }
+        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return tableViewDataSource[section].type == .Detail ? 50.0 : 0.0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.tableViewDataSource.count
+    }
     
     func createChartCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.row] as? ChartCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as? ChartTableViewCell {
+                
                 //cell.price = item.title
                 //cell.percentage = item.detail
                 
@@ -83,23 +111,22 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func createMarketInformationsCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        if let item = tableViewDataSource[indexPath.row] as? InformationCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
-                cell.title = item.title
-                cell.detail = item.detail
+        if let item = tableViewDataSource[indexPath.section] as? InformationCell {
+            if indexPath.row > 0 {
                 
-                return cell
+                if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
+                    cell.title = item.title
+                    cell.detail = item.detail
+                    cell.title = item.items[indexPath.row - 1]
+                    return cell
+                }
             }
         }
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableViewDataSource.count
-    }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let currentCell = tableViewDataSource[indexPath.row]
+        let currentCell = tableViewDataSource[indexPath.section]
         switch  currentCell.type{
         case .Detail:
             return 30.0
@@ -109,7 +136,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentCell = tableViewDataSource[indexPath.row]
+        let currentCell = tableViewDataSource[indexPath.section]
         switch currentCell.type {
         case .Detail:
             return createMarketInformationsCell(indexPath: indexPath, tableView: tableView)
