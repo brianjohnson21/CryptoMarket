@@ -111,6 +111,12 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+ 
+    
     func createMarketInformationsCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.section] as? InformationCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
