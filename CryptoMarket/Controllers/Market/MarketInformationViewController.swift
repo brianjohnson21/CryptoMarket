@@ -111,11 +111,15 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50.0
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.init(named: "MainColor")
+        return footerView
     }
     
- 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 25.0
+    }
     
     func createMarketInformationsCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.section] as? InformationCell {
@@ -128,8 +132,6 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         return UITableViewCell()
     }
     
-    
-        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentCell = tableViewDataSource[indexPath.section]
         switch  currentCell.type{
