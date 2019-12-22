@@ -22,7 +22,7 @@ public enum ApiRoute {
 
 //m1, m5, m15, m30, h1, h2, h6, h12, d1
 
-public enum ApiInterval: String {
+internal enum ApiInterval: String {
     case m1
     case m5
     case m15

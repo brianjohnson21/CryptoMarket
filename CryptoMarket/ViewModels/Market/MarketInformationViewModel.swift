@@ -31,7 +31,7 @@ public final class MarketInformationViewModel: ViewModelType {
     private func createChartCell() -> [CellViewModelProtocol] {
         var tableViewData: [CellViewModelProtocol] = []
         
-        tableViewData.append(ChartCell(title: "GRAPHIQUE", detail: "THE GRAPHIQUE SHOULD BE DISPLAYED HERE"))
+        tableViewData.append(ChartCell(title: "", detail: "THE GRAPHIQUE SHOULD BE DISPLAYED HERE"))
         return tableViewData
     }
     

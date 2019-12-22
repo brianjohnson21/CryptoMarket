@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import RxCocoa
 import RxSwift
 import RxGesture
@@ -162,13 +161,13 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.identifier, for: indexPath) as? MarketTableViewCell {
+            
             cell.title = tableViewDataSource[indexPath.row].name
             cell.symbol = tableViewDataSource[indexPath.row].symbol
             cell.index = tableViewDataSource[indexPath.row].rank
             cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
             cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
-    
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             
             return cell

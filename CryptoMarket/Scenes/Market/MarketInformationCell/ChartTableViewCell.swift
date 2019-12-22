@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftChart
+import RxSwift
+import RxCocoa
 
 import Charts
 
@@ -18,6 +20,11 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     @IBOutlet private weak var labelPercentage: UILabel!
     @IBOutlet private weak var imageSort: UIImageView!
     @IBOutlet weak var firstButton: UIButton!
+    
+    private let viewModel: MarketChartViewModel = MarketChartViewModel()
+    private let disposeBag: DisposeBag = DisposeBag()
+    
+    private let chartLegendEvent: PublishSubject<chartLegendType> = PublishSubject()
     
     private var tagButtonSelected = 1
     
@@ -30,6 +37,15 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        self.setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.)
+        
+        _ = self.viewModel.transform(input: input)
+        
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -55,6 +71,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.tagButtonSelected = sender.tag
         self.addHighlight(buttonTag: sender.tag)
         sender.isSelected = true
+        self.chartLegendEvent.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
     }
     
     public func setupChart() {
