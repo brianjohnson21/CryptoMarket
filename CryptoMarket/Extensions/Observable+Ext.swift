@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxGesture
 
 extension SharedSequenceConvertibleType {
     func mapToVoid() -> SharedSequence<SharingStrategy, Void> { return map { _ in }}

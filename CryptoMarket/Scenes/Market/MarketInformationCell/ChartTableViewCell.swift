@@ -10,7 +10,7 @@ import UIKit
 import SwiftChart
 import RxSwift
 import RxCocoa
-
+import Foundation
 import Charts
 
 class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
@@ -42,7 +42,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     private func setupViewModel() {
-        let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.)
+        let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.asObservable())
         
         _ = self.viewModel.transform(input: input)
         

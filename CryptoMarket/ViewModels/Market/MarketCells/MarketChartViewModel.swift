@@ -26,7 +26,7 @@ public final class MarketChartViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let legendEvent: Driver<chartLegendType>
+        let legendEvent: Observable<chartLegendType>
     }
     
     struct Output {
@@ -45,8 +45,6 @@ public final class MarketChartViewModel: ViewModelType {
             .subscribe(onNext: { (legendSelected) in
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
-        
-        
         
         return Output()
     }
