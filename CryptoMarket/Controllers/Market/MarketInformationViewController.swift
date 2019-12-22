@@ -117,6 +117,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         return footerView
     }
     
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 25.0
     }
@@ -126,6 +127,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
                 cell.detail = item.items[indexPath.row]
                 cell.title = item.items[indexPath.row]
+                
                 return cell
             }
         }
@@ -136,9 +138,9 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         let currentCell = tableViewDataSource[indexPath.section]
         switch  currentCell.type{
         case .Detail:
-            return 30.0
+            return 45.0
         case .Chart:
-            return 320.0
+            return 400.0
         }
     }
     

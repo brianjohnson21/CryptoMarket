@@ -12,6 +12,7 @@ class InformationTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var informationTitle: UILabel!
     @IBOutlet private weak var detailTitle: UILabel!
+    @IBOutlet private weak var cellView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,8 @@ class InformationTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        self.cellView.layer.cornerRadius = 5.0
     }
     
     public var detail: String? {
