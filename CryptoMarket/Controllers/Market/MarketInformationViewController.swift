@@ -30,6 +30,11 @@ class MarketInformationViewController: UIViewController {
         self.setupViewModel()
     }
     
+    
+    @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
+        print("need to be added!!!")
+    }
+    
     private func setupView() {
         
         //todo change title tableview
@@ -40,7 +45,7 @@ class MarketInformationViewController: UIViewController {
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
     }
-    
+        
     private func setupViewModel() {
         let input = MarketInformationViewModel.Input()
         let output = self.viewModel.transform(input: input)

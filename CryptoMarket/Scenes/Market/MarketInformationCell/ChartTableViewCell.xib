@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybL-Qr-KcJ" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="94" width="320" height="265"/>
+                        <rect key="frame" x="0.0" y="94" width="320" height="259"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GpX-sN-qqn">
@@ -54,12 +54,12 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2ET-RA-U96">
-                        <rect key="frame" x="16" y="369" width="288" height="25"/>
+                        <rect key="frame" x="16" y="359" width="288" height="35"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Os-2Vt">
-                                <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
+                                <rect key="frame" x="0.0" y="0.5" width="42" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="cLe-Q2-CiN"/>
+                                    <constraint firstAttribute="width" constant="42" id="cLe-Q2-CiN"/>
                                 </constraints>
                                 <state key="normal" title="1D">
                                     <color key="titleColor" name="Color-1"/>
@@ -72,9 +72,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-mZ-YtC">
-                                <rect key="frame" x="64" y="0.0" width="32" height="25"/>
+                                <rect key="frame" x="61.5" y="0.5" width="42" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="BJY-kP-hUl"/>
+                                    <constraint firstAttribute="width" constant="42" id="BJY-kP-hUl"/>
                                 </constraints>
                                 <state key="normal" title="1W">
                                     <color key="titleColor" name="Color-1"/>
@@ -87,9 +87,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yw-BZ-rB3">
-                                <rect key="frame" x="128" y="0.0" width="32" height="25"/>
+                                <rect key="frame" x="123" y="0.5" width="42" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="LSh-xx-MDf"/>
+                                    <constraint firstAttribute="width" constant="42" id="LSh-xx-MDf"/>
                                 </constraints>
                                 <state key="normal" title="1M">
                                     <color key="titleColor" name="Color-1"/>
@@ -102,9 +102,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPb-0v-I55">
-                                <rect key="frame" x="192" y="0.0" width="32" height="25"/>
+                                <rect key="frame" x="184.5" y="0.5" width="42" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="cgN-D6-ONr"/>
+                                    <constraint firstAttribute="width" constant="42" id="cgN-D6-ONr"/>
                                 </constraints>
                                 <state key="normal" title="1Y">
                                     <color key="titleColor" name="Color-1"/>
@@ -117,9 +117,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeE-Bm-UOY">
-                                <rect key="frame" x="256" y="0.0" width="32" height="25"/>
+                                <rect key="frame" x="246" y="0.5" width="42" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="Xxf-ab-wj1"/>
+                                    <constraint firstAttribute="width" constant="42" id="Xxf-ab-wj1"/>
                                 </constraints>
                                 <state key="normal" title="All">
                                     <color key="titleColor" name="Color-1"/>
@@ -133,7 +133,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="3tF-NC-uel"/>
+                            <constraint firstAttribute="height" constant="35" id="3tF-NC-uel"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -142,7 +142,7 @@
                     <constraint firstItem="ybL-Qr-KcJ" firstAttribute="top" secondItem="GpX-sN-qqn" secondAttribute="bottom" constant="20" id="J9F-D2-afZ"/>
                     <constraint firstAttribute="bottom" secondItem="2ET-RA-U96" secondAttribute="bottom" constant="6" id="KBC-Xo-gM7"/>
                     <constraint firstItem="2ET-RA-U96" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NPa-sO-aV4"/>
-                    <constraint firstItem="2ET-RA-U96" firstAttribute="top" secondItem="ybL-Qr-KcJ" secondAttribute="bottom" constant="10" id="V3V-0i-Z5x"/>
+                    <constraint firstItem="2ET-RA-U96" firstAttribute="top" secondItem="ybL-Qr-KcJ" secondAttribute="bottom" constant="6" id="V3V-0i-Z5x"/>
                     <constraint firstAttribute="trailing" secondItem="2ET-RA-U96" secondAttribute="trailing" constant="16" id="XjY-1D-Wmh"/>
                     <constraint firstItem="ybL-Qr-KcJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aQD-dc-FAz"/>
                     <constraint firstItem="GpX-sN-qqn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="sIM-79-iun"/>

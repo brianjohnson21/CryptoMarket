@@ -55,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-ag-xJh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-ag-xJh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" name="MainColor"/>
                                 <color key="sectionIndexBackgroundColor" name="MainColor"/>
@@ -70,7 +70,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wa4-nv-nRn"/>
                     </view>
-                    <navigationItem key="navigationItem" id="alz-fF-32U"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="alz-fF-32U">
+                        <barButtonItem key="rightBarButtonItem" image="star-basic" id="mLC-sx-DaB">
+                            <color key="tintColor" name="White"/>
+                            <connections>
+                                <action selector="favoriteItemTrigger:" destination="O7o-ho-KUv" id="X03-q7-too"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableViewInformation" destination="3bm-ag-xJh" id="dI0-kD-htp"/>
                     </connections>
@@ -101,8 +108,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star-basic" width="22" height="22"/>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <color key="tintColor" name="White"/>
