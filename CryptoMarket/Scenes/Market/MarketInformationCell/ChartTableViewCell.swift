@@ -25,7 +25,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let chartLegendEvent: PublishSubject<chartLegendType> = PublishSubject()
-    
     private var tagButtonSelected = 1
     
     override func awakeFromNib() {
@@ -37,9 +36,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        self.setupSpinner()
-        self.setupViewModel()
     }
     
     private func setupSpinner() {
@@ -50,17 +46,15 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.asObservable())
         
         let output = self.viewModel.transform(input: input)
-        
+
         output.isChartLoading.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .debug()
             .subscribe(onNext: { (isLoading) in
-                print("Here???")
+
                 self.chartSpinner.isHidden = !isLoading
                 isLoading ? self.chartSpinner.startAnimating() : self.chartSpinner.stopAnimating()
-                
-                print("Inside setupviewModel = \(isLoading)")
                 
             }).disposed(by: self.disposeBag)
         
@@ -104,6 +98,9 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
+        
+        self.setupSpinner()
+        self.setupViewModel()
     }
     
     

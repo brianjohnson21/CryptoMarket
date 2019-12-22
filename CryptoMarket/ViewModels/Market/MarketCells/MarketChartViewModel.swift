@@ -26,7 +26,7 @@ public enum chartLegendType: Int {
 public final class MarketChartViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
-    private let isChartLoading = PublishSubject<Bool>()
+    private let isChartLoading = BehaviorSubject<Bool>(value: false)
     
     struct Input {
         let legendEvent: Observable<chartLegendType>
@@ -67,15 +67,16 @@ public final class MarketChartViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
+        self.isChartLoading.onNext(false)
+        
         input.legendEvent.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (legendSelected) in
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
+                
         
-        self.isChartLoading.onNext(false)
-        print("inside chart view model")
         return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable())
     }
     
