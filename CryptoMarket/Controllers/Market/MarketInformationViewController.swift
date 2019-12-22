@@ -18,6 +18,7 @@ class MarketInformationViewController: UIViewController {
     private var viewModel: MarketInformationViewModel!
     private let disposeBag = DisposeBag()
     private var tableViewDataSource = [CellViewModelProtocol]()
+    private let favoriteEvent: PublishSubject<Void> = PublishSubject()
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
@@ -32,7 +33,7 @@ class MarketInformationViewController: UIViewController {
     
     
     @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
-        print("need to be added!!!")
+        self.favoriteEvent.onNext(())
     }
     
     private func setupView() {
@@ -47,9 +48,9 @@ class MarketInformationViewController: UIViewController {
     }
         
     private func setupViewModel() {
-        let input = MarketInformationViewModel.Input()
-        let output = self.viewModel.transform(input: input)
+        let input = MarketInformationViewModel.Input(favoriteEvent: self.favoriteEvent.asObservable())
         
+        let output = self.viewModel.transform(input: input)
         
         output.tableViewDataSource.asObservable()
             .observeOn(MainScheduler.instance)

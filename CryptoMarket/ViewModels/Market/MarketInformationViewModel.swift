@@ -14,7 +14,10 @@ public final class MarketInformationViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let market: Market
     
-    struct Input {}
+    struct Input {
+        let favoriteEvent: Observable<Void>
+    }
+    
     struct Output {
         let navigationTitle: String
         let tableViewDataSource: Driver<[CellViewModelProtocol]>
@@ -49,10 +52,19 @@ public final class MarketInformationViewModel: ViewModelType {
         return tableViewData
     }
     
+    private func createFavorite() {
+        print("todo:// createFavorite not implemented")
+    }
+    
     func transform(input: Input) -> Output {
-        
-        
         let tableViewDataSource = self.createChartCell() + self.createTableInformationCell()
+        
+        input.favoriteEvent.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (_) in
+                self.createFavorite()
+            }).disposed(by: self.disposeBag)
         
         return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource))
     }
