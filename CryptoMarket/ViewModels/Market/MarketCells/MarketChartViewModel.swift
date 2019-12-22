@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Charts
 
 public enum chartLegendType: Int {
     case m1 = 0
@@ -23,18 +24,45 @@ public enum chartLegendType: Int {
 }
 
 public final class MarketChartViewModel: ViewModelType {
+    
     private let disposeBag = DisposeBag()
+    private let isChartLoading = PublishSubject<Bool>()
     
     struct Input {
         let legendEvent: Observable<chartLegendType>
     }
     
     struct Output {
-        
+        let chartData: [ChartDataEntry]
+        let isChartLoading: Observable<Bool>
     }
     
     private func handleLegendEvent(elementSelected: chartLegendType) {
         print("will handle legend Event here... \(elementSelected.rawValue)")
+    }
+    
+    private func getDataEntries() -> [ChartDataEntry] {
+        
+        var val = [ChartDataEntry]()
+        
+        val.append(ChartDataEntry(x: 1, y: 1000))
+        val.append(ChartDataEntry(x: 2, y: 6000))
+        val.append(ChartDataEntry(x: 3, y: 2000))
+        val.append(ChartDataEntry(x: 4, y: 7000))
+        val.append(ChartDataEntry(x: 5, y: 7500))
+        val.append(ChartDataEntry(x: 6, y: 8000))
+        val.append(ChartDataEntry(x: 7, y: 3000))
+        val.append(ChartDataEntry(x: 8, y: 3500))
+        val.append(ChartDataEntry(x: 9, y: 9500))
+        val.append(ChartDataEntry(x: 10, y: 10000))
+        val.append(ChartDataEntry(x: 11, y: 10500))
+        val.append(ChartDataEntry(x: 12, y: 11000))
+        val.append(ChartDataEntry(x: 13, y: 2000))
+        val.append(ChartDataEntry(x: 14, y: 12000))
+        val.append(ChartDataEntry(x: 15, y: 30000))
+        val.append(ChartDataEntry(x: 16, y: 13000))
+        
+        return val
     }
     
     func transform(input: Input) -> Output {
@@ -46,7 +74,9 @@ public final class MarketChartViewModel: ViewModelType {
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
         
-        return Output()
+        self.isChartLoading.onNext(false)
+        print("inside chart view model")
+        return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable())
     }
     
 }

@@ -20,7 +20,18 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybL-Qr-KcJ" customClass="LineChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="94" width="320" height="259"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3hn-d4-rzO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="MainColor"/>
+                        <constraints>
+                            <constraint firstItem="3hn-d4-rzO" firstAttribute="leading" secondItem="ybL-Qr-KcJ" secondAttribute="leading" id="115-u3-tHr"/>
+                            <constraint firstItem="3hn-d4-rzO" firstAttribute="top" secondItem="ybL-Qr-KcJ" secondAttribute="top" id="BJA-dT-YH9"/>
+                            <constraint firstAttribute="bottom" secondItem="3hn-d4-rzO" secondAttribute="bottom" id="cU2-17-H6c"/>
+                            <constraint firstAttribute="trailing" secondItem="3hn-d4-rzO" secondAttribute="trailing" id="jxV-Xz-H3c"/>
+                        </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GpX-sN-qqn">
                         <rect key="frame" x="93" y="20" width="134" height="54"/>
@@ -152,8 +163,8 @@
             <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="chartSpinner" destination="3hn-d4-rzO" id="hra-WB-NFl"/>
                 <outlet property="chartView" destination="ybL-Qr-KcJ" id="ZJh-ge-XBA"/>
-                <outlet property="firstButton" destination="YK9-Os-2Vt" id="TW3-le-8gN"/>
                 <outlet property="imageSort" destination="sxb-Fi-Icf" id="SD5-18-FIU"/>
                 <outlet property="labelPercentage" destination="EJ8-2Z-IY3" id="Zci-gU-IFw"/>
                 <outlet property="labelPrice" destination="IGL-wS-xkP" id="Uz3-fV-Iou"/>

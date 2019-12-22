@@ -19,7 +19,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     @IBOutlet private weak var labelPrice: UILabel!
     @IBOutlet private weak var labelPercentage: UILabel!
     @IBOutlet private weak var imageSort: UIImageView!
-    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet private weak var chartSpinner: UIActivityIndicatorView!
     
     private let viewModel: MarketChartViewModel = MarketChartViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
@@ -38,14 +38,33 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+        self.setupSpinner()
         self.setupViewModel()
+    }
+    
+    private func setupSpinner() {
+        self.chartSpinner.startAnimating()
     }
     
     private func setupViewModel() {
         let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.asObservable())
         
-        _ = self.viewModel.transform(input: input)
+        let output = self.viewModel.transform(input: input)
         
+        output.isChartLoading.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .debug()
+            .subscribe(onNext: { (isLoading) in
+                print("Here???")
+                self.chartSpinner.isHidden = !isLoading
+                isLoading ? self.chartSpinner.startAnimating() : self.chartSpinner.stopAnimating()
+                
+                print("Inside setupviewModel = \(isLoading)")
+                
+            }).disposed(by: self.disposeBag)
+        
+         self.setupChartViewData(chartData: output.chartData)
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -85,30 +104,8 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
-
-        self.setupChartViewData()
     }
     
-    private func getDataEntries() -> [ChartDataEntry] {
-        var val = [ChartDataEntry]()
-        val.append(ChartDataEntry(x: 1, y: 1000))
-        val.append(ChartDataEntry(x: 2, y: 6000))
-        val.append(ChartDataEntry(x: 3, y: 2000))
-        val.append(ChartDataEntry(x: 4, y: 7000))
-        val.append(ChartDataEntry(x: 5, y: 7500))
-        val.append(ChartDataEntry(x: 6, y: 8000))
-        val.append(ChartDataEntry(x: 7, y: 3000))
-        val.append(ChartDataEntry(x: 8, y: 3500))
-        val.append(ChartDataEntry(x: 9, y: 9500))
-        val.append(ChartDataEntry(x: 10, y: 10000))
-        val.append(ChartDataEntry(x: 11, y: 10500))
-        val.append(ChartDataEntry(x: 12, y: 11000))
-        val.append(ChartDataEntry(x: 13, y: 2000))
-        val.append(ChartDataEntry(x: 14, y: 12000))
-        val.append(ChartDataEntry(x: 15, y: 30000))
-        val.append(ChartDataEntry(x: 16, y: 13000))
-        return val
-    }
     
     private func getGradientChartViewBackground() -> CGGradient {
         let gradientColors = [UIColor.init(named: "Color-3")?.cgColor, UIColor.init(named: "Color")?.cgColor]
@@ -117,8 +114,8 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         return gradient
     }
     
-    private func setupChartViewData() {
-        let chartViewData = LineChartDataSet(entries: self.getDataEntries(), label: "")
+    private func setupChartViewData(chartData: [ChartDataEntry]) {
+        let chartViewData = LineChartDataSet(entries: chartData, label: "")
         chartViewData.drawIconsEnabled = false
         
         chartViewData.setColor(UIColor.init(named: "Color-1") ?? .red)
