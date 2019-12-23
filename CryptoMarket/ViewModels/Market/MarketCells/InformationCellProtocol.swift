@@ -36,7 +36,6 @@ internal final class ChartCell: CellViewModelProtocol {
 
 internal final class InformationCell: CellViewModelProtocol {
     var title: String?
-    var detail: String
     var isOpen: Bool
     var items: [Int: (String, String)]
     
@@ -44,10 +43,9 @@ internal final class InformationCell: CellViewModelProtocol {
         return .Detail
     }
     
-    init(title: String?, detail: String, items: [Int: (String, String)], isOpen: Bool) {
+    init(title: String?, items: [Int: (String, String)], isOpen: Bool) {
         self.title = title
         self.isOpen = isOpen
         self.items = items
-        self.detail = detail
     }
 }

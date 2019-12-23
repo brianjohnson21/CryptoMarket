@@ -13,11 +13,11 @@ extension String {
         return "\(self)\(string)"
     }
     
-    func currencyFormatting() -> String {
+    func currencyFormatting(formatterDigit: Int) -> String {
         if let value = Double(self) {
             let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = 2
-            formatter.minimumFractionDigits = 2
+            formatter.maximumFractionDigits = formatterDigit
+            formatter.minimumFractionDigits = formatterDigit
             if let str = formatter.string(for: value) {
                 return "$".concat(string: str)
             }

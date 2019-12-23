@@ -165,7 +165,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             cell.title = tableViewDataSource[indexPath.row].name
             cell.symbol = tableViewDataSource[indexPath.row].symbol
             cell.index = tableViewDataSource[indexPath.row].rank
-            cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting()
+            cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting(formatterDigit: 2)
             cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
             cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
