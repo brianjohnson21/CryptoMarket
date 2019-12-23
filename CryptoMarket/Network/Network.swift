@@ -52,9 +52,10 @@ final class Network {
             })
     }
     
-    public func performGetOnHistory(stringUrl url: String) -> Observable<[MarketInformation]> {
+    public func performGetOnHistory(stringUrl url: String, assetName name: String, interval: ApiInterval) -> Observable<[MarketInformation]> {
+        let interval = "/history?interval=".concat(string: interval.rawValue)
         return RxAlamofire
-            .json(.get, url)
+            .json(.get, url.concat(string: name).concat(string: interval))
             .retry(2)
             .observeOn(MainScheduler.asyncInstance)
             .map({json -> [MarketInformation] in

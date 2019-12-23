@@ -30,27 +30,45 @@ public final class MarketChartViewModel: ViewModelType {
     
     struct Input {
         let legendEvent: Observable<chartLegendType>
+        
     }
     
     struct Output {
         let chartData: [ChartDataEntry]
         let isChartLoading: Observable<Bool>
+        let chartViewData: Observable<[ChartDataEntry]>
     }
     
     private func handleLegendEvent(elementSelected: chartLegendType) {
         print("will handle legend Event here... \(elementSelected.rawValue)")
     }
     
+    private func fetchHistoryData(assetName name: String, interval: ApiInterval) -> Observable<[MarketInformation]> {
+        return Network.sharedInstance.performGetOnHistory(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_HISTORY), assetName: name, interval: interval).asObservable()
+    }
+    
+    private func fetchDataEntries(assetName: String, interval: ApiInterval) -> Observable<[ChartDataEntry]> {
+        
+        self.fetchHistoryData(assetName: assetName, interval: interval)
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .map({ (marketInformation) -> [ChartDataEntry] in
+                var result: [ChartDataEntry] = []
+                for (index, element) in marketInformation.enumerated() {
+                    result.append(ChartDataEntry(x: Double(index), y: Double(element.priceUsd ?? "0") ?? 0.0))
+                }
+                return result
+            })
+    }
+    
     private func getData() {
-        Network.sharedInstance.performGetOnHistory(stringUrl:
-            ApiRoute.ROUTE_SERVER_MARKET.concat(string:
-                ApiRoute.ROUTE_HISTORY.concat(string:
-                    ApiInterval.d1.rawValue)))
+        
+        Network.sharedInstance.performGetOnHistory(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_HISTORY), assetName: "bitcoin", interval: .d1)
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (marketInformation) in
-                print("INSIDE GET DATA -> \(marketInformation)")
+                print(marketInformation)
             }).disposed(by: self.disposeBag)
     }
     
@@ -88,10 +106,10 @@ public final class MarketChartViewModel: ViewModelType {
             .subscribe(onNext: { (legendSelected) in
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
-                
-        self.getData()
         
-        return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable())
+        let chartResult = self.fetchDataEntries(assetName: "bitcoin", interval: .d1)
+                
+        return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable(), chartViewData: self.fetchDataEntries(assetName: "bitcoin", interval: .d1))
     }
     
 }

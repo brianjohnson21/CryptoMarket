@@ -58,7 +58,13 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
                 
             }).disposed(by: self.disposeBag)
         
-         self.setupChartViewData(chartData: output.chartData)
+        output.chartViewData.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (chartData) in
+                self.setupChartViewData(chartData: chartData)
+            }).disposed(by: self.disposeBag)
+            
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -87,7 +93,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.chartLegendEvent.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
     }
     
-    public func setupChart() {
+    public func setupChart(assetName: String) {
 
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = false

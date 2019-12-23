@@ -105,7 +105,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
                 cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
                 cell.percentage = item.market.changePercent24Hr?.percentageFormatting() ?? "0%"
                 
-                cell.setupChart()
+                cell.setupChart(assetName: item.market.name ?? "")
                 
                 cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
                 return cell
