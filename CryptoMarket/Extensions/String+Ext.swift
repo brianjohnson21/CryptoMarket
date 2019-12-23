@@ -18,6 +18,7 @@ extension String {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = formatterDigit
             formatter.minimumFractionDigits = formatterDigit
+            formatter.numberStyle = .decimal
             if let str = formatter.string(for: value) {
                 return "$".concat(string: str)
             }
@@ -25,11 +26,12 @@ extension String {
         return ""
     }
     
-    func numberFormatting(formatterDigit: Int) -> String {
+    func numberFormatting(formatterDigit: Int, isDecimal: Bool) -> String {
         if let value = Double(self) {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = formatterDigit
             formatter.minimumFractionDigits = formatterDigit
+            if isDecimal { formatter.numberStyle = .decimal }
             if let str = formatter.string(for: value) {
                 return "\(str)"
             }

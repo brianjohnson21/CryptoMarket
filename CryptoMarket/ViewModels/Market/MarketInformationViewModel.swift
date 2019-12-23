@@ -44,7 +44,7 @@ public final class MarketInformationViewModel: ViewModelType {
         dataTableView[0] = ("Rank", self.market.rank ?? "")
         dataTableView[1] = ("Market Cap", self.market.marketCapUsd?.currencyFormatting(formatterDigit: 0) ?? "")
         dataTableView[2] = ("VWAP (24H)", self.market.vwap24Hr?.currencyFormatting(formatterDigit: 0) ?? "")
-        dataTableView[3] = ("Supply", self.market.supply?.numberFormatting(formatterDigit: 0) ?? "")
+        dataTableView[3] = ("Supply", self.market.supply?.numberFormatting(formatterDigit: 0, isDecimal: true) ?? "")
         dataTableView[4] = ("Volume (24Hr)", self.market.volumeUsd24Hr?.currencyFormatting(formatterDigit: 0) ?? "")
         dataTableView[5] = ("Change (24Hr)", self.market.changePercent24Hr?.percentageFormatting() ?? "")
                 
