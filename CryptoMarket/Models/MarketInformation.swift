@@ -12,10 +12,12 @@ public struct MarketInformation: ImmutableMappable {
     public let priceUsd: String?
     public let time: String?
     public let date: String?
+    public let circulatingSupply: String?
     
     public init(map: Map) throws {
         self.priceUsd = (try? map.value("priceUsd") ?? "")
         self.time = (try? map.value("time") ?? "")
+        self.circulatingSupply = (try? map.value("circulatingSupply") ?? "")
         self.date = (try? map.value("date") ?? "")
     }
 }
