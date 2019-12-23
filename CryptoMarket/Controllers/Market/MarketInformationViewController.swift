@@ -131,8 +131,9 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     func createMarketInformationsCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         if let item = tableViewDataSource[indexPath.section] as? InformationCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier, for: indexPath) as? InformationTableViewCell {
-                cell.detail = item.items[indexPath.row]
-                cell.title = item.items[indexPath.row]
+                
+                cell.detail = item.items[indexPath.row]?.0
+                cell.title = item.items[indexPath.row]?.1
                 
                 return cell
             }

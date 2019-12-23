@@ -31,7 +31,8 @@ public final class MarketInformationViewModel: ViewModelType {
     private func createChartCell() -> [CellViewModelProtocol] {
         var tableViewData: [CellViewModelProtocol] = []
         
-        tableViewData.append(ChartCell(title: "", detail: "THE GRAPHIQUE SHOULD BE DISPLAYED HERE"))
+        tableViewData.append(ChartCell(title: nil))
+        
         return tableViewData
     }
     
@@ -45,9 +46,11 @@ public final class MarketInformationViewModel: ViewModelType {
 //        tableViewData.append(InformationCell(title: "Volume (24Hr)", detail: "$3,317,861,099"))
 //        tableViewData.append(InformationCell(title: "Change (24Hr)", detail: "1.38%"))
         
-        let test: [String] = ["Rank", "Market Cap", "VWap", "Supply", "Volume", "Change"]
+        let test: [String] = ["Rank", "Market Cap", "VWAP (24H)", "Supply", "Volume", "Change"]
         
-        tableViewData.append(InformationCell(title: "Coin Statistics", detail: "", items: test, isOpen: true))
+        let dataTableView: [Int: (String, String)] = [0: ("rank", self.market.rank ?? "0")]
+        
+        tableViewData.append(InformationCell(title: "Coin Statistics", detail: "", items: dataTableView, isOpen: true))
         
         return tableViewData
     }
