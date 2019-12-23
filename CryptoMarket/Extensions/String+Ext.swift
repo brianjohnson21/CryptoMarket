@@ -25,6 +25,18 @@ extension String {
         return ""
     }
     
+    func numberFormatting(formatterDigit: Int) -> String {
+        if let value = Double(self) {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = formatterDigit
+            formatter.minimumFractionDigits = formatterDigit
+            if let str = formatter.string(for: value) {
+                return "\(str)"
+            }
+        }
+        return ""
+    }
+    
     func percentageFormatting() -> String {
         if let value = Double(self) {
             let formatter = NumberFormatter()
