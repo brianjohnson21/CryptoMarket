@@ -58,7 +58,7 @@ final class Network {
             .retry(2)
             .observeOn(MainScheduler.asyncInstance)
             .map({json -> [MarketInformation] in
-                return try Mapper<MarketInformation>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [String: Any] ?? []))
+                return try Mapper<MarketInformation>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]] ?? []))
             })
     }
 }

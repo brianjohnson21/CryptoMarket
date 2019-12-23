@@ -41,6 +41,19 @@ public final class MarketChartViewModel: ViewModelType {
         print("will handle legend Event here... \(elementSelected.rawValue)")
     }
     
+    private func getData() {
+        Network.sharedInstance.performGetOnHistory(stringUrl:
+            ApiRoute.ROUTE_SERVER_MARKET.concat(string:
+                ApiRoute.ROUTE_HISTORY.concat(string:
+                    ApiInterval.d1.rawValue)))
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (marketInformation) in
+                print("INSIDE GET DATA -> \(marketInformation)")
+            }).disposed(by: self.disposeBag)
+    }
+    
     private func getDataEntries() -> [ChartDataEntry] {
         
         var val = [ChartDataEntry]()
@@ -76,6 +89,7 @@ public final class MarketChartViewModel: ViewModelType {
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
                 
+        self.getData()
         
         return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable())
     }
