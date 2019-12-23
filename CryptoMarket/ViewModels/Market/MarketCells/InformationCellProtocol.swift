@@ -24,13 +24,15 @@ internal protocol CellViewModelProtocol {
 
 internal final class ChartCell: CellViewModelProtocol {
     var title: String?
+    var market: Market
 
     var type: CellViewModelType {
         return .Chart
     }
     
-    init(title: String?) {
+    init(title: String?, market: Market) {
         self.title = title
+        self.market = market
     }
 }
 

@@ -102,11 +102,8 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         if let item = tableViewDataSource[indexPath.row] as? ChartCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as? ChartTableViewCell {
                 
-                //cell.price = item.title
-                //cell.percentage = item.detail
-                print(item)
-                cell.price = "$9000.09"
-                cell.percentage = "1.59%"
+                cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
+                cell.percentage = item.market.changePercent24Hr?.percentageFormatting() ?? "0%"
                 
                 cell.setupChart()
                 
