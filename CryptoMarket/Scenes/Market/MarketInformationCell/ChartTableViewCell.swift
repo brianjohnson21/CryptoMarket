@@ -32,31 +32,23 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         (self.viewWithTag(self.tagButtonSelected) as? UIButton)?.isSelected = true
         self.addHighlight(buttonTag: self.tagButtonSelected)
+        
+        self.setupSpinner(isLoading: true)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    private func setupSpinner() {
-        self.chartSpinner.startAnimating()
+    private func setupSpinner(isLoading: Bool) {
+        self.chartSpinner.isHidden = !isLoading
+        isLoading ? self.chartSpinner.startAnimating() : self.chartSpinner.stopAnimating()
     }
     
     private func setupViewModel() {
         let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.asObservable())
         
         let output = self.viewModel.transform(input: input)
-
-        output.isChartLoading.asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribeOn(MainScheduler.asyncInstance)
-            .debug()
-            .subscribe(onNext: { (isLoading) in
-
-                self.chartSpinner.isHidden = !isLoading
-                isLoading ? self.chartSpinner.startAnimating() : self.chartSpinner.stopAnimating()
-                
-            }).disposed(by: self.disposeBag)
         
         output.chartViewData.asObservable()
             .observeOn(MainScheduler.instance)
@@ -65,6 +57,13 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
                 self.setupChartViewData(chartData: chartData)
             }).disposed(by: self.disposeBag)
             
+        output.isChartLoading.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .debug()
+            .subscribe(onNext: { (isLoading) in
+                self.setupSpinner(isLoading: isLoading)
+            }).disposed(by: self.disposeBag)
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -105,7 +104,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
         
-        self.setupSpinner()
+        self.setupSpinner(isLoading: true)
         self.setupViewModel()
     }
     
@@ -137,21 +136,19 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.chartView.data = setDataOnChart
     }
     
+    public func setPercentageOnChart(percentage: String) {
+        self.labelPercentage.text = "\(abs(Double(percentage) ?? 0))".percentageFormatting()
+        let currentValue = Double(percentage) ?? 0
+        self.labelPercentage.textColor = currentValue > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")
+        self.imageSort.image = currentValue > 0 ? UIImage(named: "sort-up-solid") : UIImage(named: "sort-down-solid")
+    }
+    
     public var price: String? {
         get {
             return self.labelPrice.text
         }
         set {
             self.labelPrice.text = newValue
-        }
-    }
-    
-    public var percentage: String? {
-        get {
-            return self.labelPercentage.text
-        }
-        set {
-            self.labelPercentage.text = newValue
         }
     }
     

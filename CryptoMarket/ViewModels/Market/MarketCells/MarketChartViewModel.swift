@@ -107,8 +107,6 @@ public final class MarketChartViewModel: ViewModelType {
                 self.handleLegendEvent(elementSelected: legendSelected)
             }).disposed(by: self.disposeBag)
         
-        let chartResult = self.fetchDataEntries(assetName: "bitcoin", interval: .d1)
-                
         return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable(), chartViewData: self.fetchDataEntries(assetName: "bitcoin", interval: .d1))
     }
     
