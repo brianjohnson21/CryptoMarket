@@ -21,10 +21,10 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     @IBOutlet private weak var imageSort: UIImageView!
     @IBOutlet private weak var chartSpinner: UIActivityIndicatorView!
     
-    private let viewModel: MarketChartViewModel = MarketChartViewModel()
+    private var viewModel: MarketChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let chartLegendEvent: PublishSubject<chartLegendType> = PublishSubject()
+    private let chartEventOnLegend: PublishSubject<chartLegendType> = PublishSubject()
     private var tagButtonSelected = 1
     
     override func awakeFromNib() {
@@ -32,7 +32,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         (self.viewWithTag(self.tagButtonSelected) as? UIButton)?.isSelected = true
         self.addHighlight(buttonTag: self.tagButtonSelected)
-        
         self.setupSpinner(isLoading: true)
     }
 
@@ -46,13 +45,14 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     private func setupViewModel() {
-        let input = MarketChartViewModel.Input(legendEvent: self.chartLegendEvent.asObservable())
+        let input = MarketChartViewModel.Input(legendEvent: self.chartEventOnLegend)
         
         let output = self.viewModel.transform(input: input)
         
         output.chartViewData.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
+            .debug()
             .subscribe(onNext: { (chartData) in
                 self.setupChartViewData(chartData: chartData)
             }).disposed(by: self.disposeBag)
@@ -60,7 +60,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         output.isChartLoading.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
-            .debug()
             .subscribe(onNext: { (isLoading) in
                 self.setupSpinner(isLoading: isLoading)
             }).disposed(by: self.disposeBag)
@@ -89,23 +88,32 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.tagButtonSelected = sender.tag
         self.addHighlight(buttonTag: sender.tag)
         sender.isSelected = true
-        self.chartLegendEvent.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
+        self.chartEventOnLegend.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
     }
     
-    public func setupChart(assetName: String) {
-
+    private func setChartSettings() {
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = false
         chartView.legend.enabled = false
-        
+           
         chartView.leftAxis.enabled = false
         chartView.rightAxis.enabled = false
-        
+           
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
+    }
+    
+    ///Method called outside to setup the view
+    public func setupChart(assetName: String) {
+
+        self.viewModel = MarketChartViewModel(chartId: assetName.lowercased())
+        
+        self.setChartSettings()
         
         self.setupSpinner(isLoading: true)
         self.setupViewModel()
+        print("event sent here **")
+        self.chartEventOnLegend.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
     }
     
     
@@ -134,6 +142,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         let setDataOnChart = LineChartData(dataSet: chartViewData)
         self.chartView.data = setDataOnChart
+        chartView.animate(xAxisDuration: 1)
     }
     
     public func setPercentageOnChart(percentage: String) {

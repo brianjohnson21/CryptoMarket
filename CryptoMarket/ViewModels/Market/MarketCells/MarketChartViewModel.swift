@@ -27,16 +27,19 @@ public final class MarketChartViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
     private let isChartLoading = BehaviorSubject<Bool>(value: false)
+    private let chartId: String
     
     struct Input {
-        let legendEvent: Observable<chartLegendType>
-        
+        let legendEvent: PublishSubject<chartLegendType>
     }
     
     struct Output {
-        let chartData: [ChartDataEntry]
         let isChartLoading: Observable<Bool>
         let chartViewData: Observable<[ChartDataEntry]>
+    }
+
+    public init(chartId: String) {
+        self.chartId = chartId
     }
     
     private func handleLegendEvent(elementSelected: chartLegendType) {
@@ -72,42 +75,45 @@ public final class MarketChartViewModel: ViewModelType {
             }).disposed(by: self.disposeBag)
     }
     
-    private func getDataEntries() -> [ChartDataEntry] {
-        
-        var val = [ChartDataEntry]()
-        
-        val.append(ChartDataEntry(x: 1, y: 1000))
-        val.append(ChartDataEntry(x: 2, y: 6000))
-        val.append(ChartDataEntry(x: 3, y: 2000))
-        val.append(ChartDataEntry(x: 4, y: 7000))
-        val.append(ChartDataEntry(x: 5, y: 7500))
-        val.append(ChartDataEntry(x: 6, y: 8000))
-        val.append(ChartDataEntry(x: 7, y: 3000))
-        val.append(ChartDataEntry(x: 8, y: 3500))
-        val.append(ChartDataEntry(x: 9, y: 9500))
-        val.append(ChartDataEntry(x: 10, y: 10000))
-        val.append(ChartDataEntry(x: 11, y: 10500))
-        val.append(ChartDataEntry(x: 12, y: 11000))
-        val.append(ChartDataEntry(x: 13, y: 2000))
-        val.append(ChartDataEntry(x: 14, y: 12000))
-        val.append(ChartDataEntry(x: 15, y: 30000))
-        val.append(ChartDataEntry(x: 16, y: 13000))
-        
-        return val
-    }
-    
     func transform(input: Input) -> Output {
         
         self.isChartLoading.onNext(false)
         
-        input.legendEvent.asObservable()
+        let chartData: Observable<[ChartDataEntry]> = input.legendEvent.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { (legendSelected) in
-                self.handleLegendEvent(elementSelected: legendSelected)
-            }).disposed(by: self.disposeBag)
+            .do(onNext: { (_) in
+                self.isChartLoading.onNext(true)
+            }).flatMap { (legend) -> Observable<[ChartDataEntry]> in                
+                var api: ApiInterval = .d1
+                
+                switch legend {
+                case .d1:
+                    api = .d1
+                case .m5:
+                    api = .m5
+                case .m15:
+                    api = .m15
+                case .m30:
+                    api = .m30
+                case .h1:
+                    api = .h1
+                case .h2:
+                    api = .h2
+                case .h6:
+                    api = .h6
+                case .h12:
+                    api = .h12
+                case .m1:
+                    api = .m1
+                }
+                
+                return self.fetchDataEntries(assetName: self.chartId, interval: api)
+            }.do(onNext: { (_) in
+                self.isChartLoading.onNext(false)
+            })
         
-        return Output(chartData: self.getDataEntries(), isChartLoading: self.isChartLoading.asObservable(), chartViewData: self.fetchDataEntries(assetName: "bitcoin", interval: .d1))
+        return Output(isChartLoading: self.isChartLoading.asObservable(), chartViewData: chartData)
     }
     
 }
