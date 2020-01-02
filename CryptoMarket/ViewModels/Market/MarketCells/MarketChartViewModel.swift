@@ -11,18 +11,6 @@ import RxCocoa
 import RxSwift
 import Charts
 
-public enum chartLegendType: Int {
-    case m1 = 0
-    case m5
-    case m15
-    case m30
-    case h1
-    case h2
-    case h6
-    case h12
-    case d1
-}
-
 public final class MarketChartViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
@@ -30,7 +18,7 @@ public final class MarketChartViewModel: ViewModelType {
     private let chartId: String
     
     struct Input {
-        let legendEvent: PublishSubject<chartLegendType>
+        let legendEvent: Observable<ApiInterval>
     }
     
     struct Output {
@@ -42,7 +30,7 @@ public final class MarketChartViewModel: ViewModelType {
         self.chartId = chartId
     }
     
-    private func handleLegendEvent(elementSelected: chartLegendType) {
+    private func handleLegendEvent(elementSelected: ApiInterval) {
         print("will handle legend Event here... \(elementSelected.rawValue)")
     }
     
@@ -84,31 +72,8 @@ public final class MarketChartViewModel: ViewModelType {
             .subscribeOn(MainScheduler.asyncInstance)
             .do(onNext: { (_) in
                 self.isChartLoading.onNext(true)
-            }).flatMap { (legend) -> Observable<[ChartDataEntry]> in                
-                var api: ApiInterval = .d1
-                
-                switch legend {
-                case .d1:
-                    api = .d1
-                case .m5:
-                    api = .m5
-                case .m15:
-                    api = .m15
-                case .m30:
-                    api = .m30
-                case .h1:
-                    api = .h1
-                case .h2:
-                    api = .h2
-                case .h6:
-                    api = .h6
-                case .h12:
-                    api = .h12
-                case .m1:
-                    api = .m1
-                }
-                
-                return self.fetchDataEntries(assetName: self.chartId, interval: api)
+            }).flatMap { (interval) -> Observable<[ChartDataEntry]> in
+                return self.fetchDataEntries(assetName: self.chartId, interval: interval)
             }.do(onNext: { (_) in
                 self.isChartLoading.onNext(false)
             })

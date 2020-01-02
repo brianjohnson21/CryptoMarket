@@ -24,7 +24,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     private var viewModel: MarketChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let chartEventOnLegend: PublishSubject<chartLegendType> = PublishSubject()
+    private let chartEventOnLegend: BehaviorSubject<ApiInterval> = BehaviorSubject(value: .m5)
     private var tagButtonSelected = 1
     
     override func awakeFromNib() {
@@ -45,14 +45,13 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     private func setupViewModel() {
-        let input = MarketChartViewModel.Input(legendEvent: self.chartEventOnLegend)
+        let input = MarketChartViewModel.Input(legendEvent: self.chartEventOnLegend.asObservable())
         
         let output = self.viewModel.transform(input: input)
-        
+
         output.chartViewData.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
-            .debug()
             .subscribe(onNext: { (chartData) in
                 self.setupChartViewData(chartData: chartData)
             }).disposed(by: self.disposeBag)
@@ -63,6 +62,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
             .subscribe(onNext: { (isLoading) in
                 self.setupSpinner(isLoading: isLoading)
             }).disposed(by: self.disposeBag)
+        
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -88,7 +88,8 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.tagButtonSelected = sender.tag
         self.addHighlight(buttonTag: sender.tag)
         sender.isSelected = true
-        self.chartEventOnLegend.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
+        
+        self.chartEventOnLegend.onNext(ApiInterval(rawValue: self.tagButtonSelected) ?? ApiInterval.d1)
     }
     
     private func setChartSettings() {
@@ -98,7 +99,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
            
         chartView.leftAxis.enabled = false
         chartView.rightAxis.enabled = false
-           
+        
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
     }
@@ -112,8 +113,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         self.setupSpinner(isLoading: true)
         self.setupViewModel()
-        print("event sent here **")
-        self.chartEventOnLegend.onNext(chartLegendType(rawValue: self.tagButtonSelected) ?? chartLegendType.d1)
     }
     
     
@@ -125,14 +124,15 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     private func setupChartViewData(chartData: [ChartDataEntry]) {
-        let chartViewData = LineChartDataSet(entries: chartData, label: "")
+        let chartViewData = LineChartDataSet(entries: chartData, label: "YES")
         chartViewData.drawIconsEnabled = false
         
-        chartViewData.setColor(UIColor.init(named: "Color-1") ?? .red)
-        
-        chartViewData.lineWidth = 2.0
+        //chartViewData.setColor(UIColor.init(named: "Color-1") ?? .red)
+        chartViewData.setColor(UIColor.init(named: "White") ?? .red)
+        chartViewData.lineWidth = 1.0
         chartViewData.circleRadius = 0.0
         chartViewData.drawValuesEnabled = true
+        chartViewData.drawFilledEnabled = false
         
         chartViewData.fillAlpha = 1
         chartViewData.fill = Fill(linearGradient: getGradientChartViewBackground(), angle: 90)
@@ -141,8 +141,9 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         chartViewData.valueTextColor = .white
         
         let setDataOnChart = LineChartData(dataSet: chartViewData)
+        
         self.chartView.data = setDataOnChart
-        chartView.animate(xAxisDuration: 1)
+        chartView.animate(xAxisDuration: 0.2)
     }
     
     public func setPercentageOnChart(percentage: String) {
