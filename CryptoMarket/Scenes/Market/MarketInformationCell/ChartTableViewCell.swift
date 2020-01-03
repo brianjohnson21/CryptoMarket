@@ -102,6 +102,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         chartView.xAxis.enabled = false
         chartView.animate(xAxisDuration: 1)
+        chartView.pinchZoomEnabled = false
     }
     
     ///Method called outside to setup the view

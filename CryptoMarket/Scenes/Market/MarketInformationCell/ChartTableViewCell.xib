@@ -24,7 +24,7 @@
                             <constraint firstAttribute="height" constant="259" id="G1h-At-cb4"/>
                         </constraints>
                     </activityIndicatorView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybL-Qr-KcJ" customClass="LineChartView" customModule="Charts">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybL-Qr-KcJ" customClass="LineChartView" customModule="Charts">
                         <rect key="frame" x="0.0" y="94" width="320" height="259"/>
                         <color key="backgroundColor" name="MainColor"/>
                     </view>
