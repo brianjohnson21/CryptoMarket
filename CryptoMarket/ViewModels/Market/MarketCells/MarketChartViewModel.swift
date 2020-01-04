@@ -18,7 +18,7 @@ public final class MarketChartViewModel: ViewModelType {
     private let chartId: String
     
     struct Input {
-        let legendEvent: Observable<ApiInterval>
+        let legendEvent: Observable<ChartLegend>
     }
     
     struct Output {
@@ -27,21 +27,34 @@ public final class MarketChartViewModel: ViewModelType {
     }
 
     public init(chartId: String) {
-        print("Showing the chart Id used here \(chartId)")
         self.chartId = chartId
     }
     
-    private func handleLegendEvent(elementSelected: ApiInterval) {
-        print("will handle legend Event here... \(elementSelected.rawValue)")
+    private func createHistoryDate(legendSelected: ChartLegend) -> MarketHistoryRequest {
+        let currentTime = Date().millisecondsSince1970
+
+        switch legendSelected {
+        case .day:
+            return MarketHistoryRequest(startDate: "\(Calendar.current.date(byAdding: .day, value: -1, to: Date())?.millisecondsSince1970 ?? currentTime)", endDate: "\(currentTime)", inteval: .m5)
+        case .week:
+            return MarketHistoryRequest(startDate: "\(Calendar.current.date(byAdding: .day, value: -7, to: Date())?.millisecondsSince1970 ?? currentTime)", endDate: "\(currentTime)", inteval: .m30)
+        case .month:
+            return MarketHistoryRequest(startDate: "\(Calendar.current.date(byAdding: .day, value: -30, to: Date())?.millisecondsSince1970 ?? currentTime)", endDate: "\(currentTime)",inteval: .h1)
+        case .year:
+            return MarketHistoryRequest(startDate: "\(Calendar.current.date(byAdding: .year, value: -1, to: Date())?.millisecondsSince1970 ?? currentTime)", endDate: "\(currentTime)" ,inteval: .d1)
+        case .all:
+            return MarketHistoryRequest(startDate: "", endDate: "", inteval: .d1)
+        }
     }
     
-    private func fetchHistoryData(assetName name: String, interval: ApiInterval) -> Observable<[MarketInformation]> {
-        return Network.sharedInstance.performGetOnHistory(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_HISTORY), assetName: name, interval: interval).asObservable()
-    }
-    
-    private func fetchDataEntries(assetName: String, interval: ApiInterval) -> Observable<[ChartDataEntry]> {
+    private func fetchHistoryData(assetName name: String, legendSelected: ChartLegend) -> Observable<[MarketInformation]> {
         
-        self.fetchHistoryData(assetName: assetName, interval: interval)
+        return Network.sharedInstance.performGetOnHistory(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_HISTORY), assetName: name, legendData: self.createHistoryDate(legendSelected: legendSelected)).asObservable()
+    }
+    
+    private func fetchDataEntries(assetName: String, interval: ChartLegend) -> Observable<[ChartDataEntry]> {
+        
+        self.fetchHistoryData(assetName: assetName, legendSelected: interval)
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .map({ (marketInformation) -> [ChartDataEntry] in

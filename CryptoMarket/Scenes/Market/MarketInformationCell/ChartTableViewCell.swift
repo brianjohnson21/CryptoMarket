@@ -13,6 +13,14 @@ import RxCocoa
 import Foundation
 import Charts
 
+internal enum ChartLegend : Int {
+    case day = 1
+    case week
+    case month
+    case year
+    case all
+}
+
 class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     
     @IBOutlet private weak var chartView: LineChartView!
@@ -24,7 +32,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     private var viewModel: MarketChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let chartEventOnLegend: BehaviorSubject<ApiInterval> = BehaviorSubject(value: .m5)
+    private let chartEventOnLegend: BehaviorSubject<ChartLegend> = BehaviorSubject(value: .day)
     private var tagButtonSelected = 1
     
     override func awakeFromNib() {
@@ -89,7 +97,9 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         self.addHighlight(buttonTag: sender.tag)
         sender.isSelected = true
         
-        self.chartEventOnLegend.onNext(ApiInterval(rawValue: self.tagButtonSelected) ?? ApiInterval.d1)
+        self.chartEventOnLegend.onNext(ChartLegend(rawValue: self.tagButtonSelected) ?? ChartLegend.month)
+        
+        //self.chartEventOnLegend.onNext(ApiInterval(rawValue: self.tagButtonSelected) ?? ApiInterval.d1)
     }
     
     private func setChartSettings() {
