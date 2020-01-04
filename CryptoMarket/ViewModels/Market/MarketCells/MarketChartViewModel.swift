@@ -53,17 +53,6 @@ public final class MarketChartViewModel: ViewModelType {
             })
     }
     
-    private func getData() {
-        
-        Network.sharedInstance.performGetOnHistory(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_HISTORY), assetName: "bitcoin", interval: .d1)
-            .asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { (marketInformation) in
-                print(marketInformation)
-            }).disposed(by: self.disposeBag)
-    }
-    
     func transform(input: Input) -> Output {
         
         self.isChartLoading.onNext(false)

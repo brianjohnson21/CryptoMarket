@@ -64,6 +64,10 @@ class MarketNewCell: UICollectionViewCell {
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(name))
         let output = self.viewModel.transform(input: input)
         
+        guard !name.isEmpty else {
+            return
+        }
+        
         self.viewModel.currentDownloadUrl = name
         
         output.imageDownloaded.asObservable()
