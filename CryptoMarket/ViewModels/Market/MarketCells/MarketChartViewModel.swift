@@ -27,6 +27,7 @@ public final class MarketChartViewModel: ViewModelType {
     }
 
     public init(chartId: String) {
+        print("Showing the chart Id used here \(chartId)")
         self.chartId = chartId
     }
     

@@ -103,12 +103,10 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as? ChartTableViewCell {
                 
                 cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
-                
-                //cell.setPercentageOnChart(percentage: item.market.changePercent24Hr?.percentageFormatting() ?? "0%")
                 cell.setPercentageOnChart(percentage: item.market.changePercent24Hr ?? "")
-                cell.setupChart(assetName: item.market.name ?? "")
-                
+                cell.setupChart(assetName: item.market.id ?? "")
                 cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
+                
                 return cell
             }
         }
