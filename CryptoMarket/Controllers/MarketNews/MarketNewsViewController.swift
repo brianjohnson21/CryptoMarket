@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SafariServices
 
 class MarketNewsViewController: UIViewController {
     
@@ -110,6 +111,19 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let imageUrl = self.collectionViewDataSource[indexPath.row].url else { return }
+        if let url = URL(string: imageUrl) {
+            let config = SFSafariViewController.Configuration()
+            
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            vc.preferredBarTintColor = UIColor.black
+            vc.preferredControlTintColor = UIColor.systemBlue
+            
+            self.present(vc, animated: true)
+        }
+    }
 }
 
 extension MarketNewsViewController {
