@@ -13,7 +13,7 @@ import RxCocoa
 class MarketFavoritesViewController: UIViewController {
     
     //MARK: Members
-    private let tableViewDataSource: [Market] = []
+    private var tableViewDataSource: [Market] = []
     private let disposeBag = DisposeBag()
     private let viewModel: FavoriteViewModel = FavoriteViewModel()
     
@@ -45,6 +45,13 @@ class MarketFavoritesViewController: UIViewController {
         let input = FavoriteViewModel.Input()
         let output = self.viewModel.transform(input: input)
         
+        output.favoriteMarket.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (market) in
+                self.tableViewDataSource = market
+                self.tableViewFavorite.reloadData()
+            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -53,7 +60,25 @@ extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSou
         return self.tableViewDataSource.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.identifier, for: indexPath) as? MarketTableViewCell {
+            
+            cell.title = tableViewDataSource[indexPath.row].name
+            cell.symbol = tableViewDataSource[indexPath.row].symbol
+            cell.index = tableViewDataSource[indexPath.row].rank
+            cell.price = tableViewDataSource[indexPath.row].priceUsd?.currencyFormatting(formatterDigit: 2)
+            cell.loadImageOnCell(name: tableViewDataSource[indexPath.row].id ?? "")
+            cell.setPercentageOnMarket(percentage: tableViewDataSource[indexPath.row].changePercent24Hr ?? "")
+            cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
+            
+            return cell
+        }
+        
         return UITableViewCell()
     }
 }
