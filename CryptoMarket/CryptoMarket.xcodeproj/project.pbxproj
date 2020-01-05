@@ -16,6 +16,7 @@
 		1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E482EA62388B39E00C05DA8 /* MarketInformationViewModel.swift */; };
 		1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */; };
 		1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56AB2329890A00B4BF0A /* Network.swift */; };
+		1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C050123C2388000F798CD /* FavoriteViewModel.swift */; };
 		1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */; };
 		1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01523219CC10087E38C /* AppDelegate.swift */; };
 		1E51B01823219CC10087E38C /* MarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01723219CC10087E38C /* MarketController.swift */; };
@@ -86,6 +87,7 @@
 		1E482EA62388B39E00C05DA8 /* MarketInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInformationViewModel.swift; sourceTree = "<group>"; };
 		1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Ext.swift"; sourceTree = "<group>"; };
 		1E4A56AB2329890A00B4BF0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		1E4C050123C2388000F798CD /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChartViewModel.swift; sourceTree = "<group>"; };
 		1E51B01223219CC10087E38C /* CryptoMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B01523219CC10087E38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 				1E940335232D3C3C004680D2 /* fa-regular-400.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		1E4C050023C2385B00F798CD /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				1E4C050123C2388000F798CD /* FavoriteViewModel.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		1E4E752B23AFB19C006A8A76 /* MarketCells */ = {
@@ -340,7 +350,8 @@
 		1EE73D8B23219FB800D83B82 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E986E5D823300BB3001AAD12 /* MarketNews */,
+				1E4C050023C2385B00F798CD /* Favorites */,
+				E986E5D823300BB3001AAD12 /* News */,
 				E986E5D723300BAB001AAD12 /* Market */,
 			);
 			path = ViewModels;
@@ -441,13 +452,13 @@
 			path = Market;
 			sourceTree = "<group>";
 		};
-		E986E5D823300BB3001AAD12 /* MarketNews */ = {
+		E986E5D823300BB3001AAD12 /* News */ = {
 			isa = PBXGroup;
 			children = (
 				E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */,
 				1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */,
 			);
-			path = MarketNews;
+			path = News;
 			sourceTree = "<group>";
 		};
 		E9974C8D232F9D59006D2EA4 /* Main */ = {
@@ -709,6 +720,7 @@
 				1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */,
 				1EE00AB52389EA3100AACB0D /* Observable+Ext.swift in Sources */,
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
+				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
