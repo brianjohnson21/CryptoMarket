@@ -16,7 +16,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVv-gf-7O5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2238" y="-457"/>
+            <point key="canvasLocation" x="1450" y="265"/>
         </scene>
         <!--MarketNews-->
         <scene sceneID="ACy-p2-W5q">
@@ -64,16 +64,22 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aih-zf-8Xr">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="aih-zf-8Xr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="MainColor"/>
                         <color key="tintColor" name="White"/>
                         <color key="barTintColor" name="MainColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="White"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="White"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="i2q-qx-Zv8" kind="relationship" relationship="rootViewController" id="NqR-3A-JW9"/>
+                        <segue destination="i2q-qx-Zv8" kind="relationship" relationship="rootViewController" id="HiH-e8-RW9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0G-aJ-ajR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,12 +154,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="LYB-Hi-9x8" kind="relationship" relationship="rootViewController" id="DO5-bG-YDh"/>
+                        <segue destination="LYB-Hi-9x8" kind="relationship" relationship="rootViewController" id="bdz-t0-Tca"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aq1-6x-Cdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="1334"/>
+            <point key="canvasLocation" x="374" y="1445"/>
         </scene>
     </scenes>
     <resources>

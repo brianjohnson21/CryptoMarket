@@ -61,7 +61,7 @@
                                 <color key="sectionIndexBackgroundColor" name="MainColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="3bm-ag-xJh" firstAttribute="top" secondItem="wa4-nv-nRn" secondAttribute="top" id="0ah-8Z-Qm0"/>
                             <constraint firstItem="3bm-ag-xJh" firstAttribute="trailing" secondItem="wa4-nv-nRn" secondAttribute="trailing" id="SoS-Zd-6jY"/>

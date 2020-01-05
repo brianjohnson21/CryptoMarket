@@ -52,7 +52,6 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.navigationItem.title = "Market"
         self.setupTableView()
         self.setupSpinner()
-        self.setupNavbar()
         self.setupSearchController()
     }
     
@@ -71,24 +70,6 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.spinner.isHidden = false
         self.view.addSubview(self.spinner)
         self.spinner.startAnimating()
-    }
-    
-    private func setupNavbar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = UIColor.init(named: "MainColor")
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.compactAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationItem.hidesSearchBarWhenScrolling = true
-        self.navigationController?.navigationBar.barStyle = .black
     }
     
     private func setupSearchController() {
@@ -186,6 +167,6 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
 
 extension MarketController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
+        return .lightContent
     }
 }
