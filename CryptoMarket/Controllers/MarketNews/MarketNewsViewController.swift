@@ -40,8 +40,9 @@ class MarketNewsViewController: UIViewController {
         self.collectionSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         self.collectionSpinner.isHidden = false
         self.collectionSpinner.startAnimating()
-        
+        self.refreshControl.tintColor = UIColor.init(named: "White")
         self.collectionViewNews.refreshControl = refreshControl
+        
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationItem.title = "News"
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")

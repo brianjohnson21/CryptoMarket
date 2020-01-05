@@ -61,7 +61,7 @@ class MarketController: UIViewController, UISearchControllerDelegate{
         self.tableViewMarket.delegate = self
         self.tableViewMarket.dataSource = self
         self.tableViewMarket.keyboardDismissMode = .onDrag
-        self.refreshControl.tintColor = .white
+        self.refreshControl.tintColor = UIColor.init(named: "White")
         self.tableViewMarket.refreshControl = self.refreshControl
     }
     
