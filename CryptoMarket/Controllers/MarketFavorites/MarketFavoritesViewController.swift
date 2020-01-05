@@ -13,7 +13,7 @@ import RxCocoa
 class MarketFavoritesViewController: UIViewController {
     
     //MARK: Members
-    private var tableViewDataSource: [Market] = []
+    private var tableViewDataSource: [Favorite] = []
     private let disposeBag = DisposeBag()
     private let viewModel: FavoriteViewModel = FavoriteViewModel()
     

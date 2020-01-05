@@ -17,6 +17,7 @@
 		1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */; };
 		1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56AB2329890A00B4BF0A /* Network.swift */; };
 		1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C050123C2388000F798CD /* FavoriteViewModel.swift */; };
+		1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C050423C2608D00F798CD /* CryptoMarket.xcdatamodeld */; };
 		1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */; };
 		1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01523219CC10087E38C /* AppDelegate.swift */; };
 		1E51B01823219CC10087E38C /* MarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01723219CC10087E38C /* MarketController.swift */; };
@@ -88,6 +89,7 @@
 		1E4A56A5232598B300B4BF0A /* Controller+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Ext.swift"; sourceTree = "<group>"; };
 		1E4A56AB2329890A00B4BF0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1E4C050123C2388000F798CD /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		1E4C050523C2608D00F798CD /* CryptoMarket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoMarket.xcdatamodel; sourceTree = "<group>"; };
 		1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChartViewModel.swift; sourceTree = "<group>"; };
 		1E51B01223219CC10087E38C /* CryptoMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B01523219CC10087E38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,14 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
+		1E4C050323C2605F00F798CD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1E4C050423C2608D00F798CD /* CryptoMarket.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1E4E752B23AFB19C006A8A76 /* MarketCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 				1EE73D8A23219FB400D83B82 /* Controllers */,
 				1EE73D8923219FA400D83B82 /* Scenes */,
 				1EE73D8823219F8000D83B82 /* Delegates */,
+				1E4C050323C2605F00F798CD /* CoreData */,
 				1E51B01423219CC10087E38C /* CryptoMarket */,
 				1E51B02923219CC20087E38C /* CryptoMarketTests */,
 				1E51B03423219CC20087E38C /* CryptoMarketUITests */,
@@ -707,6 +718,7 @@
 				1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */,
 				1E51B01823219CC10087E38C /* MarketController.swift in Sources */,
 				1EE00AB023898DF400AACB0D /* InformationTableViewCell.swift in Sources */,
+				1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */,
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
@@ -1068,6 +1080,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1E4C050423C2608D00F798CD /* CryptoMarket.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E4C050523C2608D00F798CD /* CryptoMarket.xcdatamodel */,
+			);
+			currentVersion = 1E4C050523C2608D00F798CD /* CryptoMarket.xcdatamodel */;
+			path = CryptoMarket.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1E51B00A23219CC10087E38C /* Project object */;
 }

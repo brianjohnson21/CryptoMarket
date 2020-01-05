@@ -6,19 +6,25 @@
 //  Copyright © 2020 Thomas Martins. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxCocoa
 import RxSwift
+import CoreData
 
 internal final class FavoriteViewModel: ViewModelType {
     
     private let isLoading = PublishSubject<Bool>()
+    var managedObjectContext: NSManagedObjectContext!
     
     struct Input {
     }
     
+    init() {
+        self.managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }
+    
     struct Output {
-        let favoriteMarket: Observable<[Market]>
+        let favoriteMarket: Observable<[Favorite]>
         let isLoading: Observable<Bool>
     }
     
@@ -28,9 +34,20 @@ internal final class FavoriteViewModel: ViewModelType {
          })
      }
     
+    private func fetchFavoriteData() -> Observable<[Favorite]> {
+        let favoriteRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        
+        do {
+            return Observable.just(try self.managedObjectContext.fetch(favoriteRequest))
+        } catch {
+            print("Could not fetch any data request \(error.localizedDescription)")
+        }
+        return Observable.just([Favorite()])
+    }
+    
     func transform(input: Input) -> Output {
         
-        let favoriteMarket = self.fetchMarketData()
+        let favoriteMarket = self.fetchFavoriteData()
         
         return Output(favoriteMarket: favoriteMarket,
                       isLoading: self.isLoading.asObservable())
