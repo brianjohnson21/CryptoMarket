@@ -12,12 +12,13 @@ class MarketFavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Favorites"
+        
+        self.setupView()
     }
-}
-
-extension MarketFavoritesViewController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    
+    private func setupView() {
+        self.navigationItem.title = "Favorites"
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
     }
 }

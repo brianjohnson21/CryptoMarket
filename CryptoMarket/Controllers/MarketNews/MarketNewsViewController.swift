@@ -125,9 +125,3 @@ extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
 }
-
-extension MarketNewsViewController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
-    }
-}

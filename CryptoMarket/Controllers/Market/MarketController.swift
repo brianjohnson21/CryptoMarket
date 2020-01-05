@@ -164,9 +164,3 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-extension MarketController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-}

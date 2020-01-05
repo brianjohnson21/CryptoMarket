@@ -16,7 +16,18 @@
                     <view key="view" contentMode="scaleToFill" id="wlx-LH-dSt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="MainColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-1Z-sbO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <color key="backgroundColor" name="MainColor"/>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oQY-1Z-sbO" firstAttribute="leading" secondItem="Oh0-5b-mNV" secondAttribute="leading" id="24q-v8-NUG"/>
+                            <constraint firstItem="Oh0-5b-mNV" firstAttribute="trailing" secondItem="oQY-1Z-sbO" secondAttribute="trailing" id="bJf-7p-EDD"/>
+                            <constraint firstItem="Oh0-5b-mNV" firstAttribute="bottom" secondItem="oQY-1Z-sbO" secondAttribute="bottom" id="dsZ-Kh-mgW"/>
+                            <constraint firstItem="oQY-1Z-sbO" firstAttribute="top" secondItem="wlx-LH-dSt" secondAttribute="top" id="iV6-36-vII"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Oh0-5b-mNV"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
