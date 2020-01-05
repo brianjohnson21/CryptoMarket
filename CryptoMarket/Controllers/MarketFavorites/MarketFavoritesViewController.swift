@@ -42,6 +42,8 @@ class MarketFavoritesViewController: UIViewController {
     }
     
     private func setupViewModel() {
+        let input = FavoriteViewModel.Input()
+        let output = self.viewModel.transform(input: input)
         
     }
 }
