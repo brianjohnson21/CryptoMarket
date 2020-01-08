@@ -15,15 +15,31 @@ internal final class CoreDataManager {
     
     public static let sharedInstance = CoreDataManager()
     
-    private let coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    private let coreDataContainer: NSPersistentContainer
+    private var coreData =  Variable<[Favorite]>([])
     
     private var context: NSManagedObjectContext {
         return self.coreDataContainer.viewContext
     }
     
-    private init() { }
+    private init() {
+        self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        self.coreData.value = [Favorite]()
+        
+        self.coreData.value = self.fetchData()
+    }
     
-    public func create(with market: Market) throws {
+    private func fetchData() -> [Favorite] {
+        do {
+            let favorites = try self.context.fetch(Favorite.fetchRequest() as NSFetchRequest<Favorite>)
+            return favorites
+        }
+        catch {
+            return []
+        }
+    }
+    
+    public func create(with market: Market) {
         let fav = Favorite(context: self.context)
         
         fav.id = market.id
@@ -35,17 +51,17 @@ internal final class CoreDataManager {
         fav.rank = market.rank
         
         self.context.insert(fav)
-        try self.context.save()
+        do {
+            try self.context.save()
+            self.coreData.value = self.fetchData()
+        } catch {
+            //todo handle
+        }
     }
     
-    public func fetch() throws -> Observable<[Favorite]> {
-        let favorites = try self.context.fetch(Favorite.fetchRequest() as NSFetchRequest<Favorite>)
-        
-        let result = Observable<[Favorite]>.create { (observer) -> Disposable in
-            observer.onNext(favorites)
-            return Disposables.create()
-        }
-        return result
+    public func fetch() -> Observable<[Favorite]> {
+        self.coreData.value = self.fetchData()
+        return self.coreData.asObservable()
     }
     
     public func delete(fav: Favorite) throws {

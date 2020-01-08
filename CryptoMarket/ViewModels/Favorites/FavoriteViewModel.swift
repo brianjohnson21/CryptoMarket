@@ -26,12 +26,7 @@ internal final class FavoriteViewModel: ViewModelType {
     }
 
     private func fetchFavoriteData() -> Observable<[Favorite]> {
-        do {
-            return try CoreDataManager.sharedInstance.fetch()
-        } catch {
-            //todo: handle failure here
-        }
-        return Observable.just([])
+        return CoreDataManager.sharedInstance.fetch()
     }
     
     func transform(input: Input) -> Output {
