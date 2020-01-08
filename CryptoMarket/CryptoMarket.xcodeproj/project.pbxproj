@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05DA3A8C01FFA9A2CC25CF7C /* Pods_CryptoMarketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9572D8C0BB3B556ADB22AD74 /* Pods_CryptoMarketUITests.framework */; };
+		1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20C4A323C5F58800163F38 /* CoreDataManager.swift */; };
 		1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068123C13DBC00118DCC /* Date+Ext.swift */; };
 		1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */; };
 		1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		1CF6DD6AC49BD691E2D7443B /* Pods-CryptoMarketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1E20C4A323C5F58800163F38 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1E24068123C13DBC00118DCC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHistoryRequest.swift; sourceTree = "<group>"; };
 		1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				1E4C050423C2608D00F798CD /* CryptoMarket.xcdatamodeld */,
+				1E20C4A323C5F58800163F38 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -215,12 +218,12 @@
 				1EE73D8E2321A51900D83B82 /* Protocols */,
 				E9D57026232A60E3009A5031 /* Models */,
 				1E6AB7862323BF900006AA78 /* Network */,
+				1E4C050323C2605F00F798CD /* CoreData */,
 				1E6AB78323230D3B0006AA78 /* Extensions */,
 				1EE73D8B23219FB800D83B82 /* ViewModels */,
 				1EE73D8A23219FB400D83B82 /* Controllers */,
 				1EE73D8923219FA400D83B82 /* Scenes */,
 				1EE73D8823219F8000D83B82 /* Delegates */,
-				1E4C050323C2605F00F798CD /* CoreData */,
 				1E51B01423219CC10087E38C /* CryptoMarket */,
 				1E51B02923219CC20087E38C /* CryptoMarketTests */,
 				1E51B03423219CC20087E38C /* CryptoMarketUITests */,
@@ -743,6 +746,7 @@
 				E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */,
+				1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

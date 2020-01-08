@@ -25,7 +25,6 @@ public final class MarketInformationViewModel: ViewModelType {
     }
     
     init(marketSelected: Market) {
-        self.manageObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.market = marketSelected
     }
     
@@ -53,24 +52,14 @@ public final class MarketInformationViewModel: ViewModelType {
         
         return tableViewData
     }
-    
-    var manageObjectContext: NSManagedObjectContext!
-    
-    private func createFavorite() {
-        let coreMarket = Favorite(context: self.manageObjectContext)
         
-        coreMarket.id = self.market.id
-        coreMarket.name = self.market.name
-        coreMarket.changePercent24Hr = self.market.changePercent24Hr
-        coreMarket.marketCapUsd = self.market.marketCapUsd
-        coreMarket.maxSupply = self.market.maxSupply
-        coreMarket.priceUsd = self.market.priceUsd
-        coreMarket.rank = self.market.rank
+    private func createFavorite() {
         do {
-            try self.manageObjectContext.save()
+            try CoreDataManager.sharedInstance.create(with: self.market)
         } catch {
-            print("Could not save the manage object \(error.localizedDescription)")
+            //todo: handle failure here
         }
+        
     }
     
     func transform(input: Input) -> Output {

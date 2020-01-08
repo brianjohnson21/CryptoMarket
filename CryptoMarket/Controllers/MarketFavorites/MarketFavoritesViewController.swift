@@ -28,7 +28,7 @@ class MarketFavoritesViewController: UIViewController {
         self.setupTableView()
         self.setupViewModel()
     }
-    
+
     private func setupView() {
         self.navigationItem.title = "Favorites"
         self.extendedLayoutIncludesOpaqueBars = true
@@ -48,10 +48,10 @@ class MarketFavoritesViewController: UIViewController {
         output.favoriteMarket.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (market) in
-                self.tableViewDataSource = market
+            .subscribe(onNext: { (favorite) in
+                self.tableViewDataSource = favorite
                 self.tableViewFavorite.reloadData()
-            }).disposed(by: self.disposeBag)
+        }).disposed(by: self.disposeBag)
     }
 }
 
