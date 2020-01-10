@@ -73,11 +73,9 @@ extension MarketFavoritesViewController {
     }
     
     private func tableView(removeElement element: Favorite, indexPath: IndexPath) {
-        
         self.tableViewDataSource.remove(at: indexPath.row)
         self.tableViewFavorite.beginUpdates()
         self.tableViewFavorite.deleteRows(at: [indexPath], with: .automatic)
-        //self.tableViewFavorite.reloadRows(at: [indexPath], with: .automatic)
         self.tableViewFavorite.endUpdates()
     }
 }
