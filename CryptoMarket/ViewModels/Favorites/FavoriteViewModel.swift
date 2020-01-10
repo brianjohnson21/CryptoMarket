@@ -15,6 +15,7 @@ internal final class FavoriteViewModel: ViewModelType {
     
     private let isLoading = PublishSubject<Bool>()
     var managedObjectContext: NSManagedObjectContext!
+    private let disposeBag = DisposeBag()
     
     struct Input { }
     
@@ -23,17 +24,25 @@ internal final class FavoriteViewModel: ViewModelType {
     struct Output {
         let favoriteMarket: Observable<[Favorite]>
         let isLoading: Observable<Bool>
+        let favoriteOnChange: Observable<Favorite>
     }
 
-    private func fetchFavoriteData() -> Observable<[Favorite]> {
+    private func fetchFavorites() -> Observable<[Favorite]> {
         return CoreDataManager.sharedInstance.fetch()
+    }
+    
+    private func fetchFavorite() -> Observable<Favorite> {
+        return CoreDataManager.sharedInstance.getCurrentElement()
     }
     
     func transform(input: Input) -> Output {
         
-        let favoriteMarket = self.fetchFavoriteData()
+        let favoriteMarket = self.fetchFavorites()
+        
+        let newElement = self.fetchFavorite()
     
         return Output(favoriteMarket: favoriteMarket,
-                      isLoading: self.isLoading.asObservable())
+                      isLoading: self.isLoading.asObservable(),
+                      favoriteOnChange: newElement)
     }
 }

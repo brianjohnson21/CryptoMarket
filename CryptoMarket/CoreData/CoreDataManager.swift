@@ -16,7 +16,7 @@ internal final class CoreDataManager {
     public static let sharedInstance = CoreDataManager()
     
     private let coreDataContainer: NSPersistentContainer
-    private var coreData =  Variable<[Favorite]>([])
+    private let favOnChange: PublishSubject<Favorite> = PublishSubject<Favorite>()
     
     private var context: NSManagedObjectContext {
         return self.coreDataContainer.viewContext
@@ -24,9 +24,6 @@ internal final class CoreDataManager {
     
     private init() {
         self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        self.coreData.value = [Favorite]()
-        
-        self.coreData.value = self.fetchData()
     }
     
     private func fetchData() -> [Favorite] {
@@ -49,19 +46,26 @@ internal final class CoreDataManager {
         fav.maxSupply = market.maxSupply
         fav.priceUsd = market.priceUsd
         fav.rank = market.rank
-        
-        self.context.insert(fav)
         do {
+            self.context.insert(fav)
             try self.context.save()
-            self.coreData.value = self.fetchData()
+            self.favOnChange.onNext(fav)
+            
         } catch {
             //todo handle
         }
     }
     
+    /// here
+    public func getCurrentElement() -> Observable<Favorite> {
+        return self.favOnChange.asObservable()
+    }
+    
     public func fetch() -> Observable<[Favorite]> {
-        self.coreData.value = self.fetchData()
-        return self.coreData.asObservable()
+        return Observable<[Favorite]>.create { (observer) -> Disposable in
+            observer.onNext(self.fetchData())
+            return Disposables.create()
+        }
     }
     
     public func delete(fav: Favorite) throws {

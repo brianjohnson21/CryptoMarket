@@ -52,10 +52,28 @@ class MarketFavoritesViewController: UIViewController {
                 self.tableViewDataSource = favorite
                 self.tableViewFavorite.reloadData()
         }).disposed(by: self.disposeBag)
+        
+        output.favoriteOnChange.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (element) in
+                self.updateTableView(newElement: element)
+            }).disposed(by: self.disposeBag)
+    }
+}
+
+extension MarketFavoritesViewController {
+    private func updateTableView(newElement elem: Favorite) {
+        self.tableViewDataSource.append(elem)
+        let selectedIndexPath = IndexPath(row: self.tableViewDataSource.count - 1, section: 0)
+        self.tableViewFavorite.beginUpdates()
+        self.tableViewFavorite.insertRows(at: [selectedIndexPath], with: .automatic)
+        self.tableViewFavorite.endUpdates()
     }
 }
 
 extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableViewDataSource.count
     }
