@@ -56,7 +56,6 @@ internal final class CoreDataManager {
         }
     }
     
-    /// here
     public func getCurrentElement() -> Observable<Favorite> {
         return self.favOnChange.asObservable()
     }

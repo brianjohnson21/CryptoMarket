@@ -16,7 +16,7 @@ class MarketFavoritesViewController: UIViewController {
     private var tableViewDataSource: [Favorite] = []
     private let disposeBag = DisposeBag()
     private let viewModel: FavoriteViewModel = FavoriteViewModel()
-    
+    private let onDelete: PublishSubject<Favorite> = PublishSubject<Favorite>()
 
     //MARK: Outlets
     @IBOutlet private weak var tableViewFavorite: UITableView!
@@ -42,7 +42,7 @@ class MarketFavoritesViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        let input = FavoriteViewModel.Input()
+        let input = FavoriteViewModel.Input(onDelete: self.onDelete.asObservable())
         let output = self.viewModel.transform(input: input)
         
         output.favoriteMarket.asObservable()
@@ -57,17 +57,27 @@ class MarketFavoritesViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (element) in
-                self.updateTableView(newElement: element)
+                self.tableView(addNewElement: element)
             }).disposed(by: self.disposeBag)
     }
 }
 
 extension MarketFavoritesViewController {
-    private func updateTableView(newElement elem: Favorite) {
-        self.tableViewDataSource.append(elem)
+    
+    private func tableView(addNewElement element: Favorite) {
+        self.tableViewDataSource.append(element)
         let selectedIndexPath = IndexPath(row: self.tableViewDataSource.count - 1, section: 0)
         self.tableViewFavorite.beginUpdates()
         self.tableViewFavorite.insertRows(at: [selectedIndexPath], with: .automatic)
+        self.tableViewFavorite.endUpdates()
+    }
+    
+    private func tableView(removeElement element: Favorite, indexPath: IndexPath) {
+        
+        self.tableViewDataSource.remove(at: indexPath.row)
+        self.tableViewFavorite.beginUpdates()
+        self.tableViewFavorite.deleteRows(at: [indexPath], with: .automatic)
+        //self.tableViewFavorite.reloadRows(at: [indexPath], with: .automatic)
         self.tableViewFavorite.endUpdates()
     }
 }
@@ -98,5 +108,13 @@ extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteElem = tableViewDataSource[indexPath.row]
+            self.onDelete.onNext(deleteElem)
+            self.tableView(removeElement: deleteElem, indexPath: indexPath)
+        }
     }
 }

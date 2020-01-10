@@ -17,7 +17,9 @@ internal final class FavoriteViewModel: ViewModelType {
     var managedObjectContext: NSManagedObjectContext!
     private let disposeBag = DisposeBag()
     
-    struct Input { }
+    struct Input {
+        let onDelete: Observable<Favorite>
+    }
     
     init() { }
     
@@ -35,7 +37,24 @@ internal final class FavoriteViewModel: ViewModelType {
         return CoreDataManager.sharedInstance.getCurrentElement()
     }
     
+    private func deleteFavorite(favoriteElement fav: Favorite) {
+        do {
+            try CoreDataManager.sharedInstance.delete(fav: fav)
+            print("did delete \(fav)")
+        }catch {
+            print("could not delete \(fav)")
+        }
+    }
+    
+    ///todo check subscribe here
     func transform(input: Input) -> Output {
+        
+        input.onDelete
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (favDelete) in
+                self.deleteFavorite(favoriteElement: favDelete)
+            }).disposed(by: self.disposeBag)
         
         let favoriteMarket = self.fetchFavorites()
         
