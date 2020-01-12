@@ -115,4 +115,12 @@ extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSou
             self.tableView(removeElement: deleteElem, indexPath: indexPath)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard") as? MarketInformationViewController {
+            vc.setup(marketSelected: Market(with: tableViewDataSource[indexPath.row]))
+            self.navigationController?.pushViewController(vc, animated: true)
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
 }

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public struct Market: ImmutableMappable {
+public struct Market: ImmutableMappable  {
     
     public let id: String?
     public let rank: String?
@@ -35,6 +35,21 @@ public struct Market: ImmutableMappable {
         self.changePercent24Hr = (try? map.value("changePercent24Hr")) ?? ""
         self.vwap24Hr = (try? map.value("vwap24Hr")) ?? ""
     }
+    
+    public init(with favorite: Favorite) {
+        self.id = favorite.id
+        self.rank = favorite.rank
+        self.symbol = favorite.symbol
+        self.name = favorite.name
+        self.supply = favorite.supply
+        self.maxSupply = favorite.maxSupply
+        self.marketCapUsd = favorite.marketCapUsd
+        self.volumeUsd24Hr = favorite.volumeUsd24Hr
+        self.priceUsd = favorite.priceUsd
+        self.changePercent24Hr = favorite.changePercent24Hr
+        self.vwap24Hr = favorite.vwap24Hr
+    }
+    
 }
 
 extension Market: Equatable {
