@@ -22,9 +22,7 @@ class MarketInformationViewController: UIViewController {
     private let favoriteEvent: PublishSubject<Void> = PublishSubject()
     
     private var selectedMarket: Market?
-    
-    private var marketIcon: BehaviorSubject<UIImage?> = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
-    private var selectedIcon: UIImage?
+    private var marketIcon = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
