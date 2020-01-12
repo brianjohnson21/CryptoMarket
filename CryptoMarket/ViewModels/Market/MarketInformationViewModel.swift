@@ -56,12 +56,7 @@ public final class MarketInformationViewModel: ViewModelType {
     }
         
     private func createFavorite() {
-        do {
-            try CoreDataManager.sharedInstance.create(with: self.market)
-        } catch {
-            //todo: handle failure here
-        }
-        
+        CoreDataManager.sharedInstance.create(with: self.market)
     }
     
     private func fetchImageFromString(pathImage name: String) -> Observable<UIImage?> {
@@ -84,6 +79,8 @@ public final class MarketInformationViewModel: ViewModelType {
             .flatMap { (imageName) -> Observable<UIImage?> in
                 return self.fetchImageFromString(pathImage: imageName)}
         
-        return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource), imageDownloaded: image)
+        return Output(navigationTitle: self.market.name ?? "Market Chart",
+                      tableViewDataSource: Driver.just(tableViewDataSource),
+                      imageDownloaded: image)
     }
 }
