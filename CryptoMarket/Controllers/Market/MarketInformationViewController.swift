@@ -20,7 +20,11 @@ class MarketInformationViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var tableViewDataSource = [CellViewModelProtocol]()
     private let favoriteEvent: PublishSubject<Void> = PublishSubject()
+    
     private var selectedMarket: Market?
+    
+    private var marketIcon: BehaviorSubject<UIImage?> = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
+    private var selectedIcon: UIImage?
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
@@ -44,8 +48,10 @@ class MarketInformationViewController: UIViewController {
                    text: "\(self.selectedMarket?.name ?? "") Added to your favorite.",
                    style: style)
         
+        let imageDownloaded = try! self.marketIcon.value()
+        
         let image = EKProperty.ImageContent(
-            image: UIImage(named: "bitcoin")!,
+            image: imageDownloaded!,
             size: CGSize(width: 25, height: 25))
     
         let contentView = EKImageNoteMessageView(
@@ -67,7 +73,7 @@ class MarketInformationViewController: UIViewController {
     }
     
     @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
-//        //self.favoriteEvent.onNext(())
+        self.favoriteEvent.onNext(())
         self.displayFavoriteAlert()
         
     }
@@ -84,7 +90,7 @@ class MarketInformationViewController: UIViewController {
     }
         
     private func setupViewModel() {
-        let input = MarketInformationViewModel.Input(favoriteEvent: self.favoriteEvent.asObservable())
+        let input = MarketInformationViewModel.Input(favoriteEvent: self.favoriteEvent.asObservable(), imageName: Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: self.selectedMarket?.id ?? "").concat(string: ".png")))
         
         let output = self.viewModel.transform(input: input)
         
@@ -95,6 +101,19 @@ class MarketInformationViewController: UIViewController {
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewInformation.reloadData()
             }).disposed(by: self.disposeBag)
+        
+        output.imageDownloaded.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (image) in
+                
+            }).disposed(by: self.disposeBag)
+        
+        output.imageDownloaded.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .bind(to: self.marketIcon).disposed(by: self.disposeBag)
+            
         
         self.navigationItem.title = output.navigationTitle
     }

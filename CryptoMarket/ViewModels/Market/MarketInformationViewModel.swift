@@ -17,11 +17,13 @@ public final class MarketInformationViewModel: ViewModelType {
     
     struct Input {
         let favoriteEvent: Observable<Void>
+        let imageName: Driver<String>
     }
     
     struct Output {
         let navigationTitle: String
         let tableViewDataSource: Driver<[CellViewModelProtocol]>
+        let imageDownloaded: Observable<UIImage?>
     }
     
     init(marketSelected: Market) {
@@ -62,6 +64,10 @@ public final class MarketInformationViewModel: ViewModelType {
         
     }
     
+    private func fetchImageFromString(pathImage name: String) -> Observable<UIImage?> {
+        return Network.sharedInstance.performGetRequestImage(imageUrl: name)
+    }
+    
     func transform(input: Input) -> Output {
         let tableViewDataSource = self.createChartCell() + self.createTableInformationCell()
         
@@ -72,6 +78,13 @@ public final class MarketInformationViewModel: ViewModelType {
                 self.createFavorite()
             }).disposed(by: self.disposeBag)
         
-        return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource))
+        let image = input.imageName.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .flatMap { (imageName) -> Observable<UIImage?> in
+                return self.fetchImageFromString(pathImage: imageName)
+            }
+        
+        return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource), imageDownloaded: image)
     }
 }
