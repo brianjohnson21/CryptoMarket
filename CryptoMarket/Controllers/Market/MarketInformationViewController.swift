@@ -75,7 +75,6 @@ class MarketInformationViewController: UIViewController {
     @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
         self.favoriteEvent.onNext(())
         self.displayFavoriteAlert()
-        
     }
     
     private func setupView() {
@@ -90,7 +89,12 @@ class MarketInformationViewController: UIViewController {
     }
         
     private func setupViewModel() {
-        let input = MarketInformationViewModel.Input(favoriteEvent: self.favoriteEvent.asObservable(), imageName: Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: self.selectedMarket?.id ?? "").concat(string: ".png")))
+        let input = MarketInformationViewModel.Input(
+            
+            favoriteEvent: self.favoriteEvent.asObservable(),
+            imageName: Driver.just(ApiRoute.ROUTE_IMAGE
+                .concat(string: self.selectedMarket?.id ?? "")
+                .concat(string: ".png")))
         
         let output = self.viewModel.transform(input: input)
         

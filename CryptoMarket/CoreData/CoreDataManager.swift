@@ -37,24 +37,42 @@ internal final class CoreDataManager {
     }
     
     public func create(with market: Market) {
-        let fav = Favorite(context: self.context)
-        
-        fav.id = market.id
-        fav.name = market.name
-        fav.changePercent24Hr = market.changePercent24Hr
-        fav.marketCapUsd = market.marketCapUsd
-        fav.maxSupply = market.maxSupply
-        fav.priceUsd = market.priceUsd
-        fav.rank = market.rank
-        
         do {
-            self.context.insert(fav)
-            try self.context.save()
-            self.favOnChange.onNext(fav)
+            let result = try CoreDataManager.sharedInstance.isExist(with: market.id ?? "")
             
-        } catch {
+            if (!result) {
+                let fav = Favorite(context: self.context)
+                
+                fav.id = market.id
+                fav.name = market.name
+                fav.changePercent24Hr = market.changePercent24Hr
+                fav.marketCapUsd = market.marketCapUsd
+                fav.maxSupply = market.maxSupply
+                fav.priceUsd = market.priceUsd
+                fav.rank = market.rank
+                
+                do {
+                    self.context.insert(fav)
+                    try self.context.save()
+                    self.favOnChange.onNext(fav)
+                    
+                } catch {
+                    //todo handle
+                }
+            }
+        }
+        catch {
             //todo handle
         }
+    }
+    
+    private func isExist(with name: String) throws -> Bool {
+        
+        let fetchRequest = Favorite.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+        fetchRequest.predicate = NSPredicate(format: "id == %@", name)
+        let result = try self.context.fetch(fetchRequest)
+        
+        return result.count > 0 ? true : false
     }
     
     public func getCurrentElement() -> Observable<Favorite> {

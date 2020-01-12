@@ -82,8 +82,7 @@ public final class MarketInformationViewModel: ViewModelType {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .flatMap { (imageName) -> Observable<UIImage?> in
-                return self.fetchImageFromString(pathImage: imageName)
-            }
+                return self.fetchImageFromString(pathImage: imageName)}
         
         return Output(navigationTitle: self.market.name ?? "Market Chart", tableViewDataSource: Driver.just(tableViewDataSource), imageDownloaded: image)
     }
