@@ -118,7 +118,6 @@ class MarketInformationViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .bind(to: self.marketIcon).disposed(by: self.disposeBag)
             
-        
         self.navigationItem.title = output.navigationTitle
     }
     
