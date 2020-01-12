@@ -42,7 +42,6 @@ internal final class CoreDataManager {
             
             if (!result) {
                 let fav = Favorite(context: self.context)
-                
                 fav.id = market.id
                 fav.name = market.name
                 fav.changePercent24Hr = market.changePercent24Hr
@@ -53,8 +52,6 @@ internal final class CoreDataManager {
                 fav.supply = market.supply
                 fav.vwap24Hr = market.vwap24Hr
                 fav.volumeUsd24Hr = market.volumeUsd24Hr
-            
-                
                 do {
                     self.context.insert(fav)
                     try self.context.save()

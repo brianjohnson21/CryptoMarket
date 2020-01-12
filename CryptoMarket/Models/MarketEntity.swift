@@ -49,7 +49,7 @@ public struct Market: ImmutableMappable  {
         self.changePercent24Hr = favorite.changePercent24Hr
         self.vwap24Hr = favorite.vwap24Hr
     }
-    
+
 }
 
 extension Market: Equatable {
