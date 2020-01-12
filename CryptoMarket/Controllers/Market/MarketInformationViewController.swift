@@ -33,50 +33,43 @@ class MarketInformationViewController: UIViewController {
         self.setupViewModel()
     }
     
-    
-    @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
-//        //self.favoriteEvent.onNext(())
+    private func displayFavoriteAlert() {
         
         let style = EKProperty.LabelStyle(
             font: .boldSystemFont(ofSize: 16),
             color: .white,
-            alignment: .center
-        )
+            alignment: .center)
         
         let labelContent = EKProperty.LabelContent(
-            text: "\(self.selectedMarket?.name ?? "") Added to your favorite. ",
-            style: style
-        )
+                   text: "\(self.selectedMarket?.name ?? "") Added to your favorite.",
+                   style: style)
         
         let image = EKProperty.ImageContent(
-            imageName: "bitcoin",
-            displayMode: .light,
-            size: CGSize(width: 35, height: 35),
-            contentMode: .scaleAspectFit
-        )
-
+            image: UIImage(named: "bitcoin")!,
+            size: CGSize(width: 25, height: 25))
+    
         let contentView = EKImageNoteMessageView(
               with: labelContent,
-              imageContent: image
-          )
-
+              imageContent: image)
+        
         contentView.set(.height, of: 60)
         
-        let topcolor = UIColor.init(named: "Color-3")
-        let bottomColor = UIColor.init(named: "Color")
-        
-        var attributes: EKAttributes
-
-        attributes = .bottomFloat
+        let topColor = UIColor.init(named: "Color-3") ?? UIColor.black
+        let bottomColor = UIColor.init(named: "Color") ?? UIColor.black
+        var attributes: EKAttributes = .bottomFloat
         attributes.entryBackground = .gradient(
             gradient: .init(
-                colors: [EKColor.init(light: topcolor!, dark: topcolor!), EKColor.init(light: bottomColor!, dark: bottomColor!)],
+                colors: [EKColor.init(light: topColor, dark: topColor), EKColor.init(light: bottomColor, dark: bottomColor)],
                 startPoint: .zero,
-                endPoint: CGPoint(x: 1, y: 1)
-            )
-        )
+                endPoint: CGPoint(x: 1, y: 1)))
         
         SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+    
+    @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
+//        //self.favoriteEvent.onNext(())
+        self.displayFavoriteAlert()
+        
     }
     
     private func setupView() {
