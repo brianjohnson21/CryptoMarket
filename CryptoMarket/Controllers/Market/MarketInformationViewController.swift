@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import SwiftEntryKit
 
 class MarketInformationViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class MarketInformationViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var tableViewDataSource = [CellViewModelProtocol]()
     private let favoriteEvent: PublishSubject<Void> = PublishSubject()
+    private var selectedMarket: Market?
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
@@ -33,7 +35,48 @@ class MarketInformationViewController: UIViewController {
     
     
     @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
-        self.favoriteEvent.onNext(())
+//        //self.favoriteEvent.onNext(())
+        
+        let style = EKProperty.LabelStyle(
+            font: .boldSystemFont(ofSize: 16),
+            color: .white,
+            alignment: .center
+        )
+        
+        let labelContent = EKProperty.LabelContent(
+            text: "\(self.selectedMarket?.name ?? "") Added to your favorite. ",
+            style: style
+        )
+        
+        let image = EKProperty.ImageContent(
+            imageName: "bitcoin",
+            displayMode: .light,
+            size: CGSize(width: 35, height: 35),
+            contentMode: .scaleAspectFit
+        )
+
+        let contentView = EKImageNoteMessageView(
+              with: labelContent,
+              imageContent: image
+          )
+
+        contentView.set(.height, of: 60)
+        
+        let topcolor = UIColor.init(named: "Color-3")
+        let bottomColor = UIColor.init(named: "Color")
+        
+        var attributes: EKAttributes
+
+        attributes = .bottomFloat
+        attributes.entryBackground = .gradient(
+            gradient: .init(
+                colors: [EKColor.init(light: topcolor!, dark: topcolor!), EKColor.init(light: bottomColor!, dark: bottomColor!)],
+                startPoint: .zero,
+                endPoint: CGPoint(x: 1, y: 1)
+            )
+        )
+        
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
     private func setupView() {
@@ -64,6 +107,7 @@ class MarketInformationViewController: UIViewController {
     }
     
     public func setup(marketSelected: Market) {
+        self.selectedMarket = marketSelected
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)
     }
 
@@ -156,4 +200,32 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             return createChartCell(indexPath: indexPath, tableView: tableView)
         }
     }
+}
+
+
+public protocol NibInstantiatable {
+
+    static func nibName() -> String
+
+}
+
+extension NibInstantiatable {
+
+    static func nibName() -> String {
+        return String(describing: self)
+    }
+
+}
+
+extension NibInstantiatable where Self: UIView {
+
+    static func fromNib() -> Self {
+
+        let bundle = Bundle(for: self)
+        let nib = bundle.loadNibNamed(nibName(), owner: self, options: nil)
+
+        return nib!.first as! Self
+
+    }
+
 }

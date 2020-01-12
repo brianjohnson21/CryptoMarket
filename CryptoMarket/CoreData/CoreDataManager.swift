@@ -46,6 +46,7 @@ internal final class CoreDataManager {
         fav.maxSupply = market.maxSupply
         fav.priceUsd = market.priceUsd
         fav.rank = market.rank
+        
         do {
             self.context.insert(fav)
             try self.context.save()
