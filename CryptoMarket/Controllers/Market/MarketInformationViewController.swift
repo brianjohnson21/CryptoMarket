@@ -22,7 +22,7 @@ class MarketInformationViewController: UIViewController {
     private let favoriteEvent: PublishSubject<Void> = PublishSubject()
     
     private var selectedMarket: Market?
-    private var marketIcon = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
+    private var selectedMarketIcon = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
@@ -46,10 +46,10 @@ class MarketInformationViewController: UIViewController {
                    text: "\(self.selectedMarket?.name ?? "") Added to your favorite.",
                    style: style)
         
-        let imageDownloaded = try! self.marketIcon.value()
+        let imageDownloaded = try? self.selectedMarketIcon.value() ?? UIImage()
         
         let image = EKProperty.ImageContent(
-            image: imageDownloaded!,
+            image: imageDownloaded ?? UIImage(),
             size: CGSize(width: 25, height: 25))
     
         let contentView = EKImageNoteMessageView(
@@ -114,7 +114,8 @@ class MarketInformationViewController: UIViewController {
         output.imageDownloaded.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
-            .bind(to: self.marketIcon).disposed(by: self.disposeBag)
+            .bind(to: self.selectedMarketIcon)
+            .disposed(by: self.disposeBag)
             
         self.navigationItem.title = output.navigationTitle
     }
