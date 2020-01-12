@@ -40,7 +40,6 @@ internal final class FavoriteViewModel: ViewModelType {
     private func deleteFavorite(favoriteElement fav: Favorite) {
         do {
             try CoreDataManager.sharedInstance.delete(fav: fav)
-            print("did delete \(fav)")
         }catch {
             print("could not delete \(fav)")
         }

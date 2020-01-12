@@ -50,6 +50,10 @@ internal final class CoreDataManager {
                 fav.maxSupply = market.maxSupply
                 fav.priceUsd = market.priceUsd
                 fav.rank = market.rank
+                fav.supply = market.supply
+                fav.vwap24Hr = market.vwap24Hr
+                fav.volumeUsd24Hr = market.volumeUsd24Hr
+            
                 
                 do {
                     self.context.insert(fav)
