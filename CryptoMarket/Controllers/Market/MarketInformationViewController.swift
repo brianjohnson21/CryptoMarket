@@ -37,6 +37,33 @@ class MarketInformationViewController: UIViewController {
         self.setupViewModel()
     }
     
+    private func setupNavigationTitle() {
+        
+        let label = UILabel()
+        label.text = "\(self.selectedMarket?.name ?? "")"
+        label.sizeToFit()
+        label.textAlignment = NSTextAlignment.center
+
+        let image = UIImageView()
+        image.image = (try? self.selectedMarketIcon.value()) ?? UIImage(named: "bitcoin")
+        let imageAspect = image.image!.size.width/image.image!.size.height
+        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
+        image.contentMode = UIView.ContentMode.scaleAspectFit
+
+        let container = UIStackView()
+        container.axis = .horizontal
+        container.distribution = .equalSpacing
+        container.spacing = 10
+
+        container.addArrangedSubview(image)
+        container.addArrangedSubview(label)
+
+        container.backgroundColor = .red
+        self.navigationItem.titleView = container
+
+        container.sizeToFit()
+    }
+    
     private func displayFavoriteAlert() {
         
         let style = EKProperty.LabelStyle(
@@ -79,6 +106,7 @@ class MarketInformationViewController: UIViewController {
     
     private func setupView() {
         self.favoriteButton.isEnabled = self.flowType == .market ? true : false
+        self.setupNavigationTitle()
         
         //todo change title tableview
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
