@@ -11,6 +11,11 @@ import RxCocoa
 import RxSwift
 import CoreData
 
+internal enum MarketInformationFlowType {
+    case favorite
+    case market
+}
+
 public final class MarketInformationViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let market: Market

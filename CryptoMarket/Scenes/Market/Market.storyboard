@@ -79,6 +79,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="mLC-sx-DaB" id="oMo-Ot-yqa"/>
                         <outlet property="tableViewInformation" destination="3bm-ag-xJh" id="dI0-kD-htp"/>
                     </connections>
                 </viewController>

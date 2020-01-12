@@ -23,9 +23,11 @@ class MarketInformationViewController: UIViewController {
     
     private var selectedMarket: Market?
     private var selectedMarketIcon = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
+    private var flowType: MarketInformationFlowType = .market
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
+    @IBOutlet private weak var favoriteButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +78,7 @@ class MarketInformationViewController: UIViewController {
     }
     
     private func setupView() {
+        self.favoriteButton.isEnabled = self.flowType == .market ? true : false
         
         //todo change title tableview
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
@@ -119,8 +122,9 @@ class MarketInformationViewController: UIViewController {
         self.navigationItem.title = output.navigationTitle
     }
     
-    public func setup(marketSelected: Market) {
+    public func setup(marketSelected: Market, with type: MarketInformationFlowType) {
         self.selectedMarket = marketSelected
+        self.flowType = type
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)
     }
 
