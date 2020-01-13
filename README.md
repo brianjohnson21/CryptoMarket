@@ -2,10 +2,7 @@
 
 ### 🧐 Overview
 
-<img src="ReadMeAssets/News.png" height="300" width="150">
-
-![](ReadMeAssets/News.png)
-![](ReadMeAssets/Market.png)
+<img src="ReadMeAssets/News.png" height="325" width="150"> <img src="ReadMeAssets/Market.png" height="325" width="150"> <img src="ReadMeAssets/MarketView.png" height="325" width="150"> <img src="ReadMeAssets/Favorite.png" height="325" width="150">
 
 
 CryptoMarket is an app to see the current Market of cryptocurrencies 📊.
