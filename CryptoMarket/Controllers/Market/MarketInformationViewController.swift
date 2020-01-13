@@ -115,6 +115,8 @@ class MarketInformationViewController: UIViewController {
                       navigationMarketIcon: UIImage) {
         self.selectedMarket = marketSelected
         self.flowType = type
+        self.selectedMarketIcon = navigationMarketIcon
+        
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)
         self.setupNavigationTitle(with: navigationMarketIcon)
     }
