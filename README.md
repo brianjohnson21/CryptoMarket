@@ -1,6 +1,6 @@
 ## 🚀 Welcome to CryptoMarket! 🚀
 
-### <img src="ReadMeAssets/MarketIcon.png" height="25" width="25">  Overview
+### 🧐 Overview
 
 <img src="ReadMeAssets/News.png" height="325" width="150"> <img src="ReadMeAssets/Market.png" height="325" width="150"> <img src="ReadMeAssets/MarketView.png" height="325" width="150"> <img src="ReadMeAssets/Favorite.png" height="325" width="150">
 
