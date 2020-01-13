@@ -22,7 +22,7 @@ class MarketInformationViewController: UIViewController {
     private let favoriteEvent: PublishSubject<Void> = PublishSubject()
     
     private var selectedMarket: Market?
-    private var selectedMarketIcon = BehaviorSubject<UIImage?>(value: UIImage.init(named: "bitcoin"))
+    private var selectedMarketIcon: UIImage?
     private var flowType: MarketInformationFlowType = .market
     
     //MARK: Outlets
@@ -55,11 +55,9 @@ class MarketInformationViewController: UIViewController {
         let labelContent = EKProperty.LabelContent(
                    text: "\(self.selectedMarket?.name ?? "") Added to your favorite.",
                    style: style)
-        
-        let imageDownloaded = try? self.selectedMarketIcon.value() ?? UIImage()
-        
+                
         let image = EKProperty.ImageContent(
-            image: imageDownloaded ?? UIImage(),
+            image: selectedMarketIcon ?? UIImage(),
             size: CGSize(width: 25, height: 25))
     
         let contentView = EKImageNoteMessageView(
@@ -113,17 +111,12 @@ class MarketInformationViewController: UIViewController {
                 self.tableViewDataSource = tableViewDataSource
                 self.tableViewInformation.reloadData()
             }).disposed(by: self.disposeBag)
-        
-        output.imageDownloaded.asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribeOn(MainScheduler.asyncInstance)
-            .bind(to: self.selectedMarketIcon)
-            .disposed(by: self.disposeBag)
-        
+    
         self.navigationItem.title = output.navigationTitle
     }
     
-    public func setup(marketSelected: Market, with type: MarketInformationFlowType, navigationMarketIcon: UIImage) {
+    public func setup(marketSelected: Market, with type: MarketInformationFlowType,
+                      navigationMarketIcon: UIImage) {
         self.selectedMarket = marketSelected
         self.flowType = type
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)

@@ -28,7 +28,6 @@ public final class MarketInformationViewModel: ViewModelType {
     struct Output {
         let navigationTitle: String
         let tableViewDataSource: Driver<[CellViewModelProtocol]>
-        let imageDownloaded: Observable<UIImage?>
     }
     
     init(marketSelected: Market) {
@@ -64,10 +63,6 @@ public final class MarketInformationViewModel: ViewModelType {
         CoreDataManager.sharedInstance.create(with: self.market)
     }
     
-    private func fetchImageFromString(pathImage name: String) -> Observable<UIImage?> {
-        return Network.sharedInstance.performGetRequestImage(imageUrl: name)
-    }
-    
     func transform(input: Input) -> Output {
         let tableViewDataSource = self.createChartCell() + self.createTableInformationCell()
         
@@ -85,7 +80,6 @@ public final class MarketInformationViewModel: ViewModelType {
                 return self.fetchImageFromString(pathImage: imageName)}
         
         return Output(navigationTitle: self.market.name ?? "Market Chart",
-                      tableViewDataSource: Driver.just(tableViewDataSource),
-                      imageDownloaded: image)
+                      tableViewDataSource: Driver.just(tableViewDataSource))
     }
 }

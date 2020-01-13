@@ -161,6 +161,7 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             let currentCell = tableView.cellForRow(at: indexPath) as! MarketTableViewCell
 
             vc.setup(marketSelected: tableViewDataSource[indexPath.row], with: .market, navigationMarketIcon: currentCell.logoImage ?? UIImage())
+            
             self.navigationController?.pushViewController(vc, animated: true)
             tableView.deselectRow(at: indexPath, animated: false)
         }
