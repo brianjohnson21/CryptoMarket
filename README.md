@@ -1,5 +1,11 @@
 ## 🚀 Welcome to CryptoMarket! 🚀
 
+### 🧐 Overview
+
+![](ReadMeAssets/News.png)
+![](ReadMeAssets/Market.png)
+
+
 CryptoMarket is an app to see the current Market of cryptocurrencies 📊.
 The idea of the app was to play around with [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) and [RxSwift](https://github.com/ReactiveX/RxSwift) on iOS 
 For now, it is still a **BETA!**, not all bugs have been found yet (please report any you encounter).
