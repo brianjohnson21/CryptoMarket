@@ -27,6 +27,8 @@
 		1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E51B01E23219CC20087E38C /* LaunchScreen.storyboard */; };
 		1E51B02B23219CC20087E38C /* CryptoMarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B02A23219CC20087E38C /* CryptoMarketTests.swift */; };
 		1E51B03623219CC20087E38C /* CryptoMarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B03523219CC20087E38C /* CryptoMarketUITests.swift */; };
+		1E63484F23CC810900B8002A /* NavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E63484E23CC810900B8002A /* NavigationTitleView.xib */; };
+		1E63485123CC811B00B8002A /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E63485023CC811B00B8002A /* NavigationTitleView.swift */; };
 		1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */; };
 		1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */; };
 		1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E719D71236220060087F7B3 /* UIAlert+Ext.swift */; };
@@ -106,6 +108,8 @@
 		1E51B03123219CC20087E38C /* CryptoMarketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoMarketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B03523219CC20087E38C /* CryptoMarketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketUITests.swift; sourceTree = "<group>"; };
 		1E51B03723219CC20087E38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E63484E23CC810900B8002A /* NavigationTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleView.xib; sourceTree = "<group>"; };
+		1E63485023CC811B00B8002A /* NavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInformationTableViewCell.swift; sourceTree = "<group>"; };
 		1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderInformationTableViewCell.xib; sourceTree = "<group>"; };
 		1E719D71236220060087F7B3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
@@ -270,6 +274,15 @@
 				1E51B03723219CC20087E38C /* Info.plist */,
 			);
 			path = CryptoMarketUITests;
+			sourceTree = "<group>";
+		};
+		1E63484C23CC804B00B8002A /* NavigationTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				1E63485023CC811B00B8002A /* NavigationTitleView.swift */,
+				1E63484E23CC810900B8002A /* NavigationTitleView.xib */,
+			);
+			path = NavigationTitleCell;
 			sourceTree = "<group>";
 		};
 		1E6AB78323230D3B0006AA78 /* Extensions */ = {
@@ -441,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				E925B061232FA34900AD8D10 /* Market.storyboard */,
+				1E63484C23CC804B00B8002A /* NavigationTitleCell */,
 				1EE00AAD23898DAB00AACB0D /* MarketInformationCell */,
 				E9154B922327C8B100A3170E /* MarketCell */,
 			);
@@ -615,6 +629,7 @@
 				E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */,
 				1EBF8A1B2336AF5600E79306 /* MarketFavorites.storyboard in Resources */,
 				1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */,
+				1E63484F23CC810900B8002A /* NavigationTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +761,7 @@
 				E939CF5F233A2E0400A9C7B3 /* MarketNewCell.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */,
+				1E63485123CC811B00B8002A /* NavigationTitleView.swift in Sources */,
 				1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,
 			);

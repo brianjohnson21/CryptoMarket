@@ -158,7 +158,9 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = UIStoryboard(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "MarketInformationStoryboard") as? MarketInformationViewController {
-            vc.setup(marketSelected: tableViewDataSource[indexPath.row], with: .market)
+            let currentCell = tableView.cellForRow(at: indexPath) as! MarketTableViewCell
+
+            vc.setup(marketSelected: tableViewDataSource[indexPath.row], with: .market, navigationMarketIcon: currentCell.logoImage ?? UIImage())
             self.navigationController?.pushViewController(vc, animated: true)
             tableView.deselectRow(at: indexPath, animated: false)
         }

@@ -37,31 +37,12 @@ class MarketInformationViewController: UIViewController {
         self.setupViewModel()
     }
     
-    private func setupNavigationTitle() {
-        
-        let label = UILabel()
-        label.text = "\(self.selectedMarket?.name ?? "")"
-        label.sizeToFit()
-        label.textAlignment = NSTextAlignment.center
-
-        let image = UIImageView()
-        image.image = (try? self.selectedMarketIcon.value()) ?? UIImage(named: "bitcoin")
-        let imageAspect = image.image!.size.width/image.image!.size.height
-        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
-        image.contentMode = UIView.ContentMode.scaleAspectFit
-
-        let container = UIStackView()
-        container.axis = .horizontal
-        container.distribution = .equalSpacing
-        container.spacing = 10
-
-        container.addArrangedSubview(image)
-        container.addArrangedSubview(label)
-
-        container.backgroundColor = .red
-        self.navigationItem.titleView = container
-
-        container.sizeToFit()
+    private func setupNavigationTitle(with navigationIcon: UIImage) {
+  
+        let navigationTitleView: NavigationTitleView = NavigationTitleView.fromNib()
+        navigationTitleView.setup(title: "\(self.selectedMarket?.name ?? "")", icon: navigationIcon)
+        self.navigationItem.titleView = navigationTitleView
+        self.navigationItem.titleView?.sizeToFit()
     }
     
     private func displayFavoriteAlert() {
@@ -106,7 +87,6 @@ class MarketInformationViewController: UIViewController {
     
     private func setupView() {
         self.favoriteButton.isEnabled = self.flowType == .market ? true : false
-        self.setupNavigationTitle()
         
         //todo change title tableview
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
@@ -137,23 +117,17 @@ class MarketInformationViewController: UIViewController {
         output.imageDownloaded.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { (image) in
-                
-            }).disposed(by: self.disposeBag)
-        
-        output.imageDownloaded.asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribeOn(MainScheduler.asyncInstance)
             .bind(to: self.selectedMarketIcon)
             .disposed(by: self.disposeBag)
-            
+        
         self.navigationItem.title = output.navigationTitle
     }
     
-    public func setup(marketSelected: Market, with type: MarketInformationFlowType) {
+    public func setup(marketSelected: Market, with type: MarketInformationFlowType, navigationMarketIcon: UIImage) {
         self.selectedMarket = marketSelected
         self.flowType = type
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)
+        self.setupNavigationTitle(with: navigationMarketIcon)
     }
 
 }
@@ -243,5 +217,11 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         case .Chart:
             return createChartCell(indexPath: indexPath, tableView: tableView)
         }
+    }
+}
+
+extension UIView {
+    class func fromNib<T: UIView>() -> T {
+        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
 }
