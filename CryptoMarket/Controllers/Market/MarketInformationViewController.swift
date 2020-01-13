@@ -15,7 +15,6 @@ import SwiftEntryKit
 class MarketInformationViewController: UIViewController {
 
     //MARK: Members
-    //TODO: change ->
     private var viewModel: MarketInformationViewModel!
     private let disposeBag = DisposeBag()
     private var tableViewDataSource = [CellViewModelProtocol]()
