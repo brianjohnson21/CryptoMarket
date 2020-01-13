@@ -97,10 +97,7 @@ class MarketInformationViewController: UIViewController {
         
     private func setupViewModel() {
         let input = MarketInformationViewModel.Input(
-            favoriteEvent: self.favoriteEvent.asObservable(),
-            imageName: Driver.just(ApiRoute.ROUTE_IMAGE
-                .concat(string: self.selectedMarket?.id ?? "")
-                .concat(string: ".png")))
+            favoriteEvent: self.favoriteEvent.asObservable())
         
         let output = self.viewModel.transform(input: input)
         
