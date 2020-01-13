@@ -22,7 +22,6 @@ public final class MarketInformationViewModel: ViewModelType {
     
     struct Input {
         let favoriteEvent: Observable<Void>
-        let imageName: Driver<String>
     }
     
     struct Output {
@@ -72,12 +71,6 @@ public final class MarketInformationViewModel: ViewModelType {
             .subscribe(onNext: { (_) in
                 self.createFavorite()
             }).disposed(by: self.disposeBag)
-        
-        let image = input.imageName.asObservable()
-            .subscribeOn(MainScheduler.asyncInstance)
-            .observeOn(MainScheduler.instance)
-            .flatMap { (imageName) -> Observable<UIImage?> in
-                return self.fetchImageFromString(pathImage: imageName)}
         
         return Output(navigationTitle: self.market.name ?? "Market Chart",
                       tableViewDataSource: Driver.just(tableViewDataSource))
