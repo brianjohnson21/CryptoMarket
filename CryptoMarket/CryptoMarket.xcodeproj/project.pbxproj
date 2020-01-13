@@ -973,7 +973,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mthomas3.CryptoMarket.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mthomas3.CryptoMarket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
