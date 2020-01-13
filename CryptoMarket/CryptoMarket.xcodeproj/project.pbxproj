@@ -29,6 +29,7 @@
 		1E51B03623219CC20087E38C /* CryptoMarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B03523219CC20087E38C /* CryptoMarketUITests.swift */; };
 		1E63484F23CC810900B8002A /* NavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E63484E23CC810900B8002A /* NavigationTitleView.xib */; };
 		1E63485123CC811B00B8002A /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E63485023CC811B00B8002A /* NavigationTitleView.swift */; };
+		1E63485323CC852D00B8002A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E63485223CC852D00B8002A /* UIView+Ext.swift */; };
 		1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */; };
 		1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */; };
 		1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E719D71236220060087F7B3 /* UIAlert+Ext.swift */; };
@@ -110,6 +111,7 @@
 		1E51B03723219CC20087E38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E63484E23CC810900B8002A /* NavigationTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationTitleView.xib; sourceTree = "<group>"; };
 		1E63485023CC811B00B8002A /* NavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
+		1E63485223CC852D00B8002A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInformationTableViewCell.swift; sourceTree = "<group>"; };
 		1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderInformationTableViewCell.xib; sourceTree = "<group>"; };
 		1E719D71236220060087F7B3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				1E719D71236220060087F7B3 /* UIAlert+Ext.swift */,
 				1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */,
 				1E24068123C13DBC00118DCC /* Date+Ext.swift */,
+				1E63485223CC852D00B8002A /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
 				E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */,
+				1E63485323CC852D00B8002A /* UIView+Ext.swift in Sources */,
 				E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */,
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */,
