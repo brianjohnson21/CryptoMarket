@@ -2,6 +2,8 @@
 
 ### 🧐 Overview
 
+<img src="ReadMeAssets/News.png" height="300" width="150">
+
 ![](ReadMeAssets/News.png)
 ![](ReadMeAssets/Market.png)
 
