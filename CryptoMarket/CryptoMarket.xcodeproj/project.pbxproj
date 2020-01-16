@@ -11,6 +11,8 @@
 		1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20C4A323C5F58800163F38 /* CoreDataManager.swift */; };
 		1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068123C13DBC00118DCC /* Date+Ext.swift */; };
 		1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */; };
+		1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */; };
+		1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */; };
 		1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */; };
 		1E3DA11B238AD43A00B87505 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */; };
 		1E3DA11D238AFCA700B87505 /* InformationCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA11C238AFCA700B87505 /* InformationCellProtocol.swift */; };
@@ -87,6 +89,8 @@
 		1E20C4A323C5F58800163F38 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1E24068123C13DBC00118DCC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHistoryRequest.swift; sourceTree = "<group>"; };
+		1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
 		1E3DA11C238AFCA700B87505 /* InformationCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCellProtocol.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 			children = (
 				E939CF5D233A2E0400A9C7B3 /* MarketNewCell.swift */,
 				E939CF5E233A2E0400A9C7B3 /* MarketNewCell.xib */,
+				1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */,
+				1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				E939CF60233A2E0400A9C7B3 /* MarketNewCell.xib in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
+				1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */,
 				1E940337232D3C3C004680D2 /* fa-regular-400.ttf in Resources */,
 				1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */,
 				1EE00AB123898DF400AACB0D /* InformationTableViewCell.xib in Resources */,
@@ -749,6 +756,7 @@
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */,
 				1EBF8A182336AF3300E79306 /* MarketFavoritesViewController.swift in Sources */,
+				1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */,
 				E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */,
 				E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */,
 				1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */,
