@@ -64,9 +64,7 @@ class MarketNewCell: UICollectionViewCell {
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(name))
         let output = self.viewModel.transform(input: input)
         
-        guard !name.isEmpty else {
-            return
-        }
+        guard !name.isEmpty else { return }
         
         self.viewModel.currentDownloadUrl = name
         
@@ -76,6 +74,7 @@ class MarketNewCell: UICollectionViewCell {
             .subscribe(onNext: { (imageView) in
                 guard let image = imageView else { return }
                 if self.viewModel.currentDownloadUrl == name {
+                    print("**[4] got the image here")
                     self.image = image
                 }
             }).disposed(by: self.disposeBag)

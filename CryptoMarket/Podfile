@@ -16,6 +16,7 @@ target 'CryptoMarket' do
    pod "SwiftChart"
    pod 'Charts'
    pod 'SwiftEntryKit'
+   pod 'AlamofireImage'
 
    plugin 'cocoapods-keys', {
    	  :project => "CryptoMarket",

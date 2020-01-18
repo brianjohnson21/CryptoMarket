@@ -104,6 +104,21 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
         return 130
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let imageUrl = self.tableViewDataSource[indexPath.row].url else { return }
+        
+        if let url = URL(string: imageUrl) {
+            let config = SFSafariViewController.Configuration()
+
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            vc.preferredBarTintColor = UIColor.black
+            vc.preferredControlTintColor = UIColor.systemBlue
+
+            self.present(vc, animated: true)
+        }
+    }
 }
 
 //extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

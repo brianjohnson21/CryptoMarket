@@ -16,7 +16,7 @@ public final class MarketNewsCellViewModel: ViewModelType {
     private let disposebag = DisposeBag()
     private let isLoading = PublishSubject<Bool>()
     
-    private var imageCache = NSCache<AnyObject, AnyObject>()
+    public var imageCache = NSCache<AnyObject, AnyObject>()
     private var currentUrl: String?
     
     struct Input {
@@ -41,6 +41,10 @@ public final class MarketNewsCellViewModel: ViewModelType {
         return Network.sharedInstance.performGetRequestImage(imageUrl: name)
     }
     
+    public func saveImageOnCache(image: UIImage, name: String) {
+        self.imageCache.setObject(image, forKey: name as AnyObject)
+    }
+    
     func transform(input: Input) -> Output {
         
         let result = input.imageName.asObservable()
@@ -48,16 +52,28 @@ public final class MarketNewsCellViewModel: ViewModelType {
             .observeOn(MainScheduler.instance)
             .do(onNext: { (image) in
                 self.isLoading.onNext(true)
-            }).flatMap({ (imageName) -> Observable<UIImage?> in
+            }).flatMap { (imageName) -> Observable<UIImage?> in
+                
+                print("Get -> \(self.imageCache.object(forKey: imageName as AnyObject))")
+                
                 if let image = self.imageCache.object(forKey: imageName as AnyObject) as? Observable<UIImage?> {
+                    print("** [1] IMAGE DOWNLOAD**")
                     return image
+                } else {
+                    let imageDownloaded = self.fetchImageFromString(pathImage: imageName)
+                    
+                    //self.imageCache.setObject(image, forKey: name as AnyObject)
+
+                    print("**[2] IMAGE DOWNLOAD**")
+                    return imageDownloaded
                 }
-                let imageDownloaded = self.fetchImageFromString(pathImage: imageName)
-                self.imageCache.setObject(imageDownloaded, forKey: imageName as AnyObject)
-                return imageDownloaded
-            }).do(onNext: { (image) in
-              self.isLoading.onNext(false)
+            }.do(onNext: { (image) in
+                print("**[3] INSIDE DO DONE")
+                self.isLoading.onNext(false)
             })
+    
+
         return Output(imageDownloaded: result, isImageLoading: self.isLoading)
     }
 }
+

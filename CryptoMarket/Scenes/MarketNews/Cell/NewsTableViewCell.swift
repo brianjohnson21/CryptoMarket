@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AlamofireImage
+import RxAlamofire
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -25,6 +27,12 @@ class NewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.setupView()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.imageNews.image = UIImage()
     }
     
     private func setupView() {
@@ -53,6 +61,14 @@ class NewsTableViewCell: UITableViewCell {
         
         //MARK: put a default picture if none
         guard let urlImage = urlImage, !urlImage.isEmpty else { return }
+  
+        if let image = self.viewModel.imageCache.object(forKey: urlImage as AnyObject) as? UIImage? {
+            
+            if (image != nil) {
+                self.imageNews.image = image
+                return
+            }
+        }
         
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(urlImage))
         let output = self.viewModel.transform(input: input)
@@ -65,6 +81,8 @@ class NewsTableViewCell: UITableViewCell {
             .subscribe(onNext: { (imageView) in
                 guard let image = imageView else { return }
                     if self.viewModel.currentDownloadUrl == urlImage {
+                        print("**[4] NEWS TABLE DONE")
+                        self.viewModel.saveImageOnCache(image: image, name: urlImage)
                         self.imageNews.image = image
                     }
             }).disposed(by: self.disposeBag)
