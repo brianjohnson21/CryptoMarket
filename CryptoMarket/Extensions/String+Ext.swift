@@ -52,7 +52,7 @@ extension String {
         return ""
     }
     
-    func formatDateForRequest() -> String {
+    func formatToDate() -> String {
         let dateForm = DateFormatter()
         dateForm.dateFormat = "yyyy-MM-dd"
         return dateForm.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date())

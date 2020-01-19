@@ -94,11 +94,15 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell {
             cell.title = self.tableViewDataSource[indexPath.row].title
-            cell.date = self.tableViewDataSource[indexPath.row].publishedAt
+            
+            let author = self.tableViewDataSource[indexPath.row].author ?? ""
+            let publishedDate = self.tableViewDataSource[indexPath.row].publishedAt?.formatToDate() ?? ""
+            
+            cell.date = publishedDate.concat(string: " \u{2022} ").concat(string: author)
+            
             cell.loadImageOnCell(urlImage: self.tableViewDataSource[indexPath.row].urlToImage)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
-
             return cell
         }
         return UITableViewCell()

@@ -41,7 +41,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" name="MainColor"/>
                 <constraints>
                     <constraint firstItem="Lrf-2c-TQU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1zG-5B-Je4"/>
                     <constraint firstAttribute="trailing" secondItem="Y7t-3L-aJP" secondAttribute="trailing" constant="8" id="5aT-cA-la2"/>
@@ -52,13 +51,14 @@
                     <constraint firstItem="Y7t-3L-aJP" firstAttribute="leading" secondItem="Lrf-2c-TQU" secondAttribute="trailing" constant="8" id="dIq-ru-rgZ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabelNews" destination="vnz-dr-Khk" id="fgj-mh-Z4U"/>
                 <outlet property="imageNews" destination="Y7t-3L-aJP" id="3fy-M4-WYt"/>
                 <outlet property="titleNews" destination="Lrf-2c-TQU" id="X7H-Sn-yGB"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
+            <point key="canvasLocation" x="-196" y="132"/>
         </tableViewCell>
     </objects>
     <resources>
