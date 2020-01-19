@@ -28,6 +28,10 @@ public final class MarketNewsCellViewModel: ViewModelType {
         let isImageLoading: Observable<Bool>
     }
     
+    init() {
+        self.imageCache.totalCostLimit = 500_000_000
+    }
+    
     public var currentDownloadUrl: String? {
         set {
             self.currentUrl = newValue
@@ -41,7 +45,11 @@ public final class MarketNewsCellViewModel: ViewModelType {
         return Network.sharedInstance.performGetRequestImage(imageUrl: name)
     }
     
-    public func saveImageOnCache(image: UIImage, name: String) {
+    public func getImageOnCache(key name: String) -> UIImage? {
+        return self.imageCache.object(forKey: name as AnyObject) as? UIImage
+    }
+    
+    public func saveImageOnCache(image: UIImage, key name: String) {
         self.imageCache.setObject(image, forKey: name as AnyObject)
     }
     
@@ -53,26 +61,11 @@ public final class MarketNewsCellViewModel: ViewModelType {
             .do(onNext: { (image) in
                 self.isLoading.onNext(true)
             }).flatMap { (imageName) -> Observable<UIImage?> in
-                
-                print("Get -> \(self.imageCache.object(forKey: imageName as AnyObject))")
-                
-                if let image = self.imageCache.object(forKey: imageName as AnyObject) as? Observable<UIImage?> {
-                    print("** [1] IMAGE DOWNLOAD**")
-                    return image
-                } else {
-                    let imageDownloaded = self.fetchImageFromString(pathImage: imageName)
-                    
-                    //self.imageCache.setObject(image, forKey: name as AnyObject)
-
-                    print("**[2] IMAGE DOWNLOAD**")
-                    return imageDownloaded
-                }
+                return self.fetchImageFromString(pathImage: imageName)
             }.do(onNext: { (image) in
-                print("**[3] INSIDE DO DONE")
                 self.isLoading.onNext(false)
             })
     
-
         return Output(imageDownloaded: result, isImageLoading: self.isLoading)
     }
 }

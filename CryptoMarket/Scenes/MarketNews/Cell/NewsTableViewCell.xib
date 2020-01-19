@@ -19,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-3L-aJP">
-                        <rect key="frame" x="219" y="20" width="90" height="90"/>
+                        <rect key="frame" x="222" y="20" width="90" height="90"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="90" id="AFB-ZX-4fF"/>
                             <constraint firstAttribute="width" constant="90" id="EDg-Ih-BMP"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telegram's Legal Battle With the SEC Heats up Over TON bank Records" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-2c-TQU">
-                        <rect key="frame" x="11" y="21.5" width="200" height="64.5"/>
+                        <rect key="frame" x="8" y="21.5" width="206" height="64.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                         <color key="textColor" name="White"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoinDesk * an hour ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnz-dr-Khk">
-                        <rect key="frame" x="11" y="101" width="143" height="16"/>
+                        <rect key="frame" x="8" y="98" width="143" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="g4e-9c-kJY"/>
                         </constraints>
@@ -43,12 +43,12 @@
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
-                    <constraint firstItem="Lrf-2c-TQU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="1zG-5B-Je4"/>
-                    <constraint firstAttribute="trailing" secondItem="Y7t-3L-aJP" secondAttribute="trailing" constant="11" id="5aT-cA-la2"/>
+                    <constraint firstItem="Lrf-2c-TQU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1zG-5B-Je4"/>
+                    <constraint firstAttribute="trailing" secondItem="Y7t-3L-aJP" secondAttribute="trailing" constant="8" id="5aT-cA-la2"/>
                     <constraint firstItem="Lrf-2c-TQU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21.5" id="BzH-yc-que"/>
-                    <constraint firstItem="vnz-dr-Khk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="TSR-wc-aYB"/>
+                    <constraint firstAttribute="bottom" secondItem="vnz-dr-Khk" secondAttribute="bottom" constant="16" id="I5d-2p-fte"/>
+                    <constraint firstItem="vnz-dr-Khk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TSR-wc-aYB"/>
                     <constraint firstItem="Y7t-3L-aJP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ube-gg-pAF"/>
-                    <constraint firstItem="vnz-dr-Khk" firstAttribute="top" secondItem="Lrf-2c-TQU" secondAttribute="bottom" constant="15" id="Wcr-Wt-OLK"/>
                     <constraint firstItem="Y7t-3L-aJP" firstAttribute="leading" secondItem="Lrf-2c-TQU" secondAttribute="trailing" constant="8" id="dIq-ru-rgZ"/>
                 </constraints>
             </tableViewCellContentView>

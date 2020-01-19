@@ -45,6 +45,10 @@ class MarketNewsViewController: UIViewController {
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationItem.title = "News"
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
+        self.tableViewNews.separatorColor = UIColor.init(named: "Gray")
+        self.tableViewNews.tableFooterView = UIView()
+        self.tableViewNews.tableHeaderView = UIView()
+        
     }
 
     private func setupViewModel() {
@@ -95,6 +99,7 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.title = self.tableViewDataSource[indexPath.row].title
             cell.date = self.tableViewDataSource[indexPath.row].publishedAt
             cell.loadImageOnCell(urlImage: self.tableViewDataSource[indexPath.row].urlToImage)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
             return cell
         }
         return UITableViewCell()
@@ -102,6 +107,10 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,6 +128,8 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
             self.present(vc, animated: true)
         }
     }
+    
+    
 }
 
 //extension MarketNewsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

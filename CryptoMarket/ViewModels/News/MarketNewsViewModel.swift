@@ -44,7 +44,10 @@ public final class MarketNewsViewModel: ViewModelType {
         
         let collectionViewDataSource = Observable.merge(refreshOnLoader, loadingOnNavigation).do(onNext: { (market) in
             self.isLoading.onNext(false)
-        })
+            }).map { news in return news.filter { data in return !(data.urlToImage?.isEmpty ?? false) }
+        }
+        
+        //todo filter by date
         
         return Output(collectionViewDataSource: collectionViewDataSource, isLoading: self.isLoading)
     }

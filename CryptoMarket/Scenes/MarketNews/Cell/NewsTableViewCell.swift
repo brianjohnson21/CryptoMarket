@@ -57,19 +57,7 @@ class NewsTableViewCell: UITableViewCell {
         }
     }
     
-    public func loadImageOnCell(urlImage: String?) {
-        
-        //MARK: put a default picture if none
-        guard let urlImage = urlImage, !urlImage.isEmpty else { return }
-  
-        if let image = self.viewModel.imageCache.object(forKey: urlImage as AnyObject) as? UIImage? {
-            
-            if (image != nil) {
-                self.imageNews.image = image
-                return
-            }
-        }
-        
+    private func downloadImage(urlImage: String) {
         let input = MarketNewsCellViewModel.Input(imageName: Driver.just(urlImage))
         let output = self.viewModel.transform(input: input)
               
@@ -80,11 +68,10 @@ class NewsTableViewCell: UITableViewCell {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (imageView) in
                 guard let image = imageView else { return }
-                    if self.viewModel.currentDownloadUrl == urlImage {
-                        print("**[4] NEWS TABLE DONE")
-                        self.viewModel.saveImageOnCache(image: image, name: urlImage)
-                        self.imageNews.image = image
-                    }
+                self.viewModel.saveImageOnCache(image: image, key: urlImage)
+                if self.viewModel.currentDownloadUrl == urlImage {
+                    self.imageNews.image = image
+                }
             }).disposed(by: self.disposeBag)
               
         output.isImageLoading.asObservable()
@@ -95,8 +82,16 @@ class NewsTableViewCell: UITableViewCell {
             }).disposed(by: self.disposeBag)
     }
     
-    private func setupViewModel() {
+    public func loadImageOnCell(urlImage: String?) {
         
+        //MARK: put a default picture if none
+        guard let urlImage = urlImage, !urlImage.isEmpty else { return }
+  
+        if let imageCache = self.viewModel.getImageOnCache(key: urlImage) {
+            self.imageNews.image = imageCache
+            return
+        }
+        self.downloadImage(urlImage: urlImage)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
