@@ -131,7 +131,8 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = SFSafariViewController(url: url, configuration: config)
             vc.preferredBarTintColor = UIColor.black
             vc.preferredControlTintColor = UIColor.systemBlue
-
+            tableView.deselectRow(at: indexPath, animated: false)
+            
             self.present(vc, animated: true)
         }
     }
