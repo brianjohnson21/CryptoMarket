@@ -13,7 +13,7 @@ import RxGesture
 import Hero
 
 //todo -> delegate
-class MarketController: UIViewController, UISearchControllerDelegate{
+class MarketController: UIViewController, UISearchControllerDelegate {
         
     //MARK: Members
     private let viewModel: MarketViewModel = MarketViewModel()

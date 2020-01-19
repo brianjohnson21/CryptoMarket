@@ -18,6 +18,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleNews: UILabel!
     @IBOutlet private weak var dateLabelNews: UILabel!
     @IBOutlet private weak var imageNews: UIImageView!
+    @IBOutlet private weak var placeholderView: UIView!
     
     //MARK: Members
     private let viewModel: MarketNewsCellViewModel = MarketNewsCellViewModel()
@@ -33,9 +34,13 @@ class NewsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         self.imageNews.image = UIImage()
+        self.placeholderView.isHidden = false
     }
     
     private func setupView() {
+        self.placeholderView.isHidden = false
+        self.placeholderView.layer.cornerRadius = 10
+        self.placeholderView.backgroundColor = UIColor.init(named: "Gray") ?? UIColor.black
         self.imageNews.layer.cornerRadius = 10
     }
     
@@ -79,16 +84,17 @@ class NewsTableViewCell: UITableViewCell {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (isLoading) in
                 self.imageNews.isHidden = isLoading
+                self.placeholderView.isHidden = !isLoading
             }).disposed(by: self.disposeBag)
     }
     
     public func loadImageOnCell(urlImage: String?) {
         
-        //MARK: put a default picture if none
         guard let urlImage = urlImage, !urlImage.isEmpty else { return }
   
         if let imageCache = self.viewModel.getImageOnCache(key: urlImage) {
             self.imageNews.image = imageCache
+            self.placeholderView.isHidden = true
             return
         }
         self.downloadImage(urlImage: urlImage)

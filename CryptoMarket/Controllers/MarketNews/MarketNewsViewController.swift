@@ -27,6 +27,7 @@ class MarketNewsViewController: UIViewController {
         
         self.setupView()
         self.setupViewModel()
+        
     }
     
     private func setupView() {
@@ -90,6 +91,8 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableViewDataSource.count
     }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell {
