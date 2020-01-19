@@ -97,6 +97,8 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.date = self.tableViewDataSource[indexPath.row].publishedAt
             cell.loadImageOnCell(urlImage: self.tableViewDataSource[indexPath.row].urlToImage)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+            cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
+
             return cell
         }
         return UITableViewCell()
