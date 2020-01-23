@@ -29,7 +29,7 @@ public final class MarketViewModel: ViewModelType {
     private func fetchMarketData() -> Observable<[Market]> {
         return Network.sharedInstance.performGetOnMarket(stringUrl: ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_MARKET)).do(onNext: { (market) in
             self.isLoading.onNext(false)
-        }, onError: nil, onCompleted: nil, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
+        })
     }
     
     private func quickMarketSearch(query: String) -> Observable<[Market]> {

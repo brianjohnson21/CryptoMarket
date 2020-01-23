@@ -47,6 +47,7 @@ class MarketNewsViewController: UIViewController {
         self.navigationItem.title = "News"
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         self.tableViewNews.separatorColor = UIColor.init(named: "Gray")
+        self.tableViewNews.tableHeaderView = UIView(frame: .zero)
     }
 
     private func setupViewModel() {
@@ -113,14 +114,6 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

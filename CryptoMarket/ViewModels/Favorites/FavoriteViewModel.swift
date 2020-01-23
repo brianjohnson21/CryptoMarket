@@ -45,6 +45,15 @@ internal final class FavoriteViewModel: ViewModelType {
         }
     }
     
+    private func getFavorites() -> Observable<[Favorite]> {
+        return CoreDataManager.sharedInstance.fetch()
+    }
+    
+    private func getMarket() -> Observable<[Market]> {
+        return Network.sharedInstance.performGetOnMarket(stringUrl:
+            ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_MARKET))
+    }
+    
     ///todo check subscribe here
     func transform(input: Input) -> Output {
         
@@ -55,11 +64,13 @@ internal final class FavoriteViewModel: ViewModelType {
                 self.deleteFavorite(favoriteElement: favDelete)
             }).disposed(by: self.disposeBag)
         
-        let favoriteMarket = self.fetchFavorites()
+        let refresh = Observable.zip(self.getFavorites(), self.getMarket()).map { (fav, market) -> [Market] in
+            return market.filter { market in return fav.contains { $0.id == market.id }}
+        }
         
         let newElement = self.fetchFavorite()
     
-        return Output(favoriteMarket: favoriteMarket,
+        return Output(favoriteMarket: Observable.just(refresh as! [Favorite]),
                       isLoading: self.isLoading.asObservable(),
                       favoriteOnChange: newElement)
     }
