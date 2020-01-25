@@ -50,10 +50,10 @@ class MarketFavoritesViewController: UIViewController {
         self.tableViewFavorite.dataSource = self
     }
     
-    private func displayComets() {
+    private func displayComets(cometAplha: CGFloat) {
         let width = self.backgroundView.bounds.width
         let height = self.backgroundView.bounds.height
-        let cometAplha: CGFloat = 0.01
+        let cometAplha: CGFloat = cometAplha
         
         let comets = [Comet(startPoint: CGPoint(x: 100, y: 0),
                             endPoint: CGPoint(x: 0, y: 100),
@@ -104,7 +104,7 @@ class MarketFavoritesViewController: UIViewController {
             }
         }) { (_) in
             if isHidden {
-                self.displayComets()
+                self.displayComets(cometAplha: 0.03)
             }
         }
     }
