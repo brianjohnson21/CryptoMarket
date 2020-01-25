@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import SafariServices
 
-class MarketNewsViewController: UIViewController {
+class MarketNewsViewController: UIViewController, UITabBarControllerDelegate {
     
     //MARK: Members
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
@@ -34,6 +34,7 @@ class MarketNewsViewController: UIViewController {
         self.tableViewNews.register(NewsTableViewCell.nib, forCellReuseIdentifier: NewsTableViewCell.identifier)
         self.tableViewNews.delegate = self
         self.tableViewNews.dataSource = self
+        self.tabBarController?.delegate = self
     
         self.view.addSubview(self.tableViewSpinner)
         self.tableViewSpinner.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +50,14 @@ class MarketNewsViewController: UIViewController {
         self.tableViewNews.separatorColor = UIColor.init(named: "Gray")
         self.tableViewNews.tableHeaderView = UIView(frame: .zero)
         self.tableViewNews.isHidden = true
+        
+        self.tableViewNews.scrollsToTop = true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == currentPageSelect.News.rawValue {
+            self.tableViewNews.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
     }
 
     private func setupViewModel() {

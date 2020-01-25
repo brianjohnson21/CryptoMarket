@@ -14,3 +14,9 @@ protocol ViewModelType {
     
     func transform(input: Input) -> Output
 }
+
+internal enum currentPageSelect: Int {
+    case News = 0
+    case Market
+    case Favorite
+}
