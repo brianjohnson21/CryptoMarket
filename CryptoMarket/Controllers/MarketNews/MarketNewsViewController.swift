@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import SafariServices
 
-class MarketNewsViewController: UIViewController, UITabBarControllerDelegate {
+class MarketNewsViewController: UIViewController {
     
     //MARK: Members
     private let viewModel: MarketNewsViewModel = MarketNewsViewModel()
@@ -27,14 +27,18 @@ class MarketNewsViewController: UIViewController, UITabBarControllerDelegate {
         
         self.setupView()
         self.setupViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.tabBarController?.delegate = self
     }
     
     private func setupView() {
         self.tableViewNews.register(NewsTableViewCell.nib, forCellReuseIdentifier: NewsTableViewCell.identifier)
         self.tableViewNews.delegate = self
         self.tableViewNews.dataSource = self
-        self.tabBarController?.delegate = self
     
         self.view.addSubview(self.tableViewSpinner)
         self.tableViewSpinner.translatesAutoresizingMaskIntoConstraints = false
@@ -50,14 +54,6 @@ class MarketNewsViewController: UIViewController, UITabBarControllerDelegate {
         self.tableViewNews.separatorColor = UIColor.init(named: "Gray")
         self.tableViewNews.tableHeaderView = UIView(frame: .zero)
         self.tableViewNews.isHidden = true
-        
-        self.tableViewNews.scrollsToTop = true
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if tabBarController.selectedIndex == currentPageSelect.News.rawValue {
-            self.tableViewNews.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        }
     }
 
     private func setupViewModel() {
@@ -91,7 +87,6 @@ class MarketNewsViewController: UIViewController, UITabBarControllerDelegate {
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (isLoading) in
                 self.tableViewNews.isHidden = isLoading
-                //todo change this name
                 self.tableViewSpinner.isHidden = !isLoading
                 isLoading ? self.tableViewSpinner.startAnimating() : self.tableViewSpinner.stopAnimating()
             }).disposed(by: self.disposeBag)
@@ -140,5 +135,13 @@ extension MarketNewsViewController: UITableViewDataSource, UITableViewDelegate {
             self.present(vc, animated: true)
         }
     }
+}
+
+extension MarketNewsViewController: UITabBarControllerDelegate {
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == currentPageSelect.News.rawValue {
+            self.tableViewNews.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
+    }
 }

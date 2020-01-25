@@ -38,6 +38,7 @@ class MarketController: UIViewController, UISearchControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.delegate = self
         self.displayTableViewAnimation()
     }
     
@@ -164,6 +165,14 @@ extension MarketController: UITableViewDelegate, UITableViewDataSource {
             
             self.navigationController?.pushViewController(vc, animated: true)
             tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+}
+
+extension MarketController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == currentPageSelect.Market.rawValue {
+            self.tableViewMarket.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
 }

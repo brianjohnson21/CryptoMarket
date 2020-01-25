@@ -136,7 +136,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBS-h9-uK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="613"/>
+            <point key="canvasLocation" x="471" y="695"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="gIf-cz-Dt5">

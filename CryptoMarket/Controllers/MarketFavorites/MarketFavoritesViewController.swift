@@ -31,6 +31,12 @@ class MarketFavoritesViewController: UIViewController {
         self.setupTableView()
         self.setupViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.delegate = self
+    }
 
     private func setupView() {
         self.navigationItem.title = "Favorites"
@@ -205,6 +211,16 @@ extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSou
             vc.setup(marketSelected: Market(with: tableViewDataSource[indexPath.row]), with: .favorite, navigationMarketIcon: currentCell.logoImage ?? UIImage())
             self.navigationController?.pushViewController(vc, animated: true)
             tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+}
+
+extension MarketFavoritesViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == currentPageSelect.Favorite.rawValue {
+            if !self.tableViewFavorite.isHidden {
+                self.tableViewFavorite.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }
         }
     }
 }
