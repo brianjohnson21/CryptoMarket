@@ -22,6 +22,7 @@
                                 <color key="backgroundColor" name="MainColor"/>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="gj9-CF-kuI" firstAttribute="leading" secondItem="suo-jy-Fvv" secondAttribute="leading" id="8Xr-1o-ao9"/>
                             <constraint firstItem="suo-jy-Fvv" firstAttribute="bottom" secondItem="gj9-CF-kuI" secondAttribute="bottom" id="OtZ-We-rtV"/>
