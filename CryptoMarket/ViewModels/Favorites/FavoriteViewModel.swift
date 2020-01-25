@@ -63,14 +63,12 @@ internal final class FavoriteViewModel: ViewModelType {
             .subscribe(onNext: { (favDelete) in
                 self.deleteFavorite(favoriteElement: favDelete)
             }).disposed(by: self.disposeBag)
-        
-        let refresh = Observable.zip(self.getFavorites(), self.getMarket()).map { (fav, market) -> [Market] in
-            return market.filter { market in return fav.contains { $0.id == market.id }}
-        }
+    
+        let favorites = self.getFavorites()
         
         let newElement = self.fetchFavorite()
     
-        return Output(favoriteMarket: Observable.just(refresh as! [Favorite]),
+        return Output(favoriteMarket: favorites,
                       isLoading: self.isLoading.asObservable(),
                       favoriteOnChange: newElement)
     }

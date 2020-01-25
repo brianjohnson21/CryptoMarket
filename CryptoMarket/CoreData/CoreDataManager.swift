@@ -26,13 +26,25 @@ internal final class CoreDataManager {
         self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
     
-    private func fetchData() -> [Favorite] {
+    private func fetchNewData() -> Observable<[Market]> {
+        return Network.sharedInstance.performGetOnMarket(stringUrl:
+            ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_MARKET))
+    }
+    
+    private func fetchData() -> Observable<[Favorite]> {
         do {
             let favorites = try self.context.fetch(Favorite.fetchRequest() as NSFetchRequest<Favorite>)
-            return favorites
+            
+            return Observable<[Favorite]>.create { (observer) -> Disposable in
+                observer.onNext(favorites)
+                return Disposables.create()
+            }
         }
         catch {
-            return []
+            //todo handle
+            return Observable<[Favorite]>.create { (observer) -> Disposable in
+                return Disposables.create()
+            }
         }
     }
     
@@ -80,10 +92,22 @@ internal final class CoreDataManager {
         return self.favOnChange.asObservable()
     }
     
+    private func updateFavorite(fav: [Favorite], newValue: [Market]) -> [Favorite] {
+        
+        return fav.map { (item) -> Favorite in
+            let market = newValue.first { $0.id == item.id }
+            
+            item.priceUsd = market?.priceUsd
+            item.changePercent24Hr = market?.changePercent24Hr
+            item.name = market?.name
+            
+            return item
+        }
+    }
+    
     public func fetch() -> Observable<[Favorite]> {
-        return Observable<[Favorite]>.create { (observer) -> Disposable in
-            observer.onNext(self.fetchData())
-            return Disposables.create()
+        return Observable.combineLatest(self.fetchNewData(), self.fetchData()).map { (market, favorite) -> [Favorite] in
+            return self.updateFavorite(fav: favorite, newValue: market.filter { data in return favorite.contains { $0.id == data.id }})
         }
     }
     
