@@ -39,6 +39,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="oQY-1Z-sbO" firstAttribute="leading" secondItem="Oh0-5b-mNV" secondAttribute="leading" id="24q-v8-NUG"/>
                             <constraint firstItem="5lJ-9h-Hln" firstAttribute="leading" secondItem="Oh0-5b-mNV" secondAttribute="leading" id="3f5-o9-niY"/>

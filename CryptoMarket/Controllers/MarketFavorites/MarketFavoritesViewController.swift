@@ -91,15 +91,22 @@ class MarketFavoritesViewController: UIViewController {
     }
     
     private func displayHelpBackground(isHidden: Bool) {
-        
-        UIView.animate(withDuration: 5.0, animations: {
-            self.tableViewFavorite.isHidden = isHidden
-            self.backgroundView.isHidden = !isHidden
-            
-            if !self.backgroundView.isHidden {
+    
+        self.tableViewFavorite.isHidden = isHidden
+        self.backgroundView.isHidden = !isHidden
+        UIView.animate(withDuration: 0.5, animations: {
+            if isHidden {
+                self.tableViewFavorite.alpha = 0
+                self.backgroundView.alpha = 1.0
+            } else {
+                self.backgroundView.alpha = 0
+                self.tableViewFavorite.alpha = 1.0
+            }
+        }) { (_) in
+            if isHidden {
                 self.displayComets()
             }
-        })
+        }
     }
     
     private func setupViewModel() {
