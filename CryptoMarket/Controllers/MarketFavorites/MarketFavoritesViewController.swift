@@ -50,13 +50,56 @@ class MarketFavoritesViewController: UIViewController {
         self.tableViewFavorite.dataSource = self
     }
     
-    private func displayComets() {}
+    private func displayComets() {
+        let width = self.backgroundView.bounds.width
+        let height = self.backgroundView.bounds.height
+        let cometAplha: CGFloat = 0.01
+        
+        let comets = [Comet(startPoint: CGPoint(x: 100, y: 0),
+                            endPoint: CGPoint(x: 0, y: 100),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.4 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.8 * width),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.8 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.2 * width),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width, y: 0.2 * height),
+                            endPoint: CGPoint(x: 0, y: 0.25 * height),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: height - 0.8 * width),
+                            endPoint: CGPoint(x: 0.6 * width, y: height),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width - 100, y: height),
+                            endPoint: CGPoint(x: width, y: height - 100),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: 0.8 * height),
+                            endPoint: CGPoint(x: width, y: 0.75 * height),
+                            lineColor: UIColor.white.withAlphaComponent(cometAplha),
+                            cometColor: UIColor.white)]
+        
+        for comet in comets {
+            self.backgroundView.layer.addSublayer(comet.drawLine())
+            self.backgroundView.layer.addSublayer(comet.animate())
+        }
+    }
     
     private func displayHelpBackground(isHidden: Bool) {
         
-        self.tableViewFavorite.isHidden = isHidden
-        self.backgroundView.isHidden = !isHidden
-        
+        UIView.animate(withDuration: 5.0, animations: {
+            self.tableViewFavorite.isHidden = isHidden
+            self.backgroundView.isHidden = !isHidden
+            
+            if !self.backgroundView.isHidden {
+                self.displayComets()
+            }
+        })
     }
     
     private func setupViewModel() {
