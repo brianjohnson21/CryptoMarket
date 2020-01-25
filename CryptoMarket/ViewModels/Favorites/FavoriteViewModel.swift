@@ -57,6 +57,8 @@ internal final class FavoriteViewModel: ViewModelType {
     ///todo check subscribe here
     func transform(input: Input) -> Output {
         
+        self.isLoading.onNext(true)
+        
         input.onDelete
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
@@ -64,7 +66,7 @@ internal final class FavoriteViewModel: ViewModelType {
                 self.deleteFavorite(favoriteElement: favDelete)
             }).disposed(by: self.disposeBag)
     
-        let favorites = self.getFavorites()
+        let favorites = self.getFavorites().do(onNext: { _ in self.isLoading.onNext(false) })
         
         let newElement = self.fetchFavorite()
     

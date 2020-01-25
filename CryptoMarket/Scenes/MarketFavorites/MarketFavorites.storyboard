@@ -21,9 +21,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <color key="backgroundColor" name="MainColor"/>
                             </tableView>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lJ-9h-Hln">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new cryptocurrency to your favorite!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIc-J6-UDM">
+                                        <rect key="frame" x="45" y="336" width="285" height="57.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="24"/>
+                                        <color key="textColor" name="White"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="MainColor"/>
+                                <constraints>
+                                    <constraint firstItem="WIc-J6-UDM" firstAttribute="centerX" secondItem="5lJ-9h-Hln" secondAttribute="centerX" id="13L-CX-XEz"/>
+                                    <constraint firstItem="WIc-J6-UDM" firstAttribute="centerY" secondItem="5lJ-9h-Hln" secondAttribute="centerY" id="Awe-xn-E4n"/>
+                                    <constraint firstItem="WIc-J6-UDM" firstAttribute="leading" secondItem="5lJ-9h-Hln" secondAttribute="leading" constant="45" id="z9v-Ob-zaz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="oQY-1Z-sbO" firstAttribute="leading" secondItem="Oh0-5b-mNV" secondAttribute="leading" id="24q-v8-NUG"/>
+                            <constraint firstItem="5lJ-9h-Hln" firstAttribute="leading" secondItem="Oh0-5b-mNV" secondAttribute="leading" id="3f5-o9-niY"/>
+                            <constraint firstItem="5lJ-9h-Hln" firstAttribute="top" secondItem="wlx-LH-dSt" secondAttribute="top" id="5qV-lL-R09"/>
+                            <constraint firstItem="Oh0-5b-mNV" firstAttribute="bottom" secondItem="5lJ-9h-Hln" secondAttribute="bottom" id="NHc-hM-M9b"/>
+                            <constraint firstItem="Oh0-5b-mNV" firstAttribute="trailing" secondItem="5lJ-9h-Hln" secondAttribute="trailing" id="NYe-V1-DTn"/>
                             <constraint firstItem="Oh0-5b-mNV" firstAttribute="trailing" secondItem="oQY-1Z-sbO" secondAttribute="trailing" id="bJf-7p-EDD"/>
                             <constraint firstItem="Oh0-5b-mNV" firstAttribute="bottom" secondItem="oQY-1Z-sbO" secondAttribute="bottom" id="dsZ-Kh-mgW"/>
                             <constraint firstItem="oQY-1Z-sbO" firstAttribute="top" secondItem="wlx-LH-dSt" secondAttribute="top" id="iV6-36-vII"/>
@@ -32,6 +53,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundView" destination="5lJ-9h-Hln" id="LXO-nI-BZ9"/>
                         <outlet property="tableViewFavorite" destination="oQY-1Z-sbO" id="f11-gJ-HlF"/>
                     </connections>
                 </viewController>
@@ -43,6 +65,9 @@
     <resources>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Comets
 
 class MarketFavoritesViewController: UIViewController {
     
@@ -17,10 +18,12 @@ class MarketFavoritesViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: FavoriteViewModel = FavoriteViewModel()
     private let onDelete: PublishSubject<Favorite> = PublishSubject<Favorite>()
+    private let tableViewSpinner = UIActivityIndicatorView(style: .whiteLarge)
 
     //MARK: Outlets
     @IBOutlet private weak var tableViewFavorite: UITableView!
-
+    @IBOutlet private weak var backgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +36,27 @@ class MarketFavoritesViewController: UIViewController {
         self.navigationItem.title = "Favorites"
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
+        self.view.addSubview(self.tableViewSpinner)
+        self.tableViewSpinner.translatesAutoresizingMaskIntoConstraints = false
+        self.tableViewSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.tableViewSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        self.tableViewSpinner.isHidden = false
+        self.tableViewSpinner.startAnimating()
     }
     
     private func setupTableView() {
         self.tableViewFavorite.register(MarketTableViewCell.nib, forCellReuseIdentifier:   MarketTableViewCell.identifier)
         self.tableViewFavorite.delegate = self
         self.tableViewFavorite.dataSource = self
+    }
+    
+    private func displayComets() {}
+    
+    private func displayHelpBackground(isHidden: Bool) {
+        
+        self.tableViewFavorite.isHidden = isHidden
+        self.backgroundView.isHidden = !isHidden
+        
     }
     
     private func setupViewModel() {
@@ -51,6 +69,7 @@ class MarketFavoritesViewController: UIViewController {
             .subscribe(onNext: { (favorite) in
                 self.tableViewDataSource = favorite
                 self.tableViewFavorite.reloadData()
+                self.displayHelpBackground(isHidden: favorite.count > 0 ? false : true)
         }).disposed(by: self.disposeBag)
         
         output.favoriteOnChange.asObservable()
@@ -58,6 +77,17 @@ class MarketFavoritesViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (element) in
                 self.tableView(addNewElement: element)
+                self.displayHelpBackground(isHidden: false)
+            }).disposed(by: self.disposeBag)
+        
+        output.isLoading.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (isLoading) in
+                self.tableViewFavorite.isHidden = isLoading
+                self.tableViewSpinner.isHidden = !isLoading
+                isLoading ? self.tableViewSpinner.startAnimating() : self.tableViewSpinner.stopAnimating()
+                
             }).disposed(by: self.disposeBag)
     }
 }
@@ -113,6 +143,7 @@ extension MarketFavoritesViewController: UITableViewDelegate, UITableViewDataSou
             let deleteElem = tableViewDataSource[indexPath.row]
             self.onDelete.onNext(deleteElem)
             self.tableView(removeElement: deleteElem, indexPath: indexPath)
+            self.displayHelpBackground(isHidden: self.tableViewDataSource.count > 0 ? false : true)
         }
     }
     
