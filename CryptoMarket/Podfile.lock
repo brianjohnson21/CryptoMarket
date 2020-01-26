@@ -6,7 +6,6 @@ PODS:
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
   - Comets (0.3.1)
-  - Hero (1.4.0)
   - Keys (1.0.1)
   - ObjectMapper (3.5.1)
   - QuickLayout (3.0.0)
@@ -30,7 +29,6 @@ DEPENDENCIES:
   - AlamofireImage
   - Charts
   - Comets
-  - Hero
   - Keys (from `Pods/CocoaPodsKeys`)
   - ObjectMapper
   - RxAlamofire
@@ -46,7 +44,6 @@ SPEC REPOS:
     - AlamofireImage
     - Charts
     - Comets
-    - Hero
     - ObjectMapper
     - QuickLayout
     - RxAlamofire
@@ -65,7 +62,6 @@ SPEC CHECKSUMS:
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Comets: ff75eb4658d612af66073bf9fcf6e8bef274817b
-  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
@@ -76,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
   SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
 
-PODFILE CHECKSUM: b2de2e44e4c8c1aa9f20210631b7be308e4e04b0
+PODFILE CHECKSUM: e0c7f1e58addbb7228c0dd3f48dcb0d73e6c5263
 
 COCOAPODS: 1.8.4

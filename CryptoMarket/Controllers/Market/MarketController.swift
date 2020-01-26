@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxGesture
-import Hero
 
 //todo -> delegate
 class MarketController: UIViewController, UISearchControllerDelegate {
@@ -39,13 +38,11 @@ class MarketController: UIViewController, UISearchControllerDelegate {
         super.viewWillAppear(animated)
         
         self.tabBarController?.delegate = self
-        self.displayTableViewAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.tableViewMarket.hero.isEnabled = false
         self.view.endEditing(true)
     }
     
@@ -87,14 +84,6 @@ class MarketController: UIViewController, UISearchControllerDelegate {
         textField.tintColor = UIColor.init(named: "SecondColor")
         
         self.navigationItem.searchController = searchController
-    }
-    
-    private func displayTableViewAnimation() {
-        self.tableViewMarket.hero.isEnabled = true
-        self.tableViewMarket.hero.modifiers = [.cascade(delta: 2.0, direction: .bottomToTop, delayMatchedViews: true)]
-        for (index, cell) in self.tableViewMarket.visibleCells.enumerated() {
-            cell.hero.modifiers = [.duration(0.12 * Double(index)),.translate(CGPoint.init(x: 0, y: 120))]
-        }
     }
     
     private func setUpViewModel() {

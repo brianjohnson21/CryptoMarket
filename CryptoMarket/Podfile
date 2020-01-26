@@ -12,7 +12,6 @@ target 'CryptoMarket' do
    pod 'Alamofire'
    pod 'RxAlamofire'
    pod 'ObjectMapper'
-   pod 'Hero'
    pod "SwiftChart"
    pod 'Charts'
    pod 'SwiftEntryKit'
