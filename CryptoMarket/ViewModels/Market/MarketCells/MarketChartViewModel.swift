@@ -16,6 +16,7 @@ public final class MarketChartViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isChartLoading = BehaviorSubject<Bool>(value: false)
     private let chartId: String
+    private let globalPercentage: String
     
     struct Input {
         let legendEvent: Observable<ChartLegend>
@@ -24,10 +25,12 @@ public final class MarketChartViewModel: ViewModelType {
     struct Output {
         let isChartLoading: Observable<Bool>
         let chartViewData: Observable<[ChartDataEntry]>
+        let percentageChart: Observable<String>
     }
 
-    public init(chartId: String) {
+    public init(chartId: String, globalPercentage percentage: String) {
         self.chartId = chartId
+        self.globalPercentage = percentage
     }
     
     private func createHistoryDate(legendSelected: ChartLegend) -> MarketHistoryRequest {
@@ -65,7 +68,7 @@ public final class MarketChartViewModel: ViewModelType {
                 return result
             })
     }
-    
+
     func transform(input: Input) -> Output {
         
         self.isChartLoading.onNext(false)
@@ -81,7 +84,20 @@ public final class MarketChartViewModel: ViewModelType {
                 self.isChartLoading.onNext(false)
             })
         
-        return Output(isChartLoading: self.isChartLoading.asObservable(), chartViewData: chartData)
+        ///Mark: we don't need to calculate the first percentage since the API returns it but we do need when we switch the interval to a month/day/year
+        let percentageChart = Observable.zip(input.legendEvent.asObservable(), chartData.asObservable()).map { (legend, market) -> String in
+            guard legend == .day else {
+                
+                let firstPrice = market.first?.y ?? 0
+                let lastPrice = market.last?.y ?? 0
+                let percentageResult = ((firstPrice - lastPrice) / firstPrice) * 100
+                
+                return "\(percentageResult.magnitude)".percentageFormatting()
+            }
+            return self.globalPercentage
+        }
+        
+        return Output(isChartLoading: self.isChartLoading.asObservable(), chartViewData: chartData, percentageChart: percentageChart)
     }
     
 }

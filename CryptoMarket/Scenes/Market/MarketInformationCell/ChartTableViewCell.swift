@@ -71,6 +71,13 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
                 self.setupSpinner(isLoading: isLoading)
             }).disposed(by: self.disposeBag)
         
+        output.percentageChart.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (percentage) in
+                self.labelPercentage.text = "\(percentage)"
+            }).disposed(by: self.disposeBag)
+        
     }
     
     private func addHighlight(buttonTag tag: Int) {
@@ -98,8 +105,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         sender.isSelected = true
         
         self.chartEventOnLegend.onNext(ChartLegend(rawValue: self.tagButtonSelected) ?? ChartLegend.month)
-        
-        //self.chartEventOnLegend.onNext(ApiInterval(rawValue: self.tagButtonSelected) ?? ApiInterval.d1)
     }
     
     private func setChartSettings() {
@@ -118,7 +123,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     ///Method called outside to setup the view
     public func setupChart(assetName: String) {
 
-        self.viewModel = MarketChartViewModel(chartId: assetName.lowercased())
+        self.viewModel = MarketChartViewModel(chartId: assetName.lowercased(), globalPercentage: self.labelPercentage.text ?? "")
         
         self.setChartSettings()
         

@@ -314,6 +314,7 @@
 		1EBF8A162336AF2400E79306 /* MarketFavorites */ = {
 			isa = PBXGroup;
 			children = (
+				1ED2B2C423E3901F00339F5E /* Cells */,
 				1EBF8A172336AF3300E79306 /* MarketFavoritesViewController.swift */,
 			);
 			path = MarketFavorites;
@@ -333,6 +334,20 @@
 				1EC5C644237F433200EFCA40 /* ErrorMessage.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		1ED2B2C323E3901900339F5E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1ED2B2C423E3901F00339F5E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		1EE00AAD23898DAB00AACB0D /* MarketInformationCell */ = {
@@ -448,6 +463,7 @@
 		E95FACED232F64BF004FD442 /* MarketNews */ = {
 			isa = PBXGroup;
 			children = (
+				1ED2B2C323E3901900339F5E /* Cells */,
 				E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */,
 			);
 			path = MarketNews;

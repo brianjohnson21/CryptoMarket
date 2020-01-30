@@ -75,9 +75,9 @@ class MarketController: UIViewController, UISearchControllerDelegate {
         searchController.searchBar.tintColor = .white
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.keyboardAppearance = .dark
-                
+        
         let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        
         let textField = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         textField.defaultTextAttributes = attributes
         textField.clearButtonMode = .never
