@@ -26,6 +26,7 @@ public final class MarketChartViewModel: ViewModelType {
         let isChartLoading: Observable<Bool>
         let chartViewData: Observable<[ChartDataEntry]>
         let percentageChart: Observable<String>
+        let percentageColor: Observable<UIColor>
     }
 
     public init(chartId: String, globalPercentage percentage: String) {
@@ -92,12 +93,19 @@ public final class MarketChartViewModel: ViewModelType {
                 let lastPrice = market.last?.y ?? 0
                 let percentageResult = ((firstPrice - lastPrice) / firstPrice) * 100
                 
-                return "\(percentageResult.magnitude)".percentageFormatting()
+                return "\(percentageResult.magnitude)"
             }
             return self.globalPercentage
         }
         
-        return Output(isChartLoading: self.isChartLoading.asObservable(), chartViewData: chartData, percentageChart: percentageChart)
+        let percentageColor = percentageChart.map { (price) -> UIColor in
+            return ((Double(price) ?? 0 > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")) ?? UIColor.white)
+        }
+        
+        return Output(isChartLoading: self.isChartLoading.asObservable(),
+                      chartViewData: chartData,
+                      percentageChart: percentageChart,
+                      percentageColor: percentageColor)
     }
     
 }

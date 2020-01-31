@@ -75,8 +75,15 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (percentage) in
-                self.labelPercentage.text = "\(percentage)"
+                self.setPercentageOnChart(percentage: percentage)
             }).disposed(by: self.disposeBag)
+        
+//        output.percentageColor.asObservable()
+//            .observeOn(MainScheduler.instance)
+//            .subscribeOn(MainScheduler.asyncInstance)
+//            .subscribe(onNext: { (color) in
+//                self.labelPercentage.textColor = color
+//            }).disposed(by: self.disposeBag)
         
     }
     
@@ -121,12 +128,13 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     ///Method called outside to setup the view
-    public func setupChart(assetName: String) {
+    public func setupChart(assetName: String, assetPercentage percentage: String) {
 
-        self.viewModel = MarketChartViewModel(chartId: assetName.lowercased(), globalPercentage: self.labelPercentage.text ?? "")
+        self.viewModel = MarketChartViewModel(chartId: assetName.lowercased(),
+                                              globalPercentage: percentage)
         
         self.setChartSettings()
-        
+        self.setPercentageOnChart(percentage: percentage)
         self.setupSpinner(isLoading: true)
         self.setupViewModel()
     }
@@ -162,7 +170,7 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         chartView.animate(xAxisDuration: 0.2)
     }
     
-    public func setPercentageOnChart(percentage: String) {
+    private func setPercentageOnChart(percentage: String) {
         self.labelPercentage.text = "\(abs(Double(percentage) ?? 0))".percentageFormatting()
         let currentValue = Double(percentage) ?? 0
         self.labelPercentage.textColor = currentValue > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")
