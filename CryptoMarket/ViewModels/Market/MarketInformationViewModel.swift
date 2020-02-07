@@ -37,7 +37,11 @@ public final class MarketInformationViewModel: ViewModelType {
         var tableViewData: [CellViewModelProtocol] = []
         
         //MARK: TODO
-        tableViewData.append(ChartCell(title: nil, market: self.market, data: "YOLO DISPLAY CIRCLE HERE"))
+        
+        let line = LineChartCell(title: "mdr", market: self.market)
+        tableViewData.append(ChartContentCell(title: "YOLO", lineChart: line, circleChart: nil))
+        
+        //tableViewData.append(ChartCell(title: nil, market: self.market, data: "YOLO DISPLAY CIRCLE HERE"))
         
         return tableViewData
     }
