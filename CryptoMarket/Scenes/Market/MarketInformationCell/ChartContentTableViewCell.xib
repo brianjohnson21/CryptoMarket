@@ -18,17 +18,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-UD-dfi">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-UD-dfi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-SA-lL9" userLabel="Container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-SA-lL9" userLabel="Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfW-i2-N6y">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gab-xe-5nM">
+                                                <rect key="frame" x="139" y="135" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" name="Color-1"/>
                                         <viewLayoutGuide key="contentLayoutGuide" id="Xff-id-7NQ"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="30e-Py-SX8"/>
@@ -36,17 +43,31 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dZ8-ff-BWd">
-                                <rect key="frame" x="141" y="288" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dZ8-ff-BWd">
+                                <rect key="frame" x="140.5" y="288" width="39" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" name="MainColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rfs-SA-lL9" secondAttribute="bottom" constant="28" id="46Y-25-9dj"/>
+                            <constraint firstItem="rfs-SA-lL9" firstAttribute="top" secondItem="u4I-UD-dfi" secondAttribute="top" id="6NZ-l7-5xV"/>
+                            <constraint firstItem="dZ8-ff-BWd" firstAttribute="centerX" secondItem="u4I-UD-dfi" secondAttribute="centerX" id="O8r-L8-kRV"/>
+                            <constraint firstAttribute="bottom" secondItem="dZ8-ff-BWd" secondAttribute="bottom" constant="-6" id="Qt8-Xq-iJs"/>
+                            <constraint firstAttribute="trailing" secondItem="rfs-SA-lL9" secondAttribute="trailing" id="kpG-9z-3pm"/>
+                            <constraint firstItem="rfs-SA-lL9" firstAttribute="leading" secondItem="u4I-UD-dfi" secondAttribute="leading" id="ydp-IK-KXO"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="u4I-UD-dfi" secondAttribute="trailing" id="10r-rx-h26"/>
+                    <constraint firstAttribute="bottom" secondItem="u4I-UD-dfi" secondAttribute="bottom" id="HcA-KG-dEu"/>
+                    <constraint firstItem="u4I-UD-dfi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="I1Q-ub-Y1N"/>
+                    <constraint firstItem="u4I-UD-dfi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oed-3D-Ean"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="ScrollViewPageControl" destination="dZ8-ff-BWd" id="and-iZ-5e6"/>
                 <outlet property="containerScrollView" destination="rfs-SA-lL9" id="m1M-Xz-j7A"/>
                 <outlet property="scrollView" destination="nfW-i2-N6y" id="fOp-bJ-K8q"/>
             </connections>

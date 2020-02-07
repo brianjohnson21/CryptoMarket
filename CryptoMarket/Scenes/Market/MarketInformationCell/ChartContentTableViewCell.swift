@@ -14,7 +14,7 @@ class ChartContentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var containerScrollView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var ScrollViewPageControl: UIPageControl!
     
     private var viewModel: ContentChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
@@ -33,7 +33,6 @@ class ChartContentTableViewCell: UITableViewCell {
 
     //MARK: method called outisde to setup the view
     public func setup(data: String) {
-        self.name.text = data
     }
     
     static var identifier: String {
@@ -47,7 +46,8 @@ class ChartContentTableViewCell: UITableViewCell {
 
 extension ChartContentTableViewCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        let pageIndex = round(scrollView.contentOffset.x / self.frame.width)
+        self.ScrollViewPageControl.currentPage = Int(pageIndex)
     }
     
     private func setupScrollViewForCharts() {
