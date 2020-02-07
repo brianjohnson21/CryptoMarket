@@ -18,40 +18,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-SA-lL9" userLabel="Container">
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-UD-dfi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfW-i2-N6y">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-SA-lL9" userLabel="Container">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zm-41-0gZ">
-                                        <rect key="frame" x="139" y="132" width="42" height="21"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfW-i2-N6y">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <color key="backgroundColor" name="Color-1"/>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="Xff-id-7NQ"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="30e-Py-SX8"/>
+                                    </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" name="Color-1"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Xff-id-7NQ"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="30e-Py-SX8"/>
-                            </scrollView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dZ8-ff-BWd">
+                                <rect key="frame" x="141" y="288" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="MainColor"/>
                     </view>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="rfs-SA-lL9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ggg-dD-gvH"/>
-                    <constraint firstItem="rfs-SA-lL9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hhu-Ln-Bxr"/>
-                    <constraint firstAttribute="bottom" secondItem="rfs-SA-lL9" secondAttribute="bottom" id="apz-dH-toc"/>
-                    <constraint firstAttribute="trailing" secondItem="rfs-SA-lL9" secondAttribute="trailing" id="ukz-Sa-4JD"/>
-                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerScrollView" destination="rfs-SA-lL9" id="m1M-Xz-j7A"/>
-                <outlet property="name" destination="3Zm-41-0gZ" id="j5w-KQ-wjC"/>
                 <outlet property="scrollView" destination="nfW-i2-N6y" id="fOp-bJ-K8q"/>
             </connections>
             <point key="canvasLocation" x="0.0" y="93.415178571428569"/>
@@ -60,6 +56,9 @@
     <resources>
         <namedColor name="Color-1">
             <color red="0.53299999237060547" green="0.75300002098083496" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
