@@ -11,6 +11,8 @@
 		1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20C4A323C5F58800163F38 /* CoreDataManager.swift */; };
 		1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068123C13DBC00118DCC /* Date+Ext.swift */; };
 		1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */; };
+		1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3BB41E23EE1F5600DBF600 /* ChartContentTableViewCell.swift */; };
+		1E3BB42123EE1F5600DBF600 /* ChartContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3BB41F23EE1F5600DBF600 /* ChartContentTableViewCell.xib */; };
 		1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */; };
 		1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */; };
 		1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */; };
@@ -87,6 +89,8 @@
 		1E20C4A323C5F58800163F38 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1E24068123C13DBC00118DCC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHistoryRequest.swift; sourceTree = "<group>"; };
+		1E3BB41E23EE1F5600DBF600 /* ChartContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartContentTableViewCell.swift; sourceTree = "<group>"; };
+		1E3BB41F23EE1F5600DBF600 /* ChartContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartContentTableViewCell.xib; sourceTree = "<group>"; };
 		1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */,
 				1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */,
 				1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */,
+				1E3BB41E23EE1F5600DBF600 /* ChartContentTableViewCell.swift */,
+				1E3BB41F23EE1F5600DBF600 /* ChartContentTableViewCell.xib */,
 			);
 			path = MarketInformationCell;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				1E3DA11B238AD43A00B87505 /* ChartTableViewCell.xib in Resources */,
 				1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */,
 				E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */,
+				1E3BB42123EE1F5600DBF600 /* ChartContentTableViewCell.xib in Resources */,
 				1EBF8A1B2336AF5600E79306 /* MarketFavorites.storyboard in Resources */,
 				1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */,
 				1E63484F23CC810900B8002A /* NavigationTitleView.xib in Resources */,
@@ -771,6 +778,7 @@
 				1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */,
 				1EE00AB52389EA3100AACB0D /* Observable+Ext.swift in Sources */,
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
+				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,

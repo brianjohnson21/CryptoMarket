@@ -151,7 +151,6 @@ class ChartTableViewCell: UITableViewCell, ChartViewDelegate {
         let chartViewData = LineChartDataSet(entries: chartData, label: "YES")
         chartViewData.drawIconsEnabled = false
         
-        //chartViewData.setColor(UIColor.init(named: "Color-1") ?? .red)
         chartViewData.setColor(UIColor.init(named: "White") ?? .red)
         chartViewData.lineWidth = 1.0
         chartViewData.circleRadius = 0.0
