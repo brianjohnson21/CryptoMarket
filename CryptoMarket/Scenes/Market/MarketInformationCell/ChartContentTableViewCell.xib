@@ -24,6 +24,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfW-i2-N6y">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zm-41-0gZ">
+                                        <rect key="frame" x="139" y="132" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" name="Color-1"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Xff-id-7NQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="30e-Py-SX8"/>
@@ -42,6 +51,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerScrollView" destination="rfs-SA-lL9" id="m1M-Xz-j7A"/>
+                <outlet property="name" destination="3Zm-41-0gZ" id="j5w-KQ-wjC"/>
                 <outlet property="scrollView" destination="nfW-i2-N6y" id="fOp-bJ-K8q"/>
             </connections>
             <point key="canvasLocation" x="0.0" y="93.415178571428569"/>

@@ -12,6 +12,7 @@ class ChartContentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var containerScrollView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var name: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,18 @@ class ChartContentTableViewCell: UITableViewCell {
 
     }
     
+    //MARK: method called outisde to setup the view
+    public func setup(data: String) {
+        self.name.text = data
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
 }
 
 extension ChartContentTableViewCell: UIScrollViewDelegate {

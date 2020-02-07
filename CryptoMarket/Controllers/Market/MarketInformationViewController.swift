@@ -89,6 +89,7 @@ class MarketInformationViewController: UIViewController {
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
         self.tableViewInformation.register(ChartTableViewCell.nib, forCellReuseIdentifier: ChartTableViewCell.identifier)
         self.tableViewInformation.register(HeaderInformationTableViewCell.nib, forCellReuseIdentifier: HeaderInformationTableViewCell.identifier)
+        self.tableViewInformation.register(ChartContentTableViewCell.nib, forCellReuseIdentifier: ChartContentTableViewCell.identifier)
         
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
