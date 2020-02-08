@@ -23,6 +23,7 @@ class ChartContentTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.ScrollViewPageControl.size(forNumberOfPages: 2)
         self.setupScrollViewForCharts()
     }
 
