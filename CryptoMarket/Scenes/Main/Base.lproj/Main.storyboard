@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="2266" y="324"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Animated Tab Bar Controller-->
         <scene sceneID="fy4-GC-Ryi">
             <objects>
-                <tabBarController id="CCj-ta-gLD" sceneMemberID="viewController">
+                <tabBarController id="CCj-ta-gLD" customClass="RAMAnimatedTabBarController" customModule="RAMAnimatedTabBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nbt-g2-EKF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -58,10 +58,13 @@
         <scene sceneID="vMS-SH-4oQ">
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="dfd-wz-cgD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Market" image="bar-basic" selectedImage="bar-selected" id="dpy-Ya-Hbx">
+                    <tabBarItem key="tabBarItem" title="Market" image="bar-basic" id="dpy-Ya-Hbx" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-chart-bar"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="9V2-cj-vn5" id="P9W-rp-vU0"/>
+                        </connections>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="aih-zf-8Xr">
@@ -83,6 +86,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0G-aJ-ajR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="9V2-cj-vn5" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" name="White"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" name="Color-1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jdw-Yh-spZ">
                     <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -119,10 +132,13 @@
         <scene sceneID="siQ-4r-aV7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7h-Ya-Mhg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="Iist-basic" selectedImage="list-selected" id="tbQ-3W-qyK">
+                    <tabBarItem key="tabBarItem" title="News" image="Iist-basic" id="tbQ-3W-qyK" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-list-ul"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="wbH-xK-W3S" id="QjL-6h-7gM"/>
+                        </connections>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="3Av-OR-wuO">
@@ -135,6 +151,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBS-h9-uK8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="wbH-xK-W3S" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" name="White"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" name="Color-1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="471" y="695"/>
         </scene>
@@ -142,10 +168,13 @@
         <scene sceneID="gIf-cz-Dt5">
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Rqb-lN-nf5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star-basic" selectedImage="star-selected" id="ArC-WB-PCF">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star-basic" selectedImage="star-selected" id="ArC-WB-PCF" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="fontAwesomeItem" value="fa-star"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="Xx3-nF-sMz" id="Z8Q-4s-RJq"/>
+                        </connections>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="PTM-fb-uQH">
@@ -165,17 +194,28 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aq1-6x-Cdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Xx3-nF-sMz" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" name="White"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" name="Color-1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="374" y="1445"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Iist-basic" width="25" height="18"/>
-        <image name="bar-basic" width="25" height="18"/>
-        <image name="bar-selected" width="25" height="18"/>
-        <image name="list-selected" width="25" height="18"/>
-        <image name="star-basic" width="22" height="22"/>
-        <image name="star-selected" width="24" height="24"/>
+        <image name="Iist-basic" width="28" height="24"/>
+        <image name="bar-basic" width="32" height="24"/>
+        <image name="star-basic" width="28" height="24"/>
+        <image name="star-selected" width="28" height="24"/>
+        <namedColor name="Color-1">
+            <color red="0.53299999237060547" green="0.75300002098083496" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

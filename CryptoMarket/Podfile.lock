@@ -9,6 +9,7 @@ PODS:
   - Keys (1.0.1)
   - ObjectMapper (3.5.1)
   - QuickLayout (3.0.0)
+  - RAMAnimatedTabBarController (5.1.0)
   - RxAlamofire (4.4.1):
     - RxAlamofire/Core (= 4.4.1)
   - RxAlamofire/Core (4.4.1):
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Comets
   - Keys (from `Pods/CocoaPodsKeys`)
   - ObjectMapper
+  - RAMAnimatedTabBarController
   - RxAlamofire
   - RxCocoa (~> 4.0)
   - RxGesture
@@ -46,6 +48,7 @@ SPEC REPOS:
     - Comets
     - ObjectMapper
     - QuickLayout
+    - RAMAnimatedTabBarController
     - RxAlamofire
     - RxCocoa
     - RxGesture
@@ -65,6 +68,7 @@ SPEC CHECKSUMS:
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  RAMAnimatedTabBarController: b5c821298071fded801532216ad8a24394f89859
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
@@ -72,6 +76,6 @@ SPEC CHECKSUMS:
   SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
   SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
 
-PODFILE CHECKSUM: e0c7f1e58addbb7228c0dd3f48dcb0d73e6c5263
+PODFILE CHECKSUM: 2cc0911020586ab888c90ec30670766ba8bf04ec
 
 COCOAPODS: 1.8.4
