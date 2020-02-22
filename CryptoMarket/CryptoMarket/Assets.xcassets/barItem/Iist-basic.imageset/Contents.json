@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "list-ul-solid.png",
+      "filename" : "list-alt-light.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "list-ul-solid@2x.png",
+      "filename" : "list-alt-light@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "list-ul-solid@3x.png",
+      "filename" : "list-alt-light@3x.png",
       "scale" : "3x"
     }
   ],

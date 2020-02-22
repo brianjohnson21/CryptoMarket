@@ -17,6 +17,7 @@ target 'CryptoMarket' do
    pod 'SwiftEntryKit'
    pod 'AlamofireImage'
    pod 'Comets'
+   pod 'RAMAnimatedTabBarController'
 
    plugin 'cocoapods-keys', {
    	  :project => "CryptoMarket",
