@@ -12,19 +12,16 @@ import RxSwift
 
 class ChartContentTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var containerScrollView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var ScrollViewPageControl: UIPageControl!
+    @IBOutlet private weak var scrollViewContainer: UIView!
+    @IBOutlet private weak var containerView: UIView!
     
     private var viewModel: ContentChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
-    private let scrollViewDataSource: [UIView] = []
+    private var scrollViewDataSource: [UIView] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.ScrollViewPageControl.size(forNumberOfPages: 2)
-        self.setupScrollViewForCharts()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,6 +31,59 @@ class ChartContentTableViewCell: UITableViewCell {
 
     //MARK: method called outisde to setup the view
     public func setup(data: String) {
+        //self.ScrollViewPageControl.numberOfPages = 2
+        self.setupView()
+        self.setupViewModel()
+    }
+    
+    private func setupView() {
+        self.scrollView.delegate = self
+    }
+    
+    override func layoutSubviews() {
+        self.setupScrollViewOnSlides()
+        super.layoutSubviews()
+    }
+    
+    private func setupScrollViewOnSlides() {
+        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.scrollViewContainer.frame.width, height: self.scrollViewContainer.frame.height)
+        self.scrollView.contentSize = CGSize(width: self.scrollViewContainer.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
+        
+        self.scrollView.isPagingEnabled = true
+        self.scrollView.showsVerticalScrollIndicator = false
+        self.scrollView.showsHorizontalScrollIndicator = false
+        
+        for i in 0 ..< self.scrollViewDataSource.count {
+            print("[SCROLLVIEWCONTAINER][SIZE] = \(self.scrollViewContainer.frame.width)")
+            self.scrollViewDataSource[i].frame = CGRect(x: self.scrollViewContainer.frame.width * CGFloat(i), y: 0, width: self.scrollViewContainer.frame.width, height: self.scrollViewContainer.frame.height)
+            print("[BEFORE][ADDING] \(self.scrollViewDataSource)")
+            self.scrollView.addSubview(self.scrollViewDataSource[i])
+        }
+    }
+    
+    //TMP
+    private func generateChartsView() -> [UIView] {
+        var diagram: [UIView] = []
+        
+        if let pieDiagram: PieChart = Bundle.main.loadNibNamed(PieChart.identifier, owner: nil, options: nil)?.first as? PieChart {
+            pieDiagram.setup()
+            print("[PIECHART][SIZE] = \(pieDiagram.frame.width)")
+            diagram.append(pieDiagram)
+        }
+        
+        if let lineChart: LineChart = Bundle.main.loadNibNamed(LineChart.identifier, owner: nil, options: nil)?.first as? LineChart {
+            lineChart.setup()
+            diagram.append(lineChart)
+        }
+        
+        return diagram
+    }
+    
+    //END TMP
+    
+    private func setupViewModel() {
+        self.scrollViewDataSource = self.generateChartsView()
+        self.scrollView.reloadInputViews()
     }
     
     static var identifier: String {
@@ -47,19 +97,6 @@ class ChartContentTableViewCell: UITableViewCell {
 
 extension ChartContentTableViewCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x / self.frame.width)
-        self.ScrollViewPageControl.currentPage = Int(pageIndex)
-    }
-    
-    private func setupScrollViewForCharts() {
-        self.scrollView.delegate = self
-        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.containerScrollView.frame.width, height: self.containerScrollView.frame.height)
-        //todo size
-        
-        let size = 2
-        self.scrollView.contentSize = CGSize(width: self.containerScrollView.frame.width * CGFloat(size), height: 0)
-        self.scrollView.isPagingEnabled = true
-        self.scrollView.showsHorizontalScrollIndicator = false
-        self.scrollView.showsVerticalScrollIndicator = false
+        let pageIndex = round(self.scrollView.contentOffset.x / self.frame.width)
     }
 }

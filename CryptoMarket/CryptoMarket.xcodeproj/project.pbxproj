@@ -11,6 +11,10 @@
 		1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20C4A323C5F58800163F38 /* CoreDataManager.swift */; };
 		1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068123C13DBC00118DCC /* Date+Ext.swift */; };
 		1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */; };
+		1E3421BE24016AFB00F44F9F /* LineChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3421BD24016AFB00F44F9F /* LineChart.xib */; };
+		1E3421C024016B1000F44F9F /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3421BF24016B1000F44F9F /* LineChart.swift */; };
+		1E3421C624016EA700F44F9F /* PieChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3421C524016EA700F44F9F /* PieChart.xib */; };
+		1E3421C824016EB200F44F9F /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3421C724016EB200F44F9F /* PieChart.swift */; };
 		1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3BB41E23EE1F5600DBF600 /* ChartContentTableViewCell.swift */; };
 		1E3BB42123EE1F5600DBF600 /* ChartContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3BB41F23EE1F5600DBF600 /* ChartContentTableViewCell.xib */; };
 		1E3BB42323EE294400DBF600 /* ChartContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */; };
@@ -90,6 +94,10 @@
 		1E20C4A323C5F58800163F38 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1E24068123C13DBC00118DCC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHistoryRequest.swift; sourceTree = "<group>"; };
+		1E3421BD24016AFB00F44F9F /* LineChart.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineChart.xib; sourceTree = "<group>"; };
+		1E3421BF24016B1000F44F9F /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		1E3421C524016EA700F44F9F /* PieChart.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChart.xib; sourceTree = "<group>"; };
+		1E3421C724016EB200F44F9F /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		1E3BB41E23EE1F5600DBF600 /* ChartContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartContentTableViewCell.swift; sourceTree = "<group>"; };
 		1E3BB41F23EE1F5600DBF600 /* ChartContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartContentTableViewCell.xib; sourceTree = "<group>"; };
 		1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartContentViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +195,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3421BC240169BC00F44F9F /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				1E3421BD24016AFB00F44F9F /* LineChart.xib */,
+				1E3421BF24016B1000F44F9F /* LineChart.swift */,
+				1E3421C524016EA700F44F9F /* PieChart.xib */,
+				1E3421C724016EB200F44F9F /* PieChart.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		1E4A56AD232D2DC900B4BF0A /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +379,7 @@
 		1EE00AAD23898DAB00AACB0D /* MarketInformationCell */ = {
 			isa = PBXGroup;
 			children = (
+				1E3421BC240169BC00F44F9F /* Charts */,
 				1EE00AAE23898DF400AACB0D /* InformationTableViewCell.swift */,
 				1EE00AAF23898DF400AACB0D /* InformationTableViewCell.xib */,
 				1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */,
@@ -652,10 +672,12 @@
 				1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */,
 				1EE00AB123898DF400AACB0D /* InformationTableViewCell.xib in Resources */,
 				E925B062232FA34900AD8D10 /* Market.storyboard in Resources */,
+				1E3421BE24016AFB00F44F9F /* LineChart.xib in Resources */,
 				1E3DA11B238AD43A00B87505 /* ChartTableViewCell.xib in Resources */,
 				1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */,
 				E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */,
 				1E3BB42123EE1F5600DBF600 /* ChartContentTableViewCell.xib in Resources */,
+				1E3421C624016EA700F44F9F /* PieChart.xib in Resources */,
 				1EBF8A1B2336AF5600E79306 /* MarketFavorites.storyboard in Resources */,
 				1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */,
 				1E63484F23CC810900B8002A /* NavigationTitleView.xib in Resources */,
@@ -761,6 +783,7 @@
 				1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */,
 				1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */,
 				1EE73D902321A52C00D83B82 /* ViewModelType.swift in Sources */,
+				1E3421C024016B1000F44F9F /* LineChart.swift in Sources */,
 				1EE00AB32389965F00AACB0D /* MarketInformation.swift in Sources */,
 				1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */,
 				1E51B01823219CC10087E38C /* MarketController.swift in Sources */,
@@ -786,6 +809,7 @@
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
+				1E3421C824016EB200F44F9F /* PieChart.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
 				1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */,
 				1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */,
