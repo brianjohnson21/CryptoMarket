@@ -16,7 +16,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVv-gf-7O5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="265"/>
+            <point key="canvasLocation" x="1257" y="-93"/>
         </scene>
         <!--MarketNews-->
         <scene sceneID="ACy-p2-W5q">
@@ -26,7 +26,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-fj-oKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2266" y="324"/>
+            <point key="canvasLocation" x="1285" y="703"/>
         </scene>
         <!--Animated Tab Bar Controller-->
         <scene sceneID="fy4-GC-Ryi">
@@ -116,7 +116,7 @@
                     </textAttributes>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="526" y="-93"/>
+            <point key="canvasLocation" x="374" y="-93"/>
         </scene>
         <!--MarketFavoritesStoryboard-->
         <scene sceneID="TWi-Sc-8iG">
@@ -126,7 +126,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4B-g4-JB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="1385"/>
+            <point key="canvasLocation" x="1149" y="1472"/>
         </scene>
         <!--News-->
         <scene sceneID="siQ-4r-aV7">
@@ -162,7 +162,7 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="471" y="695"/>
+            <point key="canvasLocation" x="374" y="704"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="gIf-cz-Dt5">
@@ -205,7 +205,7 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="374" y="1445"/>
+            <point key="canvasLocation" x="374" y="1472"/>
         </scene>
     </scenes>
     <resources>
