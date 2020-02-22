@@ -58,10 +58,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-ag-xJh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" name="MainColor"/>
-                                <color key="sectionIndexBackgroundColor" name="MainColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="MainColor"/>
+                        <color key="backgroundColor" name="Gray"/>
                         <constraints>
                             <constraint firstItem="3bm-ag-xJh" firstAttribute="top" secondItem="wa4-nv-nRn" secondAttribute="top" id="0ah-8Z-Qm0"/>
                             <constraint firstItem="3bm-ag-xJh" firstAttribute="trailing" secondItem="wa4-nv-nRn" secondAttribute="trailing" id="SoS-Zd-6jY"/>
@@ -109,7 +109,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="star-basic" width="22" height="22"/>
+        <image name="star-basic" width="28" height="24"/>
+        <namedColor name="Gray">
+            <color red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

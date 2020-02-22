@@ -93,6 +93,7 @@ class MarketInformationViewController: UIViewController {
         
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
+        
     }
         
     private func setupViewModel() {
@@ -168,6 +169,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         }
         return UITableViewCell()
     }
+
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()

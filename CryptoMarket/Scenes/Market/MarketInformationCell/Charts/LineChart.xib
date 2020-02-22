@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +14,29 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LineChart" customModule="CryptoMarket" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LINECHART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOs-Lu-uue">
+                    <rect key="frame" x="0.0" y="438" width="414" height="20"/>
+                    <color key="backgroundColor" name="SecondaryColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GOs-Lu-uue" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9DL-57-HuR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GOs-Lu-uue" secondAttribute="trailing" id="i3G-se-ih7"/>
+                <constraint firstItem="GOs-Lu-uue" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yNI-ew-V6W"/>
+                <constraint firstItem="GOs-Lu-uue" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yxG-ZA-4II"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="133"/>
+            <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="SecondaryColor">
+            <color red="1" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

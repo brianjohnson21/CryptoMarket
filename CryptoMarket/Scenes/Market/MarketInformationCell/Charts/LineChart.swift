@@ -21,7 +21,7 @@ final class LineChart: UIView {
     //method called outside to setup
     public func setup() {
         print("[SETUP] LineChart")
-        self.backgroundColor = .brown
+        
         self.setupViewModel()
     }
     

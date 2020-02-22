@@ -46,17 +46,15 @@ class ChartContentTableViewCell: UITableViewCell {
     }
     
     private func setupScrollViewOnSlides() {
-        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.scrollViewContainer.frame.width, height: self.scrollViewContainer.frame.height)
-        self.scrollView.contentSize = CGSize(width: self.scrollViewContainer.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
+        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
+        self.scrollView.contentSize = CGSize(width: self.containerView.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
         
         self.scrollView.isPagingEnabled = true
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
         
         for i in 0 ..< self.scrollViewDataSource.count {
-            print("[SCROLLVIEWCONTAINER][SIZE] = \(self.scrollViewContainer.frame.width)")
-            self.scrollViewDataSource[i].frame = CGRect(x: self.scrollViewContainer.frame.width * CGFloat(i), y: 0, width: self.scrollViewContainer.frame.width, height: self.scrollViewContainer.frame.height)
-            print("[BEFORE][ADDING] \(self.scrollViewDataSource)")
+            self.scrollViewDataSource[i].frame = CGRect(x: self.containerView.frame.width * CGFloat(i), y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
             self.scrollView.addSubview(self.scrollViewDataSource[i])
         }
     }

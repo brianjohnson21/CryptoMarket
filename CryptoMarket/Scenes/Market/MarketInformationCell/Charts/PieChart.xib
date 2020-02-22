@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +14,29 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PieChart" customModule="CryptoMarket" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PIECHART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wji-4J-lvq">
+                    <rect key="frame" x="8" y="442.5" width="398" height="21"/>
+                    <color key="backgroundColor" name="SortUp"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Wji-4J-lvq" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="BXa-Vo-0CX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wji-4J-lvq" secondAttribute="trailing" constant="8" id="awj-qZ-z65"/>
+                <constraint firstItem="Wji-4J-lvq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="eLK-pz-sBg"/>
+                <constraint firstItem="Wji-4J-lvq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zoh-xp-m2e"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="25"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="SortUp">
+            <color red="0.031372549019607843" green="0.77647058823529413" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
