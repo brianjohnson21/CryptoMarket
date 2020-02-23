@@ -21,6 +21,7 @@ final class PieChart: UIView {
     //method called outside to setup
     public func setup() {
         print("[SETUP] PieChart")
+        self.backgroundColor = .cyan
         self.setupViewModel()
     }
     
