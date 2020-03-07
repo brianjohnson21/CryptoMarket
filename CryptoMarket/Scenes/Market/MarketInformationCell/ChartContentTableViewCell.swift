@@ -13,6 +13,7 @@ import RxSwift
 class ChartContentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var containerView: UIView!
     
     private var viewModel: ContentChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
@@ -32,6 +33,8 @@ class ChartContentTableViewCell: UITableViewCell {
         self.viewModel = ContentChartViewModel()
         self.setupView()
         self.setupViewModel()
+        
+        print("[SIZE 0] = \(self.containerView.frame.width) && \(self.frame.width)")
     }
     
     private func setupView() {
@@ -69,13 +72,13 @@ extension ChartContentTableViewCell: UIScrollViewDelegate {
     
     private func setupScrollViewOnSlides() {
         
-        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.containerView.frame.height)
         self.scrollView.contentSize = CGSize(width: self.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
         self.scrollView.isPagingEnabled = true
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
         for i in 0 ..< self.scrollViewDataSource.count {
-            self.scrollViewDataSource[i].frame = CGRect(x: self.frame.width * CGFloat(i), y: 0, width: self.frame.width, height: self.frame.height)
+            self.scrollViewDataSource[i].frame = CGRect(x: self.frame.width * CGFloat(i), y: 0, width: self.frame.width, height: self.containerView.frame.height)
             self.scrollView.addSubview(self.scrollViewDataSource[i])
         }
     }

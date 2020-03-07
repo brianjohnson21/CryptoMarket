@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-iX-aIE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MD-GD-Zts">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
@@ -28,16 +28,26 @@
                         </subviews>
                         <color key="backgroundColor" name="MainColor"/>
                     </view>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kDg-St-vPR">
+                        <rect key="frame" x="168" y="388" width="39" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="wfM-n2-7B7"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
+                <color key="backgroundColor" name="MainColor"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="oJe-iX-aIE" secondAttribute="bottom" id="Uxe-OS-ims"/>
+                    <constraint firstAttribute="bottom" secondItem="kDg-St-vPR" secondAttribute="bottom" id="BHn-H3-UtV"/>
                     <constraint firstItem="oJe-iX-aIE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XaZ-Wb-0t7"/>
+                    <constraint firstItem="kDg-St-vPR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZJb-Tw-vWG"/>
                     <constraint firstItem="oJe-iX-aIE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lhM-kh-tKo"/>
                     <constraint firstAttribute="trailing" secondItem="oJe-iX-aIE" secondAttribute="trailing" id="uax-iL-IVo"/>
+                    <constraint firstItem="kDg-St-vPR" firstAttribute="top" secondItem="oJe-iX-aIE" secondAttribute="bottom" id="xlA-LA-niQ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="oJe-iX-aIE" id="MUg-ai-Z7V"/>
                 <outlet property="scrollView" destination="9MD-GD-Zts" id="dEE-W2-uQn"/>
             </connections>
             <point key="canvasLocation" x="-55.797101449275367" y="88.727678571428569"/>
