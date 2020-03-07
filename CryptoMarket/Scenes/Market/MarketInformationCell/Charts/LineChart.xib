@@ -15,15 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9">
-                    <rect key="frame" x="20" y="131" width="374" height="656"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </view>
                 <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hAF-BB-nsf">
-                    <rect key="frame" x="102" y="827" width="210" height="35"/>
+                    <rect key="frame" x="8" y="828" width="398" height="34"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRe-i6-hZY">
-                            <rect key="frame" x="0.0" y="0.5" width="42" height="34"/>
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="91q-ts-Mo7"/>
                             </constraints>
@@ -35,7 +31,7 @@
                             </state>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-P7-m2O">
-                            <rect key="frame" x="42" y="0.5" width="42" height="34"/>
+                            <rect key="frame" x="89" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="Bb5-Yo-DEE"/>
                             </constraints>
@@ -47,7 +43,7 @@
                             </state>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9R-jx-q72">
-                            <rect key="frame" x="84" y="0.5" width="42" height="34"/>
+                            <rect key="frame" x="178" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="nuW-55-S8D"/>
                             </constraints>
@@ -59,7 +55,7 @@
                             </state>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1j-BH-YyZ">
-                            <rect key="frame" x="126" y="0.5" width="42" height="34"/>
+                            <rect key="frame" x="267" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="w0q-EG-T0w"/>
                             </constraints>
@@ -71,7 +67,7 @@
                             </state>
                         </button>
                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZz-VU-E8o">
-                            <rect key="frame" x="168" y="0.5" width="42" height="34"/>
+                            <rect key="frame" x="356" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="qvr-eV-LcS"/>
                             </constraints>
@@ -83,12 +79,9 @@
                             </state>
                         </button>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="W7v-oh-Ltq"/>
-                    </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-nV-AdN">
-                    <rect key="frame" x="140" y="44" width="134" height="54"/>
+                    <rect key="frame" x="140" y="56" width="134" height="54"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9800.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-Zp-zYu">
                             <rect key="frame" x="0.0" y="0.0" width="134" height="24"/>
@@ -118,17 +111,22 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9">
+                    <rect key="frame" x="0.0" y="120" width="414" height="698"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" name="MainColor"/>
             <constraints>
-                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DlG-au-NpQ"/>
-                <constraint firstItem="hAF-BB-nsf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ap3-fl-enI"/>
-                <constraint firstItem="Oo2-nV-AdN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dY2-Ol-VT4"/>
-                <constraint firstItem="hAF-BB-nsf" firstAttribute="top" secondItem="Ns4-fA-Cb9" secondAttribute="bottom" constant="40" id="du2-sv-fzt"/>
-                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="top" secondItem="Oo2-nV-AdN" secondAttribute="bottom" constant="33" id="kUK-tT-zRG"/>
+                <constraint firstItem="hAF-BB-nsf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Fl-TM-oEB"/>
+                <constraint firstItem="hAF-BB-nsf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Lyg-sF-lC7"/>
+                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="top" secondItem="Oo2-nV-AdN" secondAttribute="bottom" constant="10" id="cS1-f0-EAk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ns4-fA-Cb9" secondAttribute="trailing" id="czg-OM-niZ"/>
+                <constraint firstItem="Oo2-nV-AdN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dY2-Ol-VT4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hAF-BB-nsf" secondAttribute="bottom" id="dY9-ju-ku1"/>
+                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jtL-aF-Y16"/>
                 <constraint firstItem="Oo2-nV-AdN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcF-o6-tun"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hAF-BB-nsf" secondAttribute="bottom" id="p8S-KA-p5Z"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ns4-fA-Cb9" secondAttribute="trailing" constant="20" id="x0E-oZ-Mp9"/>
+                <constraint firstItem="hAF-BB-nsf" firstAttribute="top" secondItem="Ns4-fA-Cb9" secondAttribute="bottom" constant="10" id="vCl-gg-w18"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
