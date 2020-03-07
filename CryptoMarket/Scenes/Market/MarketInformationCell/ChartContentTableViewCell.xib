@@ -18,39 +18,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOd-eK-uYm">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-iX-aIE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1O-VV-FOA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-1u-XUp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
-                            </scrollView>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MD-GD-Zts">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" name="Gray"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="o1O-VV-FOA" firstAttribute="leading" secondItem="KOd-eK-uYm" secondAttribute="leading" id="BQJ-XL-lpb"/>
-                            <constraint firstItem="o1O-VV-FOA" firstAttribute="top" secondItem="KOd-eK-uYm" secondAttribute="top" id="TLI-Op-eYW"/>
-                            <constraint firstAttribute="trailing" secondItem="o1O-VV-FOA" secondAttribute="trailing" id="jzZ-Yu-a0c"/>
-                            <constraint firstAttribute="bottom" secondItem="o1O-VV-FOA" secondAttribute="bottom" id="xfN-aQ-m29"/>
+                            <constraint firstAttribute="bottom" secondItem="Gfx-1u-XUp" secondAttribute="bottom" id="FuL-GU-2K7"/>
+                            <constraint firstItem="Gfx-1u-XUp" firstAttribute="top" secondItem="oJe-iX-aIE" secondAttribute="top" id="mBs-Mv-Im7"/>
+                            <constraint firstAttribute="trailing" secondItem="Gfx-1u-XUp" secondAttribute="trailing" id="qV0-GX-PGa"/>
+                            <constraint firstItem="Gfx-1u-XUp" firstAttribute="leading" secondItem="oJe-iX-aIE" secondAttribute="leading" id="t3F-rI-ywX"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" name="SortUp"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="KOd-eK-uYm" secondAttribute="bottom" id="8M4-A7-1gs"/>
-                    <constraint firstAttribute="trailing" secondItem="KOd-eK-uYm" secondAttribute="trailing" id="EoI-W5-MYV"/>
-                    <constraint firstItem="KOd-eK-uYm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="e4K-6A-Maj"/>
-                    <constraint firstItem="KOd-eK-uYm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="txX-Bg-tjY"/>
+                    <constraint firstAttribute="bottom" secondItem="oJe-iX-aIE" secondAttribute="bottom" id="Uxe-OS-ims"/>
+                    <constraint firstItem="oJe-iX-aIE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XaZ-Wb-0t7"/>
+                    <constraint firstItem="oJe-iX-aIE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lhM-kh-tKo"/>
+                    <constraint firstAttribute="trailing" secondItem="oJe-iX-aIE" secondAttribute="trailing" id="uax-iL-IVo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="scrollView" destination="o1O-VV-FOA" id="kKB-uo-oTH"/>
-                <outlet property="scrollViewContainer" destination="KOd-eK-uYm" id="Bfm-Ib-K5J"/>
+                <outlet property="container" destination="H2p-sc-9uM" id="o0H-iu-VOG"/>
+                <outlet property="scrollView" destination="9MD-GD-Zts" id="dEE-W2-uQn"/>
+                <outlet property="scrollViewContainer" destination="Gfx-1u-XUp" id="RcD-JW-s1o"/>
             </connections>
-            <point key="canvasLocation" x="-55.072463768115945" y="88.727678571428569"/>
+            <point key="canvasLocation" x="-55.797101449275367" y="88.727678571428569"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="Gray">
+            <color red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SortUp">
             <color red="0.031372549019607843" green="0.77647058823529413" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
