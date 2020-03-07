@@ -111,7 +111,7 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="0.0" y="120" width="414" height="698"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
@@ -129,6 +129,12 @@
                 <constraint firstItem="hAF-BB-nsf" firstAttribute="top" secondItem="Ns4-fA-Cb9" secondAttribute="bottom" constant="10" id="vCl-gg-w18"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lineChartView" destination="Ns4-fA-Cb9" id="P6Y-ol-UHP"/>
+                <outlet property="percentageImage" destination="aE4-WN-6hb" id="Kev-kg-BLD"/>
+                <outlet property="percentageLabel" destination="Bdj-z1-8UZ" id="o96-Gb-rug"/>
+                <outlet property="priceLabel" destination="Cqe-Zp-zYu" id="zTx-Is-G65"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
         </view>
     </objects>
