@@ -29,7 +29,7 @@ class ChartContentTableViewCell: UITableViewCell {
 
     //MARK: method called outisde to setup the view
     public func setup(data: String) {
-        //self.ScrollViewPageControl.numberOfPages = 2
+        self.viewModel = ContentChartViewModel()
         self.setupView()
         self.setupViewModel()
     }
@@ -38,50 +38,22 @@ class ChartContentTableViewCell: UITableViewCell {
         self.scrollView.delegate = self
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.setupScrollViewOnSlides()
-
-    }
-    
-    private func setupScrollViewOnSlides() {
-        
-        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        self.scrollView.contentSize = CGSize(width: self.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
-        
-        self.scrollView.isPagingEnabled = true
-        self.scrollView.showsVerticalScrollIndicator = false
-        self.scrollView.showsHorizontalScrollIndicator = false
-        
-        for i in 0 ..< self.scrollViewDataSource.count {
-            self.scrollViewDataSource[i].frame = CGRect(x: self.frame.width * CGFloat(i), y: 0, width: self.frame.width, height: self.frame.height)
-            self.scrollView.addSubview(self.scrollViewDataSource[i])
-        }
-    }
-    
-    //TMP
-    private func generateChartsView() -> [UIView] {
-        var diagram: [UIView] = []
-        
-        if let pieDiagram: PieChart = Bundle.main.loadNibNamed(PieChart.identifier, owner: nil, options: nil)?.first as? PieChart {
-            pieDiagram.setup()
-            print("[PIECHART][SIZE] = \(pieDiagram.frame.width)")
-            diagram.append(pieDiagram)
-        }
-        
-        if let lineChart: LineChart = Bundle.main.loadNibNamed(LineChart.identifier, owner: nil, options: nil)?.first as? LineChart {
-            lineChart.setup()
-            diagram.append(lineChart)
-        }
-        
-        return diagram
-    }
-    
-    //END TMP
-    
     private func setupViewModel() {
-        self.scrollViewDataSource = self.generateChartsView()
-        self.scrollView.reloadInputViews()
+        
+        let outputViewModel = self.viewModel.transform(input: ContentChartViewModel.Input())
+        
+        outputViewModel.chartsView.asObservable()
+            .subscribeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (scrollviewDataSource) in
+                self.scrollViewDataSource = scrollviewDataSource
+                //self.pageControll = self.scrolview.count
+                //self.pagecontroll.current = 0
+                
+                ///MARK: remove this
+                self.scrollView.reloadInputViews()
+                self.setupScrollViewOnSlides()
+            }).disposed(by: self.disposeBag)
     }
     
     static var identifier: String {
@@ -94,6 +66,20 @@ class ChartContentTableViewCell: UITableViewCell {
 }
 
 extension ChartContentTableViewCell: UIScrollViewDelegate {
+    
+    private func setupScrollViewOnSlides() {
+        
+        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        self.scrollView.contentSize = CGSize(width: self.frame.width * CGFloat(self.scrollViewDataSource.count), height: 0)
+        self.scrollView.isPagingEnabled = true
+        self.scrollView.showsVerticalScrollIndicator = false
+        self.scrollView.showsHorizontalScrollIndicator = false
+        for i in 0 ..< self.scrollViewDataSource.count {
+            self.scrollViewDataSource[i].frame = CGRect(x: self.frame.width * CGFloat(i), y: 0, width: self.frame.width, height: self.frame.height)
+            self.scrollView.addSubview(self.scrollViewDataSource[i])
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(self.scrollView.contentOffset.x / self.frame.width)
     }
