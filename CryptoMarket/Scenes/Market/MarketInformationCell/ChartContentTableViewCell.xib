@@ -48,6 +48,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="oJe-iX-aIE" id="MUg-ai-Z7V"/>
+                <outlet property="pageControl" destination="kDg-St-vPR" id="KlZ-ju-Kne"/>
                 <outlet property="scrollView" destination="9MD-GD-Zts" id="dEE-W2-uQn"/>
             </connections>
             <point key="canvasLocation" x="-55.797101449275367" y="88.727678571428569"/>

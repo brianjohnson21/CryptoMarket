@@ -14,7 +14,7 @@ class ChartContentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var containerView: UIView!
-    
+    @IBOutlet private weak var pageControl: UIPageControl!
     private var viewModel: ContentChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
     private var scrollViewDataSource: [UIView] = []
@@ -50,9 +50,8 @@ class ChartContentTableViewCell: UITableViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (scrollviewDataSource) in
                 self.scrollViewDataSource = scrollviewDataSource
-                //self.pageControll = self.scrolview.count
-                //self.pagecontroll.current = 0
-                
+                self.pageControl.currentPage = 0
+                self.pageControl.numberOfPages = self.scrollViewDataSource.count
                 ///MARK: remove this
                 self.scrollView.reloadInputViews()
                 self.setupScrollViewOnSlides()
@@ -85,5 +84,6 @@ extension ChartContentTableViewCell: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(self.scrollView.contentOffset.x / self.frame.width)
+        self.pageControl.currentPage = Int(pageIndex)
     }
 }
