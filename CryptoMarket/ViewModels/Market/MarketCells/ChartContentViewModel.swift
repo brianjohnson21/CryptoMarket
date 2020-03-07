@@ -31,7 +31,6 @@ internal final class ContentChartViewModel: ViewModelType {
             lineChart.setup()
             diagram.append(lineChart)
         }
-        
         return diagram
     }
     

@@ -15,28 +15,138 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LINECHART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOs-Lu-uue">
-                    <rect key="frame" x="8" y="438" width="398" height="20"/>
-                    <color key="backgroundColor" name="SecondaryColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9">
+                    <rect key="frame" x="20" y="131" width="374" height="656"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hAF-BB-nsf">
+                    <rect key="frame" x="102" y="827" width="210" height="35"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRe-i6-hZY">
+                            <rect key="frame" x="0.0" y="0.5" width="42" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="91q-ts-Mo7"/>
+                            </constraints>
+                            <state key="normal" title="1D">
+                                <color key="titleColor" name="Color-1"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" name="White"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-P7-m2O">
+                            <rect key="frame" x="42" y="0.5" width="42" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="Bb5-Yo-DEE"/>
+                            </constraints>
+                            <state key="normal" title="1W">
+                                <color key="titleColor" name="Color-1"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" name="White"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9R-jx-q72">
+                            <rect key="frame" x="84" y="0.5" width="42" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="nuW-55-S8D"/>
+                            </constraints>
+                            <state key="normal" title="1M">
+                                <color key="titleColor" name="Color-1"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" name="White"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1j-BH-YyZ">
+                            <rect key="frame" x="126" y="0.5" width="42" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="w0q-EG-T0w"/>
+                            </constraints>
+                            <state key="normal" title="1Y">
+                                <color key="titleColor" name="Color-1"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" name="White"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZz-VU-E8o">
+                            <rect key="frame" x="168" y="0.5" width="42" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="qvr-eV-LcS"/>
+                            </constraints>
+                            <state key="normal" title="All">
+                                <color key="titleColor" name="Color-1"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" name="White"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="W7v-oh-Ltq"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-nV-AdN">
+                    <rect key="frame" x="140" y="44" width="134" height="54"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9800.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-Zp-zYu">
+                            <rect key="frame" x="0.0" y="0.0" width="134" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="jdX-Iq-0Hb"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <color key="textColor" name="White"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iCA-Rq-vJB">
+                            <rect key="frame" x="36.5" y="30" width="61" height="24"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sort-up-solid" translatesAutoresizingMaskIntoConstraints="NO" id="aE4-WN-6hb">
+                                    <rect key="frame" x="0.0" y="0.0" width="8" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="aQj-Nk-fwp"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="1.59%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-z1-8UZ">
+                                    <rect key="frame" x="10" y="0.0" width="51" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <color key="textColor" name="SortUp"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="MainColor"/>
             <constraints>
-                <constraint firstItem="GOs-Lu-uue" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9DL-57-HuR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GOs-Lu-uue" secondAttribute="trailing" constant="8" id="i3G-se-ih7"/>
-                <constraint firstItem="GOs-Lu-uue" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yNI-ew-V6W"/>
-                <constraint firstItem="GOs-Lu-uue" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="yxG-ZA-4II"/>
+                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DlG-au-NpQ"/>
+                <constraint firstItem="hAF-BB-nsf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ap3-fl-enI"/>
+                <constraint firstItem="Oo2-nV-AdN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dY2-Ol-VT4"/>
+                <constraint firstItem="hAF-BB-nsf" firstAttribute="top" secondItem="Ns4-fA-Cb9" secondAttribute="bottom" constant="40" id="du2-sv-fzt"/>
+                <constraint firstItem="Ns4-fA-Cb9" firstAttribute="top" secondItem="Oo2-nV-AdN" secondAttribute="bottom" constant="33" id="kUK-tT-zRG"/>
+                <constraint firstItem="Oo2-nV-AdN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcF-o6-tun"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hAF-BB-nsf" secondAttribute="bottom" id="p8S-KA-p5Z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ns4-fA-Cb9" secondAttribute="trailing" constant="20" id="x0E-oZ-Mp9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="132.58928571428572"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="SecondaryColor">
-            <color red="1" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="sort-up-solid" width="288" height="168"/>
+        <namedColor name="Color-1">
+            <color red="0.53299999237060547" green="0.75300002098083496" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SortUp">
+            <color red="0.031372549019607843" green="0.77647058823529413" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -25,7 +25,6 @@ class ChartContentTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
 
     //MARK: method called outisde to setup the view
@@ -33,8 +32,6 @@ class ChartContentTableViewCell: UITableViewCell {
         self.viewModel = ContentChartViewModel()
         self.setupView()
         self.setupViewModel()
-        
-        print("[SIZE 0] = \(self.containerView.frame.width) && \(self.frame.width)")
     }
     
     private func setupView() {
