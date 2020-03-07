@@ -89,9 +89,11 @@ class MarketInformationViewController: UIViewController {
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
         self.tableViewInformation.register(ChartTableViewCell.nib, forCellReuseIdentifier: ChartTableViewCell.identifier)
         self.tableViewInformation.register(HeaderInformationTableViewCell.nib, forCellReuseIdentifier: HeaderInformationTableViewCell.identifier)
+        self.tableViewInformation.register(ChartContentTableViewCell.nib, forCellReuseIdentifier: ChartContentTableViewCell.identifier)
         
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
+        
     }
         
     private func setupViewModel() {
@@ -153,18 +155,21 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func createChartCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        if let item = tableViewDataSource[indexPath.row] as? ChartCell {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as? ChartTableViewCell {
+        if let item = tableViewDataSource[indexPath.row] as? ChartContentCell {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ChartContentTableViewCell.identifier, for: indexPath) as? ChartContentTableViewCell {
                 
-                cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
-                cell.setupChart(assetName: item.market.id ?? "", assetPercentage: item.market.changePercent24Hr ?? "")
-                cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
+                cell.setup(data: item.title ?? "NOTHING")
+                //cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
+                //cell.setupChart(assetName: item.market.id ?? "", assetPercentage: item.market.changePercent24Hr ?? "")
+                //cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
                 
                 return cell
             }
         }
         return UITableViewCell()
     }
+
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()

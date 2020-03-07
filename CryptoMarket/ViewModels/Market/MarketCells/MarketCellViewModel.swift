@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-public final class MarketCellViewModel: ViewModelType {
+internal final class MarketCellViewModel: ViewModelType {
     
     private let disposebag = DisposeBag()
     private let isLogoLoading = PublishSubject<Bool>()

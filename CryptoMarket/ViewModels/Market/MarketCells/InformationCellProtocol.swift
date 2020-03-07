@@ -13,26 +13,64 @@ internal enum CellViewModelType: String {
     case Detail
 }
 
+internal enum ChartViewModelType: String {
+    case LineChart
+    case CircleChart
+}
+
+internal protocol ChartViewModelProtocol {
+    //type of the chart that needs to be displayed
+    var chartType: ChartViewModelType { get }
+}
+
 internal protocol CellViewModelProtocol {
     //type of the cell that needs to be displayed
     var type: CellViewModelType { get }
     //used as the title of a section, doesn't necessary have one..
     var title: String? { get }
-    
-    //todo row?
 }
 
-internal final class ChartCell: CellViewModelProtocol {
+internal final class LineChartCell: ChartViewModelProtocol {
     var title: String?
     var market: Market
 
-    var type: CellViewModelType {
-        return .Chart
+    var chartType: ChartViewModelType {
+        return .LineChart
     }
     
     init(title: String?, market: Market) {
         self.title = title
         self.market = market
+    }
+}
+
+internal final class CircleChartCell: ChartViewModelProtocol {
+    var title: String?
+    var data: String
+    
+    var chartType: ChartViewModelType {
+        return .CircleChart
+    }
+    
+    init(title: String?, data: String) {
+        self.title = title
+        self.data = data
+    }
+}
+
+internal final class ChartContentCell: CellViewModelProtocol {
+    var title: String?
+    var lineChart: LineChartCell?
+    var circleChart: CircleChartCell?
+    
+    var type: CellViewModelType {
+        return .Chart
+    }
+    
+    init(title: String?, lineChart: LineChartCell?, circleChart: CircleChartCell?) {
+        self.title = title
+        self.lineChart = lineChart
+        self.circleChart = circleChart
     }
 }
 
