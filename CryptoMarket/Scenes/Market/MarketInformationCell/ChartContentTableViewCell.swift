@@ -13,8 +13,6 @@ import RxSwift
 class ChartContentTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var scrollViewContainer: UIView!
-    @IBOutlet private weak var container: UIView!
     
     private var viewModel: ContentChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()

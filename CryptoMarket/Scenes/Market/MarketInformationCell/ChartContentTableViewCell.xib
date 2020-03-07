@@ -21,27 +21,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-iX-aIE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-1u-XUp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MD-GD-Zts">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MD-GD-Zts">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" name="Gray"/>
-                            </view>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Gfx-1u-XUp" secondAttribute="bottom" id="FuL-GU-2K7"/>
-                            <constraint firstItem="Gfx-1u-XUp" firstAttribute="top" secondItem="oJe-iX-aIE" secondAttribute="top" id="mBs-Mv-Im7"/>
-                            <constraint firstAttribute="trailing" secondItem="Gfx-1u-XUp" secondAttribute="trailing" id="qV0-GX-PGa"/>
-                            <constraint firstItem="Gfx-1u-XUp" firstAttribute="leading" secondItem="oJe-iX-aIE" secondAttribute="leading" id="t3F-rI-ywX"/>
-                        </constraints>
+                        <color key="backgroundColor" name="MainColor"/>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="SortUp"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="oJe-iX-aIE" secondAttribute="bottom" id="Uxe-OS-ims"/>
                     <constraint firstItem="oJe-iX-aIE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XaZ-Wb-0t7"/>
@@ -51,19 +38,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="container" destination="H2p-sc-9uM" id="o0H-iu-VOG"/>
                 <outlet property="scrollView" destination="9MD-GD-Zts" id="dEE-W2-uQn"/>
-                <outlet property="scrollViewContainer" destination="Gfx-1u-XUp" id="RcD-JW-s1o"/>
             </connections>
             <point key="canvasLocation" x="-55.797101449275367" y="88.727678571428569"/>
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="Gray">
-            <color red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SortUp">
-            <color red="0.031372549019607843" green="0.77647058823529413" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="MainColor">
+            <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
