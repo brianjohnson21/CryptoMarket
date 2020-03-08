@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import Charts
+import RxSwift
+import RxCocoa
 
 final class PieChart: UIView {
+    
+    @IBOutlet private weak var pieChart: PieChart!
+    
+    private var viewModel: PieChartViewModel! = nil
+    private let disposeBag: DisposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,10 +28,20 @@ final class PieChart: UIView {
     
     //method called outside to setup
     public func setup() {
+        self.viewModel = PieChartViewModel()
+        self.setupView()
         self.setupViewModel()
     }
     
-    private func setupViewModel() { }
+    private func setupView() { }
+    
+    private func setupViewModel() {
+        let input = PieChartViewModel.Input()
+        
+        let output = self.viewModel.transform(input: input)
+        
+        print(output)
+    }
     
     static var identifier: String {
         return String(describing: self)
