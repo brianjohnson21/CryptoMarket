@@ -84,7 +84,8 @@ internal final class LineChartViewModel: ViewModelType {
                 self.isChartLoading.onNext(false)
             })
         
-        ///Mark: we don't need to calculate the first percentage since the API returns it but we do need when we switch the interval to a month/day/year
+        /// Calculation of percentage :
+        /// we don't need to calculate the day percentage cause the API returns it however we do need to calculate it when we switch from day interval to week/month/year
         let percentageChart = Observable.zip(input.legendEvent.asObservable(), chartData.asObservable()).map { (legend, market) -> String in
             guard legend == .day else {
                 
