@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05DA3A8C01FFA9A2CC25CF7C /* Pods_CryptoMarketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9572D8C0BB3B556ADB22AD74 /* Pods_CryptoMarketUITests.framework */; };
+		1E1F637F2415A14D0056FB56 /* MarketEmotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1F637E2415A14D0056FB56 /* MarketEmotion.swift */; };
 		1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20C4A323C5F58800163F38 /* CoreDataManager.swift */; };
 		1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068123C13DBC00118DCC /* Date+Ext.swift */; };
 		1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		1CF6DD6AC49BD691E2D7443B /* Pods-CryptoMarketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketUITests/Pods-CryptoMarketUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1E1F637E2415A14D0056FB56 /* MarketEmotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEmotion.swift; sourceTree = "<group>"; };
 		1E20C4A323C5F58800163F38 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1E24068123C13DBC00118DCC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHistoryRequest.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				1EBAF3172340FE390066F04A /* MarketNewsEntity.swift */,
 				1EE00AB22389965F00AACB0D /* MarketInformation.swift */,
 				1E24068323C14D5C00118DCC /* MarketHistoryRequest.swift */,
+				1E1F637E2415A14D0056FB56 /* MarketEmotion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
 				E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */,
 				1E63485323CC852D00B8002A /* UIView+Ext.swift in Sources */,
+				1E1F637F2415A14D0056FB56 /* MarketEmotion.swift in Sources */,
 				E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */,
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */,

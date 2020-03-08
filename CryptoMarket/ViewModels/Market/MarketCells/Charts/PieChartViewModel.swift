@@ -13,6 +13,8 @@ import Charts
 
 internal final class PieChartViewModel: ViewModelType {
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     struct Input {
         
     }
@@ -21,7 +23,15 @@ internal final class PieChartViewModel: ViewModelType {
         
     }
     
+    private func fetchFeerAndGreed() -> Observable<[MarketEmotion]> {
+        return Network.sharedInstance.performGetOnFeerAndGred(string: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED))
+    }
+    
     func transform(input: Input) -> Output {
+        let res = self.fetchFeerAndGreed().subscribe(onNext: { (result) in
+            print("[TRANSFORM] = \(result)")
+        }).disposed(by: self.disposeBag)
+        
         return Output()
     }
 }
