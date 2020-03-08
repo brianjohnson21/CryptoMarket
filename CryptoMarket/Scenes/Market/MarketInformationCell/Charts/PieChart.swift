@@ -60,16 +60,31 @@ final class PieChart: UIView {
         self.pieChartView.maxAngle = 180 // Half chart
         self.pieChartView.rotationAngle = 180 // Rotate to make the half on the upper side
         self.pieChartView.centerTextOffset = CGPoint(x: 0, y: -20)
+
+        self.pieChartView.extraBottomOffset = -350
+        self.pieChartView.extraTopOffset = 150
+        self.pieChartView.extraLeftOffset = -60
+        self.pieChartView.extraRightOffset = -60
         
-        self.pieChartView.legend.enabled = false
-        self.pieChartView.chartDescription?.enabled = false
+        //self.pieChartView.legend.enabled = false
+        //self.pieChartView.chartDescription?.enabled = false
+        self.pieChartView.chartDescription?.text = "YOLO"
    
         //        chartView.legend = l
         // entry label styling
+        let l = self.pieChartView.legend
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .bottom
+        l.orientation = .horizontal
+         l.drawInside = false
+         l.xEntrySpace = 7
+         l.yEntrySpace = 0
+         l.yOffset = 0
         self.pieChartView.entryLabelColor = .white
         self.pieChartView.entryLabelFont = UIFont(name:"HelveticaNeue-Light", size:12)!
         
         self.pieChartView.backgroundColor = UIColor.init(named: "MainColor")
+        
         
         self.testSetup()
         
