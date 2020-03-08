@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDi-GC-KCS" customClass="PieChart" customModule="CryptoMarket" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="43" width="375" height="590"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDi-GC-KCS" customClass="PieChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="123" width="375" height="644"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fear &amp; Greed Index" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGY-f6-O8R">
@@ -29,15 +29,15 @@
             <color key="backgroundColor" name="MainColor"/>
             <constraints>
                 <constraint firstItem="dDi-GC-KCS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6C1-Zh-trp"/>
-                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="zGY-f6-O8R" secondAttribute="bottom" constant="10" id="Bnd-Eg-jai"/>
+                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="zGY-f6-O8R" secondAttribute="bottom" constant="90" id="Bnd-Eg-jai"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dDi-GC-KCS" secondAttribute="trailing" id="FIg-Aj-NAR"/>
                 <constraint firstItem="zGY-f6-O8R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="U3b-CC-CAZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dDi-GC-KCS" secondAttribute="bottom" constant="34" id="pE6-xi-2Yr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dDi-GC-KCS" secondAttribute="bottom" constant="-100" id="pE6-xi-2Yr"/>
                 <constraint firstItem="zGY-f6-O8R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xyv-Li-dzA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="pieChart" destination="dDi-GC-KCS" id="fiS-b7-X3F"/>
+                <outlet property="pieChartView" destination="dDi-GC-KCS" id="R9r-Ic-SMG"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="24.7376311844078"/>
         </view>
