@@ -28,14 +28,14 @@ final class PieChart: UIView {
     
     //method called outside to setup
     public func setup() {
-        print("[A]")
+        
         self.viewModel = PieChartViewModel()
         self.setupView()
         self.setupViewModel()
     }
     
     private func setupView() {
-        print("[B]")
+        
         self.testSetupView()
     }
     
@@ -48,12 +48,12 @@ final class PieChart: UIView {
     }
     
     private func testSetupView() {
-        print("[C]")
         //self.pieChartView.delegate = self
         
         self.pieChartView.holeColor = UIColor.init(named: "MainColor") ?? UIColor.red
         //self.pieChartView.transparentCircleColor = NSUIColor.white.withAlphaComponent(0.43)
         self.pieChartView.holeRadiusPercent = 0.58
+        self.pieChartView .transparentCircleColor = UIColor.white.withAlphaComponent(0.43)
         self.pieChartView.rotationEnabled = false
         self.pieChartView.highlightPerTapEnabled = true
         
@@ -68,7 +68,10 @@ final class PieChart: UIView {
         
         //self.pieChartView.legend.enabled = false
         //self.pieChartView.chartDescription?.enabled = false
-        self.pieChartView.chartDescription?.text = "YOLO"
+        
+        self.pieChartView.chartDescription?.text = "Emotions and sentiments of today"
+        self.pieChartView.chartDescription?.textColor = .white
+        self.pieChartView.chartDescription?.font = UIFont(name:"HelveticaNeue-Light", size:12)!
    
         //        chartView.legend = l
         // entry label styling
@@ -76,12 +79,15 @@ final class PieChart: UIView {
         l.horizontalAlignment = .left
         l.verticalAlignment = .bottom
         l.orientation = .horizontal
-         l.drawInside = false
-         l.xEntrySpace = 7
-         l.yEntrySpace = 0
-         l.yOffset = 0
+        l.drawInside = false
+        l.xEntrySpace = 7
+        l.yEntrySpace = 0
+        l.yOffset = 0
+        l.textColor = .white
+        l.font = UIFont(name:"HelveticaNeue-Light", size:17)!
+        
         self.pieChartView.entryLabelColor = .white
-        self.pieChartView.entryLabelFont = UIFont(name:"HelveticaNeue-Light", size:12)!
+        self.pieChartView.entryLabelFont = UIFont(name:"HelveticaNeue-Light", size:17)!
         
         self.pieChartView.backgroundColor = UIColor.init(named: "MainColor")
         
@@ -92,18 +98,17 @@ final class PieChart: UIView {
     }
     
     private func testSetup() {
-        print("[D]")
         var pieDataEntry: [PieChartDataEntry] = [PieChartDataEntry]()
-        for i in 0...5 {
-            pieDataEntry.append(PieChartDataEntry(value: Double((i * 10)), label: "\(i)"))
-        }
         
-        print("INIDE -> \(pieDataEntry)")
+        pieDataEntry.append(PieChartDataEntry(value: Double((33)), label: "Fear"))
+        pieDataEntry.append(PieChartDataEntry(value: Double((67)), label: ""))
         
-        let set = PieChartDataSet(entries: pieDataEntry, label: "Election Results")
+        let set = PieChartDataSet(entries: pieDataEntry, label: "Index")
         set.sliceSpace = 3
         set.selectionShift = 5
-        set.colors = ChartColorTemplates.material()
+        
+        set.colors = [UIColor.init(named: "SortUp") ?? UIColor.gray, UIColor.init(named: "Color-1") ?? UIColor.gray]
+        
         
         let data = PieChartData(dataSet: set)
         
