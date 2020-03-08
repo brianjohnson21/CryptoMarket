@@ -32,6 +32,15 @@ final class LineChart: UIView {
         super.init(coder: coder)
     }
     
+    private var price: String? {
+        get {
+            return self.priceLabel.text
+        }
+        set {
+            self.priceLabel.text = newValue
+        }
+    }
+    
     private func addHighlight(buttonTag tag: Int) {
         guard let button = (self.viewWithTag(tag) as? UIButton) else { return }
         
@@ -65,8 +74,9 @@ final class LineChart: UIView {
     }
     
     //method called outside to setup
-    public func setup(assetName: String, assetPercentage percentage: String) {
+    public func setup(assetName: String, assetPercentage percentage: String, currencyPrice price: String) {
         self.viewModel = LineChartViewModel(chartId: assetName.lowercased(), globalPercentage: percentage)
+        self.price = price
         self.setupView()
         self.setChartSettings()
         self.setPercentageOnChart(percentage: percentage)

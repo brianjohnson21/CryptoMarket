@@ -13,12 +13,10 @@ import RxSwift
 internal final class ContentChartViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
-    private let lineChartName: String
-    private let lineChartPercentage: String
+    private let lineChartMarket: Market?
 
-    internal init(lineChartName: String, lineChartPercentage: String) {
-        self.lineChartName = lineChartName
-        self.lineChartPercentage = lineChartPercentage
+    internal init(lineChartMarket: Market?) {
+        self.lineChartMarket = lineChartMarket
     }
     
     struct Input {}
@@ -31,7 +29,7 @@ internal final class ContentChartViewModel: ViewModelType {
         var diagram: [UIView] = []
         
         if let lineChart: LineChart = Bundle.main.loadNibNamed(LineChart.identifier, owner: nil, options: nil)?.first as? LineChart {
-            lineChart.setup(assetName: self.lineChartName, assetPercentage: self.lineChartPercentage)
+            lineChart.setup(assetName: self.lineChartMarket?.id ?? "", assetPercentage: self.lineChartMarket?.changePercent24Hr ?? "", currencyPrice: self.lineChartMarket?.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "")
             diagram.append(lineChart)
         }
         

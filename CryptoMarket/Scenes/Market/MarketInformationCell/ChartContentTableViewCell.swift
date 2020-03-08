@@ -28,8 +28,8 @@ class ChartContentTableViewCell: UITableViewCell {
     }
 
     //MARK: method called outisde to setup the view
-    public func setup(lineChartName name: String, lineChartPercentage percentage: String) {        
-        self.viewModel = ContentChartViewModel(lineChartName: name, lineChartPercentage: percentage)
+    public func setup(lineChartMarket lineMarket: Market?) {
+        self.viewModel = ContentChartViewModel(lineChartMarket: lineMarket)
         self.setupView()
         self.setupViewModel()
     }

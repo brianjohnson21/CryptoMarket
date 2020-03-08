@@ -159,9 +159,9 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartContentTableViewCell.identifier, for: indexPath) as? ChartContentTableViewCell {
                 
+                cell.setup(lineChartMarket: item.lineChart?.market)
                 
-                
-                cell.setup(lineChartName: item.lineChart?.market.id ?? "", lineChartPercentage: item.lineChart?.market.changePercent24Hr ?? "")
+//                cell.setup(lineChartName: item.lineChart?.market.id ?? "", lineChartPercentage: item.lineChart?.market.changePercent24Hr ?? "")
                 //cell.setup(data: item.title ?? "NOTHING")
                 //cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
                 //cell.setupChart(assetName: item.market.id ?? "", assetPercentage: item.market.changePercent24Hr ?? "")
