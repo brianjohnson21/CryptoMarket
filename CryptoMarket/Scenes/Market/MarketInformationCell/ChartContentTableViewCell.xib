@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-iX-aIE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MD-GD-Zts">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
@@ -42,7 +42,7 @@
                     <constraint firstItem="kDg-St-vPR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZJb-Tw-vWG"/>
                     <constraint firstItem="oJe-iX-aIE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lhM-kh-tKo"/>
                     <constraint firstAttribute="trailing" secondItem="oJe-iX-aIE" secondAttribute="trailing" id="uax-iL-IVo"/>
-                    <constraint firstItem="kDg-St-vPR" firstAttribute="top" secondItem="oJe-iX-aIE" secondAttribute="bottom" id="xlA-LA-niQ"/>
+                    <constraint firstItem="kDg-St-vPR" firstAttribute="top" secondItem="oJe-iX-aIE" secondAttribute="bottom" constant="8" id="xlA-LA-niQ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

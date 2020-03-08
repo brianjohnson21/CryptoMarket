@@ -145,7 +145,7 @@ final class LineChart: UIView {
         let setDataOnChart = LineChartData(dataSet: chartViewData)
         
         self.lineChartView.data = setDataOnChart
-        lineChartView.animate(xAxisDuration: 0.2)
+        self.lineChartView.animate(xAxisDuration: 0.2)
     }
     
     private func getGradientChartViewBackground() -> CGGradient {

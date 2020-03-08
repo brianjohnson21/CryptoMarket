@@ -130,7 +130,7 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9" customClass="LineChartView" customModule="Charts">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns4-fA-Cb9" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="0.0" y="120" width="414" height="698"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
