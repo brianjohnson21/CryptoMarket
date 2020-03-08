@@ -15,25 +15,39 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDi-GC-KCS">
-                    <rect key="frame" x="0.0" y="74" width="375" height="559"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDi-GC-KCS" customClass="PieChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="45.5" width="375" height="621.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fear &amp; Greed Index" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGY-f6-O8R">
+                    <rect key="frame" x="73" y="12" width="229.5" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" name="White"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" name="MainColor"/>
             <constraints>
                 <constraint firstItem="dDi-GC-KCS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6C1-Zh-trp"/>
+                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="zGY-f6-O8R" secondAttribute="bottom" id="Bnd-Eg-jai"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dDi-GC-KCS" secondAttribute="trailing" id="FIg-Aj-NAR"/>
-                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="74" id="TP0-9g-xN5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dDi-GC-KCS" secondAttribute="bottom" constant="34" id="pE6-xi-2Yr"/>
+                <constraint firstItem="zGY-f6-O8R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="U3b-CC-CAZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dDi-GC-KCS" secondAttribute="bottom" id="pE6-xi-2Yr"/>
+                <constraint firstItem="zGY-f6-O8R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xyv-Li-dzA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pieChartView" destination="dDi-GC-KCS" id="R9r-Ic-SMG"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="24.7376311844078"/>
         </view>
     </objects>
     <resources>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

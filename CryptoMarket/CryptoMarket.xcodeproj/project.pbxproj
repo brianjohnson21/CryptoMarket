@@ -28,6 +28,7 @@
 		1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4A56AB2329890A00B4BF0A /* Network.swift */; };
 		1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C050123C2388000F798CD /* FavoriteViewModel.swift */; };
 		1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C050423C2608D00F798CD /* CryptoMarket.xcdatamodeld */; };
+		1E4DB126241512B800D02AFF /* PieChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4DB125241512B800D02AFF /* PieChartViewModel.swift */; };
 		1E4E752D23AFB1CC006A8A76 /* MarketChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */; };
 		1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01523219CC10087E38C /* AppDelegate.swift */; };
 		1E51B01823219CC10087E38C /* MarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51B01723219CC10087E38C /* MarketController.swift */; };
@@ -112,6 +113,7 @@
 		1E4A56AB2329890A00B4BF0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1E4C050123C2388000F798CD /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		1E4C050523C2608D00F798CD /* CryptoMarket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoMarket.xcdatamodel; sourceTree = "<group>"; };
+		1E4DB125241512B800D02AFF /* PieChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewModel.swift; sourceTree = "<group>"; };
 		1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChartViewModel.swift; sourceTree = "<group>"; };
 		1E51B01223219CC10087E38C /* CryptoMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E51B01523219CC10087E38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */,
 				1E791D39241442910004FEFB /* LineChartViewModel.swift */,
+				1E4DB125241512B800D02AFF /* PieChartViewModel.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				1EBAF3182340FE390066F04A /* MarketNewsEntity.swift in Sources */,
 				1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */,
 				1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */,
+				1E4DB126241512B800D02AFF /* PieChartViewModel.swift in Sources */,
 				1EE73D902321A52C00D83B82 /* ViewModelType.swift in Sources */,
 				1E3421C024016B1000F44F9F /* LineChart.swift in Sources */,
 				1EE00AB32389965F00AACB0D /* MarketInformation.swift in Sources */,

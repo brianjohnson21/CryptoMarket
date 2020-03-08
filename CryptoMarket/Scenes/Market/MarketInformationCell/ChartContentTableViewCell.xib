@@ -28,7 +28,7 @@
                         </subviews>
                         <color key="backgroundColor" name="MainColor"/>
                     </view>
-                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kDg-St-vPR">
+                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kDg-St-vPR">
                         <rect key="frame" x="168" y="388" width="39" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="wfM-n2-7B7"/>
