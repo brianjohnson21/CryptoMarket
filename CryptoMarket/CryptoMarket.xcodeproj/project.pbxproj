@@ -42,6 +42,7 @@
 		1E6795E923A826B80072A8DC /* HeaderInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */; };
 		1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */; };
 		1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E719D71236220060087F7B3 /* UIAlert+Ext.swift */; };
+		1E791D3A241442910004FEFB /* LineChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E791D39241442910004FEFB /* LineChartViewModel.swift */; };
 		1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */; };
 		1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E839657233AB58000597E34 /* MarketNews.storyboard */; };
 		1E940336232D3C3C004680D2 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E940334232D3C3C004680D2 /* fa-brands-400.ttf */; };
@@ -131,6 +132,7 @@
 		1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInformationTableViewCell.swift; sourceTree = "<group>"; };
 		1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderInformationTableViewCell.xib; sourceTree = "<group>"; };
 		1E719D71236220060087F7B3 /* UIAlert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Ext.swift"; sourceTree = "<group>"; };
+		1E791D39241442910004FEFB /* LineChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewModel.swift; sourceTree = "<group>"; };
 		1E831BA923410C16006F9730 /* MarketNewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewCellViewModel.swift; sourceTree = "<group>"; };
 		1E839657233AB58000597E34 /* MarketNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketNews.storyboard; sourceTree = "<group>"; };
 		1E940334232D3C3C004680D2 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
@@ -235,10 +237,10 @@
 		1E4E752B23AFB19C006A8A76 /* MarketCells */ = {
 			isa = PBXGroup;
 			children = (
+				1E791D3B241442C70004FEFB /* Charts */,
 				1E3DA11C238AFCA700B87505 /* InformationCellProtocol.swift */,
 				E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */,
 				1E4E752C23AFB1CC006A8A76 /* MarketChartViewModel.swift */,
-				1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */,
 			);
 			path = MarketCells;
 			sourceTree = "<group>";
@@ -335,6 +337,15 @@
 				E9D57024232A52AC009A5031 /* ApiRoute.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1E791D3B241442C70004FEFB /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */,
+				1E791D39241442910004FEFB /* LineChartViewModel.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		1EBF8A162336AF2400E79306 /* MarketFavorites */ = {
@@ -820,6 +831,7 @@
 				1E63485123CC811B00B8002A /* NavigationTitleView.swift in Sources */,
 				1E20C4A423C5F58800163F38 /* CoreDataManager.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,
+				1E791D3A241442910004FEFB /* LineChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2sR-uE-OOg">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="color" name="Color-1"/>
+                </activityIndicatorView>
                 <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hAF-BB-nsf">
                     <rect key="frame" x="8" y="828" width="398" height="34"/>
                     <subviews>
@@ -29,6 +33,9 @@
                             <state key="selected">
                                 <color key="titleColor" name="White"/>
                             </state>
+                            <connections>
+                                <action selector="legendTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="BmU-KI-Olr"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-P7-m2O">
                             <rect key="frame" x="89" y="0.0" width="42" height="34"/>
@@ -41,6 +48,9 @@
                             <state key="selected">
                                 <color key="titleColor" name="White"/>
                             </state>
+                            <connections>
+                                <action selector="legendTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Hs-fA-FIy"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9R-jx-q72">
                             <rect key="frame" x="178" y="0.0" width="42" height="34"/>
@@ -53,6 +63,9 @@
                             <state key="selected">
                                 <color key="titleColor" name="White"/>
                             </state>
+                            <connections>
+                                <action selector="legendTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ccy-RD-XhW"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1j-BH-YyZ">
                             <rect key="frame" x="267" y="0.0" width="42" height="34"/>
@@ -65,6 +78,9 @@
                             <state key="selected">
                                 <color key="titleColor" name="White"/>
                             </state>
+                            <connections>
+                                <action selector="legendTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vVv-Ap-SBA"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZz-VU-E8o">
                             <rect key="frame" x="356" y="0.0" width="42" height="34"/>
@@ -77,6 +93,9 @@
                             <state key="selected">
                                 <color key="titleColor" name="White"/>
                             </state>
+                            <connections>
+                                <action selector="legendTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="t76-rK-1iA"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -119,17 +138,20 @@
             <color key="backgroundColor" name="MainColor"/>
             <constraints>
                 <constraint firstItem="hAF-BB-nsf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Fl-TM-oEB"/>
+                <constraint firstItem="2sR-uE-OOg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EJJ-Dk-zTr"/>
                 <constraint firstItem="hAF-BB-nsf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Lyg-sF-lC7"/>
                 <constraint firstItem="Ns4-fA-Cb9" firstAttribute="top" secondItem="Oo2-nV-AdN" secondAttribute="bottom" constant="10" id="cS1-f0-EAk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ns4-fA-Cb9" secondAttribute="trailing" id="czg-OM-niZ"/>
                 <constraint firstItem="Oo2-nV-AdN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dY2-Ol-VT4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hAF-BB-nsf" secondAttribute="bottom" id="dY9-ju-ku1"/>
+                <constraint firstItem="2sR-uE-OOg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hqq-ac-L58"/>
                 <constraint firstItem="Ns4-fA-Cb9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jtL-aF-Y16"/>
                 <constraint firstItem="Oo2-nV-AdN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcF-o6-tun"/>
                 <constraint firstItem="hAF-BB-nsf" firstAttribute="top" secondItem="Ns4-fA-Cb9" secondAttribute="bottom" constant="10" id="vCl-gg-w18"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="chartSpinner" destination="2sR-uE-OOg" id="9fe-Mb-g3t"/>
                 <outlet property="lineChartView" destination="Ns4-fA-Cb9" id="P6Y-ol-UHP"/>
                 <outlet property="percentageImage" destination="aE4-WN-6hb" id="Kev-kg-BLD"/>
                 <outlet property="percentageLabel" destination="Bdj-z1-8UZ" id="o96-Gb-rug"/>
