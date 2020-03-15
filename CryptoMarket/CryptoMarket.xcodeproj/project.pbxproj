@@ -21,7 +21,7 @@
 		1E3BB42323EE294400DBF600 /* ChartContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */; };
 		1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */; };
 		1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */; };
-		1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */; };
+		1E3DA11A238AD43A00B87505 /* if f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA118238AD43A00B87505 /* if f.swift */; };
 		1E3DA11B238AD43A00B87505 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */; };
 		1E3DA11D238AFCA700B87505 /* InformationCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DA11C238AFCA700B87505 /* InformationCellProtocol.swift */; };
 		1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E482EA62388B39E00C05DA8 /* MarketInformationViewModel.swift */; };
@@ -107,7 +107,7 @@
 		1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartContentViewModel.swift; sourceTree = "<group>"; };
 		1E3D8ACD23D0F08D00D8A643 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1E3D8ACE23D0F08D00D8A643 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
-		1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		1E3DA118238AD43A00B87505 /* if f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "if f.swift"; sourceTree = "<group>"; };
 		1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
 		1E3DA11C238AFCA700B87505 /* InformationCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCellProtocol.swift; sourceTree = "<group>"; };
 		1E482EA62388B39E00C05DA8 /* MarketInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInformationViewModel.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 				1E3421BC240169BC00F44F9F /* Charts */,
 				1EE00AAE23898DF400AACB0D /* InformationTableViewCell.swift */,
 				1EE00AAF23898DF400AACB0D /* InformationTableViewCell.xib */,
-				1E3DA118238AD43A00B87505 /* ChartTableViewCell.swift */,
+				1E3DA118238AD43A00B87505 /* if f.swift */,
 				1E3DA119238AD43A00B87505 /* ChartTableViewCell.xib */,
 				1E6795E723A826B80072A8DC /* HeaderInformationTableViewCell.swift */,
 				1E6795E823A826B80072A8DC /* HeaderInformationTableViewCell.xib */,
@@ -803,7 +803,7 @@
 				1EE73D902321A52C00D83B82 /* ViewModelType.swift in Sources */,
 				1E3421C024016B1000F44F9F /* LineChart.swift in Sources */,
 				1EE00AB32389965F00AACB0D /* MarketInformation.swift in Sources */,
-				1E3DA11A238AD43A00B87505 /* ChartTableViewCell.swift in Sources */,
+				1E3DA11A238AD43A00B87505 /* if f.swift in Sources */,
 				1E51B01823219CC10087E38C /* MarketController.swift in Sources */,
 				1EE00AB023898DF400AACB0D /* InformationTableViewCell.swift in Sources */,
 				1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */,
