@@ -13,15 +13,55 @@ import Charts
 
 internal final class PieChartViewModel: ViewModelType {
     
-    struct Input {
-        
-    }
+    private let disposeBag: DisposeBag = DisposeBag()
+    
+    struct Input { }
     
     struct Output {
+        let marketEmotion: Observable<[MarketEmotion]>
+        let pieViewData: Observable<([PieChartDataEntry], UIColor)>
+    }
+    
+    private func fetchFeerAndGreed() -> Observable<[MarketEmotion]> {
+        return Network.sharedInstance.performGetOnFeerAndGred(string: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED))
+    }
+    
+    private func fetchDataEntries() -> Observable<[PieChartDataEntry]> {
         
+        return self.fetchFeerAndGreed().asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .map { (marketInformation) -> [PieChartDataEntry] in
+                var result: [PieChartDataEntry] = []
+                for element in marketInformation {
+                    result.append(PieChartDataEntry(value: Double(element.value ?? "0") ?? 0, label: "\(element.value_classification ?? "None")"))
+                }
+                
+                //Add default case for the pieChart x/100%
+                result.append(PieChartDataEntry(value: (100 - (result.last?.value ?? 0)), label: ""))
+                
+                return result
+            }
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        
+        let chartData: Observable<[PieChartDataEntry]> = self.fetchDataEntries()
+        
+        
+        let chartResult: Observable<([PieChartDataEntry], UIColor)> = chartData.map { (data) -> ([PieChartDataEntry], UIColor) in
+            switch (data.first?.value ?? 0) {
+            case let fear where fear <= 30:
+                return (data, UIColor.init(named: "SortDown") ?? UIColor.white)
+            case let fear where fear > 30 && fear < 70:
+                return (data, UIColor.init(named: "SecondaryColor") ?? UIColor.white)
+            case let fear where fear >= 70:
+                return (data, UIColor.init(named: "SortUp") ?? UIColor.white)
+            default:
+                return (data, UIColor.white)
+            }
+        }
+        
+        return Output(marketEmotion: self.fetchFeerAndGreed(), pieViewData: chartResult)
     }
 }

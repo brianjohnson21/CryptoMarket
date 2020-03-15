@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDi-GC-KCS" customClass="PieChartView" customModule="Charts">
-                    <rect key="frame" x="0.0" y="45.5" width="375" height="621.5"/>
+                    <rect key="frame" x="0.0" y="57.5" width="375" height="609.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fear &amp; Greed Index" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGY-f6-O8R">
@@ -25,13 +25,21 @@
                     <color key="textColor" name="White"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotions and sentiments of today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5r-oi-kpk">
+                    <rect key="frame" x="71" y="47.5" width="233" height="18"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                    <color key="textColor" name="White"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" name="MainColor"/>
             <constraints>
                 <constraint firstItem="dDi-GC-KCS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6C1-Zh-trp"/>
-                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="zGY-f6-O8R" secondAttribute="bottom" id="Bnd-Eg-jai"/>
+                <constraint firstItem="g5r-oi-kpk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="CgL-D0-p6c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dDi-GC-KCS" secondAttribute="trailing" id="FIg-Aj-NAR"/>
+                <constraint firstItem="dDi-GC-KCS" firstAttribute="top" secondItem="g5r-oi-kpk" secondAttribute="bottom" constant="-8" id="Pe3-Nq-zoa"/>
                 <constraint firstItem="zGY-f6-O8R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="U3b-CC-CAZ"/>
+                <constraint firstItem="g5r-oi-kpk" firstAttribute="top" secondItem="zGY-f6-O8R" secondAttribute="bottom" constant="2" id="XhV-qa-Y36"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dDi-GC-KCS" secondAttribute="bottom" id="pE6-xi-2Yr"/>
                 <constraint firstItem="zGY-f6-O8R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xyv-Li-dzA"/>
             </constraints>

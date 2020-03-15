@@ -69,4 +69,14 @@ final class Network {
                 return try Mapper<MarketInformation>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]] ?? []))
             })
     }
+    
+    public func performGetOnFeerAndGred(string url: String) -> Observable<[MarketEmotion]> {
+        return RxAlamofire
+            .json(.get, url)
+            .retry(2)
+            .observeOn(MainScheduler.asyncInstance)
+            .map({ json -> [MarketEmotion] in
+                return try Mapper<MarketEmotion>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
+        })
+    }
 }
