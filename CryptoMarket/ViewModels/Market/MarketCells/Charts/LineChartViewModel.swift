@@ -95,12 +95,11 @@ internal final class LineChartViewModel: ViewModelType {
         /// Calculation of percentage :
         /// we don't need to calculate the day percentage cause the API returns it however we do need to calculate it when we switch from day interval to week/month/year
         let percentageChart = Observable.zip(input.legendEvent.asObservable(), chartData.asObservable()).map { (legend, market) -> String in guard legend == .day else {
-                
                 let firstPrice = market.first?.y ?? 0
                 let lastPrice = market.last?.y ?? 0
-                let percentageResult = ((firstPrice - lastPrice) / firstPrice) * 100
-                
-                return "\(percentageResult.magnitude)"
+                var percentageResult = ((firstPrice - lastPrice) / firstPrice) * 100
+                percentageResult.negate()
+                return "\(percentageResult)"
             }
             return self.globalPercentage
         }
