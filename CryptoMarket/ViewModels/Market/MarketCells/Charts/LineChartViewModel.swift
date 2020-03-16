@@ -105,8 +105,8 @@ internal final class LineChartViewModel: ViewModelType {
         }
         
         let percentageColor = percentageChart.map { (price) -> UIColor in
-            print("PRICE = \(price)")
-            return ((Double(price) ?? 0 > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")) ?? UIColor.white)
+            return ((Double(price) ?? 0 > 0 ? UIColor.init(named: "SortUp")
+                : UIColor.init(named: "SortDown")) ?? UIColor.white)
         }
         
         return Output(isChartLoading: self.isChartLoading.asObservable(),
