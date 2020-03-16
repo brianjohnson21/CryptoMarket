@@ -87,7 +87,6 @@ class MarketInformationViewController: UIViewController {
         
         //todo change title tableview
         self.tableViewInformation.register(InformationTableViewCell.nib, forCellReuseIdentifier: InformationTableViewCell.identifier)
-        self.tableViewInformation.register(ChartTableViewCell.nib, forCellReuseIdentifier: ChartTableViewCell.identifier)
         self.tableViewInformation.register(HeaderInformationTableViewCell.nib, forCellReuseIdentifier: HeaderInformationTableViewCell.identifier)
         self.tableViewInformation.register(ChartContentTableViewCell.nib, forCellReuseIdentifier: ChartContentTableViewCell.identifier)
         
@@ -158,15 +157,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         if let item = tableViewDataSource[indexPath.row] as? ChartContentCell {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: ChartContentTableViewCell.identifier, for: indexPath) as? ChartContentTableViewCell {
-                
                 cell.setup(lineChartMarket: item.lineChart?.market)
-                
-//                cell.setup(lineChartName: item.lineChart?.market.id ?? "", lineChartPercentage: item.lineChart?.market.changePercent24Hr ?? "")
-                //cell.setup(data: item.title ?? "NOTHING")
-                //cell.price = item.market.priceUsd?.currencyFormatting(formatterDigit: 2) ?? "0"
-                //cell.setupChart(assetName: item.market.id ?? "", assetPercentage: item.market.changePercent24Hr ?? "")
-                //cell.setSelectedBackgroundColor(selectedColor: UIColor.clear)
-                
                 return cell
             }
         }

@@ -11,6 +11,14 @@ import RxCocoa
 import RxSwift
 import Charts
 
+internal enum ChartLegend: Int {
+    case day = 1
+    case week
+    case month
+    case year
+    case all
+}
+
 internal final class LineChartViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isChartLoading = BehaviorSubject<Bool>(value: false)
@@ -98,6 +106,7 @@ internal final class LineChartViewModel: ViewModelType {
         }
         
         let percentageColor = percentageChart.map { (price) -> UIColor in
+            print("PRICE = \(price)")
             return ((Double(price) ?? 0 > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")) ?? UIColor.white)
         }
         

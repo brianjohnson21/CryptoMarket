@@ -127,6 +127,14 @@ final class LineChart: UIView {
             .subscribe(onNext: { (percentage) in
                 self.setPercentageOnChart(percentage: percentage)
             }).disposed(by: self.disposeBag)
+        
+        output.percentageColor.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (color) in
+                self.percentageLabel.tintColor = color
+            }).disposed(by: self.disposeBag)
+            
     }
     
     private func setPercentageOnChart(percentage: String) {
