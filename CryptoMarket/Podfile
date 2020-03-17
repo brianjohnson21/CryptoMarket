@@ -18,6 +18,7 @@ target 'CryptoMarket' do
    pod 'AlamofireImage'
    pod 'Comets'
    pod 'RAMAnimatedTabBarController'
+   pod 'lottie-ios'
 
    plugin 'cocoapods-keys', {
    	  :project => "CryptoMarket",

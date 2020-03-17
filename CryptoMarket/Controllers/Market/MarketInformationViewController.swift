@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import SwiftEntryKit
+import Lottie
 
 class MarketInformationViewController: UIViewController {
 
@@ -26,7 +27,8 @@ class MarketInformationViewController: UIViewController {
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewInformation: UITableView!
-    @IBOutlet private weak var favoriteButton: UIBarButtonItem!
+    @IBOutlet private weak var animationView: AnimationView!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +79,12 @@ class MarketInformationViewController: UIViewController {
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
-    @IBAction func favoriteItemTrigger(_ sender: UIBarButtonItem) {
+    @IBAction private func favoriteTrigger(_ sender: UIButton) {
+        self.animationView.play()
         self.favoriteEvent.onNext(())
         self.displayFavoriteAlert()
     }
+    
     
     private func setupView() {
         self.favoriteButton.isEnabled = self.flowType == .market ? true : false
@@ -93,6 +97,14 @@ class MarketInformationViewController: UIViewController {
         self.tableViewInformation.delegate = self
         self.tableViewInformation.dataSource = self
         
+        self.setupViewAnimation()
+    }
+    
+    private func setupViewAnimation() {
+        self.animationView.animation = Animation.named("heartAnimation")
+        self.animationView.animationSpeed = 10.0
+        self.animationView.play()
+        self.animationView.animationSpeed = 2.0
     }
         
     private func setupViewModel() {

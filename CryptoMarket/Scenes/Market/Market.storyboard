@@ -71,15 +71,25 @@
                         <viewLayoutGuide key="safeArea" id="wa4-nv-nRn"/>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="alz-fF-32U">
-                        <barButtonItem key="rightBarButtonItem" image="star-basic" id="mLC-sx-DaB">
-                            <color key="tintColor" name="White"/>
-                            <connections>
-                                <action selector="favoriteItemTrigger:" destination="O7o-ho-KUv" id="X03-q7-too"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="of3-rZ-lYe" customClass="A">
+                            <view key="customView" contentMode="scaleToFill" id="tJI-wN-hwX" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="364" y="5.5" width="30" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="212-rP-hMe">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="favoriteTrigger:" destination="O7o-ho-KUv" eventType="touchUpInside" id="kRy-u6-AAJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="favoriteButton" destination="mLC-sx-DaB" id="oMo-Ot-yqa"/>
+                        <outlet property="animationView" destination="tJI-wN-hwX" id="xVM-Uw-rql"/>
+                        <outlet property="favoriteButton" destination="212-rP-hMe" id="Sys-fW-qco"/>
                         <outlet property="tableViewInformation" destination="3bm-ag-xJh" id="dI0-kD-htp"/>
                     </connections>
                 </viewController>
@@ -109,15 +119,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="star-basic" width="28" height="24"/>
         <namedColor name="Gray">
             <color red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="White">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <color key="tintColor" name="White"/>
