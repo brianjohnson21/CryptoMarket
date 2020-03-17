@@ -14,13 +14,14 @@ import RxAlamofire
 import ObjectMapper
 import Keys
 
-final class Network {
-    private let ApiMarketNewsKey: String
+internal final class Network {
+
     public static let sharedInstance = Network()
+
+    private let networkNews: NetworkNews
     
     private init() {
-        let keys = CryptoMarketKeys()
-        self.ApiMarketNewsKey = keys.marketNewsAPIClient
+        self.networkNews = NetworkNews()
     }
     
     //MARK: todo switch to single ->
@@ -35,13 +36,7 @@ final class Network {
     }
     
     public func performGetOnNews(stringUrl url: String) -> Observable<[MarketNews]>{
-        return RxAlamofire
-            .json(.get, url.concat(string: self.ApiMarketNewsKey))
-            .retry(2)
-            .observeOn(MainScheduler.asyncInstance)
-            .map({json -> [MarketNews] in
-                return try Mapper<MarketNews>().mapArray(JSONObject: ((json as? [String: Any])?["articles"] as? [[String: Any]]) ?? [])
-            })
+        return self.networkNews.getNews(stringUrl: url)
     }
     
     public func performGetRequestImage(imageUrl url: String) -> Observable<UIImage?> {

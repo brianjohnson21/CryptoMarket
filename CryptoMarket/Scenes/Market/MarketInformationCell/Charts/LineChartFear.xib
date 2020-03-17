@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LineChartFear" customModule="CryptoMarket" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBS-XM-yNx">
+                    <rect key="frame" x="99.5" y="56" width="215.5" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" name="White"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdH-D9-Jxk" customClass="LineChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="97.5" width="414" height="764.5"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="MainColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pdH-D9-Jxk" secondAttribute="trailing" id="J7a-LZ-tgR"/>
+                <constraint firstItem="pdH-D9-Jxk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Pkm-4W-smk"/>
+                <constraint firstItem="pdH-D9-Jxk" firstAttribute="top" secondItem="lBS-XM-yNx" secondAttribute="bottom" constant="8" id="bJP-MT-dIR"/>
+                <constraint firstItem="lBS-XM-yNx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dL8-dI-TE2"/>
+                <constraint firstItem="lBS-XM-yNx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uv7-Nd-zZT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pdH-D9-Jxk" secondAttribute="bottom" id="zjF-Vq-gUE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lineChart" destination="pdH-D9-Jxk" id="EYm-qM-pEb"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="MainColor">
+            <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

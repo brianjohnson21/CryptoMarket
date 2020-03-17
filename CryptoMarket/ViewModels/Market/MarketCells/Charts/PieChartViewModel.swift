@@ -37,8 +37,9 @@ internal final class PieChartViewModel: ViewModelType {
                     result.append(PieChartDataEntry(value: Double(element.value ?? "0") ?? 0, label: "\(element.value_classification ?? "None")"))
                 }
                 
-                //Add default case for the pieChart x/100%
-                result.append(PieChartDataEntry(value: (100 - (result.last?.value ?? 0)), label: ""))
+                ///<-> Add default case for the pieChart x/100%
+                ///Mark: This might be used later but seems useless for now 🤔
+                ///result.append(PieChartDataEntry(value: (100 - (result.last?.value ?? 0)), label: ""))
                 
                 return result
             }

@@ -38,6 +38,11 @@ internal final class ContentChartViewModel: ViewModelType {
             diagram.append(pieDiagram)
         }
         
+        if let lineChartFear: LineChartFear = Bundle.main.loadNibNamed(LineChartFear.identifier, owner: nil, options: nil)?.first as? LineChartFear {
+            lineChartFear.setup()
+            diagram.append(lineChartFear)
+        }
+        
         return diagram
     }
     

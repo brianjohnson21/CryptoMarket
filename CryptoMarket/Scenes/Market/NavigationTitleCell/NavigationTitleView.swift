@@ -21,5 +21,4 @@ class NavigationTitleView: UIView {
         self.iconTitle.image = icon
         self.titleName.text = title
     }
-    
 }
