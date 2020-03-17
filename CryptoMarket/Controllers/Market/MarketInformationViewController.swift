@@ -85,7 +85,6 @@ class MarketInformationViewController: UIViewController {
         self.displayFavoriteAlert()
     }
     
-    
     private func setupView() {
         self.favoriteButton.isEnabled = self.flowType == .market ? true : false
         
@@ -133,7 +132,6 @@ class MarketInformationViewController: UIViewController {
         self.viewModel = MarketInformationViewModel(marketSelected: marketSelected)
         self.setupNavigationTitle(with: navigationMarketIcon)
     }
-
 }
 
 extension MarketInformationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -175,14 +173,12 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
         }
         return UITableViewCell()
     }
-
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         footerView.backgroundColor = UIColor.init(named: "MainColor")
         return footerView
     }
-    
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 25.0
