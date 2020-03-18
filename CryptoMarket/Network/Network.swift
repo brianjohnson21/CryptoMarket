@@ -51,4 +51,8 @@ internal final class Network {
     public func performGetMarketEmotions(stringUrl url: String) -> Observable<[MarketEmotion]> {
         return self.networkMarket.getMarketEmotions(stringUrl: url)
     }
+    
+    public func performGetMarketEmotions(stringUrl url: String, with interval: ApiEmotionsInterval) -> Observable<[MarketEmotion]> {
+        return self.networkMarket.getMarketEmotions(stringUrl: url, interval: interval)
+    }
 }

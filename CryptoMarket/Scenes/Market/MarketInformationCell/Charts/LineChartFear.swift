@@ -8,10 +8,17 @@
 
 import UIKit
 import Charts
+import RxSwift
+import RxCocoa
 
 final class LineChartFear: UIView {
     
     @IBOutlet private weak var lineChart: LineChartView!
+    
+    private var viewModel: LineChartEmotionsViewModel! = nil
+    private let disposeBag: DisposeBag = DisposeBag()
+    private let chartEventOnLegend: BehaviorSubject<LineChartEmotionsViewModel.ChartLegend> = BehaviorSubject(value: .week)
+    private var tagButtonSelected = 1
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,25 +28,62 @@ final class LineChartFear: UIView {
         super.init(coder: coder)
     }
     
+    private func addHighlight(buttonTag tag: Int) {
+        guard let button = (self.viewWithTag(tag) as? UIButton) else { return }
+        
+        button.backgroundColor = UIColor.init(named: "Color-1")
+        button.layer.cornerRadius = 4.0
+    }
+    
+    private func removeHighlight(buttonTag tag: Int) {
+        guard let button = (self.viewWithTag(tag) as? UIButton) else { return }
+        
+        button.backgroundColor = UIColor.init(named: "MainColor")
+        button.layer.cornerRadius = 0.0
+    }
+ 
+    @IBAction private func legendEventTrigger(_ sender: UIButton) {
+        let oldSender = (self.viewWithTag(tagButtonSelected) as? UIButton)
+           oldSender?.isSelected = false
+           self.removeHighlight(buttonTag: self.tagButtonSelected)
+           self.tagButtonSelected = sender.tag
+           self.addHighlight(buttonTag: sender.tag)
+           sender.isSelected = true
+         self.chartEventOnLegend.onNext(LineChartEmotionsViewModel.ChartLegend(rawValue: self.tagButtonSelected) ?? LineChartEmotionsViewModel.ChartLegend.week)
+    }
+    
     //method called outside to setup
     public func setup() {
+        self.viewModel = LineChartEmotionsViewModel()
+        
         self.setupView()
         self.setupViewModel()
     }
     
     private func setupView() {
         self.setChartSettings()
+        (self.viewWithTag(self.tagButtonSelected) as? UIButton)?.isSelected = true
+        self.addHighlight(buttonTag: self.tagButtonSelected)
     }
     
     private func setupViewModel() {
-        var chart: [ChartDataEntry] = []
-        chart.append(ChartDataEntry(x: 0, y: 10))
-        chart.append(ChartDataEntry(x: 1, y: 5))
-        chart.append(ChartDataEntry(x: 2, y: 20))
-        chart.append(ChartDataEntry(x: 3, y: 30))
-        chart.append(ChartDataEntry(x: 4, y: 20))
         
-        self.setupChartViewData(chartData: chart)
+        let input = LineChartEmotionsViewModel.Input(legendEvent: self.chartEventOnLegend.asObservable())
+        let output = self.viewModel.transform(input: input)
+        
+        output.chartViewData.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (chartData) in
+                self.setupChartViewData(chartData: chartData)
+            }).disposed(by: self.disposeBag)
+        
+        output.isChartLoading.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { (isLoading) in
+                print(isLoading)
+            }).disposed(by: self.disposeBag)
     }
     
     private func setChartSettings() {
@@ -61,7 +105,6 @@ final class LineChartFear: UIView {
         
         chartViewData.setColor(UIColor.init(named: "White") ?? .red)
         chartViewData.lineWidth = 1.0
-        //chartViewData.circleRadius = 0.0
         chartViewData.drawValuesEnabled = true
         chartViewData.drawFilledEnabled = false
         

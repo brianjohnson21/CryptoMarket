@@ -11,14 +11,6 @@ import RxCocoa
 import RxSwift
 import Charts
 
-internal enum ChartLegend: Int {
-    case day = 1
-    case week
-    case month
-    case year
-    case all
-}
-
 internal final class LineChartViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let isChartLoading = BehaviorSubject<Bool>(value: false)
@@ -39,6 +31,14 @@ internal final class LineChartViewModel: ViewModelType {
         let chartViewData: Observable<[ChartDataEntry]>
         let percentageChart: Observable<String>
         let percentageColor: Observable<UIColor>
+    }
+    
+    internal enum ChartLegend: Int {
+        case day = 1
+        case week
+        case month
+        case year
+        case all
     }
     
     private func createHistoryDate(legendSelected: ChartLegend) -> MarketHistoryRequest {

@@ -35,3 +35,10 @@ internal enum ApiInterval: Int {
     case h12
     case d1
 }
+
+internal enum ApiEmotionsInterval: Int {
+    case week = 7
+    case month = 30
+    case year = 365
+    case all = 0
+}

@@ -55,6 +55,7 @@
 		1EC035B52421542E00C8FDDC /* NetworkNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC035B42421542D00C8FDDC /* NetworkNews.swift */; };
 		1EC035B72421554A00C8FDDC /* NetworkHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC035B62421554A00C8FDDC /* NetworkHistory.swift */; };
 		1EC035B92421555300C8FDDC /* NetworkMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC035B82421555300C8FDDC /* NetworkMarket.swift */; };
+		1EC035BB2422371400C8FDDC /* LineChartEmotionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC035BA2422371400C8FDDC /* LineChartEmotionsViewModel.swift */; };
 		1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5C644237F433200EFCA40 /* ErrorMessage.swift */; };
 		1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5C646238010B600EFCA40 /* MarketInformationViewController.swift */; };
 		1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */; };
@@ -150,6 +151,7 @@
 		1EC035B42421542D00C8FDDC /* NetworkNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkNews.swift; sourceTree = "<group>"; };
 		1EC035B62421554A00C8FDDC /* NetworkHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHistory.swift; sourceTree = "<group>"; };
 		1EC035B82421555300C8FDDC /* NetworkMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMarket.swift; sourceTree = "<group>"; };
+		1EC035BA2422371400C8FDDC /* LineChartEmotionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartEmotionsViewModel.swift; sourceTree = "<group>"; };
 		1EC5C644237F433200EFCA40 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		1EC5C646238010B600EFCA40 /* MarketInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInformationViewController.swift; sourceTree = "<group>"; };
 		1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				1E3BB42223EE294400DBF600 /* ChartContentViewModel.swift */,
 				1E791D39241442910004FEFB /* LineChartViewModel.swift */,
 				1E4DB125241512B800D02AFF /* PieChartViewModel.swift */,
+				1EC035BA2422371400C8FDDC /* LineChartEmotionsViewModel.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */,
 				E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */,
 				1EE00AB52389EA3100AACB0D /* Observable+Ext.swift in Sources */,
+				1EC035BB2422371400C8FDDC /* LineChartEmotionsViewModel.swift in Sources */,
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
 				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,

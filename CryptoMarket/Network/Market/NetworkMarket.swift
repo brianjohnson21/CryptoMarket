@@ -13,6 +13,7 @@ import RxAlamofire
 import ObjectMapper
 
 internal final class NetworkMarket {
+    
     public init() { }
     
     public func getMarket(stringUrl url: String) -> Observable<[Market]> {
@@ -34,5 +35,18 @@ internal final class NetworkMarket {
             .map({ json -> [MarketEmotion] in
                 return try Mapper<MarketEmotion>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
         })
+    }
+    
+    public func getMarketEmotions(stringUrl url: String, interval: ApiEmotionsInterval) -> Observable<[MarketEmotion]> {
+        
+        print("[REQUEST VALID = https://api.alternative.me/fng/?limit=365]")
+        print("[REQUEST DONE = \(url.concat(string: "?limit=\(interval.rawValue)"))]")
+        print(interval.rawValue)
+        return RxAlamofire.json(.get, url.concat(string: "?limit=\(interval.rawValue)"))
+            .retry(2)
+            .observeOn(MainScheduler.asyncInstance)
+            .map({json -> [MarketEmotion] in
+                return try Mapper<MarketEmotion>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]] ?? []))
+            })
     }
 }

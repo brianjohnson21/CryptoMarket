@@ -21,7 +21,7 @@ final class LineChart: UIView {
     
     private var viewModel: LineChartViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
-    private let chartEventOnLegend: BehaviorSubject<ChartLegend> = BehaviorSubject(value: .day)
+    private let chartEventOnLegend: BehaviorSubject<LineChartViewModel.ChartLegend> = BehaviorSubject(value: .day)
     private var tagButtonSelected = 1
     
     override init(frame: CGRect) {
@@ -70,7 +70,7 @@ final class LineChart: UIView {
            self.addHighlight(buttonTag: sender.tag)
            sender.isSelected = true
            
-           self.chartEventOnLegend.onNext(ChartLegend(rawValue: self.tagButtonSelected) ?? ChartLegend.month)
+        self.chartEventOnLegend.onNext(LineChartViewModel.ChartLegend(rawValue: self.tagButtonSelected) ?? LineChartViewModel.ChartLegend.month)
     }
     
     //method called outside to setup
