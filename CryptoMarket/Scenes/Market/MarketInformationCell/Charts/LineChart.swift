@@ -82,11 +82,12 @@ final class LineChart: UIView {
         self.setPercentageOnChart(percentage: percentage)
         self.setupSpinner(isLoading: true)
         self.setupViewModel()
+        self.lineChartView.delegate = self
     }
     
     private func setChartSettings() {
         self.lineChartView.chartDescription?.enabled = false
-        self.lineChartView.dragEnabled = false
+        //self.lineChartView.dragEnabled = false
         self.lineChartView.legend.enabled = false
            
         self.lineChartView.leftAxis.enabled = false
@@ -180,5 +181,19 @@ final class LineChart: UIView {
     
     static var nib: UINib {
         return UINib(nibName: self.identifier, bundle: nil)
+    }
+}
+
+extension LineChart: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print("[ENTRY] = \(entry)")
+    }
+    
+    func chartViewDidEndPanning(_ chartView: ChartViewBase) {
+        print("YOLO?")
+    }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        print("lmao?")
     }
 }
