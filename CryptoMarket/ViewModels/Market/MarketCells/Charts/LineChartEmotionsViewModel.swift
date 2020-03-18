@@ -26,16 +26,14 @@ internal final class LineChartEmotionsViewModel: ViewModelType {
     }
     
     internal enum ChartLegend: Int {
-        case week = 0
-        case month
-        case year
-        case all
+        case week = 7
+        case month = 30
+        case year = 365
+        case all = 0
     }
     
-    private func matchApiInterval {}
-    
     private func fetchMarketEmotions(interval: ChartLegend) -> Observable<[MarketEmotion]> {
-        return Network.sharedInstance.performGetMarketEmotions(stringUrl: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED), with: .week)
+        return Network.sharedInstance.performGetMarketEmotions(stringUrl: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED), with: ApiEmotionsInterval(rawValue: interval.rawValue) ?? .week)
     }
     
     private func fetchChartData(interval: ChartLegend) -> Observable<[ChartDataEntry]> {

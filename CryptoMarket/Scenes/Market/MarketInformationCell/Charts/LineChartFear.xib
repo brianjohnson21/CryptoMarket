@@ -15,6 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4TE-bH-YzT">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="color" name="Color-1"/>
+                </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBS-XM-yNx">
                     <rect key="frame" x="99.5" y="56" width="215.5" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -27,7 +31,7 @@
                 <stackView opaque="NO" tag="9" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aQT-6M-ofs">
                     <rect key="frame" x="8" y="828" width="398" height="34"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZy-Dm-rCX">
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZy-Dm-rCX">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="UMD-jE-cuS"/>
@@ -42,7 +46,7 @@
                                 <action selector="legendEventTrigger:" destination="iN0-l3-epB" eventType="touchUpInside" id="E8w-nl-rI5"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-ma-Roj">
+                        <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-ma-Roj">
                             <rect key="frame" x="118.5" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="h1Q-Yq-qDN"/>
@@ -57,7 +61,7 @@
                                 <action selector="legendEventTrigger:" destination="iN0-l3-epB" eventType="touchUpInside" id="CCq-ZY-4Pn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOb-cm-GCC">
+                        <button opaque="NO" tag="365" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOb-cm-GCC">
                             <rect key="frame" x="237.5" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="mBU-jf-p5g"/>
@@ -72,7 +76,7 @@
                                 <action selector="legendEventTrigger:" destination="iN0-l3-epB" eventType="touchUpInside" id="M1i-D8-QY1"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgk-zh-eO0">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgk-zh-eO0">
                             <rect key="frame" x="356" y="0.0" width="42" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="1eS-SM-RKa"/>
@@ -97,6 +101,8 @@
                 <constraint firstItem="aQT-6M-ofs" firstAttribute="top" secondItem="pdH-D9-Jxk" secondAttribute="bottom" constant="10" id="Le9-Fi-bcK"/>
                 <constraint firstItem="aQT-6M-ofs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Omg-n3-Wji"/>
                 <constraint firstItem="pdH-D9-Jxk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Pkm-4W-smk"/>
+                <constraint firstItem="4TE-bH-YzT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Q68-jH-buU"/>
+                <constraint firstItem="4TE-bH-YzT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="R7Q-M8-CuN"/>
                 <constraint firstItem="pdH-D9-Jxk" firstAttribute="top" secondItem="lBS-XM-yNx" secondAttribute="bottom" constant="8" id="bJP-MT-dIR"/>
                 <constraint firstItem="lBS-XM-yNx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dL8-dI-TE2"/>
                 <constraint firstItem="lBS-XM-yNx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uv7-Nd-zZT"/>
@@ -105,6 +111,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="lineChart" destination="pdH-D9-Jxk" id="EYm-qM-pEb"/>
+                <outlet property="spinnerView" destination="4TE-bH-YzT" id="f3a-sW-3PM"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
         </view>

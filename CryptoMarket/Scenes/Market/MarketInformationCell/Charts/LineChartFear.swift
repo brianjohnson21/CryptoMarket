@@ -14,11 +14,13 @@ import RxCocoa
 final class LineChartFear: UIView {
     
     @IBOutlet private weak var lineChart: LineChartView!
+    @IBOutlet private weak var spinnerView: UIActivityIndicatorView!
     
     private var viewModel: LineChartEmotionsViewModel! = nil
     private let disposeBag: DisposeBag = DisposeBag()
     private let chartEventOnLegend: BehaviorSubject<LineChartEmotionsViewModel.ChartLegend> = BehaviorSubject(value: .week)
-    private var tagButtonSelected = 1
+    
+    private var tagButtonSelected = LineChartEmotionsViewModel.ChartLegend.week.rawValue
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +42,11 @@ final class LineChartFear: UIView {
         
         button.backgroundColor = UIColor.init(named: "MainColor")
         button.layer.cornerRadius = 0.0
+    }
+    
+    private func setupSpinner(isLoading: Bool) {
+        self.spinnerView.isHidden = !isLoading
+        isLoading ? self.spinnerView.startAnimating() : self.spinnerView.stopAnimating()
     }
  
     @IBAction private func legendEventTrigger(_ sender: UIButton) {
@@ -64,6 +71,7 @@ final class LineChartFear: UIView {
         self.setChartSettings()
         (self.viewWithTag(self.tagButtonSelected) as? UIButton)?.isSelected = true
         self.addHighlight(buttonTag: self.tagButtonSelected)
+        self.setupSpinner(isLoading: true)
     }
     
     private func setupViewModel() {
@@ -82,7 +90,7 @@ final class LineChartFear: UIView {
             .observeOn(MainScheduler.instance)
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { (isLoading) in
-                print(isLoading)
+                self.setupSpinner(isLoading: isLoading)
             }).disposed(by: self.disposeBag)
     }
     
