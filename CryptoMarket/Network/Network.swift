@@ -19,20 +19,17 @@ internal final class Network {
     public static let sharedInstance = Network()
 
     private let networkNews: NetworkNews
+    private let networkMarket: NetworkMarket
+    private let networkHistory: NetworkHistory
     
     private init() {
         self.networkNews = NetworkNews()
+        self.networkMarket = NetworkMarket()
+        self.networkHistory = NetworkHistory()
     }
     
-    //MARK: todo switch to single ->
     public func performGetOnMarket(stringUrl url: String) -> Observable<[Market]> {
-        return RxAlamofire
-            .json(.get, url)
-            .retry(2)
-            .observeOn(MainScheduler.asyncInstance)
-            .map({ json -> [Market] in
-                return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
-        })
+        return self.networkMarket.getMarket(stringUrl: url)
     }
     
     public func performGetOnNews(stringUrl url: String) -> Observable<[MarketNews]>{
@@ -48,30 +45,10 @@ internal final class Network {
     }
     
     public func performGetOnHistory(stringUrl url: String, assetName name: String, legendData: MarketHistoryRequest) -> Observable<[MarketInformation]> {
-        
-        let interval = "/history?interval="
-            .concat(string: "\(legendData.interval)")
-            .concat(string: "&start=")
-            .concat(string: legendData.startDate)
-            .concat(string: "&end=")
-            .concat(string: legendData.endDate)
-        
-        return RxAlamofire
-            .json(.get, url.concat(string: name).concat(string: interval))
-            .retry(2)
-            .observeOn(MainScheduler.asyncInstance)
-            .map({json -> [MarketInformation] in
-                return try Mapper<MarketInformation>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]] ?? []))
-            })
+        return self.networkHistory.getHistory(stringUrl: url, assetName: name, legendData: legendData)
     }
     
-    public func performGetOnFeerAndGred(string url: String) -> Observable<[MarketEmotion]> {
-        return RxAlamofire
-            .json(.get, url)
-            .retry(2)
-            .observeOn(MainScheduler.asyncInstance)
-            .map({ json -> [MarketEmotion] in
-                return try Mapper<MarketEmotion>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
-        })
+    public func performGetMarketEmotions(stringUrl url: String) -> Observable<[MarketEmotion]> {
+        return self.networkMarket.getMarketEmotions(stringUrl: url)
     }
 }

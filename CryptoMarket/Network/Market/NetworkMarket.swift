@@ -7,9 +7,32 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import RxAlamofire
+import ObjectMapper
 
 internal final class NetworkMarket {
     public init() { }
     
+    public func getMarket(stringUrl url: String) -> Observable<[Market]> {
+        
+        return RxAlamofire
+            .json(.get, url)
+            .retry(2)
+            .observeOn(MainScheduler.asyncInstance)
+            .map({ json -> [Market] in
+                return try Mapper<Market>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
+        })
+    }
     
+    public func getMarketEmotions(stringUrl url: String) -> Observable<[MarketEmotion]> {
+        return RxAlamofire
+            .json(.get, url)
+            .retry(2)
+            .observeOn(MainScheduler.asyncInstance)
+            .map({ json -> [MarketEmotion] in
+                return try Mapper<MarketEmotion>().mapArray(JSONObject: ((json as? [String: Any])?["data"] as? [[String: Any]]) ?? [])
+        })
+    }
 }

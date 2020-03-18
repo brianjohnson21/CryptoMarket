@@ -23,7 +23,7 @@ internal final class PieChartViewModel: ViewModelType {
     }
     
     private func fetchFeerAndGreed() -> Observable<[MarketEmotion]> {
-        return Network.sharedInstance.performGetOnFeerAndGred(string: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED))
+        return Network.sharedInstance.performGetMarketEmotions(stringUrl: ApiRoute.ROUTE_SERVER_FEER.concat(string: ApiRoute.ROUTE_FEER_GREED))
     }
     
     private func fetchDataEntries() -> Observable<[PieChartDataEntry]> {
