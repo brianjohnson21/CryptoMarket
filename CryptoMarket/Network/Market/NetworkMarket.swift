@@ -38,10 +38,7 @@ internal final class NetworkMarket {
     }
     
     public func getMarketEmotions(stringUrl url: String, interval: ApiEmotionsInterval) -> Observable<[MarketEmotion]> {
-        
-        print("[REQUEST VALID = https://api.alternative.me/fng/?limit=365]")
-        print("[REQUEST DONE = \(url.concat(string: "?limit=\(interval.rawValue)"))]")
-        print(interval.rawValue)
+
         return RxAlamofire.json(.get, url.concat(string: "?limit=\(interval.rawValue)"))
             .retry(2)
             .observeOn(MainScheduler.asyncInstance)
