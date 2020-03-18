@@ -33,14 +33,14 @@ internal final class ContentChartViewModel: ViewModelType {
             diagram.append(lineChart)
         }
         
-        if let pieDiagram: PieChart = Bundle.main.loadNibNamed(PieChart.identifier, owner: nil, options: nil)?.first as? PieChart {
-            pieDiagram.setup()
-            diagram.append(pieDiagram)
-        }
-        
         if let lineChartFear: LineChartFear = Bundle.main.loadNibNamed(LineChartFear.identifier, owner: nil, options: nil)?.first as? LineChartFear {
             lineChartFear.setup()
             diagram.append(lineChartFear)
+        }
+        
+        if let pieDiagram: PieChart = Bundle.main.loadNibNamed(PieChart.identifier, owner: nil, options: nil)?.first as? PieChart {
+            pieDiagram.setup()
+            diagram.append(pieDiagram)
         }
         
         return diagram
