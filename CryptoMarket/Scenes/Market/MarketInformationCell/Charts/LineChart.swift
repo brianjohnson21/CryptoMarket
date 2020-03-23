@@ -190,25 +190,22 @@ final class LineChart: UIView {
     }
 }
 
+///MARK: work in progress
+
 extension LineChart: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("[ENTRY] = \(entry)")
         self.price = "\(entry.y)"
     }
     
     func chartViewDidEndPanning(_ chartView: ChartViewBase) {
-        print("YOLO?")
     }
     
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        print("lmao?")
     }
     
     func didChangeValue<Value>(for keyPath: __owned KeyPath<LineChart, Value>) {
-        print("sup?")
     }
     
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        print("MDRRRR????")
     }
 }
