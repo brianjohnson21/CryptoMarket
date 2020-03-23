@@ -124,6 +124,10 @@ final class LineChartFear: UIView {
         
         let setDataOnChart = LineChartData(dataSet: chartViewData)
         
+        if chartData.count > 30 {
+            chartViewData.circleRadius = 0.2
+        }
+        
         self.lineChart.data = setDataOnChart
         self.lineChart.animate(xAxisDuration: 0.2)
     }

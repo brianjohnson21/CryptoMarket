@@ -87,7 +87,7 @@ final class LineChart: UIView {
     
     private func setChartSettings() {
         self.lineChartView.chartDescription?.enabled = false
-        //self.lineChartView.dragEnabled = false
+        self.lineChartView.dragEnabled = false
         self.lineChartView.legend.enabled = false
            
         self.lineChartView.leftAxis.enabled = false
@@ -163,6 +163,12 @@ final class LineChart: UIView {
         
         let setDataOnChart = LineChartData(dataSet: chartViewData)
         
+        chartViewData.setDrawHighlightIndicators(true)
+        chartViewData.highlightColor = .blue
+        chartViewData.highlightLineWidth = 1
+        chartViewData.drawHorizontalHighlightIndicatorEnabled = false
+        
+        
         self.lineChartView.data = setDataOnChart
         self.lineChartView.animate(xAxisDuration: 0.2)
     }
@@ -187,6 +193,7 @@ final class LineChart: UIView {
 extension LineChart: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print("[ENTRY] = \(entry)")
+        self.price = "\(entry.y)"
     }
     
     func chartViewDidEndPanning(_ chartView: ChartViewBase) {
@@ -195,5 +202,13 @@ extension LineChart: ChartViewDelegate {
     
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
         print("lmao?")
+    }
+    
+    func didChangeValue<Value>(for keyPath: __owned KeyPath<LineChart, Value>) {
+        print("sup?")
+    }
+    
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        print("MDRRRR????")
     }
 }
