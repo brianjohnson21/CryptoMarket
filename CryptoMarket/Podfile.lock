@@ -22,7 +22,6 @@ PODS:
     - RxCocoa (~> 4.5)
     - RxSwift (~> 4.5)
   - RxSwift (4.5.0)
-  - SwiftChart (1.0.1)
   - SwiftEntryKit (1.2.3):
     - QuickLayout (= 3.0.0)
 
@@ -39,7 +38,6 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxGesture
   - RxSwift (~> 4.0)
-  - SwiftChart
   - SwiftEntryKit
 
 SPEC REPOS:
@@ -56,7 +54,6 @@ SPEC REPOS:
     - RxCocoa
     - RxGesture
     - RxSwift
-    - SwiftChart
     - SwiftEntryKit
 
 EXTERNAL SOURCES:
@@ -77,9 +74,8 @@ SPEC CHECKSUMS:
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
   SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
 
-PODFILE CHECKSUM: a8635576498c69ab62976d09b443819755cf69a3
+PODFILE CHECKSUM: b532ba09b0fc0723705c675a7ce8f3f34da97584
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
