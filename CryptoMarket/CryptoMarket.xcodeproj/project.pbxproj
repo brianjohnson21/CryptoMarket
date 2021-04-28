@@ -83,6 +83,7 @@
 		E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57024232A52AC009A5031 /* ApiRoute.swift */; };
 		E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57029232A6502009A5031 /* String+Ext.swift */; };
 		E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */; };
+		E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		E9D57024232A52AC009A5031 /* ApiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRoute.swift; sourceTree = "<group>"; };
 		E9D57029232A6502009A5031 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEntity.swift; sourceTree = "<group>"; };
+		E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellViewModel.swift; sourceTree = "<group>"; };
 		FF4D4DFE9881AC210D32E4A4 /* Pods-CryptoMarketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -632,6 +634,7 @@
 		E9C29A862639578C000CCE48 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				E9F351FC263A0F650040981C /* CellViewModel */,
 				E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */,
 			);
 			path = Portfolio;
@@ -657,6 +660,14 @@
 				E9C29A8F26395D72000CCE48 /* PortfolioEntity.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E9F351FC263A0F650040981C /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */,
+			);
+			path = CellViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -914,6 +925,7 @@
 				1EE00AB52389EA3100AACB0D /* Observable+Ext.swift in Sources */,
 				1EC035BB2422371400C8FDDC /* LineChartEmotionsViewModel.swift in Sources */,
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
+				E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */,
 				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,

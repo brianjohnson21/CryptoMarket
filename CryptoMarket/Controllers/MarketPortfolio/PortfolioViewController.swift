@@ -125,6 +125,7 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title = self.tableViewDataSource[indexPath.row].name
             cell.symbol = self.tableViewDataSource[indexPath.row].symbol
             cell.price = self.tableViewDataSource[indexPath.row].currentPrice
+            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].name?.lowercased() ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             return cell
         }

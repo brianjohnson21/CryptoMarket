@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PortfolioTableViewCell: UITableViewCell {
 
@@ -17,6 +19,10 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet private weak var footName: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var percentageLabel: UILabel!
+    
+    private let viewModel: MarketCellViewModel = MarketCellViewModel()
+    private let disposeBag = DisposeBag()
+    private let spinner = UIActivityIndicatorView(style: .white)
     
     public var title: String? {
         set { self.name.text = newValue }
@@ -49,7 +55,30 @@ class PortfolioTableViewCell: UITableViewCell {
     }
     
     public func loadImageOnCell(name: String) {
+        let input = MarketCellViewModel.Input(imageName: Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")))
+        let output = self.viewModel.transform(input: input)
         
+        output.imageDownloaded.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { image in
+                guard let image = image else { return }
+                self.portfolioImage.image = image
+                self.portfolioImage.setRounded()
+            }).disposed(by: self.disposeBag)
+        
+        output.isImageLoading.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { isLoading in
+                self.portfolioImage.isHidden = isLoading
+                self.loadingImage.isHidden = !isLoading
+                isLoading ? self.loadingImage.startAnimating() : self.loadingImage.stopAnimating()
+            }).disposed(by: self.disposeBag)
+    }
+    
+    override func prepareForReuse() {
+        self.portfolioImage.image = nil
     }
     
     override func awakeFromNib() {
