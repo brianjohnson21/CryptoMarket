@@ -15,6 +15,8 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet private weak var portfolioImage: UIImageView!
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var footName: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var percentageLabel: UILabel!
     
     public var title: String? {
         set { self.name.text = newValue }
@@ -29,6 +31,21 @@ class PortfolioTableViewCell: UITableViewCell {
     public var index: String? {
         set { self.id.text = newValue }
         get { return self.id.text }
+    }
+    
+    public var price: String? {
+        set { self.priceLabel.text = newValue }
+        get { return self.priceLabel.text }
+    }
+    
+    public var percentage: String? {
+        set { self.percentageLabel.text = newValue }
+        get { return self.percentageLabel.text }
+    }
+    
+    public var symbol: String? {
+        set { self.footName.text = newValue }
+        get { return self.footName.text }
     }
     
     public func loadImageOnCell(name: String) {

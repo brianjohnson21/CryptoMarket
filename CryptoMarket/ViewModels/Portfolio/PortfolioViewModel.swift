@@ -22,6 +22,7 @@ internal final class PortfolioViewModel: ViewModelType {
         let portfolioDataSources: Observable<[PortfolioCore]>
         let isLoading: Observable<Bool>
         let portfolioOnChange: Observable<PortfolioCore>
+        let portfolioCurrentValue: Observable<Double>
     }
     
     init() { }
@@ -42,6 +43,10 @@ internal final class PortfolioViewModel: ViewModelType {
         }
     }
     
+    private func fetchPortfolioValue() -> Observable<Double> {
+        return Observable.just(3000.00).asObservable()
+    }
+    
     func transform(input: Input) -> Output {
         self.isLoading.onNext(true)
         
@@ -59,6 +64,7 @@ internal final class PortfolioViewModel: ViewModelType {
         self.isLoading.onNext(false)
         return Output(portfolioDataSources: portfolio,
                       isLoading: self.isLoading.asObservable(),
-                      portfolioOnChange: newElem)
+                      portfolioOnChange: newElem,
+                      portfolioCurrentValue: self.fetchPortfolioValue())
     }
 }

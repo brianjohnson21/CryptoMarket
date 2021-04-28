@@ -57,6 +57,11 @@ internal final class CoreDataManager {
                 let rhs = PortfolioCore(context: self.context)
                 rhs.id = portfolio.id
                 rhs.name = portfolio.name
+                rhs.amount = portfolio.amount
+                rhs.date = portfolio.date
+                rhs.currentPrice = portfolio.currentPrice
+                rhs.symbol = portfolio.symbol
+                
                 do {
                     self.context.insert(rhs)
                     try self.context.save()

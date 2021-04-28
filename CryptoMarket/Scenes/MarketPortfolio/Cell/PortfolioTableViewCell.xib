@@ -53,16 +53,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h2e-9K-nfC">
-                        <rect key="frame" x="86" y="11.5" width="44.5" height="37.5"/>
+                        <rect key="frame" x="86" y="11.5" width="97" height="37.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-Xj-aod">
-                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-Xj-aod">
+                                <rect key="frame" x="0.0" y="0.0" width="97" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAM-rN-Kd4">
-                                <rect key="frame" x="0.0" y="20.5" width="44.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="1.1750872 ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAM-rN-Kd4">
+                                <rect key="frame" x="0.0" y="20.5" width="97" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -72,8 +72,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="XhQ-Bg-Um0">
                         <rect key="frame" x="210" y="12.5" width="100" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="10,900$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ0-QJ-Iwa">
-                                <rect key="frame" x="37.5" y="0.0" width="62.5" height="17.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="3,239$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ0-QJ-Iwa">
+                                <rect key="frame" x="45" y="0.0" width="55" height="17.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -81,14 +81,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8z-kp-PU0">
                                 <rect key="frame" x="0.0" y="17.5" width="100" height="17.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="14,40%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tug-ne-G7Q">
-                                        <rect key="frame" x="57.5" y="1.5" width="42.5" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1250%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tug-ne-G7Q">
+                                        <rect key="frame" x="61" y="1.5" width="39" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.70228880640000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="SortUp"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sort-down-solid" translatesAutoresizingMaskIntoConstraints="NO" id="OlI-lA-6BK">
-                                        <rect key="frame" x="46.5" y="6.5" width="5" height="5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sort-up-solid" translatesAutoresizingMaskIntoConstraints="NO" id="OlI-lA-6BK">
+                                        <rect key="frame" x="50" y="6.5" width="5" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="IM5-Vr-3ob"/>
                                             <constraint firstAttribute="height" constant="5" id="gYO-Dx-HWI"/>
@@ -129,16 +129,21 @@
                 <outlet property="id" destination="bcb-dd-rhG" id="JWC-yS-vsz"/>
                 <outlet property="loadingImage" destination="4FY-CX-9CG" id="aKq-4x-42c"/>
                 <outlet property="name" destination="xHC-Xj-aod" id="QY6-SR-JGa"/>
+                <outlet property="percentageLabel" destination="tug-ne-G7Q" id="SEX-QR-mx2"/>
                 <outlet property="portfolioImage" destination="cRw-Rn-h0v" id="zI0-hG-E9f"/>
+                <outlet property="priceLabel" destination="aQ0-QJ-Iwa" id="njR-Ur-LPq"/>
             </connections>
             <point key="canvasLocation" x="75" y="143"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="bar-basic" width="24" height="21"/>
-        <image name="sort-down-solid" width="288" height="167"/>
+        <image name="sort-up-solid" width="288" height="168"/>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SortUp">
+            <color red="0.031372549019607843" green="0.77647058823529413" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

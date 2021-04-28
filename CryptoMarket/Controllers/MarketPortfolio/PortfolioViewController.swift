@@ -29,7 +29,7 @@ class PortfolioViewController: UIViewController {
     }
     
     private func setupView() {
-        self.navigationItem.title = "Portfolio"
+        self.navigationItem.title = "0.00$"
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         self.view.addSubview(self.tableViewSpinner)
@@ -80,6 +80,13 @@ class PortfolioViewController: UIViewController {
                 self.tableViewSpinner.isHidden = !isLoading
                 isLoading ? self.tableViewSpinner.startAnimating() : self.tableViewSpinner.stopAnimating()
             }).disposed(by: self.disposeBag)
+        
+        output.portfolioCurrentValue.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { portfolioValue in
+                self.navigationItem.title = "$\(portfolioValue)"
+            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -116,6 +123,8 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
             cell.index = self.tableViewDataSource[indexPath.row].id
             cell.title = self.tableViewDataSource[indexPath.row].name
+            
+            //cell.title = self.tableViewDataSource[indexPath.row].name
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             return cell
         }

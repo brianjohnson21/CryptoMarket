@@ -11,6 +11,10 @@ import ObjectMapper
 public struct Portfolio {
     let name: String
     let id: String
+    let amount: String
+    let symbol: String
+    let date: Date
+    let currentPrice: String
 }
 
 extension Portfolio: Equatable {
