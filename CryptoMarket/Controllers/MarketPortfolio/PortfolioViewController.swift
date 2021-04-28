@@ -39,7 +39,8 @@ class PortfolioViewController: UIViewController {
         self.tableViewSpinner.isHidden = false
         self.tableViewSpinner.startAnimating()
         
-        let addButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(self.addPortfolio)) //
+        let addButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(self.addPortfolio))
+        addButton.tintColor = UIColor.init(named: "WhiteImage")
         self.navigationItem.rightBarButtonItem  = addButton
     }
     
@@ -78,9 +79,7 @@ class PortfolioViewController: UIViewController {
                 self.tableViewPortfolio.isHidden = isLoading
                 self.tableViewSpinner.isHidden = !isLoading
                 isLoading ? self.tableViewSpinner.startAnimating() : self.tableViewSpinner.stopAnimating()
-                
             }).disposed(by: self.disposeBag)
-
     }
 }
 
@@ -91,6 +90,21 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedIndexPath = IndexPath(row: self.tableViewDataSource.count - 1, section: 0)
         self.tableViewPortfolio.beginUpdates()
         self.tableViewPortfolio.insertRows(at: [selectedIndexPath], with: .automatic)
+        self.tableViewPortfolio.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteElem = tableViewDataSource[indexPath.row]
+            self.onDelete.onNext(deleteElem)
+            self.tableView(removeElement: deleteElem, indexPath: indexPath)
+        }
+    }
+    
+    private func tableView(removeElement element: PortfolioCore, indexPath: IndexPath) {
+        self.tableViewDataSource.remove(at: indexPath.row)
+        self.tableViewPortfolio.beginUpdates()
+        self.tableViewPortfolio.deleteRows(at: [indexPath], with: .automatic)
         self.tableViewPortfolio.endUpdates()
     }
     

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "plus-solid.png",
+      "filename" : "Path.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "plus-solid@2x.png",
+      "filename" : "Path@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "plus-solid@3x.png",
+      "filename" : "Path@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
