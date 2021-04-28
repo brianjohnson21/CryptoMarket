@@ -51,7 +51,7 @@ class PortfolioViewController: UIViewController {
     }
     
     @objc private func addPortfolio() {
-        CoreDataManager.sharedInstance.create(with: Portfolio(name: "MDR?", id: "0"))
+        CoreDataManager.sharedInstance.create(with: Portfolio(name: "Ethereum", id: "0", amount: "0", symbol: "ETH", date: Date(), currentPrice: "$3,245"))
     }
     
     private func setupViewModel() {
@@ -123,8 +123,8 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
             cell.index = self.tableViewDataSource[indexPath.row].id
             cell.title = self.tableViewDataSource[indexPath.row].name
-            
-            //cell.title = self.tableViewDataSource[indexPath.row].name
+            cell.symbol = self.tableViewDataSource[indexPath.row].symbol
+            cell.price = self.tableViewDataSource[indexPath.row].currentPrice
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             return cell
         }
