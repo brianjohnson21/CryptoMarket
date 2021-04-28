@@ -24,7 +24,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-CX-9CG">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             </activityIndicatorView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="cRw-Rn-h0v">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bar-basic" translatesAutoresizingMaskIntoConstraints="NO" id="cRw-Rn-h0v">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="VMd-N2-2QM"/>
@@ -124,11 +124,18 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aaJ-7c-TCl"/>
             <color key="backgroundColor" name="MainColor"/>
+            <connections>
+                <outlet property="footName" destination="WAM-rN-Kd4" id="oYL-pf-gRJ"/>
+                <outlet property="id" destination="bcb-dd-rhG" id="JWC-yS-vsz"/>
+                <outlet property="loadingImage" destination="4FY-CX-9CG" id="aKq-4x-42c"/>
+                <outlet property="name" destination="xHC-Xj-aod" id="QY6-SR-JGa"/>
+                <outlet property="portfolioImage" destination="cRw-Rn-h0v" id="zI0-hG-E9f"/>
+            </connections>
             <point key="canvasLocation" x="75" y="143"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="background" width="512" height="512"/>
+        <image name="bar-basic" width="24" height="21"/>
         <image name="sort-down-solid" width="288" height="167"/>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

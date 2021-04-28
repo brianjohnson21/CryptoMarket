@@ -10,6 +10,31 @@ import UIKit
 
 class PortfolioTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var id: UILabel!
+    @IBOutlet private weak var loadingImage: UIActivityIndicatorView!
+    @IBOutlet private weak var portfolioImage: UIImageView!
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var footName: UILabel!
+    
+    public var title: String? {
+        set { self.name.text = newValue }
+        get { return self.name.text }
+    }
+    
+    public var portfolioLogoImage: UIImage? {
+        set { self.portfolioImage?.image = newValue }
+        get { return self.portfolioImage?.image }
+    }
+    
+    public var index: String? {
+        set { self.id.text = newValue }
+        get { return self.id.text }
+    }
+    
+    public func loadImageOnCell(name: String) {
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
