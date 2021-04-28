@@ -84,6 +84,7 @@
 		E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57029232A6502009A5031 /* String+Ext.swift */; };
 		E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */; };
 		E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */; };
+		E9F35200263A13F10040981C /* AddPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		E9D57029232A6502009A5031 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEntity.swift; sourceTree = "<group>"; };
 		E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellViewModel.swift; sourceTree = "<group>"; };
+		E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewController.swift; sourceTree = "<group>"; };
 		FF4D4DFE9881AC210D32E4A4 /* Pods-CryptoMarketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */,
+				E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */,
 			);
 			path = MarketPortfolio;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
+				E9F35200263A13F10040981C /* AddPortfolioViewController.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1E3421C824016EB200F44F9F /* PieChart.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,

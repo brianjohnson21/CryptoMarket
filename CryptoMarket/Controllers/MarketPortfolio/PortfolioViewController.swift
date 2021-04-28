@@ -51,7 +51,11 @@ class PortfolioViewController: UIViewController {
     }
     
     @objc private func addPortfolio() {
-        CoreDataManager.sharedInstance.create(with: Portfolio(name: "Ethereum", id: "0", amount: "0", symbol: "ETH", date: Date(), currentPrice: "$3,245"))
+        
+        if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddPortfolioViewStoryboard") as? AddPortfolioViewController {
+            vc.setup()
+            self.present(vc, animated: true)
+        }
     }
     
     private func setupViewModel() {
