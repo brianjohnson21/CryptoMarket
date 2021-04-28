@@ -17,6 +17,7 @@ internal final class CoreDataManager {
     
     private let coreDataContainer: NSPersistentContainer
     private let favOnChange: PublishSubject<Favorite> = PublishSubject<Favorite>()
+    private let portfolioOnChange: PublishSubject<PortfolioCore> = PublishSubject<PortfolioCore>()
     
     private var context: NSManagedObjectContext {
         return self.coreDataContainer.viewContext
@@ -48,9 +49,30 @@ internal final class CoreDataManager {
         }
     }
     
+    public func create(with portfolio: Portfolio) {
+        do {
+            let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.name ?? "")
+            
+            if (!result) {
+                let rhs = PortfolioCore(context: self.context)
+                rhs.id = portfolio.id
+                rhs.name = portfolio.name
+                do {
+                    self.context.insert(rhs)
+                    try self.context.save()
+                    self.portfolioOnChange.onNext(rhs)
+                } catch {
+                    //handle error
+                }
+            }
+        } catch {
+            //handle error
+        }
+    }
+    
     public func create(with market: Market) {
         do {
-            let result = try CoreDataManager.sharedInstance.isExist(with: market.id ?? "")
+            let result = try CoreDataManager.sharedInstance.doesMarketExist(with: market.id ?? "")
             
             if (!result) {
                 let fav = Favorite(context: self.context)
@@ -79,10 +101,18 @@ internal final class CoreDataManager {
         }
     }
     
-    private func isExist(with name: String) throws -> Bool {
+    private func doesPortfolioExist(with portfolioName: String) throws -> Bool {
+        let fetchRequest = PortfolioCore.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+        fetchRequest.predicate = NSPredicate(format: "id == %@", portfolioName)
+        let result = try self.context.fetch(fetchRequest)
+        
+        return result.count > 0 ? true : false
+    }
+    
+    private func doesMarketExist(with marketName: String) throws -> Bool {
         
         let fetchRequest = Favorite.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
-        fetchRequest.predicate = NSPredicate(format: "id == %@", name)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", marketName)
         let result = try self.context.fetch(fetchRequest)
         
         return result.count > 0 ? true : false
@@ -90,6 +120,10 @@ internal final class CoreDataManager {
     
     public func getCurrentElement() -> Observable<Favorite> {
         return self.favOnChange.asObservable()
+    }
+    
+    public func getCurrentElement() -> Observable<PortfolioCore> {
+        return self.portfolioOnChange.asObservable()
     }
     
     private func updateFavorite(fav: [Favorite], newValue: [Market]) -> [Favorite] {
@@ -105,14 +139,45 @@ internal final class CoreDataManager {
         }
     }
     
+    public func fetch() -> Observable<[PortfolioCore]> {
+        do {
+            let result = try self.context.fetch(PortfolioCore.fetchRequest()as NSFetchRequest<PortfolioCore>)
+            
+            return Observable<[PortfolioCore]>.create { (observer) -> Disposable in
+                observer.onNext(result)
+                return Disposables.create()
+            }
+        }
+        catch {
+            //todo handle
+            return Observable<[PortfolioCore]>.create { (observer) -> Disposable in
+                return Disposables.create()
+            }
+        }
+    }
+    
     public func fetch() -> Observable<[Favorite]> {
         return Observable.combineLatest(self.fetchNewData(), self.fetchData()).map { (market, favorite) -> [Favorite] in
             return self.updateFavorite(fav: favorite, newValue: market.filter { data in return favorite.contains { $0.id == data.id }})
         }
     }
     
+    public func delete(portfolio: PortfolioCore) throws {
+        self.context.delete(portfolio)
+        try self.context.save()
+    }
+    
     public func delete(fav: Favorite) throws {
         self.context.delete(fav)
+        try self.context.save()
+    }
+    
+    public func deletePortfolio(with id: String) throws {
+        let fetchRequest = PortfolioCore.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try self.context.execute(deleteRequest)
         try self.context.save()
     }
     

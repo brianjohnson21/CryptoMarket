@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,6 +22,7 @@
                                 <color key="backgroundColor" name="MainColor"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="suo-jy-Fvv"/>
                         <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="gj9-CF-kuI" firstAttribute="leading" secondItem="suo-jy-Fvv" secondAttribute="leading" id="8Xr-1o-ao9"/>
@@ -29,7 +30,6 @@
                             <constraint firstItem="suo-jy-Fvv" firstAttribute="trailing" secondItem="gj9-CF-kuI" secondAttribute="trailing" id="qHN-mZ-x3D"/>
                             <constraint firstItem="gj9-CF-kuI" firstAttribute="top" secondItem="o5o-ru-bhR" secondAttribute="top" id="t3w-M2-k9P"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="suo-jy-Fvv"/>
                     </view>
                     <navigationItem key="navigationItem" id="SAq-3E-cAz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

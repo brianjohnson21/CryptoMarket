@@ -42,7 +42,7 @@
                     <connections>
                         <segue destination="A7h-Ya-Mhg" kind="relationship" relationship="viewControllers" id="6hC-og-wKa"/>
                         <segue destination="dfd-wz-cgD" kind="relationship" relationship="viewControllers" id="fPr-1M-Pmx"/>
-                        <segue destination="eRT-Pb-Dmr" kind="relationship" relationship="viewControllers" id="nVM-v6-6mY"/>
+                        <segue destination="auR-kS-cd0" kind="relationship" relationship="viewControllers" id="AnK-hh-nUT"/>
                         <segue destination="Rqb-lN-nf5" kind="relationship" relationship="viewControllers" id="NWO-so-yHN"/>
                     </connections>
                 </tabBarController>
@@ -98,7 +98,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4B-g4-JB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2091.1999999999998" y="1471.92118226601"/>
+            <point key="canvasLocation" x="1800" y="1526"/>
         </scene>
         <!--News-->
         <scene sceneID="siQ-4r-aV7">
@@ -138,29 +138,41 @@
             </objects>
             <point key="canvasLocation" x="374" y="1526"/>
         </scene>
-        <!--Portfolio-->
-        <scene sceneID="jKE-qK-ean">
+        <!--PortfolioViewControllerStoryboard-->
+        <scene sceneID="Bcc-md-RSI">
             <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="eRT-Pb-Dmr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Portfolio" image="portfolio-basic" id="mTY-OA-Uj9"/>
+                <viewControllerPlaceholder storyboardName="PortfolioStoryboard" referencedIdentifier="PortfolioViewControllerStoryboard" id="zFz-hr-Ide" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GKY-0d-QLz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vTm-Vp-QZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-781" y="1526"/>
+        </scene>
+        <!--Portfolio-->
+        <scene sceneID="Seq-jd-RfY">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="auR-kS-cd0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Portfolio" image="portfolio-basic" id="Unr-DE-bFC"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="Oiv-4S-S9D">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="bsB-3g-eFT">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zFz-hr-Ide" kind="relationship" relationship="rootViewController" id="l2D-A7-OcL"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u3I-vi-6t7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2YJ-4G-1EP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1754" y="1554"/>
+            <point key="canvasLocation" x="-2095" y="1526"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Iist-basic" width="28" height="24"/>
-        <image name="bar-basic" width="32" height="24"/>
-        <image name="portfolio-basic" width="28" height="24"/>
-        <image name="star-basic" width="28" height="24"/>
+        <image name="Iist-basic" width="24" height="20"/>
+        <image name="bar-basic" width="24" height="21"/>
+        <image name="portfolio-basic" width="24" height="23"/>
+        <image name="star-basic" width="24" height="23"/>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
