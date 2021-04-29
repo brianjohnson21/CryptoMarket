@@ -54,7 +54,12 @@ class PortfolioViewController: UIViewController {
         
         if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddPortfolioViewStoryboard") as? AddPortfolioViewController {
             vc.setup()
-            self.present(vc, animated: true)
+            
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vc)
+            self.present(navBarOnModal, animated: true, completion: nil)
+            
+            
+            //self.present(vc, animated: true)
         }
     }
     

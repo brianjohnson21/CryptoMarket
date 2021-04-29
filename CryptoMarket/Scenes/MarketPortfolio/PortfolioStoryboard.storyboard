@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="-133" y="-81"/>
         </scene>
-        <!--Add Portfolio View Controller-->
+        <!--test-->
         <scene sceneID="Lha-2C-ZxM">
             <objects>
                 <viewController storyboardIdentifier="AddPortfolioViewStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bLt-Qy-vnq" customClass="AddPortfolioViewController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,33 +49,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Label YOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPo-Fe-gyQ">
-                                <rect key="frame" x="144" y="437.5" width="126.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZC3-6k-YEC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" name="MainColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ffZ-7d-MnZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
-                            <constraint firstItem="TPo-Fe-gyQ" firstAttribute="centerX" secondItem="367-aa-uEf" secondAttribute="centerX" id="6Jy-NM-N32"/>
-                            <constraint firstItem="TPo-Fe-gyQ" firstAttribute="centerY" secondItem="367-aa-uEf" secondAttribute="centerY" id="mmt-cK-5mc"/>
+                            <constraint firstItem="ffZ-7d-MnZ" firstAttribute="trailing" secondItem="ZC3-6k-YEC" secondAttribute="trailing" id="Bik-0y-KIq"/>
+                            <constraint firstItem="ZC3-6k-YEC" firstAttribute="leading" secondItem="ffZ-7d-MnZ" secondAttribute="leading" id="LJ1-Ju-aaQ"/>
+                            <constraint firstAttribute="bottom" secondItem="ZC3-6k-YEC" secondAttribute="bottom" id="LSz-M2-Rsd"/>
+                            <constraint firstItem="ZC3-6k-YEC" firstAttribute="top" secondItem="ffZ-7d-MnZ" secondAttribute="top" id="gU8-0H-WJe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rOx-RV-P7g"/>
+                    <navigationItem key="navigationItem" title="test" id="Ugm-t7-tJn">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="44N-I7-8Bl">
+                            <color key="tintColor" name="White"/>
+                            <connections>
+                                <action selector="cancelTrigger:" destination="bLt-Qy-vnq" id="GIK-rn-Ic7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="zsh-6Z-n7P">
+                            <color key="tintColor" name="White"/>
+                            <connections>
+                                <action selector="doneTrigger:" destination="bLt-Qy-vnq" id="lSu-bF-w06"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ZC3-6k-YEC" id="xVn-BC-FHg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx6-lS-DDi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="-81"/>
+            <point key="canvasLocation" x="2620.289855072464" y="-81.026785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dnv-av-zO0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkg-eu-BvA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTc-DR-KDc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bLt-Qy-vnq" kind="relationship" relationship="rootViewController" id="erx-vC-frf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HSE-sq-hwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710.144927536232" y="-81.026785714285708"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
