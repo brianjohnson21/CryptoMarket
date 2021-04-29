@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddPortfolioViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private let viewModel: AddPortfolioViewModel = AddPortfolioViewModel()
+    private let disposeBag: DisposeBag = DisposeBag()
+    private var tableviewDataSources: [String] = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.setupView()
+        self.setupTableView()
+        self.setupViewModel()
     }
     
     @IBAction private func cancelTrigger(_ sender: UIBarButtonItem) {
@@ -31,6 +40,14 @@ class AddPortfolioViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.init(named: "MainColor")
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    private func setupTableView() {
+        
+    }
+    
+    private func setupViewModel() {
+        
     }
     
     internal func setup() {

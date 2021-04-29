@@ -74,6 +74,7 @@
 		E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
 		E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */; };
+		E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */; };
 		E9C29A8226394F56000CCE48 /* PortfolioStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C29A8126394F56000CCE48 /* PortfolioStoryboard.storyboard */; };
 		E9C29A8526394F98000CCE48 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */; };
 		E9C29A882639579F000CCE48 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */; };
@@ -183,6 +184,7 @@
 		E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewModel.swift; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewModel.swift; sourceTree = "<group>"; };
 		E9C29A8126394F56000CCE48 /* PortfolioStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PortfolioStoryboard.storyboard; sourceTree = "<group>"; };
 		E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 			children = (
 				E9F351FC263A0F650040981C /* CellViewModel */,
 				E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */,
+				E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */,
 				1EBF8A182336AF3300E79306 /* MarketFavoritesViewController.swift in Sources */,
+				E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */,
 				1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */,
 				E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */,
 				E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */,
