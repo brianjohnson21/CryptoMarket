@@ -7,12 +7,28 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 internal class AddPortfolioViewModel: ViewModelType {
     struct Input {}
-    struct Output {}
+    
+    struct Output {
+        let tableviewDataSources: Observable<[PortfolioCellProtocol]>
+    }
+    
+    private func createInputOnCellPortfolio() -> [PortfolioCellProtocol] {
+        var tableView: [PortfolioCellProtocol] = []
+        
+        tableView.append(InputCell(title: "Amount"))
+        tableView.append(InputCell(title: "Price"))
+        
+        return tableView
+    }
     
     func transform(input: Input) -> Output {
-        return Output()
+        let tableViewSource = self.createInputOnCellPortfolio()
+        
+        return Output(tableviewDataSources: Driver.just(tableViewSource).asObservable())
     }
 }

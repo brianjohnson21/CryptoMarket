@@ -16,7 +16,7 @@ class AddPortfolioViewController: UIViewController {
     
     private let viewModel: AddPortfolioViewModel = AddPortfolioViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
-    private var tableviewDataSources: [String] = []
+    private var tableviewDataSources: [PortfolioCellProtocol] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +43,43 @@ class AddPortfolioViewController: UIViewController {
     }
     
     private func setupTableView() {
-        
+        self.tableView.register(AddInputTableViewCell.nib, forCellReuseIdentifier: AddInputTableViewCell.identifier)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     private func setupViewModel() {
+        let input = AddPortfolioViewModel.Input()
+        let output = self.viewModel.transform(input: input)
         
+        output.tableviewDataSources.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { tableViewSource in
+                self.tableviewDataSources = tableViewSource
+                self.tableView.reloadData()
+            }).disposed(by: self.disposeBag)
     }
     
     internal func setup() {
         print("setup")
     }
 
+}
+
+extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let source = self.tableviewDataSources[indexPath.row] as? InputCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: AddInputTableViewCell.identifier, for: indexPath) as? AddInputTableViewCell {
+                cell.amountDisplay = source.title
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableviewDataSources.count
+    }
 }

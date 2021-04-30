@@ -69,7 +69,10 @@
 		BDE0FA57DBA20E0313FF522B /* Pods_CryptoMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90737B4C155982A9A5181F2A /* Pods_CryptoMarket.framework */; };
 		E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9154B932327C8D900A3170E /* MarketTableViewCell.swift */; };
 		E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9154B942327C8D900A3170E /* MarketTableViewCell.xib */; };
+		E918DC86263C293C0019ACA0 /* PortfolioCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */; };
 		E925B062232FA34900AD8D10 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E925B061232FA34900AD8D10 /* Market.storyboard */; };
+		E9478E65263B439D00C6E9C8 /* AddInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */; };
+		E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
 		E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
@@ -179,7 +182,10 @@
 		BCC7A83B4BDE3F41A8F76D89 /* Pods-CryptoMarketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9154B932327C8D900A3170E /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		E9154B942327C8D900A3170E /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
+		E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellProtocol.swift; sourceTree = "<group>"; };
 		E925B061232FA34900AD8D10 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
+		E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInputTableViewCell.swift; sourceTree = "<group>"; };
+		E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInputTableViewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
 		E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewModel.swift; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
@@ -651,6 +657,8 @@
 			children = (
 				E9C29A8B26395956000CCE48 /* PortfolioTableViewCell.swift */,
 				E9C29A8C26395956000CCE48 /* PortfolioTableViewCell.xib */,
+				E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */,
+				E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -672,6 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */,
+				E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */,
 			);
 			path = CellViewModel;
 			sourceTree = "<group>";
@@ -794,6 +803,7 @@
 				1E839658233AB58000597E34 /* MarketNews.storyboard in Resources */,
 				1EE00AB123898DF400AACB0D /* InformationTableViewCell.xib in Resources */,
 				E925B062232FA34900AD8D10 /* Market.storyboard in Resources */,
+				E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */,
 				1E3421BE24016AFB00F44F9F /* LineChart.xib in Resources */,
 				1EC035AC2420FBA900C8FDDC /* heartAnimation.json in Resources */,
 				1E6795EA23A826B80072A8DC /* HeaderInformationTableViewCell.xib in Resources */,
@@ -916,6 +926,7 @@
 				1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */,
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
+				E918DC86263C293C0019ACA0 /* PortfolioCellProtocol.swift in Sources */,
 				1E3BB42323EE294400DBF600 /* ChartContentViewModel.swift in Sources */,
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
 				E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */,
@@ -937,6 +948,7 @@
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E9F35200263A13F10040981C /* AddPortfolioViewController.swift in Sources */,
+				E9478E65263B439D00C6E9C8 /* AddInputTableViewCell.swift in Sources */,
 				E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */,
 				1E3421C824016EB200F44F9F /* PieChart.swift in Sources */,
 				1EC5C645237F433200EFCA40 /* ErrorMessage.swift in Sources */,
