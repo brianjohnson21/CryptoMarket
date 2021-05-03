@@ -111,4 +111,10 @@ extension AddCryptoViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("WE SELECT = \(self.tableViewDataSource[indexPath.row])")
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.dismiss(animated: true)
+    }
 }
