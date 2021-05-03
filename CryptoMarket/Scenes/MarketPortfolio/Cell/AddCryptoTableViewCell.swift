@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddCryptoTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var imageDisplay: UIImageView!
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var shortTitle: UILabel!
+    
+    private let viewModel: MarketCellViewModel = MarketCellViewModel()
+    private let disposeBag = DisposeBag()
+    private let spinner = UIActivityIndicatorView(style: .whiteLarge)
 
     override func awakeFromNib() {
         super.awakeFromNib()

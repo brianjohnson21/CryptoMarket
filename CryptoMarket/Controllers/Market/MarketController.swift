@@ -24,8 +24,6 @@ class MarketController: UIViewController, UISearchControllerDelegate {
     
     //MARK: Outlets
     @IBOutlet private weak var tableViewMarket: UITableView!
-    @IBOutlet private weak var quickSearchBar: UISearchBar!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
