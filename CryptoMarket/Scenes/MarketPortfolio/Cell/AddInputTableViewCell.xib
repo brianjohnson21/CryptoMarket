@@ -26,15 +26,19 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-s2-NIn">
                         <rect key="frame" x="274" y="7" width="30" height="30"/>
+                        <color key="backgroundColor" name="SoftWhite"/>
                         <state key="normal" title="BTC">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-dn-EKs">
-                        <rect key="frame" x="189" y="9" width="77" height="26.5"/>
+                        <rect key="frame" x="146" y="9" width="120" height="26.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="4gy-gz-suq"/>
+                        </constraints>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                     </textField>
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
@@ -43,7 +47,7 @@
                     <constraint firstAttribute="trailing" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="16" id="TwI-lQ-hRL"/>
                     <constraint firstItem="YU1-dn-EKs" firstAttribute="centerY" secondItem="Xq8-s2-NIn" secondAttribute="centerY" id="WIO-UZ-4Kj"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eb9-IT-8MG"/>
-                    <constraint firstItem="YU1-dn-EKs" firstAttribute="leading" relation="lessThanOrEqual" secondItem="t67-jh-v1Q" secondAttribute="trailing" constant="113" id="i3M-ra-bG6"/>
+                    <constraint firstItem="YU1-dn-EKs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t67-jh-v1Q" secondAttribute="trailing" constant="8" id="i3M-ra-bG6"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oht-Ua-gcB"/>
                     <constraint firstItem="Xq8-s2-NIn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="v2k-Ya-BPG"/>
                 </constraints>
@@ -53,12 +57,15 @@
                 <outlet property="amountInput" destination="YU1-dn-EKs" id="huQ-Bs-Wh6"/>
                 <outlet property="amountLabel" destination="t67-jh-v1Q" id="TuX-j5-vGy"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
+            <point key="canvasLocation" x="-230" y="103"/>
         </tableViewCell>
     </objects>
     <resources>
         <namedColor name="MainColor">
             <color red="0.10588235294117647" green="0.16470588235294117" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SoftWhite">
+            <color red="1" green="1" blue="1" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

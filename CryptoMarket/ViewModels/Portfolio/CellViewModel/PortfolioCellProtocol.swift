@@ -10,6 +10,7 @@ import Foundation
 
 internal enum CellModelType: String {
     case InputCell
+    case DateCell
 }
 
 internal protocol PortfolioCellProtocol {
@@ -21,6 +22,30 @@ internal final class InputCell: PortfolioCellProtocol {
     
     var type: CellModelType {
         return .InputCell
+    }
+    
+    init(title: String) {
+        self.title = title
+    }
+}
+
+internal final class DateCell: PortfolioCellProtocol {
+    var title: String
+    
+    var type: CellModelType {
+        return .DateCell
+    }
+    
+    init(title: String) {
+        self.title = title
+    }
+}
+
+internal final class ContentPortfolioCell: PortfolioCellProtocol {
+    var title: String
+    
+    var type: CellModelType {
+        .InputCell
     }
     
     init(title: String) {

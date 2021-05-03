@@ -16,7 +16,7 @@ class AddPortfolioViewController: UIViewController {
     
     private let viewModel: AddPortfolioViewModel = AddPortfolioViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
-    private var tableviewDataSources: [PortfolioCellProtocol] = []
+    private var tableviewDataSources: [Int: [PortfolioCellProtocol]] = [:]
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,7 @@ class AddPortfolioViewController: UIViewController {
     
     private func setupTableView() {
         self.tableView.register(AddInputTableViewCell.nib, forCellReuseIdentifier: AddInputTableViewCell.identifier)
+        self.tableView.register(AddDateTableViewCell.nib, forCellReuseIdentifier: AddDateTableViewCell.identifier)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -69,17 +70,32 @@ class AddPortfolioViewController: UIViewController {
 
 extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableviewDataSources[section]?.count ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let source = self.tableviewDataSources[indexPath.row] as? InputCell {
+        let data = self.tableviewDataSources[indexPath.section]
+        if let source = data?[indexPath.row] as? InputCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: AddInputTableViewCell.identifier, for: indexPath) as? AddInputTableViewCell {
                 cell.amountDisplay = source.title
+                
+                return cell
+            }
+        } else if let source = data?[indexPath.row] as? DateCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: AddDateTableViewCell.identifier, for: indexPath) as? AddDateTableViewCell {
+                cell.title = source.title
                 return cell
             }
         }
         return UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableviewDataSources.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }

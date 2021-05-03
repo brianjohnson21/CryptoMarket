@@ -71,6 +71,8 @@
 		E9154B962327C8D900A3170E /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9154B942327C8D900A3170E /* MarketTableViewCell.xib */; };
 		E918DC86263C293C0019ACA0 /* PortfolioCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */; };
 		E925B062232FA34900AD8D10 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E925B061232FA34900AD8D10 /* Market.storyboard */; };
+		E93AB6D2263FCE3D0080F8CD /* AddDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */; };
+		E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */; };
 		E9478E65263B439D00C6E9C8 /* AddInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */; };
 		E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
@@ -184,6 +186,8 @@
 		E9154B942327C8D900A3170E /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
 		E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellProtocol.swift; sourceTree = "<group>"; };
 		E925B061232FA34900AD8D10 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
+		E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateTableViewCell.swift; sourceTree = "<group>"; };
+		E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDateTableViewCell.xib; sourceTree = "<group>"; };
 		E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInputTableViewCell.swift; sourceTree = "<group>"; };
 		E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInputTableViewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
@@ -659,6 +663,8 @@
 				E9C29A8C26395956000CCE48 /* PortfolioTableViewCell.xib */,
 				E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */,
 				E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */,
+				E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */,
+				E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -794,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */,
+				E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
 				1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */,
@@ -945,6 +952,7 @@
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
 				E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */,
 				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
+				E93AB6D2263FCE3D0080F8CD /* AddDateTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
 				1EC5C647238010B600EFCA40 /* MarketInformationViewController.swift in Sources */,
 				E9F35200263A13F10040981C /* AddPortfolioViewController.swift in Sources */,

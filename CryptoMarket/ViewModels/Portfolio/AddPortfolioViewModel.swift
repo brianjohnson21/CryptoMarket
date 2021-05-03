@@ -14,16 +14,27 @@ internal class AddPortfolioViewModel: ViewModelType {
     struct Input {}
     
     struct Output {
-        let tableviewDataSources: Observable<[PortfolioCellProtocol]>
+        let tableviewDataSources: Observable<[Int: [PortfolioCellProtocol]]>
     }
     
-    private func createInputOnCellPortfolio() -> [PortfolioCellProtocol] {
-        var tableView: [PortfolioCellProtocol] = []
+    private func createInputOnCellPortfolio() -> [Int: [PortfolioCellProtocol]] {
         
-        tableView.append(InputCell(title: "Amount"))
-        tableView.append(InputCell(title: "Price"))
+        var tableViewInput: [PortfolioCellProtocol] = []
+        var tableViewDate: [PortfolioCellProtocol] = []
         
-        return tableView
+        var dataTableView: [Int: [PortfolioCellProtocol]] = [:]
+        
+        tableViewInput.append(InputCell(title: "Amount"))
+        tableViewInput.append(InputCell(title: "Price"))
+        tableViewInput.append(InputCell(title: "Total"))
+        tableViewInput.append(InputCell(title: "Fee"))
+        
+        tableViewDate.append(DateCell(title: "Date"))
+        
+        dataTableView[0] = tableViewInput
+        dataTableView[1] = tableViewDate
+        
+        return dataTableView
     }
     
     func transform(input: Input) -> Output {

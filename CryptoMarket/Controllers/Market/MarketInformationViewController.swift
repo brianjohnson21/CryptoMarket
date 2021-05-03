@@ -190,6 +190,7 @@ extension MarketInformationViewController: UITableViewDelegate, UITableViewDataS
                 
                 cell.detail = item.items[indexPath.row]?.0
                 cell.title = item.items[indexPath.row]?.1
+                
                 return cell
             }
         }
