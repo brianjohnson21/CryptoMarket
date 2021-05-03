@@ -10,10 +10,20 @@ import UIKit
 
 class AddCryptoViewController: UIViewController {
 
+    @IBOutlet private weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupView()
+        self.setupViewModel()
     }
 
-
+    private func setupView() {
+        
+    }
+    
+    private func setupViewModel() {
+        
+    }
 }

@@ -74,6 +74,8 @@
 		E93AB6D2263FCE3D0080F8CD /* AddDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */; };
 		E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */; };
 		E93AB6D5263FD3200080F8CD /* AddCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D4263FD3200080F8CD /* AddCryptoViewController.swift */; };
+		E93AB6D8263FD8580080F8CD /* AddCryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D6263FD8580080F8CD /* AddCryptoTableViewCell.swift */; };
+		E93AB6D9263FD8580080F8CD /* AddCryptoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93AB6D7263FD8580080F8CD /* AddCryptoTableViewCell.xib */; };
 		E9478E65263B439D00C6E9C8 /* AddInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */; };
 		E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
@@ -190,6 +192,8 @@
 		E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateTableViewCell.swift; sourceTree = "<group>"; };
 		E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDateTableViewCell.xib; sourceTree = "<group>"; };
 		E93AB6D4263FD3200080F8CD /* AddCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoViewController.swift; sourceTree = "<group>"; };
+		E93AB6D6263FD8580080F8CD /* AddCryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoTableViewCell.swift; sourceTree = "<group>"; };
+		E93AB6D7263FD8580080F8CD /* AddCryptoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCryptoTableViewCell.xib; sourceTree = "<group>"; };
 		E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInputTableViewCell.swift; sourceTree = "<group>"; };
 		E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInputTableViewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
@@ -668,6 +672,8 @@
 				E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */,
 				E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */,
 				E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */,
+				E93AB6D6263FD8580080F8CD /* AddCryptoTableViewCell.swift */,
+				E93AB6D7263FD8580080F8CD /* AddCryptoTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -806,6 +812,7 @@
 				E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
+				E93AB6D9263FD8580080F8CD /* AddCryptoTableViewCell.xib in Resources */,
 				1E3D8AD023D0F08D00D8A643 /* NewsTableViewCell.xib in Resources */,
 				E9C29A8E26395956000CCE48 /* PortfolioTableViewCell.xib in Resources */,
 				1EC035AE242136CB00C8FDDC /* LineChartFear.xib in Resources */,
@@ -946,6 +953,7 @@
 				E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */,
 				E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */,
 				1E482EA72388B39E00C05DA8 /* MarketInformationViewModel.swift in Sources */,
+				E93AB6D8263FD8580080F8CD /* AddCryptoTableViewCell.swift in Sources */,
 				1EBF8A182336AF3300E79306 /* MarketFavoritesViewController.swift in Sources */,
 				E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */,
 				1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */,

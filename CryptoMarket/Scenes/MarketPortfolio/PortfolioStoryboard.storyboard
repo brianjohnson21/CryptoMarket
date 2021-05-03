@@ -101,14 +101,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J1m-It-skw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" name="MainColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5cw-oO-aZh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5cw-oO-aZh" firstAttribute="bottom" secondItem="J1m-It-skw" secondAttribute="bottom" id="7CE-uz-QtX"/>
+                            <constraint firstItem="J1m-It-skw" firstAttribute="top" secondItem="5cw-oO-aZh" secondAttribute="top" id="Og3-ME-9Va"/>
+                            <constraint firstItem="J1m-It-skw" firstAttribute="leading" secondItem="5cw-oO-aZh" secondAttribute="leading" id="ZIs-hk-rP9"/>
                             <constraint firstItem="e2N-3b-7EK" firstAttribute="centerX" secondItem="jur-M1-zJ7" secondAttribute="centerX" id="dBI-pN-Kd9"/>
+                            <constraint firstItem="5cw-oO-aZh" firstAttribute="trailing" secondItem="J1m-It-skw" secondAttribute="trailing" id="hlo-ns-MPs"/>
                             <constraint firstItem="e2N-3b-7EK" firstAttribute="centerY" secondItem="jur-M1-zJ7" secondAttribute="centerY" id="keS-j7-4SE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="J1m-It-skw" id="ZBa-pP-ejm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WR-fJ-1si" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
