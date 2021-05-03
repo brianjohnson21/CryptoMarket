@@ -78,6 +78,8 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
         let data = self.tableviewDataSources[indexPath.section]
         if let source = data?[indexPath.row] as? InputCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: AddInputTableViewCell.identifier, for: indexPath) as? AddInputTableViewCell {
+                
+                cell.setup(with: self)
                 cell.amountDisplay = source.title
                 
                 return cell

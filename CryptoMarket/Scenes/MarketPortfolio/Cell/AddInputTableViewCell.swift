@@ -13,6 +13,8 @@ class AddInputTableViewCell: UITableViewCell {
     @IBOutlet weak private var amountLabel: UILabel!
     @IBOutlet weak private var amountInput: UITextField!
     
+    private var withControllerPresenting: UIViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -26,7 +28,17 @@ class AddInputTableViewCell: UITableViewCell {
         get { return self.amountInput.text }
         set { self.amountInput.text = newValue }
     }
-
+    
+    internal func setup(with controllerPresenting: UIViewController) {
+        self.withControllerPresenting = controllerPresenting
+    }
+    
+    @IBAction private func onSelectItem(_ sender: UIButton) {
+        if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddCryptoStoryboard") as? AddCryptoViewController {
+            self.withControllerPresenting?.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

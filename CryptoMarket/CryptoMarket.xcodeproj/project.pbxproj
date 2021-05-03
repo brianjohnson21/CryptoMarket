@@ -73,6 +73,7 @@
 		E925B062232FA34900AD8D10 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E925B061232FA34900AD8D10 /* Market.storyboard */; };
 		E93AB6D2263FCE3D0080F8CD /* AddDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */; };
 		E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */; };
+		E93AB6D5263FD3200080F8CD /* AddCryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB6D4263FD3200080F8CD /* AddCryptoViewController.swift */; };
 		E9478E65263B439D00C6E9C8 /* AddInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */; };
 		E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
@@ -188,6 +189,7 @@
 		E925B061232FA34900AD8D10 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		E93AB6D0263FCE3D0080F8CD /* AddDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateTableViewCell.swift; sourceTree = "<group>"; };
 		E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDateTableViewCell.xib; sourceTree = "<group>"; };
+		E93AB6D4263FD3200080F8CD /* AddCryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoViewController.swift; sourceTree = "<group>"; };
 		E9478E63263B439D00C6E9C8 /* AddInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInputTableViewCell.swift; sourceTree = "<group>"; };
 		E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInputTableViewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			children = (
 				E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */,
 				E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */,
+				E93AB6D4263FD3200080F8CD /* AddCryptoViewController.swift */,
 			);
 			path = MarketPortfolio;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				1E51B01823219CC10087E38C /* MarketController.swift in Sources */,
 				1EC035B92421555300C8FDDC /* NetworkMarket.swift in Sources */,
 				1EE00AB023898DF400AACB0D /* InformationTableViewCell.swift in Sources */,
+				E93AB6D5263FD3200080F8CD /* AddCryptoViewController.swift in Sources */,
 				1E4C050623C2608D00F798CD /* CryptoMarket.xcdatamodeld in Sources */,
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,

@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -84,7 +85,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx6-lS-DDi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620.289855072464" y="-81.026785714285708"/>
+            <point key="canvasLocation" x="1726" y="-81"/>
+        </scene>
+        <!--Add Crypto View Controller-->
+        <scene sceneID="50a-Ky-MkC">
+            <objects>
+                <viewController storyboardIdentifier="AddCryptoStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sf2-B1-XE2" customClass="AddCryptoViewController" customModule="CryptoMarket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jur-M1-zJ7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AddCryptoStoryboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2N-3b-7EK">
+                                <rect key="frame" x="123" y="437.5" width="168" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5cw-oO-aZh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e2N-3b-7EK" firstAttribute="centerX" secondItem="jur-M1-zJ7" secondAttribute="centerX" id="dBI-pN-Kd9"/>
+                            <constraint firstItem="e2N-3b-7EK" firstAttribute="centerY" secondItem="jur-M1-zJ7" secondAttribute="centerY" id="keS-j7-4SE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6WR-fJ-1si" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2661" y="-90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dnv-av-zO0">
@@ -106,7 +134,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSE-sq-hwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710.144927536232" y="-81.026785714285708"/>
+            <point key="canvasLocation" x="816" y="-81"/>
         </scene>
     </scenes>
     <resources>
@@ -116,5 +144,8 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
