@@ -16,7 +16,8 @@ internal final class AddInputViewModel: ViewModelType {
     private let mainVM: AddPortfolioViewModel
     
     struct Input {
-        let onTap: Observable<Int>
+        let onSelectCrypto: Observable<Int>
+        let onSelectMonyey: Observable<Int>
     }
     
     struct Output {
@@ -28,11 +29,18 @@ internal final class AddInputViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.onTap
+        input.onSelectCrypto
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { row in
-                self.mainVM.onSelectTap(row: row)
+                self.mainVM.onSelectCryptoEvent(row: row)
+            }).disposed(by: self.disposeBag)
+        
+        input.onSelectMonyey
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { row in
+                self.mainVM.onSelectMoneyEvent(row: row)
             }).disposed(by: self.disposeBag)
         
         return Output()

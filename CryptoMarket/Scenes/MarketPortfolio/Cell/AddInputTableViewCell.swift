@@ -19,7 +19,8 @@ class AddInputTableViewCell: UITableViewCell {
     
     private var viewModel: AddInputViewModel? = nil
     private var rowSelected: Int? = 0
-    private let onTapEvent: PublishSubject<Int> = PublishSubject<Int>()
+    private let onSelectCrypto: PublishSubject<Int> = PublishSubject<Int>()
+    private let onSelectMoney: PublishSubject<Int> = PublishSubject<Int>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,16 +49,17 @@ class AddInputTableViewCell: UITableViewCell {
     }
     
     private func setupViewModel() {
-        let input = AddInputViewModel.Input(onTap: self.onTapEvent.asObservable())
+        let input = AddInputViewModel.Input(onSelectCrypto: self.onSelectCrypto.asObservable(),
+                                            onSelectMonyey: self.onSelectMoney.asObservable())
         _ = self.viewModel?.transform(input: input)
     }
     
     @IBAction private func onSelectCrypto(_ sender: UIButton) {
-        self.onTapEvent.onNext(self.rowSelected ?? 0)
+        self.onSelectCrypto.onNext(self.rowSelected ?? 0)
     }
     
     @IBAction private func onSelectUsd(_ sender: UIButton) {
-        
+        self.onSelectMoney.onNext(self.rowSelected ?? 0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

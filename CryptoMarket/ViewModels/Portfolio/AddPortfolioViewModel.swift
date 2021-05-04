@@ -12,16 +12,20 @@ import RxSwift
 
 internal class AddPortfolioViewModel: ViewModelType {
     
-    private let onTapCellEvent: PublishSubject<(Market, Int)> = PublishSubject<(Market, Int)>()
-    private let onCellTap: PublishSubject<Int> = PublishSubject<Int>()
+    private let onCryptoItemSelected: PublishSubject<(Market, Int)> = PublishSubject<(Market, Int)>()
+    private let onMoneyItemSelected: PublishSubject<(MoneySelectedValue, Int)> = PublishSubject<(MoneySelectedValue, Int)>()
     
-    struct Input {
-        
-    }
+    private let onCryptoCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
+    private let onMoneyCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
+    
+    struct Input { }
     
     struct Output {
-        let onTapCellEvent: Observable<(Market, Int)>
-        let onSelectTap: Observable<Int>
+        let onCryptoItemSelected: Observable<(Market, Int)>
+        let onMoneyItemSelected: Observable<(MoneySelectedValue, Int)>
+        
+        let onCryptoSelectEvent: Observable<Int>
+        let onMoneySelectEvent: Observable<Int>
         let tableviewDataSources: Observable<[Int: [PortfolioCellProtocol]]>
     }
     
@@ -45,19 +49,29 @@ internal class AddPortfolioViewModel: ViewModelType {
         return dataTableView
     }
     
-    internal func onCellTap(with event: Market, with row: Int) {
-        self.onTapCellEvent.onNext((event, row))
+    internal func onCryptoCellEvent(with event: Market, with row: Int) {
+        self.onCryptoItemSelected.onNext((event, row))
     }
     
-    internal func onSelectTap(row selected: Int) {
-        self.onCellTap.onNext(selected)
+    internal func onMoneyCellEvent(with event: MoneySelectedValue, with row: Int) {
+        self.onMoneyItemSelected.onNext((event, row))
     }
     
+    internal func onSelectCryptoEvent(row selected: Int) {
+        self.onCryptoCellTapEvent.onNext(selected)
+    }
+    
+    internal func onSelectMoneyEvent(row selected: Int) {
+        self.onMoneyCellTapEvent.onNext(selected)
+    }
+
     func transform(input: Input) -> Output {
         let tableViewSource = self.createInputOnCellPortfolio()
         
-        return Output(onTapCellEvent: self.onTapCellEvent.asObservable(),
-                      onSelectTap: self.onCellTap.asObservable(),
+        return Output(onCryptoItemSelected: self.onCryptoItemSelected.asObservable(),
+                      onMoneyItemSelected: self.onMoneyItemSelected.asObservable(),
+                      onCryptoSelectEvent: self.onCryptoCellTapEvent.asObservable(),
+                      onMoneySelectEvent: self.onMoneyCellTapEvent.asObservable(),
                       tableviewDataSources: Driver.just(tableViewSource).asObservable())
     }
 }

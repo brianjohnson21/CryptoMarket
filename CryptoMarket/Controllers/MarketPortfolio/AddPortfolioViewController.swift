@@ -61,18 +61,36 @@ class AddPortfolioViewController: UIViewController {
                 self.tableView.reloadData()
             }).disposed(by: self.disposeBag)
         
-        output.onTapCellEvent.asObservable()
+        output.onCryptoItemSelected.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
                 self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
             }).disposed(by: self.disposeBag)
         
-        output.onSelectTap.asObservable()
+        output.onMoneySelectEvent.asObservable()
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { event in
+                //self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
+                print("SHOWING = \(event)")
+            }).disposed(by: self.disposeBag)
+        
+        output.onCryptoSelectEvent.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { row in
                 if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddCryptoStoryboard") as? AddCryptoViewController {
+                    vc.setup(with: self.viewModel, with: row)
+                    self.present(vc, animated: true)
+                }
+            }).disposed(by: self.disposeBag)
+        
+        output.onMoneySelectEvent
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { row in
+                if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddMoneyStoryboard") as? AddMoneyViewController {
                     vc.setup(with: self.viewModel, with: row)
                     self.present(vc, animated: true)
                 }
