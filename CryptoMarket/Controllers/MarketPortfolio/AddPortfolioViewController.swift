@@ -65,8 +65,7 @@ class AddPortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
-                print("current select = \(event)")
-                self.updateRowTableView(with: event.1, symbol: event.0.symbol ?? "")
+                self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
             }).disposed(by: self.disposeBag)
         
         output.onSelectTap.asObservable()
@@ -90,7 +89,7 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
         return self.tableviewDataSources[section]?.count ?? 0
     }
     
-    func updateRowTableView(with row: Int, symbol name: String) {
+    func updateRowButtonName(with row: Int, symbol name: String) {
         let item = self.tableviewDataSources[0]
         if let source = item?[row] as? InputCell {
             source.buttonName = name
@@ -106,7 +105,7 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
                 if let name = source.buttonName {
                     cell.setButtonName(with: name)
                 }
-                cell.setup(with: self, with: self.viewModel, with: indexPath.row)
+                cell.setup(with: self.viewModel, with: indexPath.row)
                 cell.amountDisplay = source.title
                 return cell
             }

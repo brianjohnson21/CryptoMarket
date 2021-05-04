@@ -37,7 +37,7 @@ class AddInputTableViewCell: UITableViewCell {
         self.buttonName.setTitle(name, for: .normal)
     }
     
-    internal func setup(with controllerPresenting: UIViewController, with vm: AddPortfolioViewModel, with row: Int) {
+    internal func setup(with vm: AddPortfolioViewModel, with row: Int) {
         self.viewModel = AddInputViewModel(vm: vm)
         self.rowSelected = row
         self.setupViewModel()
@@ -45,10 +45,7 @@ class AddInputTableViewCell: UITableViewCell {
     
     private func setupViewModel() {
         let input = AddInputViewModel.Input(onTap: self.onTapEvent.asObservable())
-        
-        let output = self.viewModel?.transform(input: input)
-        
-        print(output)
+        _ = self.viewModel?.transform(input: input)
     }
     
     @IBAction private func onSelectItem(_ sender: UIButton) {
