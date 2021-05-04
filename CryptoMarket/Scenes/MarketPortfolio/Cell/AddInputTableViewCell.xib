@@ -25,13 +25,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-s2-NIn">
-                        <rect key="frame" x="274" y="7" width="30" height="30"/>
+                        <rect key="frame" x="274" y="8" width="30" height="28"/>
                         <color key="backgroundColor" name="SoftWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="BTC">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
-                            <action selector="onSelectItem:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2i7-dt-exK"/>
+                            <action selector="onSelectCrypto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3ls-wO-TM9"/>
                         </connections>
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-dn-EKs">
@@ -43,13 +44,25 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMy-v3-6Th">
+                        <rect key="frame" x="274" y="7" width="30" height="31"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="USD"/>
+                        <connections>
+                            <action selector="onSelectUsd:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="trY-CC-w3X"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="leading" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="-30" id="5KM-Uy-Kjh"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="top" secondItem="Xq8-s2-NIn" secondAttribute="bottom" constant="-29" id="FpT-1o-elF"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="width" secondItem="Xq8-s2-NIn" secondAttribute="width" id="HUa-ve-BuA"/>
                     <constraint firstItem="Xq8-s2-NIn" firstAttribute="leading" secondItem="YU1-dn-EKs" secondAttribute="trailing" constant="8" symbolic="YES" id="OTi-g8-22F"/>
                     <constraint firstAttribute="trailing" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="16" id="TwI-lQ-hRL"/>
                     <constraint firstItem="YU1-dn-EKs" firstAttribute="centerY" secondItem="Xq8-s2-NIn" secondAttribute="centerY" id="WIO-UZ-4Kj"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eb9-IT-8MG"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="height" secondItem="Xq8-s2-NIn" secondAttribute="height" multiplier="1.10714" id="hCm-CM-vYT"/>
                     <constraint firstItem="YU1-dn-EKs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t67-jh-v1Q" secondAttribute="trailing" constant="8" id="i3M-ra-bG6"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oht-Ua-gcB"/>
                     <constraint firstItem="Xq8-s2-NIn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="v2k-Ya-BPG"/>
@@ -59,9 +72,10 @@
             <connections>
                 <outlet property="amountInput" destination="YU1-dn-EKs" id="huQ-Bs-Wh6"/>
                 <outlet property="amountLabel" destination="t67-jh-v1Q" id="TuX-j5-vGy"/>
-                <outlet property="buttonName" destination="Xq8-s2-NIn" id="6V2-HX-AV6"/>
+                <outlet property="cryptoButton" destination="Xq8-s2-NIn" id="Xns-us-saq"/>
+                <outlet property="moneyButton" destination="WMy-v3-6Th" id="smh-ak-lfG"/>
             </connections>
-            <point key="canvasLocation" x="-230" y="103"/>
+            <point key="canvasLocation" x="-230.43478260869566" y="102.45535714285714"/>
         </tableViewCell>
     </objects>
     <resources>

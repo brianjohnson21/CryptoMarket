@@ -105,7 +105,7 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
                 if let name = source.buttonName {
                     cell.setButtonName(with: name)
                 }
-                cell.setup(with: self.viewModel, with: indexPath.row)
+                cell.setup(with: self.viewModel, with: indexPath.row, isCrypto: false)
                 cell.amountDisplay = source.title
                 return cell
             }
