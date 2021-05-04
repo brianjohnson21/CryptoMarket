@@ -85,6 +85,8 @@
 		E96124C32640A7490033F0A7 /* AddCryptoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */; };
 		E96124C5264148B10033F0A7 /* AddMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C4264148B10033F0A7 /* AddMoneyViewController.swift */; };
 		E96124C7264149C10033F0A7 /* AddMoneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C6264149C10033F0A7 /* AddMoneyViewModel.swift */; };
+		E96124CA26414D2A0033F0A7 /* MoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C826414D2A0033F0A7 /* MoneyTableViewCell.swift */; };
+		E96124CB26414D2A0033F0A7 /* MoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96124C926414D2A0033F0A7 /* MoneyTableViewCell.xib */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
 		E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */; };
 		E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */; };
@@ -207,6 +209,8 @@
 		E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoCellViewModel.swift; sourceTree = "<group>"; };
 		E96124C4264148B10033F0A7 /* AddMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyViewController.swift; sourceTree = "<group>"; };
 		E96124C6264149C10033F0A7 /* AddMoneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyViewModel.swift; sourceTree = "<group>"; };
+		E96124C826414D2A0033F0A7 /* MoneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTableViewCell.swift; sourceTree = "<group>"; };
+		E96124C926414D2A0033F0A7 /* MoneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyTableViewCell.xib; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -685,6 +689,8 @@
 				E93AB6D1263FCE3D0080F8CD /* AddDateTableViewCell.xib */,
 				E93AB6D6263FD8580080F8CD /* AddCryptoTableViewCell.swift */,
 				E93AB6D7263FD8580080F8CD /* AddCryptoTableViewCell.xib */,
+				E96124C826414D2A0033F0A7 /* MoneyTableViewCell.swift */,
+				E96124C926414D2A0033F0A7 /* MoneyTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -822,6 +828,7 @@
 			files = (
 				1E51B02023219CC20087E38C /* LaunchScreen.storyboard in Resources */,
 				E93AB6D3263FCE3D0080F8CD /* AddDateTableViewCell.xib in Resources */,
+				E96124CB26414D2A0033F0A7 /* MoneyTableViewCell.xib in Resources */,
 				1E51B01D23219CC20087E38C /* Assets.xcassets in Resources */,
 				1E51B01B23219CC10087E38C /* Main.storyboard in Resources */,
 				E93AB6D9263FD8580080F8CD /* AddCryptoTableViewCell.xib in Resources */,
@@ -1003,6 +1010,7 @@
 				E9C29A882639579F000CCE48 /* PortfolioViewModel.swift in Sources */,
 				1EE73D8D2321A50000D83B82 /* MarketViewModel.swift in Sources */,
 				1EC035B72421554A00C8FDDC /* NetworkHistory.swift in Sources */,
+				E96124CA26414D2A0033F0A7 /* MoneyTableViewCell.swift in Sources */,
 				1E791D3A241442910004FEFB /* LineChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

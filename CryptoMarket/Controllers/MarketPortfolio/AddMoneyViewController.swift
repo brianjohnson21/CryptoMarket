@@ -10,6 +10,8 @@ import UIKit
 
 class AddMoneyViewController: UIViewController {
     
+    @IBOutlet private weak var tableView: UITableView!
+    
     private var row: Int = 0
     
     override func viewDidLoad() {

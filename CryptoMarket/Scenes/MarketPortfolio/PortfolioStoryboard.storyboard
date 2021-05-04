@@ -140,6 +140,9 @@
                             <constraint firstItem="9US-Xq-Zlb" firstAttribute="bottom" secondItem="mpv-JF-wYP" secondAttribute="bottom" id="aBP-AM-95S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="mpv-JF-wYP" id="vlL-Uk-sz6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZU-t0-gDz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
