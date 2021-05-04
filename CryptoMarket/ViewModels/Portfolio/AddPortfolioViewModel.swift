@@ -32,10 +32,10 @@ internal class AddPortfolioViewModel: ViewModelType {
         
         var dataTableView: [Int: [PortfolioCellProtocol]] = [:]
         
-        tableViewInput.append(InputCell(title: "Amount", button: nil))
-        tableViewInput.append(InputCell(title: "Price", button: nil))
-        tableViewInput.append(InputCell(title: "Total", button: nil))
-        tableViewInput.append(InputCell(title: "Fee", button: nil))
+        tableViewInput.append(InputCell(title: "Amount", button: nil, isCrypto: true))
+        tableViewInput.append(InputCell(title: "Price", button: nil, isCrypto: false))
+        tableViewInput.append(InputCell(title: "Total", button: nil, isCrypto: false))
+        tableViewInput.append(InputCell(title: "Fee", button: nil, isCrypto: false))
         
         tableViewDate.append(DateCell(title: "Date"))
         
