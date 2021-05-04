@@ -80,6 +80,9 @@
 		E9478E66263B439D00C6E9C8 /* AddInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */; };
 		E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */; };
 		E95FACF1232F652B004FD442 /* MarketNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */; };
+		E96124BC26409ACD0033F0A7 /* AddCryptoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124BB26409ACD0033F0A7 /* AddCryptoViewModel.swift */; };
+		E96124C12640A0DD0033F0A7 /* AddInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C02640A0DD0033F0A7 /* AddInputViewModel.swift */; };
+		E96124C32640A7490033F0A7 /* AddCryptoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
 		E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */; };
 		E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */; };
@@ -92,7 +95,6 @@
 		E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57024232A52AC009A5031 /* ApiRoute.swift */; };
 		E9D5702A232A6502009A5031 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D57029232A6502009A5031 /* String+Ext.swift */; };
 		E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */; };
-		E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */; };
 		E9F35200263A13F10040981C /* AddPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +200,9 @@
 		E9478E64263B439D00C6E9C8 /* AddInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInputTableViewCell.xib; sourceTree = "<group>"; };
 		E95FACEE232F64E1004FD442 /* MarketNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewController.swift; sourceTree = "<group>"; };
 		E95FACF0232F652B004FD442 /* MarketNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNewsViewModel.swift; sourceTree = "<group>"; };
+		E96124BB26409ACD0033F0A7 /* AddCryptoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoViewModel.swift; sourceTree = "<group>"; };
+		E96124C02640A0DD0033F0A7 /* AddInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInputViewModel.swift; sourceTree = "<group>"; };
+		E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -210,7 +215,6 @@
 		E9D57024232A52AC009A5031 /* ApiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRoute.swift; sourceTree = "<group>"; };
 		E9D57029232A6502009A5031 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E9EFBDC8232BAAEA007EDE63 /* MarketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEntity.swift; sourceTree = "<group>"; };
-		E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCellViewModel.swift; sourceTree = "<group>"; };
 		E9F351FF263A13F10040981C /* AddPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewController.swift; sourceTree = "<group>"; };
 		FF4D4DFE9881AC210D32E4A4 /* Pods-CryptoMarketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoMarketTests/Pods-CryptoMarketTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -659,6 +663,7 @@
 				E9F351FC263A0F650040981C /* CellViewModel */,
 				E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */,
 				E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */,
+				E96124BB26409ACD0033F0A7 /* AddCryptoViewModel.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -694,8 +699,9 @@
 		E9F351FC263A0F650040981C /* CellViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E9F351FD263A0F720040981C /* PortfolioCellViewModel.swift */,
 				E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */,
+				E96124C02640A0DD0033F0A7 /* AddInputViewModel.swift */,
+				E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */,
 			);
 			path = CellViewModel;
 			sourceTree = "<group>";
@@ -930,6 +936,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C29A8D26395956000CCE48 /* PortfolioTableViewCell.swift in Sources */,
+				E96124BC26409ACD0033F0A7 /* AddCryptoViewModel.swift in Sources */,
 				1EBAF3182340FE390066F04A /* MarketNewsEntity.swift in Sources */,
 				1E831BAA23410C16006F9730 /* MarketNewCellViewModel.swift in Sources */,
 				1E24068223C13DBC00118DCC /* Date+Ext.swift in Sources */,
@@ -945,6 +952,7 @@
 				1E51B01623219CC10087E38C /* AppDelegate.swift in Sources */,
 				E9154B952327C8D900A3170E /* MarketTableViewCell.swift in Sources */,
 				E918DC86263C293C0019ACA0 /* PortfolioCellProtocol.swift in Sources */,
+				E96124C32640A7490033F0A7 /* AddCryptoCellViewModel.swift in Sources */,
 				1E3BB42323EE294400DBF600 /* ChartContentViewModel.swift in Sources */,
 				E9D57025232A52AC009A5031 /* ApiRoute.swift in Sources */,
 				E9EFBDC9232BAAEA007EDE63 /* MarketEntity.swift in Sources */,
@@ -962,7 +970,6 @@
 				1EE00AB52389EA3100AACB0D /* Observable+Ext.swift in Sources */,
 				1EC035BB2422371400C8FDDC /* LineChartEmotionsViewModel.swift in Sources */,
 				1E24068423C14D5C00118DCC /* MarketHistoryRequest.swift in Sources */,
-				E9F351FE263A0F720040981C /* PortfolioCellViewModel.swift in Sources */,
 				1E3BB42023EE1F5600DBF600 /* ChartContentTableViewCell.swift in Sources */,
 				E93AB6D2263FCE3D0080F8CD /* AddDateTableViewCell.swift in Sources */,
 				1E4C050223C2388000F798CD /* FavoriteViewModel.swift in Sources */,
@@ -980,6 +987,7 @@
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */,
 				E9C29A9026395D72000CCE48 /* PortfolioEntity.swift in Sources */,
+				E96124C12640A0DD0033F0A7 /* AddInputViewModel.swift in Sources */,
 				1EC035B0242136EF00C8FDDC /* LineChartFear.swift in Sources */,
 				1EC035B52421542E00C8FDDC /* NetworkNews.swift in Sources */,
 				1E63485123CC811B00B8002A /* NavigationTitleView.swift in Sources */,

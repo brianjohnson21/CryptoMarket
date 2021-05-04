@@ -59,6 +59,7 @@
             <connections>
                 <outlet property="amountInput" destination="YU1-dn-EKs" id="huQ-Bs-Wh6"/>
                 <outlet property="amountLabel" destination="t67-jh-v1Q" id="TuX-j5-vGy"/>
+                <outlet property="buttonName" destination="Xq8-s2-NIn" id="6V2-HX-AV6"/>
             </connections>
             <point key="canvasLocation" x="-230" y="103"/>
         </tableViewCell>

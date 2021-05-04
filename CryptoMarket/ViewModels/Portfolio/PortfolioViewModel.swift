@@ -47,6 +47,10 @@ internal final class PortfolioViewModel: ViewModelType {
         return Observable.just(3000.00).asObservable()
     }
     
+    internal func onCryptoAddEvent(with event: Market) {
+        print("This has been added!!! \(event)")
+    }
+    
     func transform(input: Input) -> Output {
         self.isLoading.onNext(true)
         

@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -95,26 +94,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AddCryptoStoryboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2N-3b-7EK">
-                                <rect key="frame" x="123" y="437.5" width="168" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J1m-It-skw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="MainColor"/>
+                                <color key="sectionIndexBackgroundColor" name="MainColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5cw-oO-aZh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
-                            <constraint firstItem="5cw-oO-aZh" firstAttribute="bottom" secondItem="J1m-It-skw" secondAttribute="bottom" id="7CE-uz-QtX"/>
-                            <constraint firstItem="J1m-It-skw" firstAttribute="top" secondItem="5cw-oO-aZh" secondAttribute="top" id="Og3-ME-9Va"/>
+                            <constraint firstAttribute="bottom" secondItem="J1m-It-skw" secondAttribute="bottom" id="7CE-uz-QtX"/>
+                            <constraint firstItem="J1m-It-skw" firstAttribute="top" secondItem="jur-M1-zJ7" secondAttribute="top" id="Og3-ME-9Va"/>
                             <constraint firstItem="J1m-It-skw" firstAttribute="leading" secondItem="5cw-oO-aZh" secondAttribute="leading" id="ZIs-hk-rP9"/>
-                            <constraint firstItem="e2N-3b-7EK" firstAttribute="centerX" secondItem="jur-M1-zJ7" secondAttribute="centerX" id="dBI-pN-Kd9"/>
                             <constraint firstItem="5cw-oO-aZh" firstAttribute="trailing" secondItem="J1m-It-skw" secondAttribute="trailing" id="hlo-ns-MPs"/>
-                            <constraint firstItem="e2N-3b-7EK" firstAttribute="centerY" secondItem="jur-M1-zJ7" secondAttribute="centerY" id="keS-j7-4SE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -155,8 +147,5 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

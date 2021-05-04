@@ -12,12 +12,16 @@ import RxCocoa
 
 class AddCryptoViewController: UIViewController {
 
-    private var viewModel: MarketViewModel = MarketViewModel()
+    private var viewModelMarket: MarketViewModel = MarketViewModel()
+    private var viewModel: AddCryptoViewModel? = nil
     private let disposeBag: DisposeBag = DisposeBag()
     private var tableViewDataSource: [Market] = []
     private let spinner = UIActivityIndicatorView(style: .whiteLarge)
     private let quickSearchTextChanged: PublishSubject<String> = PublishSubject<String>()
+    private let onCryptoAdd: PublishSubject<(Market, Int)> = PublishSubject<(Market, Int)>()
     private let refreshControl = UIRefreshControl()
+    private var currentItemSelect: Int = 0
+    private var row: Int = 0
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -26,6 +30,11 @@ class AddCryptoViewController: UIViewController {
 
         self.setupView()
         self.setupViewModel()
+    }
+    
+    internal func setup(with vm: AddPortfolioViewModel, with row: Int) {
+        self.viewModel = AddCryptoViewModel(vm: vm)
+        self.row = row
     }
 
     private func setupView() {
@@ -71,7 +80,10 @@ class AddCryptoViewController: UIViewController {
     private func setupViewModel() {
         let input = MarketViewModel.Input(loaderTrigger: self.refreshControl.rx.controlEvent(.valueChanged).asDriver().map { _ in !self.refreshControl.isRefreshing }.filter { $0 ==  false}, quickSearchText: (self.navigationItem.searchController?.searchBar.rx.text.asDriver())!)
         
-        let output = self.viewModel.transform(input: input)
+        let output = self.viewModelMarket.transform(input: input)
+        
+        let inputCrypto = AddCryptoViewModel.Input(onCryptoEvent: self.onCryptoAdd.asObservable())
+        let outputCrypto = self.viewModel?.transform(input: inputCrypto)
         
         output.isLoading
             .observeOn(MainScheduler.instance)
@@ -94,6 +106,15 @@ class AddCryptoViewController: UIViewController {
                     self.setupViewModel()
                 }
             }).disposed(by: self.disposeBag)
+        
+        outputCrypto?.onEventDone
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { event in
+                self.dismiss(animated: true) {
+                    self.onCryptoAdd.onNext(event)
+                }
+            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -107,14 +128,12 @@ extension AddCryptoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.name = self.tableViewDataSource[indexPath.row].name ?? ""
             cell.shortName = self.tableViewDataSource[indexPath.row].symbol ?? ""
             cell.loadImage(with: self.tableViewDataSource[indexPath.row].id ?? "")
+            if let vm = self.viewModel {
+                cell.setup(with: vm, and: self.tableViewDataSource[indexPath.row], and: self.row)
+            }
+            cell.setup(with: indexPath.row == self.currentItemSelect ? false : true)
             return cell
         }
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("WE SELECT = \(self.tableViewDataSource[indexPath.row])")
-        tableView.deselectRow(at: indexPath, animated: false)
-        self.dismiss(animated: true)
     }
 }

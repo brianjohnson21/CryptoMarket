@@ -20,7 +20,12 @@ class AddCryptoTableViewCell: UITableViewCell {
     private let viewModel: MarketCellViewModel = MarketCellViewModel()
     private let disposeBag = DisposeBag()
     private let spinner = UIActivityIndicatorView(style: .whiteLarge)
-
+    private var viewModelCrypto: AddCryptoCellViewModel? = nil
+    private var selectItem: Market? = nil
+    private var rowSelected: Int? = 0
+    
+    @IBOutlet private weak var isCheckImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -54,6 +59,13 @@ class AddCryptoTableViewCell: UITableViewCell {
         }
     }
     
+    internal func setup(with vm: AddCryptoViewModel, and item: Market, and row: Int) {
+        self.viewModelCrypto = AddCryptoCellViewModel(vm: vm)
+        self.selectItem = item
+        self.rowSelected = row
+        self.setupViewModel()
+    }
+    
     internal func loadImage(with name: String) {
         let input = MarketCellViewModel.Input(imageName:
             Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")))
@@ -77,6 +89,20 @@ class AddCryptoTableViewCell: UITableViewCell {
             isLoading ? self.loaderImage.startAnimating() : self.loaderImage.stopAnimating()
             self.loaderImage.isHidden = !isLoading
         }).disposed(by: self.disposeBag)
+        
+    }
+    
+    private func setupViewModel() {
+        let inputView = AddCryptoCellViewModel.Input(onTap: self.rx.tapGesture()
+                                                        .filter{ $0.state == .ended }
+                                                        .asObservable().map { (_) -> (Market, Int) in
+                                                            return (self.selectItem!, self.rowSelected ?? 0)
+        })
+        _ = self.viewModelCrypto?.transform(input: inputView)
+    }
+    
+    internal func setup(with check: Bool) {
+        self.isCheckImage.isHidden = check
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

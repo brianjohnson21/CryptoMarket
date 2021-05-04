@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddInputTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var buttonName: UIButton!
     @IBOutlet weak private var amountLabel: UILabel!
     @IBOutlet weak private var amountInput: UITextField!
-    
-    private var withControllerPresenting: UIViewController?
+    private var viewModel: AddInputViewModel? = nil
+    private var rowSelected: Int? = 0
+    private let onTapEvent: PublishSubject<Int> = PublishSubject<Int>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,14 +33,26 @@ class AddInputTableViewCell: UITableViewCell {
         set { self.amountInput.text = newValue }
     }
     
-    internal func setup(with controllerPresenting: UIViewController) {
-        self.withControllerPresenting = controllerPresenting
+    internal func setButtonName(with name: String) {
+        self.buttonName.setTitle(name, for: .normal)
+    }
+    
+    internal func setup(with controllerPresenting: UIViewController, with vm: AddPortfolioViewModel, with row: Int) {
+        self.viewModel = AddInputViewModel(vm: vm)
+        self.rowSelected = row
+        self.setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        let input = AddInputViewModel.Input(onTap: self.onTapEvent.asObservable())
+        
+        let output = self.viewModel?.transform(input: input)
+        
+        print(output)
     }
     
     @IBAction private func onSelectItem(_ sender: UIButton) {
-        if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddCryptoStoryboard") as? AddCryptoViewController {
-            self.withControllerPresenting?.present(vc, animated: true, completion: nil)
-        }
+        self.onTapEvent.onNext(self.rowSelected ?? 0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

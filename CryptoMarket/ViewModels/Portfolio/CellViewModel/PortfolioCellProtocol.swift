@@ -19,13 +19,15 @@ internal protocol PortfolioCellProtocol {
 
 internal final class InputCell: PortfolioCellProtocol {
     var title: String
+    var buttonName: String?
     
     var type: CellModelType {
         return .InputCell
     }
     
-    init(title: String) {
+    init(title: String, button name: String?) {
         self.title = title
+        self.buttonName = name
     }
 }
 
