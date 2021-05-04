@@ -15,6 +15,14 @@ public enum MoneySelectedValue: String {
     case EURO
 }
 
+public struct MoneyModel {
+    let name: MoneySelectedValue
+    
+    init(name: MoneySelectedValue) {
+        self.name = name
+    }
+}
+
 internal class AddMoneyViewModel: ViewModelType {
     
     private let mainVM: AddPortfolioViewModel
@@ -27,6 +35,7 @@ internal class AddMoneyViewModel: ViewModelType {
     
     struct Output {
         let onEventDone: Observable<(MoneySelectedValue, Int)>
+        let dataSource: Observable<[MoneyModel]>
     }
     
     init(vm: AddPortfolioViewModel) {
@@ -37,7 +46,18 @@ internal class AddMoneyViewModel: ViewModelType {
         self.done.onNext(event)
     }
     
+    internal func generateMoney() -> [MoneyModel] {
+        var money: [MoneyModel] = []
+        
+        money.append(MoneyModel(name: MoneySelectedValue.EURO))
+        money.append(MoneyModel(name: MoneySelectedValue.USD))
+        
+        return money
+    }
+    
     func transform(input: Input) -> Output {
+        let dataValue = self.generateMoney()
+        
         input.onMoneyEvent
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
@@ -45,6 +65,7 @@ internal class AddMoneyViewModel: ViewModelType {
                 self.mainVM.onMoneyCellEvent(with: event.0 , with: event.1)
             }).disposed(by: self.disposeBag)
         
-        return Output(onEventDone: self.done.asObservable())
+        return Output(onEventDone: self.done.asObservable(),
+                      dataSource: Driver.just(dataValue).asObservable())
     }
 }

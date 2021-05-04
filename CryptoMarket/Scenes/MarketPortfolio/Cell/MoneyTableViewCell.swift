@@ -7,17 +7,48 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MoneyTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var labelTitle: UILabel!
     @IBOutlet private weak var isCheckImage: UIImageView!
     @IBOutlet private weak var amountLabel: UILabel!
+    private let disposeBag = DisposeBag()
+    private var rowSelected: Int = 0
+    private var selectItem: MoneySelectedValue = .USD
+    private var viewModel: AddMoneyCellViewModel? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    internal var title: String? {
+        set { self.labelTitle.text = newValue }
+        get { self.labelTitle.text }
+    }
+    
+    internal var amount: String? {
+        set { self.amountLabel.text = newValue }
+        get { self.amountLabel.text }
+    }
+    
+    internal func setup(with vm: AddMoneyViewModel, and item: MoneySelectedValue, and row: Int) {
+        self.selectItem = item
+        self.rowSelected = row
+        self.viewModel = AddMoneyCellViewModel(vm: vm)
+        self.setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        let input = AddMoneyCellViewModel.Input(onTap: self.rx.tapGesture()
+                                                    .filter { $0.state == .ended }.asObservable().map { (_) -> (MoneySelectedValue, Int) in
+                                                        return (self.selectItem, self.rowSelected)
+                                                    })
+        _ = self.viewModel?.transform(input: input)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

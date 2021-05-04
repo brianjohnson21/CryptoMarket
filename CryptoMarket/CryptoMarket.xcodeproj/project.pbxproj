@@ -87,6 +87,7 @@
 		E96124C7264149C10033F0A7 /* AddMoneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C6264149C10033F0A7 /* AddMoneyViewModel.swift */; };
 		E96124CA26414D2A0033F0A7 /* MoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124C826414D2A0033F0A7 /* MoneyTableViewCell.swift */; };
 		E96124CB26414D2A0033F0A7 /* MoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96124C926414D2A0033F0A7 /* MoneyTableViewCell.xib */; };
+		E96124CD26414E650033F0A7 /* AddMoneyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96124CC26414E650033F0A7 /* AddMoneyCellViewModel.swift */; };
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
 		E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */; };
 		E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */; };
@@ -211,6 +212,7 @@
 		E96124C6264149C10033F0A7 /* AddMoneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyViewModel.swift; sourceTree = "<group>"; };
 		E96124C826414D2A0033F0A7 /* MoneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTableViewCell.swift; sourceTree = "<group>"; };
 		E96124C926414D2A0033F0A7 /* MoneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyTableViewCell.xib; sourceTree = "<group>"; };
+		E96124CC26414E650033F0A7 /* AddMoneyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				E918DC85263C293C0019ACA0 /* PortfolioCellProtocol.swift */,
 				E96124C02640A0DD0033F0A7 /* AddInputViewModel.swift */,
 				E96124C22640A7490033F0A7 /* AddCryptoCellViewModel.swift */,
+				E96124CC26414E650033F0A7 /* AddMoneyCellViewModel.swift */,
 			);
 			path = CellViewModel;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				1EDFF825239E8B6600FB6DA0 /* UITableViewCell+Ext.swift in Sources */,
 				1E3DA11D238AFCA700B87505 /* InformationCellProtocol.swift in Sources */,
 				E9C29A8526394F98000CCE48 /* PortfolioViewController.swift in Sources */,
+				E96124CD26414E650033F0A7 /* AddMoneyCellViewModel.swift in Sources */,
 				1E4A56AC2329890A00B4BF0A /* Network.swift in Sources */,
 				1E4A56A6232598B300B4BF0A /* Controller+Ext.swift in Sources */,
 				1E719D72236220060087F7B3 /* UIAlert+Ext.swift in Sources */,
