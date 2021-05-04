@@ -68,11 +68,10 @@ class AddPortfolioViewController: UIViewController {
                 self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
             }).disposed(by: self.disposeBag)
         
-        output.onMoneySelectEvent.asObservable()
+        output.onMoneyItemSelected.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
-                //self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
                 print("SHOWING = \(event)")
             }).disposed(by: self.disposeBag)
         

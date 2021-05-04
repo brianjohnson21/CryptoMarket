@@ -73,8 +73,10 @@ extension AddMoneyViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: MoneyTableViewCell.identifier, for: indexPath) as? MoneyTableViewCell {
-            cell.amount = "1,000"
-            cell.title = "USD"
+            cell.title = self.tableViewDataSource[indexPath.row].name.rawValue
+            cell.amount = "\(self.tableViewDataSource[indexPath.row].amount)"
+            cell.isImageCheck(with: self.tableViewDataSource[indexPath.row].isSelected)
+            
             if let vm = self.viewModel {
                 cell.setup(with: vm, and: .USD, and: self.row)
             }

@@ -41,6 +41,10 @@ class MoneyTableViewCell: UITableViewCell {
         self.setupViewModel()
     }
     
+    internal func isImageCheck(with value: Bool) {
+        self.isCheckImage.isHidden = !value
+    }
+    
     private func setupViewModel() {
         let input = AddMoneyCellViewModel.Input(onTap: self.rx.tapGesture()
                                                     .filter { $0.state == .ended }.asObservable().map { (_) -> (MoneySelectedValue, Int) in
