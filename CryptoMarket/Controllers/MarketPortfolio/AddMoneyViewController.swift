@@ -60,7 +60,6 @@ class AddMoneyViewController: UIViewController {
     }
     
     private func setupTableView() {
-        self.tableView.isHidden = true
         self.tableView.register(MoneyTableViewCell.nib, forCellReuseIdentifier: MoneyTableViewCell.identifier)
         self.tableView.delegate = self
         self.tableView.dataSource = self
