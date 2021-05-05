@@ -36,8 +36,8 @@ class AddInputTableViewCell: UITableViewCell {
         set { self.amountInput.text = newValue }
     }
     
-    internal func setButtonName(with name: String) {
-        self.cryptoButton.setTitle(name, for: .normal)
+    internal func setButtonName(with name: String, isCrypto: Bool) {
+        isCrypto ? self.cryptoButton.setTitle(name, for: .normal) : self.moneyButton.setTitle(name, for: .normal)
     }
     
     internal func setup(with vm: AddPortfolioViewModel, with row: Int, isCrypto: Bool) {

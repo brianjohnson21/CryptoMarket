@@ -13,7 +13,7 @@ import RxSwift
 internal class AddPortfolioViewModel: ViewModelType {
     
     private let onCryptoItemSelected: PublishSubject<(Market, Int)> = PublishSubject<(Market, Int)>()
-    private let onMoneyItemSelected: PublishSubject<(MoneySelectedValue, Int)> = PublishSubject<(MoneySelectedValue, Int)>()
+    private let onMoneyItemSelected: PublishSubject<(MoneyModel, Int)> = PublishSubject<(MoneyModel, Int)>()
     
     private let onCryptoCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
     private let onMoneyCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
@@ -22,7 +22,7 @@ internal class AddPortfolioViewModel: ViewModelType {
     
     struct Output {
         let onCryptoItemSelected: Observable<(Market, Int)>
-        let onMoneyItemSelected: Observable<(MoneySelectedValue, Int)>
+        let onMoneyItemSelected: Observable<(MoneyModel, Int)>
         
         let onCryptoSelectEvent: Observable<Int>
         let onMoneySelectEvent: Observable<Int>
@@ -53,7 +53,7 @@ internal class AddPortfolioViewModel: ViewModelType {
         self.onCryptoItemSelected.onNext((event, row))
     }
     
-    internal func onMoneyCellEvent(with event: MoneySelectedValue, with row: Int) {
+    internal func onMoneyCellEvent(with event: MoneyModel, with row: Int) {
         self.onMoneyItemSelected.onNext((event, row))
     }
     

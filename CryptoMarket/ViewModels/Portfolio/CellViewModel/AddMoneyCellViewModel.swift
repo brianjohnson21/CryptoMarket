@@ -16,7 +16,7 @@ internal final class AddMoneyCellViewModel: ViewModelType {
     private let mainVM: AddMoneyViewModel
     
     struct Input {
-        let onTap: Observable<(MoneySelectedValue, Int)>
+        let onTap: Observable<(MoneyModel, Int)>
     }
     
     struct Output {

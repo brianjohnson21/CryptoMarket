@@ -16,7 +16,7 @@ class AddMoneyViewController: UIViewController {
     private var viewModel: AddMoneyViewModel? = nil
     private let disposeBag = DisposeBag()
     private var tableViewDataSource: [MoneyModel] = []
-    private let onMoneyAdd: PublishSubject<(MoneySelectedValue, Int)> = PublishSubject<(MoneySelectedValue, Int)>()
+    private let onMoneyAdd: PublishSubject<(MoneyModel, Int)> = PublishSubject<(MoneyModel, Int)>()
     
     private var row: Int = 0
     
@@ -24,12 +24,12 @@ class AddMoneyViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupView()
+        self.setupViewModel()
     }
 
     internal func setup(with vm: AddPortfolioViewModel, with row: Int) {
         self.row = row
         self.viewModel = AddMoneyViewModel(vm: vm)
-        self.setupViewModel()
     }
     
     private func setupView() {
@@ -78,7 +78,7 @@ extension AddMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             cell.isImageCheck(with: self.tableViewDataSource[indexPath.row].isSelected)
             
             if let vm = self.viewModel {
-                cell.setup(with: vm, and: .USD, and: self.row)
+                cell.setup(with: vm, and: self.tableViewDataSource[indexPath.row], and: self.row)
             }
             return cell
         }

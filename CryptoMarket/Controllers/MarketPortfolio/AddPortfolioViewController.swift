@@ -65,14 +65,14 @@ class AddPortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
-                self.updateRowButtonName(with: event.1, symbol: event.0.symbol ?? "")
+                self.updateCryptoEvent(with: event.1, symbol: event.0.symbol ?? "")
             }).disposed(by: self.disposeBag)
         
         output.onMoneyItemSelected.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
-                print("SHOWING = \(event)")
+                self.updateMoneyEvent(with: event.1, with: event.0)
             }).disposed(by: self.disposeBag)
         
         output.onCryptoSelectEvent.asObservable()
@@ -106,13 +106,22 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
         return self.tableviewDataSources[section]?.count ?? 0
     }
     
-    func updateRowButtonName(with row: Int, symbol name: String) {
+    func updateCryptoEvent(with row: Int, symbol name: String) {
         let item = self.tableviewDataSources[0]
         if let source = item?[row] as? InputCell {
             source.buttonName = name
             self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
         }
-        
+    }
+    
+    func updateMoneyEvent(with row: Int, with money: MoneyModel) {
+        let item = self.tableviewDataSources[0]
+        item?.enumerated().forEach {
+            if $0 > 0, let s = $1 as? InputCell {
+                s.buttonName = money.name.rawValue
+                self.tableView.reloadRows(at: [IndexPath(row: $0, section: 0)], with: .automatic)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,7 +129,7 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
         if let source = data?[indexPath.row] as? InputCell {
             if let cell = tableView.dequeueReusableCell(withIdentifier: AddInputTableViewCell.identifier, for: indexPath) as? AddInputTableViewCell {
                 if let name = source.buttonName {
-                    cell.setButtonName(with: name)
+                    cell.setButtonName(with: name, isCrypto: source.isCrypto)
                 }
                 cell.setup(with: self.viewModel, with: indexPath.row, isCrypto: source.isCrypto)
                 cell.amountDisplay = source.title

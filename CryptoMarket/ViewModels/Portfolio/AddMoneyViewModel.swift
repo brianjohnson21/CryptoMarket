@@ -30,15 +30,15 @@ public struct MoneyModel {
 internal class AddMoneyViewModel: ViewModelType {
     
     private let mainVM: AddPortfolioViewModel
-    private let done: PublishSubject<(MoneySelectedValue, Int)> = PublishSubject<(MoneySelectedValue, Int)>()
+    private let done: PublishSubject<(MoneyModel, Int)> = PublishSubject<(MoneyModel, Int)>()
     private let disposeBag: DisposeBag = DisposeBag()
     
     struct Input {
-        let onMoneyEvent: Observable<(MoneySelectedValue, Int)>
+        let onMoneyEvent: Observable<(MoneyModel, Int)>
     }
     
     struct Output {
-        let onEventDone: Observable<(MoneySelectedValue, Int)>
+        let onEventDone: Observable<(MoneyModel, Int)>
         let dataSource: Observable<[MoneyModel]>
     }
     
@@ -46,7 +46,7 @@ internal class AddMoneyViewModel: ViewModelType {
         self.mainVM = vm
     }
     
-    internal func onCellTapDone(with event: (MoneySelectedValue, Int)) {
+    internal func onCellTapDone(with event: (MoneyModel, Int)) {
         self.done.onNext(event)
     }
     

@@ -17,7 +17,7 @@ class MoneyTableViewCell: UITableViewCell {
     @IBOutlet private weak var amountLabel: UILabel!
     private let disposeBag = DisposeBag()
     private var rowSelected: Int = 0
-    private var selectItem: MoneySelectedValue = .USD
+    private var selectItem: MoneyModel = MoneyModel(name: .USD, amount: 1000.0, isSelected: true)
     private var viewModel: AddMoneyCellViewModel? = nil
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class MoneyTableViewCell: UITableViewCell {
         get { self.amountLabel.text }
     }
     
-    internal func setup(with vm: AddMoneyViewModel, and item: MoneySelectedValue, and row: Int) {
+    internal func setup(with vm: AddMoneyViewModel, and item: MoneyModel, and row: Int) {
         self.selectItem = item
         self.rowSelected = row
         self.viewModel = AddMoneyCellViewModel(vm: vm)
@@ -47,7 +47,7 @@ class MoneyTableViewCell: UITableViewCell {
     
     private func setupViewModel() {
         let input = AddMoneyCellViewModel.Input(onTap: self.rx.tapGesture()
-                                                    .filter { $0.state == .ended }.asObservable().map { (_) -> (MoneySelectedValue, Int) in
+                                                    .filter { $0.state == .ended }.asObservable().map { (_) -> (MoneyModel, Int) in
                                                         return (self.selectItem, self.rowSelected)
                                                     })
         _ = self.viewModel?.transform(input: input)
