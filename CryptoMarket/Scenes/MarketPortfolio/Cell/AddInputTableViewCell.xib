@@ -25,9 +25,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-s2-NIn">
-                        <rect key="frame" x="274" y="8" width="30" height="28"/>
+                        <rect key="frame" x="255" y="2" width="55" height="40"/>
                         <color key="backgroundColor" name="SoftWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="eqP-Rl-O1I"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <state key="normal" title="BTC">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -36,18 +39,25 @@
                         </connections>
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-dn-EKs">
-                        <rect key="frame" x="146" y="9" width="120" height="26.5"/>
+                        <rect key="frame" x="101" y="4.5" width="140" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="4gy-gz-suq"/>
+                            <constraint firstAttribute="width" constant="140" id="4gy-gz-suq"/>
+                            <constraint firstAttribute="height" constant="35" id="cKK-MS-ZUF"/>
                         </constraints>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMy-v3-6Th">
-                        <rect key="frame" x="274" y="7" width="30" height="31"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="USD"/>
+                        <rect key="frame" x="255" y="2" width="55" height="40"/>
+                        <color key="backgroundColor" name="SoftWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="cBB-y0-vfC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <state key="normal" title="USD">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                         <connections>
                             <action selector="onSelectUsd:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="trY-CC-w3X"/>
                         </connections>
@@ -55,14 +65,15 @@
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
-                    <constraint firstItem="WMy-v3-6Th" firstAttribute="leading" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="-30" id="5KM-Uy-Kjh"/>
-                    <constraint firstItem="WMy-v3-6Th" firstAttribute="top" secondItem="Xq8-s2-NIn" secondAttribute="bottom" constant="-29" id="FpT-1o-elF"/>
-                    <constraint firstItem="WMy-v3-6Th" firstAttribute="width" secondItem="Xq8-s2-NIn" secondAttribute="width" id="HUa-ve-BuA"/>
-                    <constraint firstItem="Xq8-s2-NIn" firstAttribute="leading" secondItem="YU1-dn-EKs" secondAttribute="trailing" constant="8" symbolic="YES" id="OTi-g8-22F"/>
-                    <constraint firstAttribute="trailing" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="16" id="TwI-lQ-hRL"/>
+                    <constraint firstItem="Xq8-s2-NIn" firstAttribute="leading" secondItem="YU1-dn-EKs" secondAttribute="trailing" constant="14" id="OTi-g8-22F"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="leading" secondItem="Xq8-s2-NIn" secondAttribute="leading" id="QLc-4V-6BW"/>
+                    <constraint firstAttribute="trailing" secondItem="Xq8-s2-NIn" secondAttribute="trailing" constant="10" id="TwI-lQ-hRL"/>
                     <constraint firstItem="YU1-dn-EKs" firstAttribute="centerY" secondItem="Xq8-s2-NIn" secondAttribute="centerY" id="WIO-UZ-4Kj"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="height" secondItem="Xq8-s2-NIn" secondAttribute="height" id="YYB-I7-sff"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="trailing" secondItem="Xq8-s2-NIn" secondAttribute="trailing" id="dq2-O9-Vqp"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eb9-IT-8MG"/>
-                    <constraint firstItem="WMy-v3-6Th" firstAttribute="height" secondItem="Xq8-s2-NIn" secondAttribute="height" multiplier="1.10714" id="hCm-CM-vYT"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="width" secondItem="Xq8-s2-NIn" secondAttribute="width" id="f3i-JV-Gx2"/>
+                    <constraint firstItem="WMy-v3-6Th" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g2i-8M-caS"/>
                     <constraint firstItem="YU1-dn-EKs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t67-jh-v1Q" secondAttribute="trailing" constant="8" id="i3M-ra-bG6"/>
                     <constraint firstItem="t67-jh-v1Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oht-Ua-gcB"/>
                     <constraint firstItem="Xq8-s2-NIn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="v2k-Ya-BPG"/>

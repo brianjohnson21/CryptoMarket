@@ -24,6 +24,16 @@ class AddInputTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.amountInput.layer.borderColor = UIColor.white.cgColor
+        self.amountInput.layer.masksToBounds = true
+        self.amountInput.layer.borderColor = UIColor.white.cgColor
+        self.amountInput.layer.borderWidth = 1.0
+        self.amountInput.layer.cornerRadius = 5
+        self.amountInput.backgroundColor = UIColor.init(named: "SoftWhite")?.withAlphaComponent(0.075)
+        
+        self.moneyButton.layer.cornerRadius = 5
+        self.cryptoButton.layer.cornerRadius = 5
     }
     
     public var amountDisplay: String? {
