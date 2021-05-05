@@ -91,6 +91,7 @@
 		E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */; };
 		E986E5E323312A09001AAD12 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */; };
 		E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */; };
+		E9B6B7DB2642B9E400DCE3BC /* UITextfield+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B6B7DA2642B9E400DCE3BC /* UITextfield+Ext.swift */; };
 		E9C29A8226394F56000CCE48 /* PortfolioStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C29A8126394F56000CCE48 /* PortfolioStoryboard.storyboard */; };
 		E9C29A8526394F98000CCE48 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */; };
 		E9C29A882639579F000CCE48 /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */; };
@@ -216,6 +217,7 @@
 		E986E5D523300B9E001AAD12 /* MarketCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellViewModel.swift; sourceTree = "<group>"; };
 		E986E5E223312A09001AAD12 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		E9B3D121263AFFB400830D1F /* AddPortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewModel.swift; sourceTree = "<group>"; };
+		E9B6B7DA2642B9E400DCE3BC /* UITextfield+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Ext.swift"; sourceTree = "<group>"; };
 		E9C29A8126394F56000CCE48 /* PortfolioStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PortfolioStoryboard.storyboard; sourceTree = "<group>"; };
 		E9C29A8426394F98000CCE48 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		E9C29A872639579F000CCE48 /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				1EDFF824239E8B6600FB6DA0 /* UITableViewCell+Ext.swift */,
 				1E24068123C13DBC00118DCC /* Date+Ext.swift */,
 				1E63485223CC852D00B8002A /* UIView+Ext.swift */,
+				E9B6B7DA2642B9E400DCE3BC /* UITextfield+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				E93AB6D8263FD8580080F8CD /* AddCryptoTableViewCell.swift in Sources */,
 				1EBF8A182336AF3300E79306 /* MarketFavoritesViewController.swift in Sources */,
 				E9B3D122263AFFB400830D1F /* AddPortfolioViewModel.swift in Sources */,
+				E9B6B7DB2642B9E400DCE3BC /* UITextfield+Ext.swift in Sources */,
 				1E3D8ACF23D0F08D00D8A643 /* NewsTableViewCell.swift in Sources */,
 				E95FACEF232F64E1004FD442 /* MarketNewsViewController.swift in Sources */,
 				E986E5D623300B9E001AAD12 /* MarketCellViewModel.swift in Sources */,

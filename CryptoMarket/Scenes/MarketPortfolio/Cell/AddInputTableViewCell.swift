@@ -34,7 +34,7 @@ class AddInputTableViewCell: UITableViewCell {
         
         self.moneyButton.layer.cornerRadius = 5
         self.cryptoButton.layer.cornerRadius = 5
-        self.backgroundColor = UIColor.clear
+        self.amountInput.setRightPaddingPoints(5)
     }
     
     public var amountDisplay: String? {

@@ -38,14 +38,14 @@
                             <action selector="onSelectCrypto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3ls-wO-TM9"/>
                         </connections>
                     </button>
-                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-dn-EKs">
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" text="0" borderStyle="line" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-dn-EKs">
                         <rect key="frame" x="101" y="4.5" width="140" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="140" id="4gy-gz-suq"/>
                             <constraint firstAttribute="height" constant="35" id="cKK-MS-ZUF"/>
                         </constraints>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMy-v3-6Th">
@@ -86,7 +86,7 @@
                 <outlet property="cryptoButton" destination="Xq8-s2-NIn" id="Xns-us-saq"/>
                 <outlet property="moneyButton" destination="WMy-v3-6Th" id="smh-ak-lfG"/>
             </connections>
-            <point key="canvasLocation" x="-187" y="58"/>
+            <point key="canvasLocation" x="-178" y="50"/>
         </tableViewCell>
     </objects>
     <resources>
