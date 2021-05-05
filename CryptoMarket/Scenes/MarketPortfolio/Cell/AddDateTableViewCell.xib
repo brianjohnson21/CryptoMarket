@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,26 +18,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="I8n-n1-39P">
-                        <rect key="frame" x="102" y="6" width="210" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="210" id="NjP-ou-N0o"/>
-                        </constraints>
+                    <datePicker contentMode="right" ambiguous="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="I8n-n1-39P">
+                        <rect key="frame" x="109.5" y="6" width="216" height="32"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </datePicker>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgX-Vh-yNW">
-                        <rect key="frame" x="8" y="11.5" width="86" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgX-Vh-yNW">
+                        <rect key="frame" x="16" y="11.5" width="41.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="41.5" id="pUu-FJ-xZB"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="SoftMainColor"/>
                 <constraints>
-                    <constraint firstItem="I8n-n1-39P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="ERn-p5-fvl"/>
-                    <constraint firstItem="I8n-n1-39P" firstAttribute="centerY" secondItem="KgX-Vh-yNW" secondAttribute="centerY" id="P9O-di-dGV"/>
-                    <constraint firstItem="KgX-Vh-yNW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YEB-ge-ghh"/>
-                    <constraint firstAttribute="trailing" secondItem="I8n-n1-39P" secondAttribute="trailing" constant="8" id="juD-mV-4G5"/>
-                    <constraint firstItem="I8n-n1-39P" firstAttribute="leading" relation="lessThanOrEqual" secondItem="KgX-Vh-yNW" secondAttribute="trailing" constant="8" id="mCW-Uq-YEO"/>
-                    <constraint firstItem="KgX-Vh-yNW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rXp-8L-wQ4"/>
+                    <constraint firstAttribute="trailing" secondItem="I8n-n1-39P" secondAttribute="trailing" constant="8" id="Y0B-fP-hrg"/>
+                    <constraint firstItem="KgX-Vh-yNW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hPa-pL-PYN"/>
+                    <constraint firstItem="I8n-n1-39P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="pSN-cC-0P9"/>
+                    <constraint firstItem="I8n-n1-39P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KgX-Vh-yNW" secondAttribute="trailing" constant="8" id="tvc-Vm-gRZ"/>
+                    <constraint firstItem="I8n-n1-39P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="w8L-0N-A4a"/>
+                    <constraint firstItem="KgX-Vh-yNW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zT4-0p-m3y"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -47,4 +50,9 @@
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="SoftMainColor">
+            <color red="0.14117647058823529" green="0.19607843137254902" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

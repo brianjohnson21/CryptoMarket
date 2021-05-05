@@ -32,6 +32,10 @@ class AddPortfolioViewController: UIViewController {
         self.setupView()
         self.setupTableView()
         self.setupViewModel()
+        self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: -20, right: 0)
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        self.automaticallyAdjustsScrollViewInsets = false;
+
     }
     
     private func setupView() {
