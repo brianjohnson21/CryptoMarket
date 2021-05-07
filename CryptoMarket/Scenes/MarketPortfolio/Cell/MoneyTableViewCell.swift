@@ -41,6 +41,10 @@ class MoneyTableViewCell: UITableViewCell {
         self.setupViewModel()
     }
     
+    internal func setup(with check: Bool) {
+        self.isCheckImage.isHidden = check
+    }
+    
     internal func isImageCheck(with value: Bool) {
         self.isCheckImage.isHidden = !value
     }

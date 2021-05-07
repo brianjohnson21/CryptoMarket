@@ -21,7 +21,6 @@ class AddCryptoViewController: UIViewController {
     private let onCryptoAdd: PublishSubject<(Market, Int)> = PublishSubject<(Market, Int)>()
     private let refreshControl = UIRefreshControl()
     private var currentItemSelect: Int = 0
-    private var row: Int = 0
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -32,9 +31,9 @@ class AddCryptoViewController: UIViewController {
         self.setupViewModel()
     }
     
-    internal func setup(with vm: AddPortfolioViewModel, with row: Int) {
+    internal func setup(with vm: AddPortfolioViewModel, with selected: Int) {
         self.viewModel = AddCryptoViewModel(vm: vm)
-        self.row = row
+        self.currentItemSelect = selected
     }
 
     private func setupView() {
@@ -129,7 +128,7 @@ extension AddCryptoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.shortName = self.tableViewDataSource[indexPath.row].symbol ?? ""
             cell.loadImage(with: self.tableViewDataSource[indexPath.row].id ?? "")
             if let vm = self.viewModel {
-                cell.setup(with: vm, and: self.tableViewDataSource[indexPath.row], and: self.row)
+                cell.setup(with: vm, market: self.tableViewDataSource[indexPath.row], row: indexPath.row)
             }
             cell.setup(with: indexPath.row == self.currentItemSelect ? false : true)
             return cell

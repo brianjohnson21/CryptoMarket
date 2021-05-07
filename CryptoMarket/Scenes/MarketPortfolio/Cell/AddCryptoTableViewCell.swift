@@ -59,9 +59,9 @@ class AddCryptoTableViewCell: UITableViewCell {
         }
     }
     
-    internal func setup(with vm: AddCryptoViewModel, and item: Market, and row: Int) {
+    internal func setup(with vm: AddCryptoViewModel, market: Market, row: Int) {
         self.viewModelCrypto = AddCryptoCellViewModel(vm: vm)
-        self.selectItem = item
+        self.selectItem = market
         self.rowSelected = row
         self.setupViewModel()
     }

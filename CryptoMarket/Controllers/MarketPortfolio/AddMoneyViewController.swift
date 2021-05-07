@@ -78,8 +78,9 @@ extension AddMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             cell.isImageCheck(with: self.tableViewDataSource[indexPath.row].isSelected)
             
             if let vm = self.viewModel {
-                cell.setup(with: vm, and: self.tableViewDataSource[indexPath.row], and: self.row)
+                cell.setup(with: vm, and: self.tableViewDataSource[indexPath.row], and: indexPath.row)
             }
+            cell.setup(with: indexPath.row == self.row ? false : true)
             return cell
         }
         return UITableViewCell()

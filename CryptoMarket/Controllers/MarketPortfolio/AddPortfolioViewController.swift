@@ -15,7 +15,9 @@ class AddPortfolioViewController: UIViewController {
     private let viewModel: AddPortfolioViewModel = AddPortfolioViewModel()
     private let disposeBag: DisposeBag = DisposeBag()
     private var tableviewDataSources: [Int: [PortfolioCellProtocol]] = [:]
-
+    private var cryptoRowSelected: Int = 0
+    private var moneyRowSelected: Int = 0
+    
     @IBOutlet private weak var tableView: UITableView!
     
     @IBAction private func cancelTrigger(_ sender: UIBarButtonItem) {
@@ -32,10 +34,6 @@ class AddPortfolioViewController: UIViewController {
         self.setupView()
         self.setupTableView()
         self.setupViewModel()
-        self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: -20, right: 0)
-        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
-        self.automaticallyAdjustsScrollViewInsets = false;
-
     }
     
     private func setupView() {
@@ -69,13 +67,15 @@ class AddPortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
-                self.updateCryptoEvent(with: event.1, symbol: event.0.symbol ?? "")
+                self.cryptoRowSelected = event.1
+                self.updateCryptoEvent(symbol: event.0.symbol ?? "")
             }).disposed(by: self.disposeBag)
         
         output.onMoneyItemSelected.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { event in
+                self.moneyRowSelected = event.1
                 self.updateMoneyEvent(with: event.1, with: event.0)
             }).disposed(by: self.disposeBag)
         
@@ -84,7 +84,7 @@ class AddPortfolioViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { row in
                 if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddCryptoStoryboard") as? AddCryptoViewController {
-                    vc.setup(with: self.viewModel, with: row)
+                    vc.setup(with: self.viewModel, with: self.cryptoRowSelected)
                     self.present(vc, animated: true)
                 }
             }).disposed(by: self.disposeBag)
@@ -94,7 +94,7 @@ class AddPortfolioViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { row in
                 if let vc = UIStoryboard(name: "PortfolioStoryboard", bundle: .main).instantiateViewController(withIdentifier: "AddMoneyStoryboard") as? AddMoneyViewController {
-                    vc.setup(with: self.viewModel, with: row)
+                    vc.setup(with: self.viewModel, with: self.moneyRowSelected)
                     self.present(vc, animated: true)
                 }
             }).disposed(by: self.disposeBag)
@@ -110,11 +110,11 @@ extension AddPortfolioViewController: UITableViewDelegate, UITableViewDataSource
         return self.tableviewDataSources[section]?.count ?? 0
     }
     
-    func updateCryptoEvent(with row: Int, symbol name: String) {
+    func updateCryptoEvent(symbol name: String) {
         let item = self.tableviewDataSources[0]
-        if let source = item?[row] as? InputCell {
+        if let source = item?[0] as? InputCell {
             source.buttonName = name
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
     }
     
