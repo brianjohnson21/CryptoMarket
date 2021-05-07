@@ -17,7 +17,8 @@ class AddPortfolioViewController: UIViewController {
     private var tableviewDataSources: [Int: [PortfolioCellProtocol]] = [:]
     private var cryptoRowSelected: Int = 0
     private var moneyRowSelected: Int = 0
-    
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView!
     
     @IBAction private func cancelTrigger(_ sender: UIBarButtonItem) {
@@ -98,6 +99,13 @@ class AddPortfolioViewController: UIViewController {
                     self.present(vc, animated: true)
                 }
             }).disposed(by: self.disposeBag)
+        
+        output.isFormValid
+            .asObservable()
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribeOn(MainScheduler.instance)
+            .bind(to: self.doneButton.rx.isEnabled)
+            .disposed(by: self.disposeBag)
     }
     
     internal func setup() { }

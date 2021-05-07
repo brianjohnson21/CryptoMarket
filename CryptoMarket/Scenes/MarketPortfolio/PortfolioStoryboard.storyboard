@@ -80,6 +80,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="44N-I7-8Bl" id="SkP-uX-JfO"/>
+                        <outlet property="doneButton" destination="zsh-6Z-n7P" id="axL-BW-1ob"/>
                         <outlet property="tableView" destination="ZC3-6k-YEC" id="xVn-BC-FHg"/>
                     </connections>
                 </viewController>

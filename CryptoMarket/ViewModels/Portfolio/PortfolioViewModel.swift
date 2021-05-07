@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 internal final class PortfolioViewModel: ViewModelType {
-    public let isLoading = PublishSubject<Bool>()
+    private let isLoading: PublishSubject<Bool> = PublishSubject<Bool>()
     private let disposeBag = DisposeBag()
     
     struct Input {

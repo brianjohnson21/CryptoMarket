@@ -27,6 +27,8 @@ internal class AddPortfolioViewModel: ViewModelType {
         let onCryptoSelectEvent: Observable<Int>
         let onMoneySelectEvent: Observable<Int>
         let tableviewDataSources: Observable<[Int: [PortfolioCellProtocol]]>
+
+        let isFormValid: Observable<Bool>
     }
     
     private func createInputOnCellPortfolio() -> [Int: [PortfolioCellProtocol]] {
@@ -72,6 +74,7 @@ internal class AddPortfolioViewModel: ViewModelType {
                       onMoneyItemSelected: self.onMoneyItemSelected.asObservable(),
                       onCryptoSelectEvent: self.onCryptoCellTapEvent.asObservable(),
                       onMoneySelectEvent: self.onMoneyCellTapEvent.asObservable(),
-                      tableviewDataSources: Driver.just(tableViewSource).asObservable())
+                      tableviewDataSources: Driver.just(tableViewSource).asObservable(),
+                      isFormValid: Driver.just(false).asObservable())
     }
 }
