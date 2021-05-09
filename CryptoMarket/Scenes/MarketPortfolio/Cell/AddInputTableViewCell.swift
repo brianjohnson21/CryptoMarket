@@ -52,7 +52,7 @@ class AddInputTableViewCell: UITableViewCell {
     }
     
     internal func setup(with vm: AddPortfolioViewModel, with row: Int, isCrypto: Bool) {
-        self.viewModel = AddInputViewModel(vm: vm)
+        self.viewModel = AddInputViewModel(vm: vm, with: row)
         self.rowSelected = row
         self.setupViewModel()
         self.cryptoButton.isHidden = !isCrypto
@@ -61,7 +61,9 @@ class AddInputTableViewCell: UITableViewCell {
     
     private func setupViewModel() {
         let input = AddInputViewModel.Input(onSelectCrypto: self.onSelectCrypto.asObservable(),
-                                            onSelectMonyey: self.onSelectMoney.asObservable())
+                                            onSelectMonyey: self.onSelectMoney.asObservable(),
+                                            moneyAmount: self.amountInput.rx.controlEvent([.editingChanged])
+                                                .map { return Double(self.amountInput.text ?? "0") ?? 0}.asObservable())
         _ = self.viewModel?.transform(input: input)
     }
     

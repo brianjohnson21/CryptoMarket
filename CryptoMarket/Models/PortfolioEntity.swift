@@ -15,6 +15,7 @@ public struct Portfolio {
     let symbol: String
     let date: Date
     let currentPrice: String
+    let market: Market
 }
 
 extension Portfolio: Equatable {

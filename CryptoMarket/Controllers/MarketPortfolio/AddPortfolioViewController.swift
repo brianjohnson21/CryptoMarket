@@ -17,6 +17,7 @@ class AddPortfolioViewController: UIViewController {
     private var tableviewDataSources: [Int: [PortfolioCellProtocol]] = [:]
     private var cryptoRowSelected: Int = 0
     private var moneyRowSelected: Int = 0
+    
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView!
@@ -53,7 +54,7 @@ class AddPortfolioViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        let input = AddPortfolioViewModel.Input()
+        let input = AddPortfolioViewModel.Input(doneEvent: self.doneButton.rx.tap.asObservable())
         let output = self.viewModel.transform(input: input)
         
         output.tableviewDataSources.asObservable()
@@ -104,8 +105,9 @@ class AddPortfolioViewController: UIViewController {
             .asObservable()
             .observeOn(MainScheduler.asyncInstance)
             .subscribeOn(MainScheduler.instance)
-            .bind(to: self.doneButton.rx.isEnabled)
-            .disposed(by: self.disposeBag)
+            .subscribe(onNext: { isValid in
+                self.doneButton.isEnabled = isValid
+            }).disposed(by: self.disposeBag)
     }
     
     internal func setup() { }

@@ -49,6 +49,22 @@ public struct Market: ImmutableMappable  {
         self.changePercent24Hr = favorite.changePercent24Hr
         self.vwap24Hr = favorite.vwap24Hr
     }
+    
+    public init(with name: String, and symbol: String) {
+        self.id = "0"
+        self.name = name
+        self.symbol = symbol
+        self.rank = "1"
+        self.priceUsd = ""
+        self.vwap24Hr = ""
+        self.changePercent24Hr = ""
+        self.volumeUsd24Hr = ""
+        self.marketCapUsd = ""
+        self.maxSupply = ""
+        self.supply = ""
+        
+        
+    }
 
 }
 
