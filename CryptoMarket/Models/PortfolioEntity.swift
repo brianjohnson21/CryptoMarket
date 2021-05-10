@@ -9,17 +9,16 @@
 import ObjectMapper
 
 public struct Portfolio {
-    let name: String
-    let id: String
     let amount: String
-    let symbol: String
+    let price: String
+    let total: String
+    let fee: String
     let date: Date
-    let currentPrice: String
     let market: Market
 }
 
 extension Portfolio: Equatable {
     public static func == (lhs: Portfolio, rhs: Portfolio) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.market.id == rhs.market.id
     }
 }

@@ -108,6 +108,17 @@ class AddPortfolioViewController: UIViewController {
             .subscribe(onNext: { isValid in
                 self.doneButton.isEnabled = isValid
             }).disposed(by: self.disposeBag)
+        
+        output.onCreatePortfolio
+            .asObservable()
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { (portfolio, image) in
+                print("SHOWING IMAGE = \(image)")
+                AnimationPopup.displayAnimation(with: "\(portfolio.market.name ?? "") Added to your portfolio.", and: image)
+            }, onError: { error in
+                print("AN ERROR OCCURED = \(error)")
+            }).disposed(by: self.disposeBag)
     }
     
     internal func setup() { }

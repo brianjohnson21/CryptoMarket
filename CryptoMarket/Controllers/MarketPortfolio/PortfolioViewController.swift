@@ -125,7 +125,7 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
-            cell.index = self.tableViewDataSource[indexPath.row].id
+            cell.index = "\(indexPath.row + 1)"
             cell.title = self.tableViewDataSource[indexPath.row].name
             cell.symbol = self.tableViewDataSource[indexPath.row].symbol
             cell.price = self.tableViewDataSource[indexPath.row].currentPrice

@@ -11,6 +11,10 @@ import CoreData
 import RxSwift
 import RxCocoa
 
+internal enum CoreDataError: Error {
+    case createPortfolioError
+}
+
 internal final class CoreDataManager {
     
     public static let sharedInstance = CoreDataManager()
@@ -49,29 +53,34 @@ internal final class CoreDataManager {
         }
     }
     
-    public func create(with portfolio: Portfolio) {
-        do {
-            let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.name ?? "")
-            
-            if (!result) {
-                let rhs = PortfolioCore(context: self.context)
-                rhs.id = portfolio.id
-                rhs.name = portfolio.name
-                rhs.amount = portfolio.amount
-                rhs.date = portfolio.date
-                rhs.currentPrice = portfolio.currentPrice
-                rhs.symbol = portfolio.symbol
+    public func create(with portfolio: Portfolio) -> Observable<Portfolio> {
+        return Observable.create { observer in
+            do {
+                let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.market.name ?? "")
                 
-                do {
-                    self.context.insert(rhs)
-                    try self.context.save()
-                    self.portfolioOnChange.onNext(rhs)
-                } catch {
-                    //handle error
+                if (!result) {
+                    let rhs = PortfolioCore(context: self.context)
+                    rhs.id = portfolio.market.id
+                    rhs.name = portfolio.market.name
+                    
+                    rhs.amount = portfolio.amount
+                    rhs.date = portfolio.date
+                    
+                    do {
+                        self.context.insert(rhs)
+                        try self.context.save()
+                        self.portfolioOnChange.onNext(rhs)
+                        observer.onNext(portfolio)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(CoreDataError.createPortfolioError)
+                    }
                 }
+            } catch {
+                observer.onError(CoreDataError.createPortfolioError)
             }
-        } catch {
-            //handle error
+            
+            return Disposables.create()
         }
     }
     

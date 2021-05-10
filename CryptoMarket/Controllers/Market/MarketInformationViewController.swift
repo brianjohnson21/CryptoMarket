@@ -47,36 +47,7 @@ class MarketInformationViewController: UIViewController {
     }
     
     private func displayFavoriteAlert() {
-        
-        let style = EKProperty.LabelStyle(
-            font: .boldSystemFont(ofSize: 16),
-            color: .white,
-            alignment: .center)
-        
-        let labelContent = EKProperty.LabelContent(
-                   text: "\(self.selectedMarket?.name ?? "") Added to your favorite.",
-                   style: style)
-                
-        let image = EKProperty.ImageContent(
-            image: selectedMarketIcon ?? UIImage(),
-            size: CGSize(width: 25, height: 25))
-    
-        let contentView = EKImageNoteMessageView(
-              with: labelContent,
-              imageContent: image)
-        
-        contentView.set(.height, of: 60)
-        
-        let topColor = UIColor.init(named: "Color-3") ?? UIColor.black
-        let bottomColor = UIColor.init(named: "Color") ?? UIColor.black
-        var attributes: EKAttributes = .bottomFloat
-        attributes.entryBackground = .gradient(
-            gradient: .init(
-                colors: [EKColor.init(light: topColor, dark: topColor), EKColor.init(light: bottomColor, dark: bottomColor)],
-                startPoint: .zero,
-                endPoint: CGPoint(x: 1, y: 1)))
-        
-        SwiftEntryKit.display(entry: contentView, using: attributes)
+        AnimationPopup.displayAnimation(with: "\(self.selectedMarket?.name ?? "") Added to your favorite.", and: selectedMarketIcon ?? UIImage())
     }
     
     @IBAction private func favoriteTrigger(_ sender: UIButton) {

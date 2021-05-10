@@ -51,7 +51,7 @@ public struct Market: ImmutableMappable  {
     }
     
     public init(with name: String, and symbol: String) {
-        self.id = "0"
+        self.id = "bitcoin"
         self.name = name
         self.symbol = symbol
         self.rank = "1"
