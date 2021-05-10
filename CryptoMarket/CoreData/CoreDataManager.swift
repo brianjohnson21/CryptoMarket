@@ -60,11 +60,24 @@ internal final class CoreDataManager {
                 
                 if (!result) {
                     let rhs = PortfolioCore(context: self.context)
-                    rhs.id = portfolio.market.id
-                    rhs.name = portfolio.market.name
+                    rhs.favorite?.id = portfolio.market.id
+                    rhs.favorite?.name = portfolio.market.name
+                    rhs.favorite?.changePercent24Hr = portfolio.market.changePercent24Hr
+                    rhs.favorite?.marketCapUsd = portfolio.market.marketCapUsd
+                    rhs.favorite?.maxSupply = portfolio.market.maxSupply
+                    rhs.favorite?.rank = portfolio.market.rank
+                    rhs.favorite?.supply = portfolio.market.supply
+                    rhs.favorite?.priceUsd = portfolio.market.priceUsd
+                    rhs.favorite?.symbol = portfolio.market.symbol
+                    rhs.favorite?.volumeUsd24Hr = portfolio.market.volumeUsd24Hr
+                    rhs.favorite?.vwap24Hr = portfolio.market.vwap24Hr
                     
                     rhs.amount = portfolio.amount
                     rhs.date = portfolio.date
+                    rhs.fee = portfolio.fee
+                    rhs.price = portfolio.price
+                    rhs.total = portfolio.total
+                    rhs.id = portfolio.market.id
                     
                     do {
                         self.context.insert(rhs)

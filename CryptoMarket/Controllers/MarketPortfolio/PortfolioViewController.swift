@@ -126,10 +126,11 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
             cell.index = "\(indexPath.row + 1)"
-            cell.title = self.tableViewDataSource[indexPath.row].name
-            cell.symbol = self.tableViewDataSource[indexPath.row].symbol
-            cell.price = self.tableViewDataSource[indexPath.row].currentPrice
-            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].name?.lowercased() ?? "")
+            
+            cell.title = self.tableViewDataSource[indexPath.row].favorite?.name ?? ""
+            cell.symbol = self.tableViewDataSource[indexPath.row].favorite?.symbol ?? ""
+            cell.price = self.tableViewDataSource[indexPath.row].favorite?.priceUsd ?? ""
+            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].favorite?.name?.lowercased() ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             return cell
         }
