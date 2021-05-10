@@ -60,6 +60,7 @@ internal final class CoreDataManager {
                 
                 if (!result) {
                     let rhs = PortfolioCore(context: self.context)
+                    rhs.favorite = Favorite(context: self.context)
                     rhs.favorite?.id = portfolio.market.id
                     rhs.favorite?.name = portfolio.market.name
                     rhs.favorite?.changePercent24Hr = portfolio.market.changePercent24Hr
