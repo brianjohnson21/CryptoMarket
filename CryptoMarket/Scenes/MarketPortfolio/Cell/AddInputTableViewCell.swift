@@ -21,6 +21,7 @@ class AddInputTableViewCell: UITableViewCell {
     private var rowSelected: Int? = 0
     private let onSelectCrypto: PublishSubject<Int> = PublishSubject<Int>()
     private let onSelectMoney: PublishSubject<Int> = PublishSubject<Int>()
+    private let disposeBag: DisposeBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,8 +64,18 @@ class AddInputTableViewCell: UITableViewCell {
         let input = AddInputViewModel.Input(onSelectCrypto: self.onSelectCrypto.asObservable(),
                                             onSelectMonyey: self.onSelectMoney.asObservable(),
                                             moneyAmount: self.amountInput.rx.controlEvent([.editingChanged])
-                                                .map { return Double(self.amountInput.text ?? "0") ?? 0}.asObservable())
-        _ = self.viewModel?.transform(input: input)
+                                                .map {
+                                                    return (self.rowSelected ?? 0, Double(self.amountInput.text ?? "0") ?? 0)}.asObservable() )
+        let output = self.viewModel?.transform(input: input)
+        
+        output?.updateCellsValue
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { newValue in
+                print("WE SET A NEW VAL = \(newValue)")
+                self.amountSet = "\(newValue)"
+            }).disposed(by: self.disposeBag)
+            
     }
     
     @IBAction private func onSelectCrypto(_ sender: UIButton) {

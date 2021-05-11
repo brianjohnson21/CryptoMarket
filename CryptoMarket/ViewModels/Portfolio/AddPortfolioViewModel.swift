@@ -18,8 +18,10 @@ internal class AddPortfolioViewModel: ViewModelType {
     private let onCryptoCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
     private let onMoneyCellTapEvent: PublishSubject<Int> = PublishSubject<Int>()
     private let isFormValid: PublishSubject<Bool> = PublishSubject<Bool>()
-    private let onCellValue: BehaviorSubject<[Int: Double]> = BehaviorSubject<[Int: Double]>(value: [:])
     private let downloadViewModel: MarketCellViewModel = MarketCellViewModel()
+    
+    private let onCellValue: BehaviorSubject<[Int: Double]> = BehaviorSubject<[Int: Double]>(value: [:])
+    private(set) var onInputCellUpdate: PublishSubject<(Int, Double, Int)> = PublishSubject<(Int, Double, Int)>()
     
     struct Input {
         let doneEvent: Observable<Void>
@@ -58,11 +60,19 @@ internal class AddPortfolioViewModel: ViewModelType {
         return dataTableView
     }
     
+    private func updateTotalAmount(edited row: Int) {
+        if let value = (try? self.onCellValue.value()) {
+            
+        }
+        self.onInputCellUpdate.onNext((1, 50, row))
+    }
+    
     internal func onValueSet(with value: (Int, Double)) {
         let cellsValues = try? self.onCellValue.value()
         if var item = cellsValues {
             item[value.0] = value.1
             self.onCellValue.onNext(item)
+            self.updateTotalAmount(edited: value.0)
         }
     }
     
