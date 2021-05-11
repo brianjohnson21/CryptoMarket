@@ -91,6 +91,7 @@ class PortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { portfolioValue in
+                print("INSIDE PORTFOLIO CURRENT \(portfolioValue)")
                 self.navigationItem.title = "$\(portfolioValue)"
             }).disposed(by: self.disposeBag)
     }
@@ -127,14 +128,14 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
-            cell.index = "\(indexPath.row + 1)"
-                        
-            cell.title = self.tableViewDataSource[indexPath.row].marketName ?? ""
-            cell.symbol = self.tableViewDataSource[indexPath.row].marketSymbol ?? ""
-            cell.price = self.tableViewDataSource[indexPath.row].price ?? ""
-            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
             
+            cell.index = "\(indexPath.row + 1)"
+            cell.title = self.tableViewDataSource[indexPath.row].marketName
+            cell.symbol = self.tableViewDataSource[indexPath.row].marketSymbol
+            cell.price = self.tableViewDataSource[indexPath.row].amount
+            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
+            
             return cell
         }
         return UITableViewCell()

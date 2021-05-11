@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import RxSwift
 import RxCocoa
+import ObjectMapper
 
 internal enum CoreDataError: Error {
     case createPortfolioError
@@ -57,7 +58,7 @@ internal final class CoreDataManager {
     public func create(with portfolio: Portfolio) -> Observable<Portfolio> {
         return Observable.create { observer in
             do {
-                let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.marketName ?? "")
+                let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.marketName)
                 
                 if (!result) {
                     

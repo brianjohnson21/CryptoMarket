@@ -14,14 +14,14 @@
         <attribute name="vwap24Hr" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PortfolioCore" representedClassName="PortfolioCore" syncable="YES" codeGenerationType="class">
-        <attribute name="amount" attributeType="String"/>
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="fee" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
+        <attribute name="amount" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fee" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="marketName" optional="YES" attributeType="String"/>
         <attribute name="marketRank" optional="YES" attributeType="String"/>
         <attribute name="marketSymbol" optional="YES" attributeType="String"/>
-        <attribute name="price" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
         <attribute name="total" attributeType="String"/>
     </entity>
     <elements>

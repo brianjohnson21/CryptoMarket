@@ -101,10 +101,10 @@ internal class AddPortfolioViewModel: ViewModelType {
             }
         }
         
-        let create = Portfolio(amount: "\(String(describing: amountValues[0]))",
-                               price: "\(String(describing: amountValues[1]))",
-                               total: "\(String(describing: amountValues[2]))",
-                               fee: "\(String(describing: amountValues[3]))",
+        let create = Portfolio(amount: "\(amountValues[1] ?? 0.0)",
+                               price: "\(amountValues[1] ?? 0.0)",
+                               total: "\(amountValues[2] ?? 0.0)",
+                               fee: "\(amountValues[3] ?? 0.0)",
                                date: Date(),
                                marketName: cryptoItem.0.name ?? "",
                                marketSymbol: cryptoItem.0.symbol ?? "",

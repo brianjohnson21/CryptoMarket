@@ -18,6 +18,43 @@ public struct Portfolio {
     let marketSymbol: String
     let marketRank: String
     let id: String
+    
+    public init(amount: String, price: String, total: String, fee: String,
+                date: Date, marketName: String, marketSymbol: String, marketRank: String, id: String) {
+        self.amount = amount
+        self.price = price
+        self.total = total
+        self.fee = fee
+        self.date = date
+        self.marketName = marketName
+        self.marketSymbol = marketSymbol
+        self.marketRank = marketRank
+        self.id = id
+    }
+    
+    public init(portfolio: PortfolioCore) {
+        self.id = portfolio.id ?? ""
+        self.amount = portfolio.amount ?? ""
+        self.price = portfolio.price ?? ""
+        self.total = portfolio.total ?? ""
+        self.fee = portfolio.fee ?? ""
+        self.date = portfolio.date ?? Date()
+        self.marketName = portfolio.marketName ?? ""
+        self.marketSymbol = portfolio.marketSymbol ?? ""
+        self.marketRank = portfolio.marketRank ?? ""
+    }
+    
+    public init (map: Map) throws {
+        self.id = (try? map.value("id")) ?? ""
+        self.amount = (try? map.value("amount")) ?? ""
+        self.price = (try? map.value("price")) ?? ""
+        self.total = (try? map.value("total")) ?? ""
+        self.fee = (try? map.value("fee")) ?? ""
+        self.date = (try? map.value("date")) ?? Date()
+        self.marketName = (try? map.value("marketName")) ?? ""
+        self.marketSymbol = (try? map.value("marketSymbol")) ?? ""
+        self.marketRank = (try? map.value("marketRank")) ?? ""
+    }
 }
 
 extension Portfolio: Equatable {
