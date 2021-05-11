@@ -129,9 +129,11 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
             
             cell.index = "\(indexPath.row + 1)"
+            
             cell.title = self.tableViewDataSource[indexPath.row].marketName
-            cell.symbol = self.tableViewDataSource[indexPath.row].marketSymbol
-            cell.price = self.tableViewDataSource[indexPath.row].amount
+            cell.symbol = self.tableViewDataSource[indexPath.row].amount
+            cell.price = self.tableViewDataSource[indexPath.row].total
+            
             cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             

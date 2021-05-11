@@ -37,8 +37,7 @@ class AddInputTableViewCell: UITableViewCell {
         self.cryptoButton.layer.cornerRadius = 5
         self.amountInput.setRightPaddingPoints(5)
         
-        self.amountInput.attributedPlaceholder = NSAttributedString(string: "0",
-                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.amountInput.attributedPlaceholder = NSAttributedString(string: "0", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     public var amountDisplay: String? {

@@ -56,7 +56,7 @@ internal final class PortfolioViewModel: ViewModelType {
             .observeOn(MainScheduler.instance)
             .map {
                 let current = (try? self.portfolioValue.value()) ?? 0.0
-                let removeValue = Double($0.amount ?? "0.0") ?? 0.0
+                let removeValue = Double($0.total ?? "0.0") ?? 0.0
                 self.portfolioValue.onNext(current - removeValue)
                 return $0
             }.subscribe {
@@ -66,13 +66,16 @@ internal final class PortfolioViewModel: ViewModelType {
         let portfolio = self.fetchPortfolio()
             .do(onNext: { _ in self.isLoading.onNext(false) })
             .do(onNext: { val in
-                self.portfolioValue.onNext(val.map { return (Double($0.amount ?? "0.0") ?? 0.0) }.reduce(0, +))
+                self.portfolioValue.onNext(val.map {
+                    print("TOTAL =-> \($0.total)")
+                                            return (Double($0.total ?? "0.0") ?? 0.0)
+                }.reduce(0, +))
             })
         
         let newElem = self.onChangePortfolio()
             .do(onNext: { elem in
                 let current = (try? self.portfolioValue.value()) ?? 0.0
-                let newValue = Double(elem.amount ?? "0.0") ?? 0.0
+                let newValue = Double(elem.total ?? "0.0") ?? 0.0
                 self.portfolioValue.onNext(current + newValue)
             })
         

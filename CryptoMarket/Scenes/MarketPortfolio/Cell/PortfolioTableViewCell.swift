@@ -20,7 +20,8 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var percentageLabel: UILabel!
     
-    private let viewModel: MarketCellViewModel = MarketCellViewModel()
+    private let marketViewModel: MarketCellViewModel = MarketCellViewModel()
+    private let viewModel: PortfolioCellViewModel = PortfolioCellViewModel()
     private let disposeBag = DisposeBag()
     private let spinner = UIActivityIndicatorView(style: .white)
     
@@ -54,9 +55,15 @@ class PortfolioTableViewCell: UITableViewCell {
         get { return self.footName.text }
     }
     
+    private func setupViewModel() {
+        let input = PortfolioCellViewModel.Input()
+        let output = self.viewModel.transform(input: input)
+        
+    }
+    
     public func loadImageOnCell(name: String) {
         let input = MarketCellViewModel.Input(imageName: Driver.just(ApiRoute.ROUTE_IMAGE.concat(string: name).concat(string: ".png")))
-        let output = self.viewModel.transform(input: input)
+        let output = self.marketViewModel.transform(input: input)
         
         output.imageDownloaded.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)

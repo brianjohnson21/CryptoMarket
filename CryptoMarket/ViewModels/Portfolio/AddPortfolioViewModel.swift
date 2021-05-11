@@ -116,6 +116,7 @@ internal class AddPortfolioViewModel: ViewModelType {
     }
 
     private func createNewPortfolio() -> Observable<(Portfolio, UIImage?)> {
+        
         guard let cryptoItem = try? self.onCryptoItemSelected.value(),
               let _ = try? self.onMoneyItemSelected.value(),
               let amountValues = try? self.onCellValue.value() else {
@@ -124,8 +125,8 @@ internal class AddPortfolioViewModel: ViewModelType {
                 return Disposables.create()
             }
         }
-        
-        let create = Portfolio(amount: "\(amountValues[1] ?? 0.0)",
+
+        let create = Portfolio(amount: "\(amountValues[0] ?? 0.0)",
                                price: "\(amountValues[1] ?? 0.0)",
                                total: "\(amountValues[2] ?? 0.0)",
                                fee: "\(amountValues[3] ?? 0.0)",
@@ -135,7 +136,8 @@ internal class AddPortfolioViewModel: ViewModelType {
                                marketRank: cryptoItem.0.rank ?? "",
                                id: cryptoItem.0.id ?? "")
         
-        return Observable.combineLatest(CoreDataManager.sharedInstance.create(with: create), self.downloadImage(with: cryptoItem.0.id ?? ""))
+        return Observable.combineLatest(CoreDataManager.sharedInstance.create(with: create),
+                                        self.downloadImage(with: cryptoItem.0.id ?? ""))
     }
     
     func transform(input: Input) -> Output {
