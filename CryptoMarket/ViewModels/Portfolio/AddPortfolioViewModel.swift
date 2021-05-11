@@ -60,11 +60,25 @@ internal class AddPortfolioViewModel: ViewModelType {
         return dataTableView
     }
     
-    private func updateTotalAmount(edited row: Int) {
+    private func updateTotalAmount(edited row: Int, and new: Double) {
         if let value = (try? self.onCellValue.value()) {
-            
+            switch row {
+            case 0:
+                if let price = value[1] {
+                    self.onInputCellUpdate.onNext((2, new * price, row))
+                }
+            case 1:
+                if let amount = value[0] {
+                    self.onInputCellUpdate.onNext((2, new * amount, row))
+                }
+            case 2:
+                if let amount = value[0] {
+                    self.onInputCellUpdate.onNext((1, new / amount, row))
+                }
+            default:
+                break
+            }
         }
-        self.onInputCellUpdate.onNext((1, 50, row))
     }
     
     internal func onValueSet(with value: (Int, Double)) {
@@ -72,7 +86,7 @@ internal class AddPortfolioViewModel: ViewModelType {
         if var item = cellsValues {
             item[value.0] = value.1
             self.onCellValue.onNext(item)
-            self.updateTotalAmount(edited: value.0)
+            self.updateTotalAmount(edited: value.0, and: value.1)
         }
     }
     
