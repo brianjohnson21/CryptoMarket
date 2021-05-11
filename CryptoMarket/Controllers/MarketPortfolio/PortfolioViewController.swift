@@ -91,7 +91,6 @@ class PortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { portfolioValue in
-                print("INSIDE PORTFOLIO CURRENT \(portfolioValue)")
                 self.navigationItem.title = "$\(portfolioValue)"
             }).disposed(by: self.disposeBag)
     }

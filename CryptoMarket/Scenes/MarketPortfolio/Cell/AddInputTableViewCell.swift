@@ -36,6 +36,9 @@ class AddInputTableViewCell: UITableViewCell {
         self.moneyButton.layer.cornerRadius = 5
         self.cryptoButton.layer.cornerRadius = 5
         self.amountInput.setRightPaddingPoints(5)
+        
+        self.amountInput.attributedPlaceholder = NSAttributedString(string: "0",
+                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     public var amountDisplay: String? {
@@ -72,10 +75,8 @@ class AddInputTableViewCell: UITableViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { newValue in
-                print("WE SET A NEW VAL = \(newValue)")
                 self.amountSet = "\(newValue)"
             }).disposed(by: self.disposeBag)
-            
     }
     
     @IBAction private func onSelectCrypto(_ sender: UIButton) {
