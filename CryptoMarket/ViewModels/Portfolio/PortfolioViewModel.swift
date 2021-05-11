@@ -43,10 +43,6 @@ internal final class PortfolioViewModel: ViewModelType {
         }
     }
     
-    private func fetchPortfolioValue() -> Observable<Double> {
-        return Observable.just(3000.00).asObservable()
-    }
-    
     internal func onCryptoAddEvent(with event: Market) {
         print("This has been added!!! \(event)")
     }
@@ -63,12 +59,19 @@ internal final class PortfolioViewModel: ViewModelType {
         
         let portfolio = self.fetchPortfolio().do(onNext: { _ in self.isLoading.onNext(false) })
         
+        let portfolioValue = portfolio.map { (portfolio) -> Double in
+            return portfolio.map { (item: PortfolioCore) in
+                print(item.amount)
+                return ((item.amount ?? "0.0") as? Double ?? 0.0)
+            }.reduce(0, +)
+        }
+        
         let newElem = self.onChangePortfolio()
         
         self.isLoading.onNext(false)
         return Output(portfolioDataSources: portfolio,
                       isLoading: self.isLoading.asObservable(),
                       portfolioOnChange: newElem,
-                      portfolioCurrentValue: self.fetchPortfolioValue())
+                      portfolioCurrentValue: portfolioValue.asObservable())
     }
 }

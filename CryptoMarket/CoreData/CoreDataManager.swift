@@ -13,6 +13,7 @@ import RxCocoa
 
 internal enum CoreDataError: Error {
     case createPortfolioError
+    case fetchPortfolioError
 }
 
 internal final class CoreDataManager {
@@ -56,29 +57,21 @@ internal final class CoreDataManager {
     public func create(with portfolio: Portfolio) -> Observable<Portfolio> {
         return Observable.create { observer in
             do {
-                let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.market.name ?? "")
+                let result = try CoreDataManager.sharedInstance.doesPortfolioExist(with: portfolio.marketName ?? "")
                 
                 if (!result) {
+                    
                     let rhs = PortfolioCore(context: self.context)
-                    rhs.favorite = Favorite(context: self.context)
-                    rhs.favorite?.id = portfolio.market.id
-                    rhs.favorite?.name = portfolio.market.name
-                    rhs.favorite?.changePercent24Hr = portfolio.market.changePercent24Hr
-                    rhs.favorite?.marketCapUsd = portfolio.market.marketCapUsd
-                    rhs.favorite?.maxSupply = portfolio.market.maxSupply
-                    rhs.favorite?.rank = portfolio.market.rank
-                    rhs.favorite?.supply = portfolio.market.supply
-                    rhs.favorite?.priceUsd = portfolio.market.priceUsd
-                    rhs.favorite?.symbol = portfolio.market.symbol
-                    rhs.favorite?.volumeUsd24Hr = portfolio.market.volumeUsd24Hr
-                    rhs.favorite?.vwap24Hr = portfolio.market.vwap24Hr
                     
                     rhs.amount = portfolio.amount
                     rhs.date = portfolio.date
                     rhs.fee = portfolio.fee
                     rhs.price = portfolio.price
                     rhs.total = portfolio.total
-                    rhs.id = portfolio.market.id
+                    rhs.id = portfolio.id
+                    rhs.marketName = portfolio.marketName
+                    rhs.marketRank = portfolio.marketRank
+                    rhs.marketSymbol = portfolio.marketSymbol
                     
                     do {
                         self.context.insert(rhs)
@@ -168,19 +161,15 @@ internal final class CoreDataManager {
     }
     
     public func fetch() -> Observable<[PortfolioCore]> {
-        do {
-            let result = try self.context.fetch(PortfolioCore.fetchRequest()as NSFetchRequest<PortfolioCore>)
-            
-            return Observable<[PortfolioCore]>.create { (observer) -> Disposable in
+        return Observable<[PortfolioCore]>.create { (observer) -> Disposable in
+            do {
+                let result = try self.context.fetch(PortfolioCore.fetchRequest() as NSFetchRequest<PortfolioCore>)
                 observer.onNext(result)
-                return Disposables.create()
+                observer.onCompleted()
+            } catch {
+                observer.onError(CoreDataError.fetchPortfolioError)
             }
-        }
-        catch {
-            //todo handle
-            return Observable<[PortfolioCore]>.create { (observer) -> Disposable in
-                return Disposables.create()
-            }
+            return Disposables.create()
         }
     }
     

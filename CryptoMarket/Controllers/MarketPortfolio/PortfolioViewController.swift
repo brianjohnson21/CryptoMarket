@@ -65,11 +65,13 @@ class PortfolioViewController: UIViewController {
         output.portfolioDataSources.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (dataSource) in
+            .subscribe(onNext: { dataSource in
                 self.tableViewDataSource = dataSource
                 self.tableViewPortfolio.reloadData()
+            }, onError: { error in
+                print("AN ERROR OCCURED = \(error)")
             }).disposed(by: self.disposeBag)
-
+            
         output.portfolioOnChange.asObservable()
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
@@ -126,12 +128,11 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PortfolioTableViewCell.identifier, for: indexPath) as? PortfolioTableViewCell {
             cell.index = "\(indexPath.row + 1)"
-            
-            cell.title = self.tableViewDataSource[indexPath.row].favorite?.name ?? ""
-            cell.symbol = self.tableViewDataSource[indexPath.row].favorite?.symbol ?? ""
-            cell.price = self.tableViewDataSource[indexPath.row].favorite?.priceUsd ?? ""
-            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].favorite?.name?.lowercased() ?? "")
-            
+                        
+            cell.title = self.tableViewDataSource[indexPath.row].marketName ?? ""
+            cell.symbol = self.tableViewDataSource[indexPath.row].marketSymbol ?? ""
+            cell.price = self.tableViewDataSource[indexPath.row].price ?? ""
+            cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
             
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             return cell

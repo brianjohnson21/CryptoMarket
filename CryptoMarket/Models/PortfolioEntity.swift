@@ -14,11 +14,14 @@ public struct Portfolio {
     let total: String
     let fee: String
     let date: Date
-    let market: Market
+    let marketName: String
+    let marketSymbol: String
+    let marketRank: String
+    let id: String
 }
 
 extension Portfolio: Equatable {
     public static func == (lhs: Portfolio, rhs: Portfolio) -> Bool {
-        return lhs.market.id == rhs.market.id
+        return lhs.id == rhs.id
     }
 }

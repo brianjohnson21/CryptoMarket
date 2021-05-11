@@ -14,16 +14,18 @@
         <attribute name="vwap24Hr" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PortfolioCore" representedClassName="PortfolioCore" syncable="YES" codeGenerationType="class">
-        <attribute name="amount" optional="YES" attributeType="String"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="fee" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="price" optional="YES" attributeType="String"/>
-        <attribute name="total" optional="YES" attributeType="String"/>
-        <relationship name="favorite" optional="YES" transient="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite"/>
+        <attribute name="amount" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fee" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="marketName" optional="YES" attributeType="String"/>
+        <attribute name="marketRank" optional="YES" attributeType="String"/>
+        <attribute name="marketSymbol" optional="YES" attributeType="String"/>
+        <attribute name="price" attributeType="String"/>
+        <attribute name="total" attributeType="String"/>
     </entity>
     <elements>
         <element name="Favorite" positionX="-63" positionY="-18" width="128" height="208"/>
-        <element name="PortfolioCore" positionX="385.4765625" positionY="-12.29296875" width="128" height="148"/>
+        <element name="PortfolioCore" positionX="473.8984375" positionY="-1.2890625" width="128" height="178"/>
     </elements>
 </model>

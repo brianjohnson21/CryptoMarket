@@ -106,7 +106,10 @@ internal class AddPortfolioViewModel: ViewModelType {
                                total: "\(String(describing: amountValues[2]))",
                                fee: "\(String(describing: amountValues[3]))",
                                date: Date(),
-                               market: cryptoItem.0)
+                               marketName: cryptoItem.0.name ?? "",
+                               marketSymbol: cryptoItem.0.symbol ?? "",
+                               marketRank: cryptoItem.0.rank ?? "",
+                               id: cryptoItem.0.id ?? "")
         
         return Observable.combineLatest(CoreDataManager.sharedInstance.create(with: create), self.downloadImage(with: cryptoItem.0.id ?? ""))
     }
