@@ -74,7 +74,11 @@ class AddInputTableViewCell: UITableViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { newValue in
-                self.amountSet = "\(newValue)"
+                if floor(newValue) == newValue {
+                    self.amountSet = "\(Int(newValue))"
+                } else {
+                    self.amountSet = "\(newValue)"
+                }
             }).disposed(by: self.disposeBag)
     }
     

@@ -40,18 +40,24 @@ internal final class PortfolioCellViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         self.isLoading.onNext(true)
         
-        let price = self.fetchMarketData().map { (market) -> Double in
+        let market = self.fetchMarketData()
+        
+        let price = market.map { (market) -> Double in
             return market.map { (s1) -> Double in
                 if (s1.name?.lowercased()) ?? "" == (self.name.lowercased()) {
                     let usdPrice = Double(s1.priceUsd ?? "") ?? 0.0
                     let amount = self.cellAmount
-                    print("SHOWING USD PRICE = \(usdPrice)")
+
                     return amount * usdPrice
                 }
                 return 0
             }.reduce(0, +)
         }
+        
+        let percentage = market.map { (market) -> Double in
+            return -12.00
+        }
             
-        return Output(percentage: price.asObservable(), price: price.asObservable())
+        return Output(percentage: percentage.asObservable(), price: price.asObservable())
     }
 }
