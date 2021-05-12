@@ -42,9 +42,10 @@ internal final class PortfolioCellViewModel: ViewModelType {
         
         let price = self.fetchMarketData().map { (market) -> Double in
             return market.map { (s1) -> Double in
-                if s1.name ?? "" == self.name {
+                if (s1.name?.lowercased()) ?? "" == (self.name.lowercased()) {
                     let usdPrice = Double(s1.priceUsd ?? "") ?? 0.0
                     let amount = self.cellAmount
+                    print("SHOWING USD PRICE = \(usdPrice)")
                     return amount * usdPrice
                 }
                 return 0

@@ -21,7 +21,7 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet private weak var percentageLabel: UILabel!
     
     private let marketViewModel: MarketCellViewModel = MarketCellViewModel()
-    private let viewModel: PortfolioCellViewModel = PortfolioCellViewModel()
+    private var viewModel: PortfolioCellViewModel? = nil
     private let disposeBag = DisposeBag()
     private let spinner = UIActivityIndicatorView(style: .white)
     
@@ -50,15 +50,34 @@ class PortfolioTableViewCell: UITableViewCell {
         get { return self.percentageLabel.text }
     }
     
-    public var symbol: String? {
+    private var symbol: String? {
         set { self.footName.text = newValue }
         get { return self.footName.text }
     }
     
-    private func setupViewModel() {
+    internal func setupViewModel(amount value: Double, and crypto: String) {
+        self.viewModel = PortfolioCellViewModel(with: value, and: crypto)
         let input = PortfolioCellViewModel.Input()
-        let output = self.viewModel.transform(input: input)
+        let output = self.viewModel?.transform(input: input)
         
+        output?.percentage
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { percentage in
+                self.percentage = "\(percentage)".percentageFormatting()
+            }).disposed(by: self.disposeBag)
+    
+        output?.price
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { price in
+                self.price = "\(price)".currencyFormatting(formatterDigit: 2)
+            }).disposed(by: self.disposeBag)
+        
+    }
+    
+    internal func setFootNameValue(symbol: String, amount: String) {
+        self.symbol = "\(amount) \(symbol)"
     }
     
     public func loadImageOnCell(name: String) {

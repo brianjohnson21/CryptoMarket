@@ -70,16 +70,16 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="XhQ-Bg-Um0">
-                        <rect key="frame" x="210" y="12.5" width="100" height="35"/>
+                        <rect key="frame" x="187" y="12.5" width="123" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="3,239$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ0-QJ-Iwa">
-                                <rect key="frame" x="45" y="0.0" width="55" height="17.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="17,900,999.05$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ0-QJ-Iwa">
+                                <rect key="frame" x="4.5" y="0.0" width="118.5" height="17.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8z-kp-PU0">
-                                <rect key="frame" x="0.0" y="17.5" width="100" height="17.5"/>
+                                <rect key="frame" x="23" y="17.5" width="100" height="17.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1250%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tug-ne-G7Q">
                                         <rect key="frame" x="61" y="1.5" width="39" height="14.5"/>
@@ -107,7 +107,6 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="X2H-tV-j0P"/>
-                            <constraint firstAttribute="width" constant="100" id="wJ7-Rk-nPp"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -116,6 +115,7 @@
                     <constraint firstAttribute="trailing" secondItem="XhQ-Bg-Um0" secondAttribute="trailing" constant="10" id="7Hg-2Z-YAf"/>
                     <constraint firstItem="h2e-9K-nfC" firstAttribute="centerY" secondItem="cRw-Rn-h0v" secondAttribute="centerY" id="BKH-ag-xd9"/>
                     <constraint firstItem="bcb-dd-rhG" firstAttribute="leading" secondItem="td2-QT-Kvy" secondAttribute="leading" constant="8" id="C9C-W0-8Rm"/>
+                    <constraint firstItem="XhQ-Bg-Um0" firstAttribute="leading" secondItem="h2e-9K-nfC" secondAttribute="trailing" constant="4" id="XUO-C8-VYV"/>
                     <constraint firstItem="jE3-L7-JCF" firstAttribute="centerY" secondItem="bcb-dd-rhG" secondAttribute="centerY" id="pX3-21-YR8"/>
                     <constraint firstItem="jE3-L7-JCF" firstAttribute="leading" secondItem="bcb-dd-rhG" secondAttribute="trailing" constant="4" id="psB-lF-4So"/>
                     <constraint firstItem="XhQ-Bg-Um0" firstAttribute="centerY" secondItem="td2-QT-Kvy" secondAttribute="centerY" id="smf-AJ-4oK"/>
