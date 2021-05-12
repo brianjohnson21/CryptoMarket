@@ -61,19 +61,28 @@ internal class AddPortfolioViewModel: ViewModelType {
     }
     
     private func updateTotalAmount(edited row: Int, and new: Double) {
-        if let value = (try? self.onCellValue.value()) {
+        if var value = (try? self.onCellValue.value()) {
             switch row {
             case 0:
                 if let price = value[1] {
-                    self.onInputCellUpdate.onNext((2, new * price, row))
+                    let result = new * price
+                    value[2] = result
+                    self.onCellValue.onNext(value)
+                    self.onInputCellUpdate.onNext((2, result, row))
                 }
             case 1:
                 if let amount = value[0] {
-                    self.onInputCellUpdate.onNext((2, new * amount, row))
+                    let result = new * amount
+                    value[2] = result
+                    self.onCellValue.onNext(value)
+                    self.onInputCellUpdate.onNext((2, result, row))
                 }
             case 2:
                 if let amount = value[0] {
-                    self.onInputCellUpdate.onNext((1, new / amount, row))
+                    let result = new / amount
+                    value[1] = result
+                    self.onCellValue.onNext(value)
+                    self.onInputCellUpdate.onNext((1, result, row))
                 }
             default:
                 break
