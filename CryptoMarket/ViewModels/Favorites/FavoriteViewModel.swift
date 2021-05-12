@@ -66,7 +66,13 @@ internal final class FavoriteViewModel: ViewModelType {
                 self.deleteFavorite(favoriteElement: favDelete)
             }).disposed(by: self.disposeBag)
     
-        let favorites = self.getFavorites().do(onNext: { _ in self.isLoading.onNext(false) })
+        let favorites = self.getFavorites()
+            .do(onNext: { _ in self.isLoading.onNext(false) })
+            .map({ (fav) -> [Favorite] in
+                return fav.sorted { (left, right) -> Bool in
+                    return Int(left.rank!)! < Int(right.rank!)!
+                }
+            })
         
         let newElement = self.fetchFavorite()
     

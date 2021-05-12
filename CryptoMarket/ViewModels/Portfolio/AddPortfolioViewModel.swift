@@ -149,6 +149,7 @@ internal class AddPortfolioViewModel: ViewModelType {
                                         self.downloadImage(with: cryptoItem.0.id ?? ""))
     }
     
+    
     func transform(input: Input) -> Output {
         let tableViewSource = self.createInputOnCellPortfolio()
         
