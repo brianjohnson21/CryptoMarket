@@ -134,10 +134,7 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setFootNameValue(symbol: self.tableViewDataSource[indexPath.row].marketSymbol ?? "", amount: self.tableViewDataSource[indexPath.row].amount ?? "")
             cell.price = self.tableViewDataSource[indexPath.row].total
             
-            if let amount = Double(self.tableViewDataSource[indexPath.row].amount ?? "0") {
-                cell.setupViewModel(amount: amount, and: "bitcoin")
-            }
-            
+            cell.setupViewModel(portfolio: self.tableViewDataSource[indexPath.row])
             cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
             cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
             

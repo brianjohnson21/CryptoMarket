@@ -32,6 +32,10 @@ internal final class Network {
         return self.networkMarket.getMarket(stringUrl: url)
     }
     
+    public func performGetOnMarket(stringUrl url: String, with name: String) -> Observable<Market> {
+        return self.networkMarket.getMarket(stringUrl: url, with: name)
+    }
+    
     public func performGetOnNews(stringUrl url: String) -> Observable<[MarketNews]>{
         return self.networkNews.getNews(stringUrl: url)
     }

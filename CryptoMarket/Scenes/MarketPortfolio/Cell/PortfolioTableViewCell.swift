@@ -55,8 +55,8 @@ class PortfolioTableViewCell: UITableViewCell {
         get { return self.footName.text }
     }
     
-    internal func setupViewModel(amount value: Double, and crypto: String) {
-        self.viewModel = PortfolioCellViewModel(with: value, and: crypto)
+    internal func setupViewModel(portfolio value: PortfolioCore) {
+        self.viewModel = PortfolioCellViewModel(with: value)
         let input = PortfolioCellViewModel.Input()
         let output = self.viewModel?.transform(input: input)
         

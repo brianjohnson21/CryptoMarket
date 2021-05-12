@@ -14,12 +14,10 @@ internal final class PortfolioCellViewModel: ViewModelType {
     
     private let disposeBag: DisposeBag = DisposeBag()
     private let isLoading: PublishSubject<Bool> = PublishSubject<Bool>()
-    private let cellAmount: Double
-    private let name: String
+    private let portfolioValue: PortfolioCore
     
-    init(with amount: Double, and crytpo: String) {
-        self.cellAmount = amount
-        self.name = crytpo
+    init(with portoflio: PortfolioCore) {
+        self.portfolioValue = portoflio
     }
     
     struct Input { }
@@ -35,27 +33,34 @@ internal final class PortfolioCellViewModel: ViewModelType {
         })
     }
     
+    private func fetchCurrentMarket(market name: String) -> Observable<Market> {
+        let route = ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_MARKET)
+        return Network.sharedInstance.performGetOnMarket(stringUrl: route, with: name).do(onNext: { _ in
+            self.isLoading.onNext(false)
+        })
+    }
+    
     private func fetchMarket() { }
     
     func transform(input: Input) -> Output {
         self.isLoading.onNext(true)
         
-        let market = self.fetchMarketData()
+        let market = self.fetchCurrentMarket(market: self.portfolioValue.marketName ?? "")
         
         let price = market.map { (market) -> Double in
-            return market.map { (s1) -> Double in
-                if (s1.name?.lowercased()) ?? "" == (self.name.lowercased()) {
-                    let usdPrice = Double(s1.priceUsd ?? "") ?? 0.0
-                    let amount = self.cellAmount
-
-                    return amount * usdPrice
-                }
-                return 0
-            }.reduce(0, +)
+            let usdPrice = Double(market.priceUsd ?? "0") ?? 0.0
+            let amount = Double(self.portfolioValue.amount ?? "0") ?? 0.0
+            print("SHOWING THERE = \(market)")
+            return amount * usdPrice
         }
         
         let percentage = market.map { (market) -> Double in
-            return -12.00
+            let percentage = Double(market.priceUsd ?? "0") ?? 0.0
+            let total = Double(self.portfolioValue.total ?? "0") ?? 0.0
+            print("SHOWING PERCENTAGE = \(percentage) \(self.portfolioValue.total)")
+            let result = (percentage * total) / 100
+            print("SHOWING RESULT = \(result)")
+            return (percentage * total) / 100
         }
             
         return Output(percentage: percentage.asObservable(), price: price.asObservable())

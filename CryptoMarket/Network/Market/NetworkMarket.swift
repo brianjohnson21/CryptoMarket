@@ -27,6 +27,17 @@ internal final class NetworkMarket {
         })
     }
     
+    public func getMarket(stringUrl url: String, with name: String) -> Observable<Market> {
+        let finalUrl = url + "/" + name.lowercased()
+        return RxAlamofire
+            .json(.get, finalUrl)
+            .retry(2)
+            .observeOn(MainScheduler.asyncInstance)
+            .map( { json -> Market in
+                return try Mapper<Market>().map(JSONObject: (json as? [String: Any])?["data"] ?? [])
+            })
+    }
+    
     public func getMarketEmotions(stringUrl url: String) -> Observable<[MarketEmotion]> {
         return RxAlamofire
             .json(.get, url)
