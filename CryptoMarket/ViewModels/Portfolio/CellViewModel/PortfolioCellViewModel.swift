@@ -56,8 +56,9 @@ internal final class PortfolioCellViewModel: ViewModelType {
         let percentage = market.map { (market) -> Double in
             let percentage = Double(market.priceUsd ?? "0") ?? 0.0
             let total = Double(self.portfolioValue.total ?? "0") ?? 0.0
-            let result = (percentage * total) / 100
-            return (percentage - total) / 100
+            let amount = Double(self.portfolioValue.amount ?? "0") ?? 0.0
+            
+            return ((percentage - (amount > 1.0 ? (total / amount) : total)) / (amount > 1.0 ? (total / amount) : total)) * 100
         }
             
         return Output(percentage: percentage.asObservable(), price: price.asObservable())
