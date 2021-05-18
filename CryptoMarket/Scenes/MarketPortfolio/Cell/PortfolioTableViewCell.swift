@@ -19,6 +19,7 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet private weak var footName: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var percentageLabel: UILabel!
+    @IBOutlet private weak var sortPercentageImage: UIImageView!
     
     private let marketViewModel: MarketCellViewModel = MarketCellViewModel()
     private var viewModel: PortfolioCellViewModel? = nil
@@ -55,6 +56,14 @@ class PortfolioTableViewCell: UITableViewCell {
         get { return self.footName.text }
     }
     
+    private func setPercentageOnMarket(percentage: String) {
+        self.percentageLabel.text = "\(abs(Double(percentage) ?? 0))".percentageFormatting()
+        let currentValue = Double(percentage) ?? 0
+        
+        self.percentageLabel.textColor = currentValue > 0 ? UIColor.init(named: "SortUp") : UIColor.init(named: "SortDown")
+        self.sortPercentageImage.image = currentValue > 0 ? UIImage(named: "sort-up-solid") : UIImage(named: "sort-down-solid")
+    }
+    
     internal func setupViewModel(portfolio value: PortfolioCore) {
         self.viewModel = PortfolioCellViewModel(with: value)
         let input = PortfolioCellViewModel.Input()
@@ -64,7 +73,7 @@ class PortfolioTableViewCell: UITableViewCell {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { percentage in
-                self.percentage = "\(percentage)".percentageFormatting()
+                self.setPercentageOnMarket(percentage: "\(percentage)")
             }).disposed(by: self.disposeBag)
     
         output?.price
@@ -77,7 +86,12 @@ class PortfolioTableViewCell: UITableViewCell {
     }
     
     internal func setFootNameValue(symbol: String, amount: String) {
-        self.symbol = "\(amount) \(symbol)"
+        let value = Double(amount) ?? 0.0
+        if floor(value) == value {
+            self.footName.text = "\(Int(value)) \(symbol)"
+        } else {
+            self.footName.text = "\(value) \(symbol)"
+        }
     }
     
     public func loadImageOnCell(name: String) {

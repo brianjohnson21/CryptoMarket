@@ -91,7 +91,7 @@ class PortfolioViewController: UIViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { portfolioValue in
-                self.navigationItem.title = "$\(portfolioValue)"
+                self.navigationItem.title = "\(portfolioValue)".currencyFormatting(formatterDigit: 2)
             }).disposed(by: self.disposeBag)
     }
 }

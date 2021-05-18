@@ -44,46 +44,76 @@ internal final class PortfolioViewModel: ViewModelType {
         }
     }
     
+    private func fetchCurrentMarket(market name: String) -> Observable<Market> {
+        let route = ApiRoute.ROUTE_SERVER_MARKET.concat(string: ApiRoute.ROUTE_MARKET)
+        return Network.sharedInstance.performGetOnMarket(stringUrl: route, with: name).do(onNext: { _ in
+            self.isLoading.onNext(false)
+        })
+    }
+    
     internal func onCryptoAddEvent(with event: Market) {
         print("This has been added!!! \(event)")
     }
     
+    private func singleUpdatePortfolio(price: Market, amount: PortfolioCore) -> Double {
+        let a = Double(amount.amount ?? "") ?? 0.0
+        let v = Double(price.priceUsd ?? "") ?? 0.0
+        return v * a
+    }
+    
     func transform(input: Input) -> Output {
+        
         self.isLoading.onNext(true)
         
         input.onDelete
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
-            .map {
-                let current = (try? self.portfolioValue.value()) ?? 0.0
-                let removeValue = Double($0.total ?? "0.0") ?? 0.0
-                self.portfolioValue.onNext(current - removeValue)
-                return $0
-            }.subscribe {
+            .flatMap({ (core) -> Observable<(Observable<Market>, PortfolioCore)> in
+                return Driver.just((self.fetchCurrentMarket(market: core.marketName ?? ""), core)).asObservable()
+            }).map({ (rhs, lhs) -> PortfolioCore in
+                self.portfolioValue.onNext(0.0)
+                return lhs
+            }).subscribe {
                 self.deletePortfolio(portfolioElement: $0)
             }.disposed(by: self.disposeBag)
         
         let portfolio = self.fetchPortfolio()
-            .do(onNext: { _ in self.isLoading.onNext(false) })
-            .do(onNext: { val in
-                self.portfolioValue.onNext(val.map {
-                    print("TOTAL =-> \($0.total)")
-                                            return (Double($0.total ?? "0.0") ?? 0.0)
-                }.reduce(0, +))
-            })
+            .flatMap { (core: Observable<[PortfolioCore]>.E) -> Observable<(Observable<[Market]>.E, Observable<[PortfolioCore]>.E)> in
+                let obs = core.map { (core) -> Observable<Market> in
+                    return self.fetchCurrentMarket(market: core.marketName ?? "")
+                }
+                return Observable.combineLatest(Observable.combineLatest(obs).asObservable(), Driver.just(core).asObservable()).asObservable()
+            }.map { (rhs, lhs) -> [PortfolioCore] in
+                var portfolioValue = 0.0
+                for (e1, e2) in zip(rhs, lhs) {
+                    let amount = Double(e2.amount ?? "") ?? 0.0
+                    let value = Double(e1.priceUsd ?? "") ?? 0.0
+                    portfolioValue += value * amount
+                }
+                self.portfolioValue.onNext(portfolioValue)
+                return lhs
+            }.do(onNext: { _ in self.isLoading.onNext(false) })
+
         
-        let newElem = self.onChangePortfolio()
-            .do(onNext: { elem in
-                let current = (try? self.portfolioValue.value()) ?? 0.0
-                let newValue = Double(elem.total ?? "0.0") ?? 0.0
-                self.portfolioValue.onNext(current + newValue)
+        let onNewElemCreated: Observable<PortfolioCore> = self.onChangePortfolio()
+            .flatMap({ (core) -> Observable<PortfolioCore> in
+                return Driver.just(core).asObservable()
             })
+            .flatMap ({ (core) -> Observable<(Market, PortfolioCore)> in
+                let a: Observable<PortfolioCore> = Observable.just(core)
+                let b: Observable<Market> = self.fetchCurrentMarket(market: core.marketName ?? "")
+                return Observable.zip(b, a) { ($0, $1) }.asObservable()
+            }).map { (rhs, lhs) -> PortfolioCore in
+                self.portfolioValue.onNext(self.singleUpdatePortfolio(price: rhs, amount: lhs))
+                return lhs
+            }
+            
         
         self.isLoading.onNext(false)
         
         return Output(portfolioDataSources: portfolio,
                       isLoading: self.isLoading.asObservable(),
-                      portfolioOnChange: newElem,
+                      portfolioOnChange: onNewElemCreated.asObservable(),
                       portfolioCurrentValue: self.portfolioValue.asObservable())
     }
 }

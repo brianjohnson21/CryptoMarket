@@ -132,6 +132,7 @@
                 <outlet property="percentageLabel" destination="tug-ne-G7Q" id="SEX-QR-mx2"/>
                 <outlet property="portfolioImage" destination="cRw-Rn-h0v" id="zI0-hG-E9f"/>
                 <outlet property="priceLabel" destination="aQ0-QJ-Iwa" id="njR-Ur-LPq"/>
+                <outlet property="sortPercentageImage" destination="OlI-lA-6BK" id="jpN-JF-9mJ"/>
             </connections>
             <point key="canvasLocation" x="75" y="143"/>
         </tableViewCell>
