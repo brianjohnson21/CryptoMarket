@@ -74,7 +74,8 @@ internal final class PortfolioViewModel: ViewModelType {
                 
                 return Observable.zip(fetch, obsCore) { ( $0, $1 ) }.asObservable()
             }).map({ (rhs, lhs) -> PortfolioCore in
-                self.portfolioValue.onNext(0.0)
+                let currentPortfolioValue: Double = (try? self.portfolioValue.value()) ?? 0.0
+                self.portfolioValue.onNext(currentPortfolioValue - self.singleUpdatePortfolio(price: rhs, amount: lhs))
                 return lhs
             }).subscribe {
                 self.deletePortfolio(portfolioElement: $0)
@@ -106,7 +107,8 @@ internal final class PortfolioViewModel: ViewModelType {
                 let b: Observable<Market> = self.fetchCurrentMarket(market: core.marketName ?? "")
                 return Observable.zip(b, a) { ($0, $1) }.asObservable()
             }).map { (rhs, lhs) -> PortfolioCore in
-                self.portfolioValue.onNext(self.singleUpdatePortfolio(price: rhs, amount: lhs))
+                let portfolioCurrent: Double = (try? self.portfolioValue.value()) ?? 0.0
+                self.portfolioValue.onNext(self.singleUpdatePortfolio(price: rhs, amount: lhs) + portfolioCurrent)
                 return lhs
             }
             
