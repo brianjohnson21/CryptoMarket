@@ -68,32 +68,17 @@ internal final class PortfolioViewModel: ViewModelType {
         input.onDelete
             .subscribeOn(MainScheduler.asyncInstance)
             .observeOn(MainScheduler.instance)
-            .flatMap({ (core) -> Observable<(Observable<Market>, PortfolioCore)> in
-                return Driver.just((self.fetchCurrentMarket(market: core.marketName ?? ""), core)).asObservable()
+            .flatMap({ (core) -> Observable<(Market, PortfolioCore)> in
+                let obsCore: Observable<PortfolioCore> = Observable.just(core)
+                let fetch: Observable<Market> = self.fetchCurrentMarket(market: core.marketName ?? "").asObservable()
+                
+                return Observable.zip(fetch, obsCore) { ( $0, $1 ) }.asObservable()
             }).map({ (rhs, lhs) -> PortfolioCore in
                 self.portfolioValue.onNext(0.0)
                 return lhs
             }).subscribe {
                 self.deletePortfolio(portfolioElement: $0)
             }.disposed(by: self.disposeBag)
-        
-//        let portfolio = self.fetchPortfolio()
-//            .flatMap { (core: Observable<[PortfolioCore]>.E) -> Observable<(Observable<[Market]>.E, Observable<[PortfolioCore]>.E)> in
-//                let obs = core.map { (core) -> Observable<Market> in
-//                    return self.fetchCurrentMarket(market: core.marketName ?? "")
-//                }
-//                return Observable.combineLatest(Observable.combineLatest(obs).asObservable(), Driver.just(core).asObservable()).asObservable()
-//            }.map { (rhs, lhs) -> [PortfolioCore] in
-//                var portfolioValue = 0.0
-//                for (e1, e2) in zip(rhs, lhs) {
-//                    let amount = Double(e2.amount ?? "") ?? 0.0
-//                    let value = Double(e1.priceUsd ?? "") ?? 0.0
-//                    portfolioValue += value * amount
-//                }
-//                self.portfolioValue.onNext(portfolioValue)
-//                return lhs
-//            }.do(onNext: { _ in self.isLoading.onNext(false) })
-
         
         let portfolio = self.fetchPortfolio()
             .flatMap { (core) -> Observable<([Market], [PortfolioCore])> in
