@@ -77,23 +77,40 @@ internal final class PortfolioViewModel: ViewModelType {
                 self.deletePortfolio(portfolioElement: $0)
             }.disposed(by: self.disposeBag)
         
+//        let portfolio = self.fetchPortfolio()
+//            .flatMap { (core: Observable<[PortfolioCore]>.E) -> Observable<(Observable<[Market]>.E, Observable<[PortfolioCore]>.E)> in
+//                let obs = core.map { (core) -> Observable<Market> in
+//                    return self.fetchCurrentMarket(market: core.marketName ?? "")
+//                }
+//                return Observable.combineLatest(Observable.combineLatest(obs).asObservable(), Driver.just(core).asObservable()).asObservable()
+//            }.map { (rhs, lhs) -> [PortfolioCore] in
+//                var portfolioValue = 0.0
+//                for (e1, e2) in zip(rhs, lhs) {
+//                    let amount = Double(e2.amount ?? "") ?? 0.0
+//                    let value = Double(e1.priceUsd ?? "") ?? 0.0
+//                    portfolioValue += value * amount
+//                }
+//                self.portfolioValue.onNext(portfolioValue)
+//                return lhs
+//            }.do(onNext: { _ in self.isLoading.onNext(false) })
+
+        
         let portfolio = self.fetchPortfolio()
-            .flatMap { (core: Observable<[PortfolioCore]>.E) -> Observable<(Observable<[Market]>.E, Observable<[PortfolioCore]>.E)> in
-                let obs = core.map { (core) -> Observable<Market> in
-                    return self.fetchCurrentMarket(market: core.marketName ?? "")
-                }
-                return Observable.combineLatest(Observable.combineLatest(obs).asObservable(), Driver.just(core).asObservable()).asObservable()
+            .flatMap { (core) -> Observable<([Market], [PortfolioCore])> in
+                let fetch: Observable<[Market]> = Observable.combineLatest(core.map { (core) -> Observable<Market> in
+                        return self.fetchCurrentMarket(market: core.marketName ?? "")
+                }).asObservable()
+                let obsCore: Observable<[PortfolioCore]> = Observable.just(core)
+                
+                return Observable.zip(fetch, obsCore) { ($0, $1)}.asObservable()
             }.map { (rhs, lhs) -> [PortfolioCore] in
                 var portfolioValue = 0.0
                 for (e1, e2) in zip(rhs, lhs) {
-                    let amount = Double(e2.amount ?? "") ?? 0.0
-                    let value = Double(e1.priceUsd ?? "") ?? 0.0
-                    portfolioValue += value * amount
+                    portfolioValue += self.singleUpdatePortfolio(price: e1, amount: e2)
                 }
                 self.portfolioValue.onNext(portfolioValue)
                 return lhs
             }.do(onNext: { _ in self.isLoading.onNext(false) })
-
         
         let onNewElemCreated: Observable<PortfolioCore> = self.onChangePortfolio()
             .flatMap({ (core) -> Observable<PortfolioCore> in
