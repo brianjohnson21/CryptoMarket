@@ -17,6 +17,7 @@ internal final class PortfolioViewModel: ViewModelType {
     
     struct Input {
         let onDelete: Observable<PortfolioCore>
+        let onRefresh: Observable<Bool>
     }
     
     struct Output {
@@ -81,6 +82,14 @@ internal final class PortfolioViewModel: ViewModelType {
                 self.deletePortfolio(portfolioElement: $0)
             }.disposed(by: self.disposeBag)
         
+        let onRefresh = input.onRefresh
+            .subscribeOn(MainScheduler.asyncInstance)
+            .observeOn(MainScheduler.instance)
+            .throttle(2.5, scheduler: MainScheduler.asyncInstance)
+            .flatMapLatest { (_) -> Observable<[PortfolioCore]> in
+                return self.fetchPortfolio()
+            }
+        
         let portfolio = self.fetchPortfolio()
             .flatMap { (core) -> Observable<([Market], [PortfolioCore])> in
                 let fetch: Observable<[Market]> = Observable.combineLatest(core.map { (core) -> Observable<Market> in
@@ -96,7 +105,9 @@ internal final class PortfolioViewModel: ViewModelType {
                 }
                 self.portfolioValue.onNext(portfolioValue)
                 return lhs
-            }.do(onNext: { _ in self.isLoading.onNext(false) })
+            }
+        
+        let portfolioResultFetch: Observable<[PortfolioCore]> = Observable.merge(onRefresh, portfolio).do(onNext: { _ in self.isLoading.onNext(false) })
         
         let onNewElemCreated: Observable<PortfolioCore> = self.onChangePortfolio()
             .flatMap({ (core) -> Observable<PortfolioCore> in
@@ -115,7 +126,7 @@ internal final class PortfolioViewModel: ViewModelType {
         
         self.isLoading.onNext(false)
         
-        return Output(portfolioDataSources: portfolio,
+        return Output(portfolioDataSources: portfolioResultFetch.asObservable(),
                       isLoading: self.isLoading.asObservable(),
                       portfolioOnChange: onNewElemCreated.asObservable(),
                       portfolioCurrentValue: self.portfolioValue.asObservable())

@@ -19,6 +19,8 @@ class PortfolioViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var tableViewDataSource: [PortfolioCore] = []
     private let tableViewSpinner = UIActivityIndicatorView(style: .whiteLarge)
+    private let refreshControl = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,6 @@ class PortfolioViewController: UIViewController {
         self.tableViewSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         self.tableViewSpinner.isHidden = false
         self.tableViewSpinner.startAnimating()
-        
         let addButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(self.addPortfolio))
         addButton.tintColor = UIColor.init(named: "WhiteImage")
         self.navigationItem.rightBarButtonItem  = addButton
@@ -48,6 +49,8 @@ class PortfolioViewController: UIViewController {
         self.tableViewPortfolio.register(PortfolioTableViewCell.nib, forCellReuseIdentifier: PortfolioTableViewCell.identifier)
         self.tableViewPortfolio.delegate = self
         self.tableViewPortfolio.dataSource = self
+        self.refreshControl.tintColor = UIColor.init(named: "White")
+        self.tableViewPortfolio.refreshControl = self.refreshControl
     }
     
     @objc private func addPortfolio() {
@@ -59,7 +62,10 @@ class PortfolioViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        let input = PortfolioViewModel.Input(onDelete: self.onDelete.asObservable())
+        let input = PortfolioViewModel.Input(onDelete: self.onDelete.asObservable(),
+                                             onRefresh: self.refreshControl.rx.controlEvent(.valueChanged).asDriver()
+                                                .map { _ in !self.refreshControl.isRefreshing }
+                                                .filter{ $0 == false }.asObservable())
         let output = self.viewModel.transform(input: input)
         
         output.portfolioDataSources.asObservable()
@@ -67,6 +73,7 @@ class PortfolioViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { dataSource in
                 self.tableViewDataSource = dataSource
+                self.refreshControl.endRefreshing()
                 self.tableViewPortfolio.reloadData()
             }, onError: { error in
                 print("AN ERROR OCCURED = \(error)")
@@ -85,6 +92,7 @@ class PortfolioViewController: UIViewController {
                 self.tableViewPortfolio.isHidden = isLoading
                 self.tableViewSpinner.isHidden = !isLoading
                 isLoading ? self.tableViewSpinner.startAnimating() : self.tableViewSpinner.stopAnimating()
+                
             }).disposed(by: self.disposeBag)
         
         output.portfolioCurrentValue.asObservable()
@@ -136,7 +144,7 @@ extension PortfolioViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.setupViewModel(portfolio: self.tableViewDataSource[indexPath.row])
             cell.loadImageOnCell(name: self.tableViewDataSource[indexPath.row].marketName?.lowercased() ?? "")
-            cell.setSelectedBackgroundColor(selectedColor: UIColor.init(named: "SecondColor") ?? .white)
+            cell.setSelectedBackgroundColor(selectedColor: .clear)
             
             return cell
         }
